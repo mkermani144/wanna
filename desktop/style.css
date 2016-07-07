@@ -1,22 +1,29 @@
+body {
+	background-color: #333 !important;
+}
+
 #add {
 	margin-top: 50px;
 }
 
 #add-input {
+	color: white;
 	outline: none;
 	border-width: 0px 0px 2px 0px;
-	border-color: gray;
+	border-color: white;
 	box-shadow: none;
+	background-color: #333 !important;
 }
 #add-btn {
 	color: #bbb;
 	border-width: 0px 0px 2px 0px;
-	border-color: gray;
+	border-color: white;
 	transition-duration: .3s;
+	background-color: #333 !important;
 }
 
 #add-btn:hover {
-	color: rgba(255,0,0,.7);
+	color: rgb(255,50,100);
 	background-color: #fff;
 	transition-duration: .3s;
 }
