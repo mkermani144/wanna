@@ -2,12 +2,21 @@
 	margin-top: 50px;
 }
 
+#add-input {
+	outline: none;
+	border-width: 0px 0px 2px 0px;
+	border-color: gray;
+	box-shadow: none;
+}
 #add-btn {
 	color: #bbb;
+	border-width: 0px 0px 2px 0px;
+	border-color: gray;
+	transition-duration: .3s;
 }
 
 #add-btn:hover {
 	color: rgba(255,0,0,.7);
-	background-color: #eee;
+	background-color: #fff;
 	transition-duration: .3s;
 }
