@@ -1,3 +1,13 @@
 #add {
 	margin-top: 50px;
 }
+
+#add-btn {
+	color: #bbb;
+}
+
+#add-btn:hover {
+	color: rgba(255,0,0,.7);
+	background-color: #eee;
+	transition-duration: .3s;
+}
