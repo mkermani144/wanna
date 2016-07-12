@@ -4,7 +4,7 @@ function parse(query) {
 	var regex = /@(\d)$/
 	var regexret = regex.exec(query)
 	if (!regexret)
-		return Error;
+		return Error
 	var diff = regexret[1]
 	var text = query.slice(0, regexret.index)
 	var start = Date.now()
