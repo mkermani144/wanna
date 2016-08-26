@@ -1,5 +1,9 @@
 {
-	"name"		: "wanna",
-	"version"	: "0.1",
-	"main"		: "main.js"
+  "name": "wanna",
+  "version": "0.1",
+  "main": "main.js",
+  "dependencies": {
+    "l": "0.0.1",
+    "node-sass": "^3.8.0"
+  }
 }

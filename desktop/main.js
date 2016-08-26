@@ -1,16 +1,31 @@
 const electron = require('electron')
 const {app} = electron
-// Module to create native browser window.
 const {BrowserWindow} = electron
+const sass = require('node-sass')
+const fs = require('fs')
 
-// Keep a global reference of the window object, if you don't, the window will
-// be closed automatically when the JavaScript object is garbage collected.
-let win;
+let win
 
-function createWindow() {
-  win = new BrowserWindow({width: 800, height: 600, frame: false});
-  win.loadURL(`file://${__dirname}/index.html`)
-	win.webContents.openDevTools()
+function compileSass() {
+	sass.render({
+  file: 'css/main.scss',
+  outFile: 'css/main.css',
+  outputStyle: 'comporessed'
+  }, function(err, result) {
+    fs.writeFile('css/main.css', result.css, function(err){})
+  })
 }
 
-app.on('ready', createWindow)
+function createWindow() {
+  win = new BrowserWindow({width: 800, height: 600});
+  win.loadURL(`file://${__dirname}/index.html`)
+	win.webContents.openDevTools()
+  win.on('close', function() {
+    fs.unlink(__dirname + '/css/main.css')
+  })
+}
+
+app.on('ready', function(){
+  compileSass()
+  createWindow()
+})
