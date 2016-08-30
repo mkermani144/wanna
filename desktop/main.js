@@ -4,28 +4,28 @@ const {BrowserWindow} = electron
 const sass = require('node-sass')
 const fs = require('fs')
 
-let win
+var win
 
 function compileSass() {
 	sass.render({
   file: 'css/main.scss',
   outFile: 'css/main.css',
   outputStyle: 'comporessed'
-  }, function(err, result) {
-    fs.writeFile('css/main.css', result.css, function(err){})
+	}, (err, result) => {
+    fs.writeFile('css/main.css', result.css, err => {})
   })
 }
 
 function createWindow() {
-  win = new BrowserWindow({width: 800, height: 600});
+  win = new BrowserWindow({width: 800, height: 600})
   win.loadURL(`file://${__dirname}/index.html`)
 	win.webContents.openDevTools()
-  win.on('close', function() {
+  win.on('close', () => {
     fs.unlink(__dirname + '/css/main.css')
   })
 }
 
-app.on('ready', function(){
+app.on('ready', () => {
   compileSass()
   createWindow()
 })

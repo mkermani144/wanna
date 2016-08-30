@@ -6,7 +6,6 @@
   <link rel="stylesheet" href="css/main.css">
 </head>
 <body ng-app="BlankApp" ng-cloak>
-
   <!-- Angular Material requires Angular.js Libraries -->
   <script src="dependencies/angular/js/angular.min.js"></script>
   <script src="dependencies/angular/js/angular-animate.min.js"></script>
@@ -17,7 +16,12 @@
   <script src="dependencies/angular/js/angular-material.min.js"></script>
 
   <script type="text/javascript">
-    angular.module('BlankApp', ['ngMaterial']);
+    angular.module('BlankApp', ['ngMaterial'])
+    	.config(($mdThemingProvider) => {
+    		$mdThemingProvider.theme('default')
+    			.primaryPalette('blue')
+    			.warnPalette('red')
+    	});
   </script>
 
 </body>
