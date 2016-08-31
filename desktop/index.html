@@ -1,57 +1,25 @@
-<html lang="en" >
+<html lang="en">
+
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- Angular Material style sheet -->
-  <link rel="stylesheet" href="dependencies/angular/css/angular-material.min.css">
-  <link rel="stylesheet" href="css/main.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Angular Material style sheet -->
+    <link rel="stylesheet" href="dependencies/angular/css/angular-material.min.css">
+    <link rel="stylesheet" href="css/main.css">
 </head>
-<body ng-app="BlankApp" ng-cloak>
-  <!-- Angular Material requires Angular.js Libraries -->
-  <script src="dependencies/angular/js/angular.min.js"></script>
-  <script src="dependencies/angular/js/angular-animate.min.js"></script>
-  <script src="dependencies/angular/js/angular-aria.min.js"></script>
-  <script src="dependencies/angular/js/angular-messages.min.js"></script>
 
-  <!-- Angular Material Library -->
-  <script src="dependencies/angular/js/angular-material.min.js"></script>
+<body ng-app="MainApp" ng-cloak>
 
-  <script type="text/javascript">
-    angular.module('BlankApp', ['ngMaterial'])
-    	.config(($mdThemingProvider) => {
-    		$mdThemingProvider.theme('default')
-    			.primaryPalette('blue')
-    			.warnPalette('red')
-    	});
-  </script>
+    <!-- Angular Material requires Angular.js Libraries -->
+    <script src="dependencies/angular/js/angular.min.js"></script>
+    <script src="dependencies/angular/js/angular-animate.min.js"></script>
+    <script src="dependencies/angular/js/angular-aria.min.js"></script>
+    <script src="dependencies/angular/js/angular-messages.min.js"></script>
+
+    <!-- Angular Material Library -->
+    <script src="dependencies/angular/js/angular-material.min.js"></script>
+
+    <script type="text/javascript" src="js/MainController.js"></script>
 
 </body>
+
 </html>
-<!-- <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <title>wanna</title>
-		<link href="css/style.css" type="text/css" rel="stylesheet">
-		<link href="css/bootstrap.min.css" type="text/css" rel="stylesheet">
-		<link href="css/font-awesome/css/font-awesome.min.css" type="text/css" rel="stylesheet">
-  </head>
-  <body>
-		<div class="container">
-			<div class="col-sm-8 col-sm-offset-2">
-				<form>
-					<div class="input-group" id="add">
-						<input class="form-control input-lg" type="text" id="add-input"></input>
-						<div class="input-group-btn">
-							<button class="btn btn-default btn-lg" id="add-btn" type="button">
-								<i class="fa fa-send"></i>
-							</button>
-						</div>
-					</div>
-				</form>
-			</div>
-		</div>
-		<script>window.$ = window.jQuery = require('./js/jquery.min.js');</script>
-		<script src="js/typed.js" type="text/javascript"></script>
-		<script src="js/js.js" type="text/javascript"></script>
-  </body>
-</html> -->
