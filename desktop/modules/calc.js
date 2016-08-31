@@ -3,9 +3,9 @@ function parse(query) {
     query = query.trim() // Remove whitespaces from beginning and end of query
     var regex = /@(\d)$/
     var regexret = regex.exec(query)
-    if (!regexret)
+    if (!regexret) {
         return Error
-    var diff = regexret[1]
+    }
     var text = query.slice(0, regexret.index)
     var start = Date.now()
     var end = start + 86400 * regexret[1]
