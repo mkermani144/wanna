@@ -1,3 +1,12 @@
 {
-  "asi"      : true
+  "curly": true,
+  "esversion": 6,
+  "funcscope": false,
+  "latedef": true,
+  "strict": false,
+  "undef": true,
+  "unused": true,
+  "asi": true,
+  "eqnull": true,
+  "node": true
 }
