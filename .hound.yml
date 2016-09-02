@@ -1,3 +1,6 @@
 javascript:
   enabled: true
   config_file: desktop/js/.jshintrc
+scss:
+  enabled: true
+  config_file: desktop/css/.scss-lint.yml
