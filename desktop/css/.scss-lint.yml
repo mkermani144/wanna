@@ -1,0 +1,11 @@
+linters:
+  ElsePlacement:
+    enabled: false
+  HexLength:
+    enabled: false
+  IdSelector:
+    enabled: false
+  ImportantRule:
+    enabled: false
+  ZeroUnit:
+    enabled: false
