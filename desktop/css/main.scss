@@ -2,11 +2,13 @@
   min-height: 2.5em;
 }
 md-fab-speed-dial {
+  
   &.md-is-open md-fab-trigger {
     .md-button:focus {
       transform: rotate(45deg);
     }
   }
+
   md-fab-trigger {
     .md-button:focus {
       transform: rotate(0);
