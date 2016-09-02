@@ -1,6 +1,6 @@
 const electron = require('electron')
-const {app} = electron
-const {BrowserWindow} = electron
+const { app } = electron
+const { BrowserWindow } = electron
 const sass = require('node-sass')
 const fs = require('fs')
 
