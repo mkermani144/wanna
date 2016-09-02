@@ -15,8 +15,14 @@
         <md-sidenav class="md-primary md-hue-2" md-is-locked-open="$mdMedia('gt-xs')" md-whiteframe="6" flex="33" flex-sm="40"></md-sidenav>
 
         </md-sidenav>
-        <md-content flex class="md-primary">
-
+        <md-content flex>
+          <md-fab-speed-dial md-direction="up" md-open="false" class="md-scale md-fab-bottom-right">
+            <md-fab-trigger>
+              <md-button class="md-fab md-primary">
+                <md-icon md-svg-src="img/plus.svg"></md-icon>
+              </md-button>
+            </md-fab-trigger>
+          </md-fab-speed-dial>
         </md-content>
     </div>
     <!-- Angular Material requires Angular.js Libraries -->
