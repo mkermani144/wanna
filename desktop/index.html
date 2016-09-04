@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="css/main.css">
 </head>
 
-<body ng-app="MainApp" layout="column" ng-cloak>
+<body ng-app="MainApp" ng-controller="MainControl" layout="column" ng-cloak>
     <md-toolbar class="md-primary" id="toolbar">
 
     </md-toolbar>
@@ -18,12 +18,12 @@
         <md-content flex>
           <md-fab-speed-dial md-direction="up" md-open="false" class="md-scale md-fab-bottom-right">
             <md-fab-trigger>
-              <md-button class="md-fab md-primary">
+              <md-button class="md-fab md-primary" aria-label="new">
                 <md-icon md-svg-src="img/plus.svg"></md-icon>
               </md-button>
             </md-fab-trigger>
             <md-fab-actions>
-              <md-button class="md-fab md-mini md-primary">
+              <md-button class="md-fab md-mini md-primary" ng-click="addNew($event)">
                 <md-tooltip md-direction="left" md-visible="false">Task</md-tooltip>
                 <md-icon md-svg-src="img/pencil.svg"></md-icon>
               </md-button>
