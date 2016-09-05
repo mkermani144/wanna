@@ -19,6 +19,11 @@ angular.module('MainApp', ['ngMaterial'])
           width: 40,
           height: 30
         })
-      );
+      )
+      .then(task => {
+        console.log(task);
+      }, () => {
+        console.log('nothing');
+      });
     }
   });
