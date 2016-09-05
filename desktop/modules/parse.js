@@ -22,3 +22,4 @@ function parse(query) {
     end
   }
 }
+module.exports = parse
