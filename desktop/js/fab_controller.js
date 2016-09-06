@@ -1,11 +1,5 @@
-angular.module('MainApp', ['ngMaterial'])
-  .config(($mdThemingProvider) => {
-    $mdThemingProvider.theme('default')
-      .primaryPalette('blue')
-      .accentPalette('pink')
-      .warnPalette('red');
-  })
-  .controller('MainControl', ($mdDialog, $scope) => {
+angular.module('MainApp')
+  .controller('FabControl', ($mdDialog, $scope) => {
     $scope.addNew = (ev) => {
       $mdDialog.show(
         $mdDialog.prompt()

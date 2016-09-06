@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="css/main.css">
 </head>
 
-<body ng-app="MainApp" ng-controller="MainControl" layout="column" ng-cloak>
+<body ng-app="MainApp" layout="column" ng-cloak>
     <md-toolbar class="md-primary" id="toolbar">
 
     </md-toolbar>
@@ -22,7 +22,7 @@
                 <md-icon md-svg-src="img/plus.svg"></md-icon>
               </md-button>
             </md-fab-trigger>
-            <md-fab-actions>
+            <md-fab-actions ng-controller="FabControl">
               <md-button class="md-fab md-mini md-primary" ng-click="addNew($event)">
                 <md-tooltip md-direction="left" md-visible="false">Task</md-tooltip>
                 <md-icon md-svg-src="img/pencil.svg"></md-icon>
@@ -44,7 +44,8 @@
     <!-- Angular Material Library -->
     <script src="dependencies/angular/js/angular-material.min.js"></script>
 
-    <script type="text/javascript" src="js/MainController.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript" src="js/fab_controller.js"></script>
 
 </body>
 
