@@ -22,4 +22,8 @@ function parse(query) {
     end
   }
 }
-module.exports = parse
+
+angular.module('MainApp', ['ngMaterial'])
+  .factory('parseFactory', () => {
+    return parse;
+  });
