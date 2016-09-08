@@ -25,7 +25,7 @@ function addToDB(query) {
   try {
     var taskObj = parse(query);
     db.insert(taskObj, (err, data) => {
-      if(err) {
+      if (err) {
         console.log(err);
       } else {
         console.log(data);
