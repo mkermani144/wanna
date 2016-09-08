@@ -1,5 +1,5 @@
 angular.module('MainApp')
-  .controller('FabControl', ($mdDialog, $scope, addToDB) => {
+  .controller('FabControl', ($mdToast, $mdDialog, $scope, addToDB) => {
     $scope.addNew = (ev) => {
       $mdDialog.show(
           $mdDialog.prompt()
@@ -16,6 +16,11 @@ angular.module('MainApp')
         )
         .then(task => {
           addToDB(task);
+          $mdToast.show(
+            $mdToast.simple()
+            .textContent('Task added.')
+            .position('bottom start')
+          );
         }, () => {
           console.log('Empty task. Ignoring.');
         });
