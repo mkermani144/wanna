@@ -8,6 +8,7 @@
  *                         and dealine
  */
 function parse(query) {
+  query = query
   var regex = /@(\d)$/
   var regexResult = regex.exec(query)
   if (!regexResult) {
