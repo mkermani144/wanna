@@ -1,9 +1,11 @@
 {
   "name": "wanna-desktop",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "",
   "main": "main.js",
-  "dependencies": {},
+  "dependencies": {
+    "nedb": "^1.8.0"
+  },
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

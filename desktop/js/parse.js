@@ -8,6 +8,7 @@
  *                         and dealine
  */
 function parse(query) {
+  query = query
   var regex = /@(\d)$/
   var regexResult = regex.exec(query)
   if (!regexResult) {
@@ -23,7 +24,4 @@ function parse(query) {
   }
 }
 
-angular.module('MainApp', ['ngMaterial'])
-  .factory('parseFactory', () => {
-    return parse;
-  });
+module.exports = parse;
