@@ -15,12 +15,12 @@ angular.module('MainApp')
           }
         })
         .then(task => {
-          // addToDB(task);
-          // $mdToast.show(
-          //   $mdToast.simple()
-          //   .textContent('Task added.')
-          //   .position('bottom start')
-          // );
+          addToDB(task);
+          $mdToast.show(
+            $mdToast.simple()
+            .textContent('Task added.')
+            .position('bottom start')
+          );
         }, () => {
           console.log('Empty task. Ignoring.');
         });
