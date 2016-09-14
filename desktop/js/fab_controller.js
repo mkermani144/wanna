@@ -2,6 +2,7 @@ angular.module('MainApp')
   .controller('FabControl', ($mdToast, $mdDialog, $scope, addToDB) => {
     $scope.addNew = (ev) => {
       $mdDialog.show({
+          controller: DialogController,
           templateUrl: 'templates/newTaskDialog.html',
           parent: angular.element(document.body),
           targetEvent: ev,
@@ -23,5 +24,17 @@ angular.module('MainApp')
         }, () => {
           console.log('Empty task. Ignoring.');
         });
+    }
+
+    function DialogController($scope, $mdDialog) {
+      $scope.cancel = function() {
+        $mdDialog.cancel();
+      };
+
+      $scope.add = function(task) {
+        if (task) {
+          $mdDialog.hide(task);
+        }
+      };
     }
   });
