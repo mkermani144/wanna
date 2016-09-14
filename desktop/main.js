@@ -12,7 +12,9 @@ function compileSass() {
     outFile: 'css/main.css',
     outputStyle: 'comporessed'
   }, (err, result) => {
-    fs.writeFile('css/main.css', result.css, err => {})
+    fs.writeFile('css/main.css', result.css, err => {
+      console.log(err)
+    })
   })
 }
 
