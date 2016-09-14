@@ -8,10 +8,18 @@
 
     <md-dialog-content>
       <div class="md-dialog-content" layout="column">
-        <h4>What do you wanna do?</h4>
-        <md-input-container flex>
-          <input>
-        </md-input-container>
+        <form name="taskForm">
+          <h4>What do you wanna do?</h4>
+          <md-input-container flex>
+            <input name="task" ng-model="task" ng-pattern="/@\d+$/">
+            <div ng-messages="taskForm.task.$error">
+              <div ng-message="pattern">
+                Task is not valid.
+              </div>
+            </div>
+          </md-input-container>
+        </form>
+
       </div>
     </md-dialog-content>
 
