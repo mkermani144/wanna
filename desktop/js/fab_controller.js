@@ -1,5 +1,16 @@
 angular.module('MainApp')
   .controller('FabControl', ($mdToast, $mdDialog, $scope, addToDB) => {
+    function DialogController($scope, $mdDialog) {
+      $scope.cancel = function() {
+        $mdDialog.cancel();
+      };
+
+      $scope.add = function(task) {
+        if (task) {
+          $mdDialog.hide(task);
+        }
+      };
+    }
     $scope.addNew = (ev) => {
       $mdDialog.show({
           controller: DialogController,
@@ -26,15 +37,4 @@ angular.module('MainApp')
         });
     }
 
-    function DialogController($scope, $mdDialog) {
-      $scope.cancel = function() {
-        $mdDialog.cancel();
-      };
-
-      $scope.add = function(task) {
-        if (task) {
-          $mdDialog.hide(task);
-        }
-      };
-    }
   });
