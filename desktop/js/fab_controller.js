@@ -32,8 +32,6 @@ angular.module('MainApp')
             .textContent('Task added.')
             .position('bottom start')
           );
-        }, () => {
-          console.log('Empty task. Ignoring.');
         });
     }
 

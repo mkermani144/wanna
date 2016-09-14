@@ -1,6 +1,5 @@
 var parse = require('./js/parse');
 const crypto = require('crypto');
-console.log(crypto.createCipher);
 var Datastore = require('nedb');
 var db = new Datastore({
   filename: `${__dirname}/tasks.db`,
@@ -21,14 +20,11 @@ var db = new Datastore({
  * @param {string} query task query
  */
 function addToDB(query) {
-  console.log('Enter');
   try {
     var taskObj = parse(query);
-    db.insert(taskObj, (err, data) => {
+    db.insert(taskObj, (err) => {
       if (err) {
         console.log(err);
-      } else {
-        console.log(data);
       }
     });
   } catch (e) {
