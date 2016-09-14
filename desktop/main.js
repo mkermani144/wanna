@@ -37,7 +37,7 @@ app.on('ready', () => {
   createWindow()
 })
 
-ipc.on('insert-error', () => {
+ipc.on('insert-error', (ev, err) => {
   dialog.showErrorBox('Insertion error',
-    'There was an error in inserting your task.')
+    `There was an error in inserting your task:\n${err}`)
 })

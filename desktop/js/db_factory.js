@@ -24,7 +24,7 @@ function addToDB(query) {
   var taskObj = parse(query);
   db.insert(taskObj, (err) => {
     if (err) {
-      ipc.send('insert-error');
+      ipc.send('insert-error', err);
     }
   });
 }
