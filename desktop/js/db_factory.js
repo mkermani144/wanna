@@ -1,6 +1,7 @@
 var parse = require('./js/parse');
 const crypto = require('crypto');
 var Datastore = require('nedb');
+const { ipcRenderer: ipc } = require('electron');
 var db = new Datastore({
   filename: `${__dirname}/tasks.db`,
   afterSerialization: (object) => {
@@ -20,16 +21,12 @@ var db = new Datastore({
  * @param {string} query task query
  */
 function addToDB(query) {
-  try {
-    var taskObj = parse(query);
-    db.insert(taskObj, (err) => {
-      if (err) {
-        console.log(err);
-      }
-    });
-  } catch (e) {
-    console.log(e);
-  }
+  var taskObj = parse(query);
+  db.insert(taskObj, (err) => {
+    if (err) {
+      ipc.send('insert-error');
+    }
+  });
 }
 
 angular.module('MainApp')

@@ -1,5 +1,7 @@
 const electron = require('electron')
 const { app } = electron
+const { ipcMain: ipc } = electron
+const { dialog } = electron
 const { BrowserWindow } = electron
 const sass = require('node-sass')
 const fs = require('fs')
@@ -33,4 +35,8 @@ function createWindow() {
 app.on('ready', () => {
   compileSass()
   createWindow()
+})
+
+ipc.on('insert-error', function(event) {
+  dialog.showErrorBox('Insertion error', 'There was an error in inserting your task.')
 })
