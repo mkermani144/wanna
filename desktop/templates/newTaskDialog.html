@@ -11,10 +11,13 @@
         <form name="taskForm">
           <h4>What do you wanna do?</h4>
           <md-input-container flex>
-            <input name="task" ng-model="task" ng-pattern="/@\d+$/">
+            <input name="task" ng-model="task" ng-pattern="/@\d+$/" required>
             <div ng-messages="taskForm.task.$error">
               <div ng-message="pattern">
                 Task is not valid.
+              </div>
+              <div ng-message="required">
+                Task cannot be empty.
               </div>
             </div>
           </md-input-container>
