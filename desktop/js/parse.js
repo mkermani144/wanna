@@ -9,7 +9,7 @@
  */
 function parse(query) {
   query = query
-  var regex = /@(\d)$/
+  var regex = /@(\d+)$/
   var regexResult = regex.exec(query)
   var text = query.slice(0, regexResult.index)
   var start = Date.now()

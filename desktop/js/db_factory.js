@@ -1,7 +1,7 @@
+const { ipcRenderer: ipc } = require('electron');
 var parse = require('./js/parse');
 const crypto = require('crypto');
 var Datastore = require('nedb');
-const { ipcRenderer: ipc } = require('electron');
 var db = new Datastore({
   filename: `${__dirname}/tasks.db`,
   afterSerialization: (object) => {
