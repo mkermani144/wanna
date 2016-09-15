@@ -10,11 +10,11 @@ var win
 
 function compileSass() {
   sass.render({
-    file: 'css/main.scss',
-    outFile: 'css/main.css',
+    file: 'assets/css/main.scss',
+    outFile: 'assets/css/main.css',
     outputStyle: 'comporessed'
   }, (err, result) => {
-    fs.writeFile('css/main.css', result.css, err => {
+    fs.writeFile('assets/css/main.css', result.css, err => {
       console.log(err)
     })
   })
@@ -28,7 +28,7 @@ function createWindow() {
   win.loadURL(`file://${__dirname}/index.html`)
     // win.webContents.openDevTools()
   win.on('close', () => {
-    fs.unlink(__dirname + '/css/main.css')
+    fs.unlink(__dirname + '/assets/css/main.css')
   })
 }
 
