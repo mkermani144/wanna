@@ -3,8 +3,8 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Angular Material style sheet -->
-  <link rel="stylesheet" href="dependencies/angular/css/angular-material.min.css">
-  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="assets/lib/angular/css/angular-material.min.css">
+  <link rel="stylesheet" href="assets/css/main.css">
 </head>
 
 <body ng-app="MainApp" layout="column" ng-cloak>
@@ -19,30 +19,30 @@
       <md-fab-speed-dial md-direction="up" md-open="false" class="md-scale md-fab-bottom-right">
         <md-fab-trigger>
           <md-button class="md-fab md-primary" aria-label="new">
-            <md-icon md-svg-src="img/plus.svg"></md-icon>
+            <md-icon md-svg-src="assets/img/plus.svg"></md-icon>
           </md-button>
         </md-fab-trigger>
         <md-fab-actions ng-controller="FabControl">
           <md-button class="md-fab md-mini md-primary" ng-click="addNew($event)">
             <md-tooltip md-direction="left" md-visible="false">Task</md-tooltip>
-            <md-icon md-svg-src="img/pencil.svg"></md-icon>
+            <md-icon md-svg-src="assets/img/pencil.svg"></md-icon>
           </md-button>
           <md-button class="md-fab md-mini md-primary">
             <md-tooltip md-direction="left" md-visible="false">Idea</md-tooltip>
-            <md-icon md-svg-src="img/lightbulb.svg"></md-icon>
+            <md-icon md-svg-src="assets/img/lightbulb.svg"></md-icon>
           </md-button>
         </md-fab-actions>
       </md-fab-speed-dial>
     </md-content>
   </div>
   <!-- Angular Material requires Angular.js Libraries -->
-  <script src="dependencies/angular/js/angular.min.js"></script>
-  <script src="dependencies/angular/js/angular-animate.min.js"></script>
-  <script src="dependencies/angular/js/angular-aria.min.js"></script>
-  <script src="dependencies/angular/js/angular-messages.min.js"></script>
+  <script src="assets/lib/angular/js/angular.min.js"></script>
+  <script src="assets/lib/angular/js/angular-animate.min.js"></script>
+  <script src="assets/lib/angular/js/angular-aria.min.js"></script>
+  <script src="assets/lib/angular/js/angular-messages.min.js"></script>
 
   <!-- Angular Material Library -->
-  <script src="dependencies/angular/js/angular-material.min.js"></script>
+  <script src="assets/lib/angular/js/angular-material.min.js"></script>
 
   <script type="text/javascript" src="js/main.js"></script>
   <script type="text/javascript" src="js/db_factory.js"></script>
