@@ -32,6 +32,7 @@ Ideas and features to be developed after [beta version](https://github.com/mkerm
 - [ ] Recurring tasks
 - [ ] Idea bank
 - [ ] One-day tasks
+- [ ] Flexible
 - [ ] Timer
 - [ ] Moods
 - [ ] Job type
