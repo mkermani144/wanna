@@ -14,7 +14,7 @@ angular.module('MainApp')
     $scope.addNew = (ev) => {
       $mdDialog.show({
           controller: DialogController,
-          templateUrl: 'templates/newTaskDialog.html',
+          templateUrl: 'app/components/fab/templates/newTaskDialog.html',
           parent: angular.element(document.body),
           targetEvent: ev,
           clickOutsideToClose: true,

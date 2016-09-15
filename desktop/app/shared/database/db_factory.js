@@ -1,5 +1,5 @@
 const { ipcRenderer: ipc } = require('electron');
-var parse = require('./js/parse');
+var parse = require('./app/shared/database/parse');
 const crypto = require('crypto');
 var Datastore = require('nedb');
 var db = new Datastore({
