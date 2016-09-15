@@ -5,7 +5,10 @@ wanna
 
 Description
 ----
-Do you wanna have an alternative to the boring to-do list apps?
+Wanna is an alternative to the boring traditional to-do list apps.
+It makes you highly flexible, help you manage your time, suggest suitable tasks to do based on your mood, and more.
+
+I hope you enjoy it. Just wait until beta release.
 
 
 Installation and usage
