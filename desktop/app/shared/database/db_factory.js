@@ -20,7 +20,7 @@ var db = new Datastore({
  * database
  * @param {string} query task query
  */
-function addToDB(query) {
+function insert(query) {
   var taskObj = parse(query);
   db.insert(taskObj, (err) => {
     if (err) {
@@ -35,7 +35,7 @@ function addToDB(query) {
  *         Determines type of task to be found
  * @return {object}      List of all found tasks
  */
-function getOpenTasks(type) {
+function find(type) {
   var now = Date.now()
   switch (type) {
     case 'open':
@@ -50,8 +50,8 @@ function getOpenTasks(type) {
 angular.module('MainApp')
   .factory('db', () => {
     var db = {
-      addToDB,
-      getOpenTasks
+      insert,
+      find
     }
     return db;
   });

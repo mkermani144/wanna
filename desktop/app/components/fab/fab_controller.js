@@ -26,7 +26,7 @@ angular.module('MainApp')
           }
         })
         .then(task => {
-          db.addToDB(task);
+          db.insert(task);
           $mdToast.show(
             $mdToast.simple()
             .textContent('Task added.')
