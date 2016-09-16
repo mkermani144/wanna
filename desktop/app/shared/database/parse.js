@@ -19,10 +19,13 @@ function parse(query) {
     w: 7,
     m: 30
   }
-  var regex = /@(\d+)([dwmDWM]?)$/
+  var regex = /@(\d+)([dwmDWM]?)(\+(\d+)([dwmDWM]?))?$/
   var regexResult = regex.exec(query)
   var text = query.slice(0, regexResult.index)
   var start = Date.now()
+  if (regexResult[3]) {
+    start += 86400 * regexResult[4] * dwm[regexResult[5]]
+  }
   var end = start + 86400 * regexResult[1] * dwm[regexResult[2]]
   return {
     text,
