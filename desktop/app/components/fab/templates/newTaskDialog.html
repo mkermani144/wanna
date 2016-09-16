@@ -9,7 +9,7 @@
       <div class="md-dialog-content" layout="column">
         <h4>What do you wanna do?</h4>
         <md-input-container md-is-error="taskForm.task.$invalid && taskForm.$submitted" flex>
-          <input name="task" ng-model="task" ng-pattern="/.+ @\d+[dwmDWM]?(\+(\d+)([dwmDWM]?))? (!){1,2}$/" required>
+          <input name="task" ng-model="task" ng-pattern="/.+ @\d+[dwmDWM]?(\+(\d+)([dwmDWM]?))? (!){1,2}$/" md-autofocus required>
           <div ng-messages="taskForm.task.$error">
             <div ng-message="pattern">
               Task is not valid.
@@ -23,7 +23,7 @@
     </md-dialog-content>
     <md-dialog-actions layout="row">
       <span flex></span>
-      <md-button type="submit" ng-click="add(task)" md-autofocus>
+      <md-button type="submit" ng-click="add(task)">
         Add
       </md-button>
       <md-button ng-click="cancel()">
