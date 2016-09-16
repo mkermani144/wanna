@@ -9,15 +9,31 @@
  */
 function parse(query) {
   query = query
-  var regex = /@(\d+)$/
+  /**
+   * Day, week or month coefficient
+   * @type {Object}
+   */
+  var dwm = {
+    d: 1,
+    '': 1,
+    w: 7,
+    m: 30
+  }
+  var regex = /@(\d+)([dwmDWM]?)(\+(\d+)([dwmDWM]?))? (!{1,2})$/
   var regexResult = regex.exec(query)
   var text = query.slice(0, regexResult.index)
   var start = Date.now()
-  var end = start + 86400 * regexResult[1]
+  if (regexResult[3]) {
+    start += 86400 * regexResult[4] * dwm[regexResult[5]]
+  }
+  var end = start + 86400 * regexResult[1] * dwm[regexResult[2]]
+  var importance = regexResult[6].length + 1;
+  console.log(importance);
   return {
     text,
     start,
-    end
+    end,
+    importance
   }
 }
 
