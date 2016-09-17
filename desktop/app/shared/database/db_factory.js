@@ -31,16 +31,17 @@ function insert(query) {
 
 /**
  * Find appropriate tasks based on type
- * @param  {'open'|'overdue'|'coming'} type
- *         Determines type of task to be found
- * @return {object}      List of all found tasks
+ * @param  {string}   type Determines type of task
+ *                         to be found
+ * @param  {Function} cb   callback
+ * @return {[type]}        List of all found tasks
  */
-function find(type) {
+function find(type, cb) {
   var now = Date.now()
   switch (type) {
     case 'open':
       db.find({ $and: [{ start: { $lt: now } }, { end: { $gt: now } }] }, (err, docs) => {
-        return docs;
+        cb(docs);
       })
       break;
     default:
