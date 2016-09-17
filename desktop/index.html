@@ -34,6 +34,9 @@
         </md-fab-actions>
       </md-fab-speed-dial>
       <md-list ng-controller="TaskControl" flex>
+        <md-list-item ng-repeat="task in tasks" uaf="{{$index}}">
+
+        </md-list-item>
 
       </md-list>
     </md-content>
