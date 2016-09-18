@@ -12,7 +12,7 @@
 
   </md-toolbar>
   <div layout="row" flex>
-    <md-sidenav class="md-primary md-hue-2" md-is-locked-open="$mdMedia('gt-xs')" md-whiteframe="6" flex="33" flex-sm="40"></md-sidenav>
+    <md-sidenav class="md-primary md-hue-2" md-is-locked-open="$mdMedia('gt-xs')" md-whiteframe="1" flex="33" flex-sm="40"></md-sidenav>
 
     </md-sidenav>
     <md-content flex>
@@ -34,11 +34,16 @@
         </md-fab-actions>
       </md-fab-speed-dial>
       <md-list ng-controller="TaskControl" flex>
+        <md-subheader class="md-warn">Overdue</md-subheader>
+        <md-divider></md-divider>
+        <md-subheader class="md-primary">Open</md-subheader>
         <md-list-item ng-repeat="task in tasks" uaf="{{$index}}">
-          <p>
+          <div class="md-list-item-text">
+            <p>
 
-          </p>
-          <md-divider></md-divider>
+            </p>
+          </div>
+          <md-divider class="task-divider"></md-divider>
         </md-list-item>
       </md-list>
     </md-content>
