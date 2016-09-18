@@ -34,9 +34,9 @@
         </md-fab-actions>
       </md-fab-speed-dial>
       <md-list ng-controller="TaskControl" flex>
-        <md-subheader class="md-warn">Overdue</md-subheader>
+        <md-subheader class="md-warn cur-d" md-ink-ripple>Overdue</md-subheader>
         <md-divider></md-divider>
-        <md-subheader class="md-primary">Open</md-subheader>
+        <md-subheader class="md-primary cur-d" md-ink-ripple>Open</md-subheader>
         <md-list-item ng-repeat="task in tasks" uaf="{{$index}}">
           <div class="md-list-item-text">
             <p>
