@@ -40,9 +40,14 @@ function find(type, cb) {
   var now = Date.now()
   switch (type) {
     case 'open':
-      db.find({ $and: [{ start: { $lt: now } }, { end: { $gt: now } }] }, {text: 1, _id: 0}, (err, tasks) => {
-        cb(Object.keys(tasks).map(key => tasks[key].text));
-      })
+      db.find({
+          $and: [{ start: { $lt: now } },
+            { end: { $gt: now } }
+          ]
+        }, { text: 1, _id: 0 },
+        (err, tasks) => {
+          cb(Object.keys(tasks).map(key => tasks[key].text));
+        });
       break;
     default:
   }
