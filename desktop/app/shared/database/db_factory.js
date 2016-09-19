@@ -20,7 +20,7 @@ var db = new Datastore({
  * database
  * @param {string} query task query
  */
-function addToDB(query) {
+function insert(query) {
   var taskObj = parse(query);
   db.insert(taskObj, (err) => {
     if (err) {
@@ -29,7 +29,35 @@ function addToDB(query) {
   });
 }
 
+/**
+ * Find appropriate tasks based on type
+ * @param  {string}   type Determines type of task
+ *                         to be found
+ * @param  {Function} cb   callback
+ * @return {[type]}        List of all found tasks
+ */
+function find(type, cb) {
+  var now = Date.now()
+  switch (type) {
+    case 'open':
+      db.find({
+          $and: [{ start: { $lt: now } },
+            { end: { $gt: now } }
+          ]
+        }, { text: 1, _id: 0 },
+        (err, tasks) => {
+          cb(Object.keys(tasks).map(key => tasks[key].text));
+        });
+      break;
+    default:
+  }
+}
+
 angular.module('MainApp')
-  .factory('addToDB', () => {
-    return addToDB;
+  .factory('db', () => {
+    var db = {
+      insert,
+      find
+    }
+    return db;
   });

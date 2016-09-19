@@ -3,22 +3,22 @@ const { app } = electron
 const { ipcMain: ipc } = electron
 const { dialog } = electron
 const { BrowserWindow } = electron
-const sass = require('node-sass')
+// const sass = require('node-sass')
 const fs = require('fs')
 
 var win
 
-function compileSass() {
-  sass.render({
-    file: 'assets/css/main.scss',
-    outFile: 'assets/css/main.css',
-    outputStyle: 'comporessed'
-  }, (err, result) => {
-    fs.writeFile('assets/css/main.css', result.css, err => {
-      console.log(err)
-    })
-  })
-}
+// function compileSass() {
+//   sass.render({
+//     file: 'assets/css/main.scss',
+//     outFile: 'assets/css/main.css',
+//     outputStyle: 'comporessed'
+//   }, (err, result) => {
+//     fs.writeFile('assets/css/main.css', result.css, err => {
+//       console.log(err)
+//     })
+//   })
+// }
 
 function createWindow() {
   win = new BrowserWindow({
@@ -28,12 +28,12 @@ function createWindow() {
   win.loadURL(`file://${__dirname}/index.html`)
     // win.webContents.openDevTools()
   win.on('close', () => {
-    fs.unlink(__dirname + '/assets/css/main.css')
+    // fs.unlink(__dirname + '/assets/css/main.css')
   })
 }
 
 app.on('ready', () => {
-  compileSass()
+  // compileSass()
   createWindow()
 })
 

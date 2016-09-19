@@ -1,0 +1,16 @@
+#toolbar {
+  min-height: 2.5em;
+}
+
+md-fab-speed-dial.md-is-open md-fab-trigger .md-button:focus {
+  transform: rotate(45deg);
+}
+md-fab-speed-dial md-fab-trigger .md-button:focus {
+  transform: rotate(0);
+}
+.cur-d {
+  cursor: default;
+}
+.task-divider {
+  opacity: .5;
+}

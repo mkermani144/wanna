@@ -1,5 +1,5 @@
 angular.module('MainApp')
-  .controller('FabControl', ($mdToast, $mdDialog, $scope, addToDB) => {
+  .controller('FabControl', ($mdToast, $mdDialog, $scope, db) => {
     function DialogController($scope, $mdDialog) {
       $scope.cancel = function() {
         $mdDialog.cancel();
@@ -26,7 +26,7 @@ angular.module('MainApp')
           }
         })
         .then(task => {
-          addToDB(task);
+          db.insert(task);
           $mdToast.show(
             $mdToast.simple()
             .textContent('Task added.')
