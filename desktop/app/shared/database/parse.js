@@ -24,9 +24,9 @@ function parse(query) {
   var text = query.slice(0, regexResult.index)
   var start = Date.now()
   if (regexResult[3]) {
-    start += 86400 * regexResult[4] * dwm[regexResult[5]]
+    start += 86400000 * regexResult[4] * dwm[regexResult[5]]
   }
-  var end = start + 86400 * regexResult[1] * dwm[regexResult[2]]
+  var end = start + 86400000 * regexResult[1] * dwm[regexResult[2]]
   var importance = regexResult[6].length + 1;
   console.log(importance);
   return {
