@@ -7,5 +7,7 @@ linters:
     enabled: false
   ImportantRule:
     enabled: false
+  TrailingZero:
+    enabled: true
   ZeroUnit:
     enabled: false
