@@ -8,7 +8,7 @@
 </head>
 
 <body ng-app="MainApp" layout="column" ng-cloak>
-  <md-toolbar class="md-primary" id="toolbar" md-whiteframe="5">
+  <md-toolbar class="md-primary" id="toolbar" md-whiteframe="2">
 
   </md-toolbar>
   <div layout="row" flex>
@@ -43,7 +43,7 @@
 
             </p>
           </div>
-          <md-divider class="task-divider" flex-offset=5 flex=95></md-divider>
+          <md-divider class="task-divider" ng-if="!$last" flex-offset=5 flex=95></md-divider>
         </md-list-item>
       </md-list>
     </md-content>
