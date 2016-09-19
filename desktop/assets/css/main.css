@@ -11,3 +11,6 @@ md-fab-speed-dial md-fab-trigger .md-button:focus {
 .cur-d {
   cursor: default;
 }
+.task-divider {
+  opacity: .5;
+}
