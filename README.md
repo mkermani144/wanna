@@ -45,4 +45,4 @@ Ideas and features to be developed after [beta version](https://github.com/mkerm
 
 Known bugs
 ----
-- There are some problems in running the app in Ubuntu 16.04 because of lack of support in one of the project dependency packages(`node-sass` package). That problem will probably be resolved in future versions of `node-sass`; in addition, the project may leave using `node-sass` and use an alternative.
+- There are some problems in running the app in Ubuntu 16.04 because of lack of support in one of the project dependency packages(`node-sass` package). That problem will probably be resolved in future versions of `node-sass`; in addition, the project may leave using `node-sass` and [use an alternative](https://github.com/mkermani144/wanna/issues/27).
