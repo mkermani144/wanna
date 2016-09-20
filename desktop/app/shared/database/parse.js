@@ -19,7 +19,7 @@ function parse(query) {
     w: 7,
     m: 30
   }
-  var regex = /@(\d+)([dwmDWM]?)(\+(\d+)([dwmDWM]?))? (!{1,2})$/
+  var regex = /@(\d+)([dwmDWM]?)(\+(\d+)([dwmDWM]?))?\s?(!{0,2})$/
   var regexResult = regex.exec(query)
   var text = query.slice(0, regexResult.index)
   var start = Date.now()
