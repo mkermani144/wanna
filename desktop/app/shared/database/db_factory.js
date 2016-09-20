@@ -58,6 +58,6 @@ angular.module('MainApp')
     var db = {
       insert,
       find
-    }
+    };
     return db;
   });

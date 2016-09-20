@@ -4,6 +4,6 @@ angular.module('MainApp')
       $scope.tasks = tasks;
       $scope.array = Array.apply(
         null, { length: tasks.length }
-      ).map(Number.call, Number)
+      ).map(Number.call, Number);
     })
   });
