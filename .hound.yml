@@ -1,6 +1,6 @@
-javascript:
-  enabled: true
-  config_file: desktop/app/.jshintrc
 scss:
   enabled: true
   config_file: desktop/assets/css/.scss-lint.yml
+eslint:
+  enabled: true
+  config_file: desktop/app/.eslintrc
