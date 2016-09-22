@@ -2,8 +2,11 @@ wanna
 ====
 
 
-__App status in a thousand of words:__
-![alt img](current.gif)
+_App status in a thousand of words:_ :sunglasses::sunglasses:
+
+![alt img](http://uploadpie.com/HZolM)
+
+
 Description
 ----
 Wanna is an alternative to the boring traditional to-do list apps.
