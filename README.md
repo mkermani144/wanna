@@ -2,7 +2,7 @@ wanna
 ====
 
 
-_App status in a thousand of words:_ :sunglasses::sunglasses:
+**_Current (22 Sep 2016) app status in a thousand of words:_** :sunglasses::sunglasses:
 
 ![alt img](http://uploadpie.com/HZolM)
 
