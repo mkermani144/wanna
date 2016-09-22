@@ -1,18 +1,20 @@
+/*
+eslint no-shadow: ["error", { "allow": ["$scope"] }]
+*/
 angular.module('MainApp')
   .controller('FabControl', ($mdToast, $mdDialog, $scope, db) => {
-    const scope = $scope;
-    function DialogController() {
-      scope.cancel = function cancel() {
+    function DialogController($scope) {
+      $scope.cancel = function cancel() {
         $mdDialog.cancel();
       };
 
-      scope.add = function add(task) {
+      $scope.add = function add(task) {
         if (task) {
           $mdDialog.hide(task);
         }
       };
     }
-    scope.addNew = (ev) => {
+    $scope.addNew = (ev) => {
       $mdDialog.show({
         controller: DialogController,
         templateUrl: 'app/components/fab/templates/newTaskDialog.html',

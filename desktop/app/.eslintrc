@@ -10,7 +10,7 @@
   env: {
     node: true,
     es6: true,
-    browser: ture,
+    browser: true,
   },
   globals: {
     angular: true,
@@ -75,7 +75,7 @@
     'no-new-wrappers': 'error',
     'no-octal': 'error',
     'no-octal-escape': 'error',
-    'no-param-reassign': ['error', { props: true }],
+    'no-param-reassign': ['error', { props: false }],
     'no-proto': 'error',
     'no-redeclare': 'error',
     'no-restricted-properties': ['off', {
