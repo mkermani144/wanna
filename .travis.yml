@@ -6,4 +6,4 @@ before_install:
 install:
   - npm install -g eslint@latest
 script:
-  - eslint -c desktop/app/.eslintrc main.js desktop/app
+  - eslint -c desktop/app/.eslintrc desktop/main.js desktop/app
