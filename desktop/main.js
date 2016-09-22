@@ -1,12 +1,12 @@
-const electron = require('electron')
-const { app } = electron
-const { ipcMain: ipc } = electron
-const { dialog } = electron
-const { BrowserWindow } = electron
+const electron = require('electron');
+const { app } = electron;
+const { ipcMain: ipc } = electron;
+const { dialog } = electron;
+const { BrowserWindow } = electron;
 // const sass = require('node-sass')
-const fs = require('fs')
+// const fs = require('fs');
 
-var win
+let win;
 
 // function compileSass() {
 //   sass.render({
@@ -23,21 +23,21 @@ var win
 function createWindow() {
   win = new BrowserWindow({
     width: 800,
-    height: 600
-  })
-  win.loadURL(`file://${__dirname}/index.html`)
+    height: 600,
+  });
+  win.loadURL(`file://${__dirname}/index.html`);
     // win.webContents.openDevTools()
   win.on('close', () => {
     // fs.unlink(__dirname + '/assets/css/main.css')
-  })
+  });
 }
 
 app.on('ready', () => {
   // compileSass()
-  createWindow()
-})
+  createWindow();
+});
 
 ipc.on('insert-error', (ev, err) => {
   dialog.showErrorBox('Insertion error',
-    `There was an error in inserting your task:\n${err}`)
-})
+    `There was an error in inserting your task:\n${err}`);
+});
