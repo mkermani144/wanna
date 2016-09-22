@@ -4,9 +4,9 @@ const { ipcMain: ipc } = electron;
 const { dialog } = electron;
 const { BrowserWindow } = electron;
 // const sass = require('node-sass')
-const fs = require('fs');
+// const fs = require('fs');
 
-var win;
+let win;
 
 // function compileSass() {
 //   sass.render({
@@ -23,7 +23,7 @@ var win;
 function createWindow() {
   win = new BrowserWindow({
     width: 800,
-    height: 600
+    height: 600,
   });
   win.loadURL(`file://${__dirname}/index.html`);
     // win.webContents.openDevTools()
