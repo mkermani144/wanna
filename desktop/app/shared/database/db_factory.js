@@ -1,18 +1,18 @@
 const { ipcRenderer: ipc } = require('electron');
-var parse = require('./app/shared/database/parse');
+const parse = require('./app/shared/database/parse');
 const crypto = require('crypto');
-var Datastore = require('nedb');
-var db = new Datastore({
+const Datastore = require('nedb');
+const db = new Datastore({
   filename: `${__dirname}/tasks.db`,
   afterSerialization: (object) => {
-    var cipher = crypto.createCipher('aes256', 'sample-key');
+    const cipher = crypto.createCipher('aes256', 'sample-key');
     return (cipher.update(object, 'utf8', 'hex') + cipher.final('hex'));
   },
   beforeDeserialization: (object) => {
-    var decipher = crypto.createDecipher('aes256', 'sample-key');
+    const decipher = crypto.createDecipher('aes256', 'sample-key');
     return (decipher.update(object, 'hex', 'utf8') + decipher.final('utf8'));
   },
-  autoload: true
+  autoload: true,
 });
 
 /**
@@ -21,7 +21,7 @@ var db = new Datastore({
  * @param {string} query task query
  */
 function insert(query) {
-  var taskObj = parse(query);
+  const taskObj = parse(query);
   db.insert(taskObj, (err) => {
     if (err) {
       ipc.send('insert-error', err);
@@ -37,27 +37,27 @@ function insert(query) {
  * @return {[type]}        List of all found tasks
  */
 function find(type, cb) {
-  var now = Date.now()
+  const now = Date.now();
   switch (type) {
-    case 'open':
-      db.find({
-          $and: [{ start: { $lt: now } },
-            { end: { $gt: now } }
-          ]
-        }, { text: 1, _id: 0 },
+  case 'open':
+    db.find({
+      $and: [{ start: { $lt: now } },
+            { end: { $gt: now } },
+          ],
+    }, { text: 1, _id: 0 },
         (err, tasks) => {
           cb(Object.keys(tasks).map(key => tasks[key].text));
         });
-      break;
-    default:
+    break;
+  default:
   }
 }
 
 angular.module('MainApp')
   .factory('db', () => {
-    var db = {
+    const dbRet = {
       insert,
-      find
+      find,
     };
-    return db;
+    return dbRet;
   });
