@@ -43,6 +43,18 @@
 
             </p>
           </div>
+          <md-button class="md-primary md-secondary md-icon-button">
+            <md-tooltip md-direction="top" md-visible="false">Mark as done</md-tooltip>
+            <md-icon md-svg-src="assets/img/check.svg"></md-icon>
+          </md-button>
+          <md-button class="md-secondary md-icon-button">
+            <md-tooltip md-direction="top" md-visible="false">Edit</md-tooltip>
+            <md-icon md-svg-src="assets/img/pencil.svg"></md-icon>
+          </md-button>
+          <md-button class="md-warn md-hue-1 md-secondary md-icon-button">
+            <md-tooltip md-direction="top" md-visible="false">Delete</md-tooltip>
+            <md-icon md-svg-src="assets/img/delete.svg"></md-icon>
+          </md-button>
           <md-divider class="task-divider" ng-if="!$last"></md-divider>
         </md-list-item>
       </md-list>
