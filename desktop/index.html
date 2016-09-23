@@ -36,7 +36,7 @@
       <md-list ng-controller="TaskControl" flex>
         <md-subheader class="md-warn cur-d" md-ink-ripple>Overdue</md-subheader>
         <md-divider></md-divider>
-        <md-subheader class="md-primary cur-d" md-ink-ripple>Open</md-subheader>
+        <md-subheader class="cur-d" md-ink-ripple>Open</md-subheader>
         <md-list-item class="cur-d" ng-class="{'do': do, 'delete': delete}" ng-repeat="task in tasks" ng-show="isShown" uaf="{{$index}}">
           <div class="md-list-item-text">
             <p>
