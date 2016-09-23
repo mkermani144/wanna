@@ -14,9 +14,13 @@ md-fab-speed-dial {
 .task-divider {
   opacity: .5; }
 
-md-list-item {
+md-list-item.ng-hide {
   transition: all cubic-bezier(0.19, 1, 0.22, 1) 1s; }
-  md-list-item.ng-hide {
+  md-list-item.ng-hide.do {
     margin-left: -100%;
     margin-right: 100%;
     background-color: green; }
+  md-list-item.ng-hide.delete {
+    margin-left: 100%;
+    margin-right: -100%;
+    background-color: #b30000; }
