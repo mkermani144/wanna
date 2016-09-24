@@ -67,12 +67,19 @@ function markAsDone(taskId) {
   }, {}, () => {});
 }
 
+function remove(taskId) {
+  db.remove({
+    _id: taskId,
+  }, {}, () => {});
+}
+
 angular.module('MainApp')
   .factory('db', () => {
     const dbRet = {
       insert,
       find,
       markAsDone,
+      remove,
     };
     return dbRet;
   });

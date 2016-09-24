@@ -5,6 +5,7 @@ angular.module('MainApp')
     $scope.delete = false;
     $scope.current = undefined;
     $scope.markAsDone = db.markAsDone;
+    $scope.remove = db.remove;
     db.find('open', (tasks) => {
       $scope.tasks = tasks;
     });
