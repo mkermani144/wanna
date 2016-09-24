@@ -43,6 +43,7 @@ function find(type, cb) {
     db.find({
       $and: [{ start: { $lt: now } },
             { end: { $gt: now } },
+            { status: 0 },
           ],
     }, { text: 1, _id: 0 },
         (err, tasks) => {
