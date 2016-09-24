@@ -34,7 +34,7 @@ function insert(query) {
  * @param  {string}   type Determines type of task
  *                         to be found
  * @param  {Function} cb   callback
- * @return {[type]}        List of all found tasks
+ * @return {undefined}
  */
 function find(type, cb) {
   const now = Date.now();
@@ -45,13 +45,26 @@ function find(type, cb) {
             { end: { $gt: now } },
             { status: 0 },
           ],
-    }, { text: 1, _id: 0 },
+    }, { text: 1 },
         (err, tasks) => {
-          cb(Object.keys(tasks).map(key => tasks[key].text));
+          cb(Object.keys(tasks).map(key => tasks[key]));
         });
     break;
   default:
   }
+}
+
+/**
+ * Mark a task as done in the database
+ * @param  {number} taskId task id
+ * @return {undefined}
+ */
+function markAsDone(taskId) {
+  db.update({
+    _id: taskId,
+  }, {
+    status: 1,
+  }, {}, () => {});
 }
 
 angular.module('MainApp')
@@ -59,6 +72,7 @@ angular.module('MainApp')
     const dbRet = {
       insert,
       find,
+      markAsDone,
     };
     return dbRet;
   });

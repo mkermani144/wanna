@@ -3,6 +3,8 @@ angular.module('MainApp')
     $scope.isShown = true;
     $scope.do = false;
     $scope.delete = false;
+    $scope.current = undefined;
+    $scope.markAsDone = db.markAsDone;
     db.find('open', (tasks) => {
       $scope.tasks = tasks;
     });
