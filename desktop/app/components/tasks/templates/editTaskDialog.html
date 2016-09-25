@@ -9,7 +9,7 @@
       <div class="md-dialog-content" layout="column">
         <h4>Type new task description:</h4>
         <md-input-container md-is-error="taskForm.task.$invalid && taskForm.$submitted" flex>
-          <input name="task" ng-model="task" required>
+          <input name="task" ng-model="task" md-autofocus required>
           <div ng-messages="taskForm.task.$error">
             <div ng-message="pattern">
               Task is not valid.
