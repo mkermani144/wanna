@@ -47,7 +47,11 @@ function find(type, cb) {
           ],
     }, { text: 1 },
         (err, tasks) => {
-          cb(Object.keys(tasks).map(key => tasks[key]));
+          if (err) {
+            ipc.send('find-error', err);
+          } else {
+            cb(Object.keys(tasks).map(key => tasks[key]));
+          }
         });
     break;
   default:
@@ -64,13 +68,21 @@ function markAsDone(taskId) {
     _id: taskId,
   }, {
     status: 1,
-  }, {}, () => {});
+  }, {}, (err) => {
+    if (err) {
+      ipc.send('update-error', err);
+    }
+  });
 }
 
 function remove(taskId) {
   db.remove({
     _id: taskId,
-  }, {}, () => {});
+  }, {}, (err) => {
+    if (err) {
+      ipc.send('remove-error', err);
+    }
+  });
 }
 
 function edit(taskId, newText) {
@@ -80,7 +92,11 @@ function edit(taskId, newText) {
     $set: {
       text: newText,
     },
-  }, {}, () => {});
+  }, {}, (err) => {
+    if (err) {
+      ipc.send('update-error', err);
+    }
+  });
 }
 
 angular.module('MainApp')

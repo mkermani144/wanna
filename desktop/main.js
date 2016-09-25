@@ -41,3 +41,15 @@ ipc.on('insert-error', (ev, err) => {
   dialog.showErrorBox('Insertion error',
     `There was an error in inserting your task:\n${err}`);
 });
+ipc.on('find-error', (ev, err) => {
+  dialog.showErrorBox('Find error',
+    `There was an error in finding your task:\n${err}`);
+});
+ipc.on('update-error', (ev, err) => {
+  dialog.showErrorBox('Update error',
+    `There was an error in updating your task:\n${err}`);
+});
+ipc.on('remove-error', (ev, err) => {
+  dialog.showErrorBox('Remove error',
+    `There was an error in removing your task:\n${err}`);
+});
