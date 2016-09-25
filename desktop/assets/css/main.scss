@@ -1,3 +1,5 @@
+$green: #008000;
+$darkRed: darken(#f00, 15%);
 #toolbar {
   min-height: 2.5em;
 }
@@ -23,15 +25,14 @@ md-fab-speed-dial {
 }
 md-list-item.ng-hide {
   transition: all cubic-bezier(0.19, 1, 0.22, 1) 1s;
-  
   &.do {
-    background-color: #008000;
+    background-color: $green;
     margin-left: -100%;
     margin-right: 100%;
   }
   &.delete {
+    background-color: $darkRed;
     margin-left: 100%;
     margin-right: -100%;
-    background-color: darken(#f00, 15%);
   }
 }
