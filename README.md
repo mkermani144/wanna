@@ -4,7 +4,7 @@ wanna [![Build Status](https://travis-ci.org/mkermani144/wanna.svg?branch=master
 
 **_Latest (22 Sep 2016) app status in a thousand of words:_** :sunglasses::sunglasses:
 
-![alt img](http://uploadpie.com/HZolM)
+![alt img](current.gif)
 
 
 Description
