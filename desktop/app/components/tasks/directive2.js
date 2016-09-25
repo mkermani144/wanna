@@ -1,7 +1,3 @@
-/*
-eslint no-underscore-dangle: ["error", { "allow": ["_id",] }]
-*/
-
 /**
  * Used for saving id of the task whose status
  * is going to become 1.
@@ -13,7 +9,7 @@ angular.module('MainApp')
   (scope, el) => {
     angular.element(el[0]).on('click', () => {
       const uafVal = angular.element(el[0]).parent().parent().attr('uaf');
-      scope.current = scope.tasks[uafVal]._id;
+      scope.current = scope.tasks[uafVal];
     });
   }
 );

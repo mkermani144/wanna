@@ -43,7 +43,7 @@
 
             </p>
           </div>
-          <md-button class="md-primary md-secondary md-icon-button" ng-click="isShown = false; do = true; markAsDone(current);" setcurrent>
+          <md-button class="md-primary md-secondary md-icon-button" ng-click="isShown = false; do = true; markAsDone(current._id);" setcurrent>
             <md-tooltip md-direction="top" md-visible="false">Mark as done</md-tooltip>
             <md-icon md-svg-src="assets/img/check.svg"></md-icon>
           </md-button>
@@ -51,7 +51,7 @@
             <md-tooltip md-direction="top" md-visible="false">Edit</md-tooltip>
             <md-icon md-svg-src="assets/img/pencil.svg"></md-icon>
           </md-button>
-          <md-button class="md-warn md-hue-1 md-secondary md-icon-button" ng-click="isShown = false; delete = true; remove(current);" setcurrent>
+          <md-button class="md-warn md-hue-1 md-secondary md-icon-button" ng-click="isShown = false; delete = true; remove(current._id);" setcurrent>
             <md-tooltip md-direction="top" md-visible="false">Delete</md-tooltip>
             <md-icon md-svg-src="assets/img/delete.svg"></md-icon>
           </md-button>
