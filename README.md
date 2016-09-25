@@ -1,4 +1,4 @@
-wanna ![alt travis](https://travis-ci.org/mkermani144/wanna.svg)
+wanna [![Build Status](https://travis-ci.org/mkermani144/wanna.svg?branch=master)](https://travis-ci.org/mkermani144/wanna)
 ====
 
 
