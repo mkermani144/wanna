@@ -1,5 +1,5 @@
 $green: #008000;
-$darkRed: darken(#f00, 15%);
+$dark-red: darken(#f00, 15%);
 #toolbar {
   min-height: 2.5em;
 }
@@ -30,8 +30,9 @@ md-list-item.ng-hide {
     margin-left: -100%;
     margin-right: 100%;
   }
+
   &.delete {
-    background-color: $darkRed;
+    background-color: $dark-red;
     margin-left: 100%;
     margin-right: -100%;
   }
