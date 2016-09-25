@@ -73,6 +73,16 @@ function remove(taskId) {
   }, {}, () => {});
 }
 
+function edit(taskId, newText) {
+  db.update({
+    _id: taskId,
+  }, {
+    $set: {
+      text: newText,
+    },
+  }, {}, () => {});
+}
+
 angular.module('MainApp')
   .factory('db', () => {
     const dbRet = {
@@ -80,6 +90,7 @@ angular.module('MainApp')
       find,
       markAsDone,
       remove,
+      edit,
     };
     return dbRet;
   });
