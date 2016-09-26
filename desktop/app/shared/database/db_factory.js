@@ -18,13 +18,17 @@ const db = new Datastore({
 /**
  * Get a query, parse it and add it to
  * database
- * @param {string} query task query
+ * @param  {string}   query task query
+ * @param  {Function} cb  callback
+ * @return {undefined}
  */
-function insert(query) {
+function insert(query, cb) {
   const taskObj = parse(query);
   db.insert(taskObj, (err) => {
     if (err) {
       ipc.send('insert-error', err);
+    } else {
+      cb();
     }
   });
 }
@@ -60,10 +64,11 @@ function find(type, cb) {
 
 /**
  * Mark a task as done in the database
- * @param  {number} taskId task id
+ * @param  {number}   taskId task id
+ * @param  {Function} cb     callback
  * @return {undefined}
  */
-function markAsDone(taskId) {
+function markAsDone(taskId, cb) {
   db.update({
     _id: taskId,
   }, {
@@ -71,21 +76,38 @@ function markAsDone(taskId) {
   }, {}, (err) => {
     if (err) {
       ipc.send('update-error', err);
+    } else {
+      cb();
     }
   });
 }
 
-function remove(taskId) {
+/**
+ * Remove a task from database
+ * @param  {number}   taskId task id
+ * @param  {Function} cb     callback
+ * @return {undefined}
+ */
+function remove(taskId, cb) {
   db.remove({
     _id: taskId,
   }, {}, (err) => {
     if (err) {
       ipc.send('remove-error', err);
+    } else {
+      cb();
     }
   });
 }
 
-function edit(taskId, newText) {
+/**
+ * Edit a task in database
+ * @param  {number}   taskId  task id
+ * @param  {string}   newText new task text
+ * @param  {Function} cb      callback
+ * @return {undefined}
+ */
+function edit(taskId, newText, cb) {
   db.update({
     _id: taskId,
   }, {
@@ -95,6 +117,8 @@ function edit(taskId, newText) {
   }, {}, (err) => {
     if (err) {
       ipc.send('update-error', err);
+    } else {
+      cb();
     }
   });
 }
