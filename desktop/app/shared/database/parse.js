@@ -27,11 +27,13 @@ function parse(query) {
   }
   const end = start + (86400000 * regexResult[1] * dwm[regexResult[2]]);
   const importance = regexResult[6].length + 1;
+  const status = 0;
   return {
     text,
     start,
     end,
     importance,
+    status,
   };
 }
 

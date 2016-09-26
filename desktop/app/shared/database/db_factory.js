@@ -34,7 +34,7 @@ function insert(query) {
  * @param  {string}   type Determines type of task
  *                         to be found
  * @param  {Function} cb   callback
- * @return {[type]}        List of all found tasks
+ * @return {undefined}
  */
 function find(type, cb) {
   const now = Date.now();
@@ -43,14 +43,60 @@ function find(type, cb) {
     db.find({
       $and: [{ start: { $lt: now } },
             { end: { $gt: now } },
+            { status: 0 },
           ],
-    }, { text: 1, _id: 0 },
+    }, { text: 1 },
         (err, tasks) => {
-          cb(Object.keys(tasks).map(key => tasks[key].text));
+          if (err) {
+            ipc.send('find-error', err);
+          } else {
+            cb(Object.keys(tasks).map(key => tasks[key]));
+          }
         });
     break;
   default:
   }
+}
+
+/**
+ * Mark a task as done in the database
+ * @param  {number} taskId task id
+ * @return {undefined}
+ */
+function markAsDone(taskId) {
+  db.update({
+    _id: taskId,
+  }, {
+    status: 1,
+  }, {}, (err) => {
+    if (err) {
+      ipc.send('update-error', err);
+    }
+  });
+}
+
+function remove(taskId) {
+  db.remove({
+    _id: taskId,
+  }, {}, (err) => {
+    if (err) {
+      ipc.send('remove-error', err);
+    }
+  });
+}
+
+function edit(taskId, newText) {
+  db.update({
+    _id: taskId,
+  }, {
+    $set: {
+      text: newText,
+    },
+  }, {}, (err) => {
+    if (err) {
+      ipc.send('update-error', err);
+    }
+  });
 }
 
 angular.module('MainApp')
@@ -58,6 +104,9 @@ angular.module('MainApp')
     const dbRet = {
       insert,
       find,
+      markAsDone,
+      remove,
+      edit,
     };
     return dbRet;
   });
