@@ -39,13 +39,13 @@ angular.module('MainApp')
         db.edit(cur._id, task);
         db.find('open', (tasks) => {
           $scope.tasks = tasks;
+          $scope.$apply();
         });
       });
     };
     $scope.$on('Update tasks', () => {
       db.find('open', (tasks) => {
         $scope.tasks = tasks;
-        $scope.$apply();
       });
     });
     db.find('open', (tasks) => {
