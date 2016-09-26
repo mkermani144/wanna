@@ -2,7 +2,7 @@
 eslint no-shadow: ["error", { "allow": ["$scope"] }]
 */
 angular.module('MainApp')
-  .controller('FabControl', ($mdToast, $mdDialog, $scope, db) => {
+  .controller('FabControl', ($mdToast, $mdDialog, $scope, $rootScope, db) => {
     function DialogController($scope) {
       $scope.cancel = function cancel() {
         $mdDialog.cancel();
@@ -29,7 +29,9 @@ angular.module('MainApp')
         },
       })
       .then((task) => {
-        db.insert(task);
+        db.insert(task, () => {
+          $rootScope.$broadcast('Update tasks');
+        });
         $mdToast.show(
           $mdToast.simple()
           .textContent('Task added.')
