@@ -29,7 +29,7 @@ function parse(query) {
   const importance = regexResult[6].length + 1;
   const status = 0;
   return {
-    text,
+    text: text.trim(),
     start,
     end,
     importance,
