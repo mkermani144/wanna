@@ -6,7 +6,7 @@ eslint no-underscore-dangle: ["error", { "allow": ["_id",] }]
 */
 
 angular.module('MainApp')
-  .controller('TaskControl', ($scope, $mdDialog, db) => {
+  .controller('TaskControl', ($scope, $mdDialog, $mdToast, db) => {
     $scope.current = undefined;
     $scope.isShown = true;
     $scope.do = false;
@@ -41,6 +41,12 @@ angular.module('MainApp')
           $scope.tasks = tasks;
           $scope.$apply();
         });
+        $mdToast.show(
+          $mdToast.simple()
+          .textContent('Task edited.')
+          .position('bottom start')
+          .hideDelay(1000)
+        );
       });
     };
     $scope.$on('Update tasks', () => {
