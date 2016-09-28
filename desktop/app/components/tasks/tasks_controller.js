@@ -6,13 +6,31 @@ eslint no-underscore-dangle: ["error", { "allow": ["_id",] }]
 */
 
 angular.module('MainApp')
-  .controller('TaskControl', ($scope, $mdDialog, db) => {
+  .controller('TaskControl', ($scope, $mdDialog, $mdToast, db) => {
     $scope.current = undefined;
     $scope.isShown = true;
     $scope.do = false;
     $scope.delete = false;
-    $scope.markAsDone = db.markAsDone;
-    $scope.remove = db.remove;
+    $scope.markAsDone = (taskId) => {
+      db.markAsDone(taskId, () => {
+        $mdToast.show(
+          $mdToast.simple()
+          .textContent('Task done.')
+          .position('bottom start')
+          .hideDelay(1000)
+        );
+      });
+    };
+    $scope.remove = (taskId) => {
+      db.remove(taskId, () => {
+        $mdToast.show(
+          $mdToast.simple()
+          .textContent('Task deleted.')
+          .position('bottom start')
+          .hideDelay(1000)
+        );
+      });
+    };
     function DialogController($scope, task) {
       $scope.task = task;
       $scope.cancel = function cancel() {
@@ -41,6 +59,12 @@ angular.module('MainApp')
           $scope.tasks = tasks;
           $scope.$apply();
         });
+        $mdToast.show(
+          $mdToast.simple()
+          .textContent('Task edited.')
+          .position('bottom start')
+          .hideDelay(1000)
+        );
       });
     };
     $scope.$on('Update tasks', () => {
