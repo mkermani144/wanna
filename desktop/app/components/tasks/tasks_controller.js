@@ -11,7 +11,16 @@ angular.module('MainApp')
     $scope.isShown = true;
     $scope.do = false;
     $scope.delete = false;
-    $scope.markAsDone = db.markAsDone;
+    $scope.markAsDone = (taskId) => {
+      db.markAsDone(taskId, () => {
+        $mdToast.show(
+          $mdToast.simple()
+          .textContent('Task done.')
+          .position('bottom start')
+          .hideDelay(1000)
+        );
+      });
+    };
     $scope.remove = db.remove;
     function DialogController($scope, task) {
       $scope.task = task;
