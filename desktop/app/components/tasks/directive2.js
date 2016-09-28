@@ -9,7 +9,15 @@ angular.module('MainApp')
   (scope, el) => {
     angular.element(el[0]).on('click', () => {
       const uafVal = angular.element(el[0]).parent().parent().attr('uaf');
-      scope.current = scope.tasks[uafVal];
+      scope.current = scope.openTasks[uafVal];
+    });
+  }
+)
+.directive('setcurrento', () =>
+  (scope, el) => {
+    angular.element(el[0]).on('click', () => {
+      const uafoVal = angular.element(el[0]).parent().parent().attr('uafo');
+      scope.current = scope.overdueTasks[uafoVal];
     });
   }
 );

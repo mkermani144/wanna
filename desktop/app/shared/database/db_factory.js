@@ -58,6 +58,20 @@ function find(type, cb) {
           }
         });
     break;
+  case 'overdue':
+    db.find({
+      $and: [{ end: { $lt: now } },
+            { status: 0 },
+          ],
+    }, { text: 1 },
+        (err, tasks) => {
+          if (err) {
+            ipc.send('find-error', err);
+          } else {
+            cb(Object.keys(tasks).map(key => tasks[key]));
+          }
+        });
+    break;
   default:
   }
 }

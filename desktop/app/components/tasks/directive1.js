@@ -7,8 +7,15 @@
 angular.module('MainApp')
   .directive('uaf', () =>  // uaf = Update after find
     (scope, el, attrs) => {
-      scope.$watch('tasks', (newVal) => {
+      scope.$watch('openTasks', (newVal) => {
         el[0].children[0].children[0].innerHTML = newVal[attrs.uaf].text;
+      });
+    }
+  )
+  .directive('uafo', () =>  // uaf-o = Update after find, overdue
+    (scope, el, attrs) => {
+      scope.$watch('overdueTasks', (newVal) => {
+        el[0].children[0].children[0].innerHTML = newVal[attrs.uafo].text;
       });
     }
   );

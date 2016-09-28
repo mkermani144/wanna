@@ -56,7 +56,11 @@ angular.module('MainApp')
       .then((task) => {
         db.edit(cur._id, task);
         db.find('open', (tasks) => {
-          $scope.tasks = tasks;
+          $scope.openTasks = tasks;
+          $scope.$apply();
+        });
+        db.find('overdue', (tasks) => {
+          $scope.overdueTasks = tasks;
           $scope.$apply();
         });
         $mdToast.show(
@@ -69,10 +73,16 @@ angular.module('MainApp')
     };
     $scope.$on('Update tasks', () => {
       db.find('open', (tasks) => {
-        $scope.tasks = tasks;
+        $scope.openTasks = tasks;
+      });
+      db.find('overdue', (tasks) => {
+        $scope.overdueTasks = tasks;
       });
     });
     db.find('open', (tasks) => {
-      $scope.tasks = tasks;
+      $scope.openTasks = tasks;
+    });
+    db.find('overdue', (tasks) => {
+      $scope.overdueTasks = tasks;
     });
   });
