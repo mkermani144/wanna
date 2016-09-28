@@ -71,8 +71,14 @@ angular.module('MainApp')
       db.find('open', (tasks) => {
         $scope.openTasks = tasks;
       });
+      db.find('overdue', (tasks) => {
+        $scope.overdueTasks = tasks;
+      });
     });
     db.find('open', (tasks) => {
       $scope.openTasks = tasks;
+    });
+    db.find('overdue', (tasks) => {
+      $scope.overdueTasks = tasks;
     });
   });

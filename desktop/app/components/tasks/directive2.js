@@ -12,4 +12,13 @@ angular.module('MainApp')
       scope.current = scope.openTasks[uafVal];
     });
   }
+)
+.directive('setcurrento', () =>
+  (scope, el) => {
+    angular.element(el[0]).on('click', () => {
+      const uafoVal = angular.element(el[0]).parent().parent().attr('uafo');
+      console.log(uafoVal);
+      scope.current = scope.overdueTasks[uafoVal];
+    });
+  }
 );

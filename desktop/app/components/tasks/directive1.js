@@ -11,4 +11,12 @@ angular.module('MainApp')
         el[0].children[0].children[0].innerHTML = newVal[attrs.uaf].text;
       });
     }
+  )
+  .directive('uafo', () =>  // uaf-o = Update after find, overdue
+    (scope, el, attrs) => {
+      scope.$watch('overdueTasks', (newVal) => {
+        console.log('hhh');
+        el[0].children[0].children[0].innerHTML = newVal[attrs.uafo].text;
+      });
+    }
   );
