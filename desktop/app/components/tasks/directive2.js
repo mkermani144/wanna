@@ -9,7 +9,7 @@ angular.module('MainApp')
   (scope, el) => {
     angular.element(el[0]).on('click', () => {
       const uafVal = angular.element(el[0]).parent().parent().attr('uaf');
-      scope.current = scope.tasks[uafVal];
+      scope.current = scope.openTasks[uafVal];
     });
   }
 );
