@@ -21,7 +21,16 @@ angular.module('MainApp')
         );
       });
     };
-    $scope.remove = db.remove;
+    $scope.remove = (taskId) => {
+      db.remove(taskId, () => {
+        $mdToast.show(
+          $mdToast.simple()
+          .textContent('Task deleted.')
+          .position('bottom start')
+          .hideDelay(1000)
+        );
+      });
+    };
     function DialogController($scope, task) {
       $scope.task = task;
       $scope.cancel = function cancel() {
