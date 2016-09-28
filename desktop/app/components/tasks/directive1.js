@@ -15,7 +15,6 @@ angular.module('MainApp')
   .directive('uafo', () =>  // uaf-o = Update after find, overdue
     (scope, el, attrs) => {
       scope.$watch('overdueTasks', (newVal) => {
-        console.log('hhh');
         el[0].children[0].children[0].innerHTML = newVal[attrs.uafo].text;
       });
     }

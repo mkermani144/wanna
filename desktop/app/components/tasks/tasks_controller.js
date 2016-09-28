@@ -59,6 +59,10 @@ angular.module('MainApp')
           $scope.openTasks = tasks;
           $scope.$apply();
         });
+        db.find('overdue', (tasks) => {
+          $scope.overdueTasks = tasks;
+          $scope.$apply();
+        });
         $mdToast.show(
           $mdToast.simple()
           .textContent('Task edited.')
