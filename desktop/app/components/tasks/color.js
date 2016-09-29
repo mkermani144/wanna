@@ -16,7 +16,7 @@ function returnColor(start, end, current) {
 
 function returnColorO(end, current) {
   const diff = (current - end) / 86400000;
-  return `hsla(0, 100%, ${50 / (2 ** diff)}%, .3)`;
+  return `hsla(0, 100%, ${50 / Math.pow(2, diff)}%, .3)`;
 }
 
 module.exports = {
