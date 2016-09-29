@@ -14,4 +14,12 @@ function returnColor(start, end, current) {
   return `hsla(${(1 - ratio) * 200}, 100%, 75%, .3)`;
 }
 
-module.exports = returnColor;
+function returnColorO(end, current) {
+  const diff = (current - end) / 86400000;
+  return `hsla(0, 100%, ${50 / (2 ** diff)}%, .3)`;
+}
+
+module.exports = {
+  returnColor,
+  returnColorO,
+};

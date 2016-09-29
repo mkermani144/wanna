@@ -10,7 +10,7 @@ angular.module('MainApp')
     (scope, el, attrs) => {
       scope.$watch('openTasks', (newVal) => {
         el[0].children[0].children[0].innerHTML = newVal[attrs.uaf].text;
-        angular.element(el[0]).css('backgroundColor', color(newVal[attrs.uaf].start, newVal[attrs.uaf].end, Date.now()));
+        angular.element(el[0]).css('backgroundColor', color.returnColor(newVal[attrs.uaf].start, newVal[attrs.uaf].end, Date.now()));
       });
     }
   )
@@ -18,6 +18,7 @@ angular.module('MainApp')
     (scope, el, attrs) => {
       scope.$watch('overdueTasks', (newVal) => {
         el[0].children[0].children[0].innerHTML = newVal[attrs.uafo].text;
+        angular.element(el[0]).css('backgroundColor', color.returnColorO(newVal[attrs.uafo].end, Date.now()));
       });
     }
   );
