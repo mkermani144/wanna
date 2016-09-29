@@ -4,6 +4,7 @@ node_js:
 before_install:
   - npm install -g npm@latest
 install:
-  - npm install -g eslint@latest
+  - npm install -g eslint@latest mocha@latest
 script:
   - eslint -c desktop/app/.eslintrc desktop/main.js desktop/app
+  - mocha desktop/tests
