@@ -1,3 +1,4 @@
+const color = require('./app/components/tasks/color');
 /**
  * Used for changing list item texts after
  * tasks are loaded from database.
@@ -9,6 +10,7 @@ angular.module('MainApp')
     (scope, el, attrs) => {
       scope.$watch('openTasks', (newVal) => {
         el[0].children[0].children[0].innerHTML = newVal[attrs.uaf].text;
+        angular.element(el[0]).css('backgroundColor', color(newVal[attrs.uaf].start, newVal[attrs.uaf].end, Date.now()));
       });
     }
   )
