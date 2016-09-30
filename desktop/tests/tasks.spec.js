@@ -4,13 +4,19 @@ const color = require('../app/components/tasks/color');
 describe('tasks', () => {
   describe('color.js', () => {
     describe('returnColor', () => {
-      const testTimes = [1475181000000, 1475353800000, 1475241362889];
+      const now = Date.now();
+      const currentRounded = (now + (86400000 - (now % 86400000))) +
+        (new Date().getTimezoneOffset() * 60000);
+      const testTimes = [currentRounded - 86400000, currentRounded + 86400000, now];
       it('should return yellow color hsla', () => {
         assert(color.returnColor(...testTimes) === 'hsla(60, 100%, 75%, .3)');
       });
     });
     describe('returnColorO', () => {
-      const testTimes = [1475181000000, 1475353800000, 1475353800001];
+      const now = Date.now();
+      const currentRounded = (now + (86400000 - (now % 86400000))) +
+        (new Date().getTimezoneOffset() * 60000);
+      const testTimes = [currentRounded, currentRounded + (86400000 * 2)];
       it('should return dark red color hsla', () => {
         assert(color.returnColorO(...testTimes) === 'hsla(0, 100%, 37.5%, .3)');
       });
