@@ -21,7 +21,7 @@ function parse(query) {
   const regex = /@(\d+)([dwmDWM]?)(\+(\d+)([dwmDWM]?))?\s?(!{0,2})$/;
   const regexResult = regex.exec(query);
   const text = query.slice(0, regexResult.index);
-  let start = Date.now();
+  let start = Date.now() - ((Date.now() % 86400000) - (new Date().getTimezoneOffset() * 60000));
   if (regexResult[3]) {
     start += 86400000 * regexResult[4] * dwm[regexResult[5]];
   }

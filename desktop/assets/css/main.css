@@ -19,8 +19,8 @@ md-list-item.ng-hide {
   md-list-item.ng-hide.do {
     margin-left: -100%;
     margin-right: 100%;
-    background-color: green; }
+    background-color: green !important; }
   md-list-item.ng-hide.delete {
     margin-left: 100%;
     margin-right: -100%;
-    background-color: #b30000; }
+    background-color: #b30000 !important; }
