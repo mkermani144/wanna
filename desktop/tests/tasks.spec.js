@@ -12,14 +12,5 @@ describe('tasks', () => {
         assert(color.returnColor(...testTimes) === 'hsla(60, 100%, 75%, .3)');
       });
     });
-    describe('returnColorO', () => {
-      const now = Date.now();
-      const currentRounded = (now + (86400000 - (now % 86400000))) +
-        (new Date().getTimezoneOffset() * 60000);
-      const testTimes = [currentRounded, currentRounded + (86400000 * 2)];
-      it('should return dark red color hsla', () => {
-        assert(color.returnColorO(...testTimes) === 'hsla(0, 100%, 37.5%, .3)');
-      });
-    });
   });
 });
