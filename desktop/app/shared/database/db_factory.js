@@ -54,7 +54,18 @@ function find(type, cb) {
           if (err) {
             ipc.send('find-error', err);
           } else {
-            cb(Object.keys(tasks).map(key => tasks[key]));
+            const nowInner = (Date.now() + (86400000 - (Date.now() % 86400000))) +
+              (new Date().getTimezoneOffset() * 60000);
+            const sorted = Object.keys(tasks).sort((a, b) => {
+              const totalA = tasks[a].end - tasks[a].start;
+              const totalB = tasks[b].end - tasks[b].start;
+              const partialA = nowInner - tasks[a].start;
+              const partialB = nowInner - tasks[b].start;
+              const ratioA = partialA / totalA;
+              const ratioB = partialB / totalB;
+              return ratioB - ratioA;
+            });
+            cb(sorted.map(key => tasks[key]));
           }
         });
     break;
@@ -68,7 +79,18 @@ function find(type, cb) {
           if (err) {
             ipc.send('find-error', err);
           } else {
-            cb(Object.keys(tasks).map(key => tasks[key]));
+            const nowInner = (Date.now() + (86400000 - (Date.now() % 86400000))) +
+              (new Date().getTimezoneOffset() * 60000);
+            const sorted = Object.keys(tasks).sort((a, b) => {
+              const totalA = tasks[a].end - tasks[a].start;
+              const totalB = tasks[b].end - tasks[b].start;
+              const partialA = nowInner - tasks[a].start;
+              const partialB = nowInner - tasks[b].start;
+              const ratioA = partialA / totalA;
+              const ratioB = partialB / totalB;
+              return ratioB - ratioA;
+            });
+            cb(sorted.map(key => tasks[key]));
           }
         });
     break;
