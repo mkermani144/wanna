@@ -13,7 +13,7 @@ function returnColor(start, end, current) {
   const total = (end - start) / 86400000;
   const part = (currentRounded - start) / 86400000;
   const ratio = part / total;
-  return `hsla(${(1 - ratio) * 200}, 100%, 75%, .3)`;
+  return `hsla(${(1 - ratio) * 120}, 100%, 75%, .3)`;
 }
 
 function returnColorO(end, current) {
