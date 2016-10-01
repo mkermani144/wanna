@@ -24,3 +24,8 @@ md-list-item.ng-hide {
     margin-left: 100%;
     margin-right: -100%;
     background-color: #b30000 !important; }
+
+.inline {
+  display: inline !important;
+  font-weight: lighter;
+}
