@@ -9,7 +9,7 @@ angular.module('MainApp')
   .directive('uaf', () =>  // uaf = Update after find
     (scope, el, attrs) => {
       scope.$watch('openTasks', (newVal) => {
-        el[0].children[0].children[0].innerHTML = `<p class="inline">${newVal[attrs.uaf].text}</p>&nbsp;<h6 class="inline">${newVal[attrs.uaf].units}</h6>`;
+        el[0].children[0].children[0].innerHTML = `<p class="inline">${newVal[attrs.uaf].text}</p>&nbsp;&nbsp;<h6 class="inline">${newVal[attrs.uaf].units}</h6>`;
         angular.element(el[0]).css('backgroundColor', color.returnColor(newVal[attrs.uaf].start, newVal[attrs.uaf].end, Date.now()));
       });
     }
