@@ -9,7 +9,7 @@
       <div class="md-dialog-content" layout="column">
         <h4>What do you wanna do?</h4>
         <md-input-container md-is-error="taskForm.task.$invalid && taskForm.$submitted" flex>
-          <input name="task" ng-model="task" ng-pattern="/.+ @[1-9]\d*[dwmDWM]?(\+(\d+)([dwmDWM]?))?\s?(!){0,2}$/" md-autofocus required>
+          <input name="task" ng-model="task" ng-pattern="/.+ @[1-9]\d*[dwmDWM]?(\+(\d+)([dwmDWM]?))?\s?(!){0,2}\s?(~[1-9]\d*[hHmM])?$/" md-autofocus required>
           <div ng-messages="taskForm.task.$error">
             <div ng-message="pattern">
               Task is not valid.
