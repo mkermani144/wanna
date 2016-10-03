@@ -1,12 +1,12 @@
 $green: #008000;
 $dark-red: darken(#f00, 15%);
 $md-primary: rgb(33,150,243);
+$md-warn: rgb(244,67,54);
 #toolbar {
   min-height: 2.5em;
 }
 md-fab-speed-dial {
   position: fixed !important;
-
   &.md-is-open md-fab-trigger {
     .md-button:focus {
       transform: rotate(45deg);
@@ -22,7 +22,7 @@ md-fab-speed-dial {
   cursor: default;
 }
 .task-divider {
-  opacity: .5;
+  opacity: 0.5;
 }
 md-list-item.ng-hide {
   transition: all cubic-bezier(0.19, 1, 0.22, 1) 1s;
@@ -31,7 +31,6 @@ md-list-item.ng-hide {
     margin-left: -100%;
     margin-right: 100%;
   }
-
   &.delete {
     background-color: $dark-red !important;
     margin-left: 100%;
@@ -49,5 +48,5 @@ md-list-item.ng-hide {
   color: $md-primary;
 }
 .mw {
-  color: rgb(244,67,54);
+  color: $md-warn;
 }
