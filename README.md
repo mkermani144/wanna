@@ -2,7 +2,7 @@ wanna [![Build Status](https://travis-ci.org/mkermani144/wanna.svg?branch=master
 ====
 
 
-**_Latest (30 Sep 2016) app status in a thousand of words:_** :sunglasses::sunglasses:
+**_Latest (3 Oct 2016) app status in a thousand of words:_** :sunglasses::sunglasses:
 
 ![alt img](current.gif)
 

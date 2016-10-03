@@ -18,7 +18,7 @@ function parse(query) {
     w: 7,
     m: 30,
   };
-  const regex = /@(\d+)([dwmDWM]?)(\+(\d+)([dwmDWM]?))?\s?(!{0,2})$/;
+  const regex = /@(\d+)([dwmDWM]?)(\+(\d+)([dwmDWM]?))?\s?(!{0,2})\s?(~([1-9]\d*)([hHmM]))?$/;
   const regexResult = regex.exec(query);
   const text = query.slice(0, regexResult.index);
   let start = Date.now() - ((Date.now() % 86400000) - (new Date().getTimezoneOffset() * 60000));
@@ -28,12 +28,20 @@ function parse(query) {
   const end = start + (86400000 * regexResult[1] * dwm[regexResult[2]]);
   const importance = regexResult[6].length + 1;
   const status = 0;
+  let units;
+  if (regexResult[9] === 'm') {
+    units = regexResult[8];
+  } else {
+    units = regexResult[8] * 60;
+  }
+  console.log(units);
   return {
     text: text.trim(),
     start,
     end,
     importance,
     status,
+    units,
   };
 }
 
