@@ -1,5 +1,6 @@
 $green: #008000;
 $dark-red: darken(#f00, 15%);
+$md-primary: rgb(33,150,243);
 #toolbar {
   min-height: 2.5em;
 }
@@ -40,4 +41,13 @@ md-list-item.ng-hide {
 .inline {
   display: inline !important;
   font-weight: lighter;
+}
+.small svg {
+  width: 50%;
+}
+.mp {
+  color: $md-primary;
+}
+.mw {
+  color: rgb(244,67,54);
 }

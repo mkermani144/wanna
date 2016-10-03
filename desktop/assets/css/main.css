@@ -29,3 +29,12 @@ md-list-item.ng-hide {
   display: inline !important;
   font-weight: lighter;
 }
+.small svg {
+  width: 50%;
+}
+.mp {
+  color: rgb(33,150,243);
+}
+.mw {
+  color: rgb(244,67,54);
+}
