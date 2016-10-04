@@ -14,7 +14,11 @@
   <div layout="row" flex>
     <md-sidenav class="md-primary md-hue-2" md-is-locked-open="$mdMedia('gt-xs')" md-whiteframe="1" flex="33" flex-sm="40">
       <md-list>
-        <md-list-item ng-repeat="item in ['Tasks', 'Ideas', 'Settings']">{{item}}<md-divider></md-list-item>
+        <md-list-item ng-repeat="item in [['Tasks', 'check'], ['Ideas', 'lightbulb'], ['Settings', 'settings']]">
+          <md-icon md-svg-src="assets/img/{{item[1]}}.svg" flex="none"></md-icon>
+            <p flex>{{item[0]}}</p>
+          <md-divider>
+        </md-list-item>
       </md-list>
     </md-sidenav>
     <md-content flex>
