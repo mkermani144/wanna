@@ -5,3 +5,9 @@ module.config(($mdThemingProvider) => {
     .accentPalette('pink')
     .warnPalette('red');
 });
+module.config(($routeProvider) => {
+  $routeProvider.when('/', {
+    templateUrl: 'app/components/tasks/templates/main.html',
+    controller: 'TaskControl',
+  });
+});
