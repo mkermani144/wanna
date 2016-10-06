@@ -34,7 +34,6 @@ function parse(query) {
   } else {
     units = regexResult[8] * 60;
   }
-  console.log(units);
   return {
     text: text.trim(),
     start,
