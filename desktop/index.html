@@ -14,17 +14,17 @@
   <div layout="row" flex>
     <md-sidenav class="md-primary md-hue-2" md-is-locked-open="$mdMedia('gt-xs')" md-whiteframe="1" flex="33" flex-sm="40">
       <md-list ng-controller="SidenavControl">
-        <md-list-item ng-click="switch('/')">
+        <md-list-item class="sidenav-item" ng-click="switch('/')">
           <md-icon class="sidenav-icon" md-svg-src="assets/img/check.svg" md-colors="{fill: 'green'}" flex="none"></md-icon>
             <p md-colors="{color: 'green-900'}" flex>Tasks</p>
           <md-divider>
         </md-list-item>
-        <md-list-item ng-click="null">
+        <md-list-item class="sidenav-item" ng-click="null">
           <md-icon class="sidenav-icon" md-svg-src="assets/img/lightbulb.svg" md-colors="{fill: 'yellow-700'}" flex="none"></md-icon>
             <p md-colors="{color: 'yellow-900'}" flex>Ideas</p>
           <md-divider>
         </md-list-item>
-        <md-list-item ng-click="null">
+        <md-list-item class="sidenav-item" ng-click="null">
           <md-icon class="sidenav-icon" md-svg-src="assets/img/settings.svg" md-colors="{fill: 'blue-grey-700'}" flex="none"></md-icon>
             <p md-colors="{color: 'blue-grey-900'}" flex>Settings</p>
           <md-divider>

@@ -55,3 +55,8 @@ md-list-item.ng-hide {
     margin-top: 14px !important;
     margin-bottom: 14px !important;
 }
+.sidenav-item {
+  & button:hover,& > div:hover {
+    background-color: rgba(220, 220, 220, .2) !important;
+  }
+}
