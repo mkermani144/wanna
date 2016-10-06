@@ -13,8 +13,8 @@
   </md-toolbar>
   <div layout="row" flex>
     <md-sidenav class="md-primary md-hue-2" md-is-locked-open="$mdMedia('gt-xs')" md-whiteframe="1" flex="33" flex-sm="40">
-      <md-list>
-        <md-list-item ng-click="null">
+      <md-list ng-controller="SidenavControl">
+        <md-list-item ng-click="switch('/')">
           <md-icon class="sidenav-icon" md-svg-src="assets/img/check.svg" md-colors="{fill: 'green'}" flex="none"></md-icon>
             <p md-colors="{color: 'green-900'}" flex>Tasks</p>
           <md-divider>
@@ -66,6 +66,7 @@
   <script type="text/javascript" src="app/shared/database/db_factory.js"></script>
   <script type="text/javascript" src="app/components/fab/fab_controller.js"></script>
   <script type="text/javascript" src="app/components/tasks/tasks_controller.js"></script>
+  <script type="text/javascript" src="app/components/sidenav/sidenav_controller.js"></script>
   <script type="text/javascript" src="app/components/tasks/directive1.js"></script>
   <script type="text/javascript" src="app/components/tasks/directive2.js"></script>
 
