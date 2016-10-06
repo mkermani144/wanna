@@ -42,3 +42,8 @@ md-list-item.ng-hide.delete {
 .mw {
     color: rgb(244, 67, 54);
 }
+.sidenav-icon {
+    margin-right: 16px !important;
+    margin-top: 14px !important;
+    margin-bottom: 14px !important;
+}
