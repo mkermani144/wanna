@@ -51,7 +51,8 @@ Ideas and features to be developed (sorted based on importance):
 - [ ] Daily treshold
 - [ ] Time consumption AI
 - [ ] Day of thing
-- [ ] Projects
+- [ ] Projects and subtasks
+- [ ] Reports
 
 Known bugs
 ----
