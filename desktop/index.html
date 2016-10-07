@@ -41,11 +41,11 @@
           </md-button>
         </md-fab-trigger>
         <md-fab-actions ng-controller="FabControl">
-          <md-button class="md-fab md-mini md-primary" ng-click="addNew($event)">
+          <md-button class="md-fab md-mini" md-colors="{backgroundColor: 'green'}" ng-click="addNew($event)">
             <md-tooltip md-direction="left" md-visible="false">Task</md-tooltip>
-            <md-icon md-svg-src="assets/img/pencil.svg"></md-icon>
+            <md-icon md-svg-src="assets/img/check.svg"></md-icon>
           </md-button>
-          <md-button class="md-fab md-mini md-primary">
+          <md-button class="md-fab md-mini" md-colors="{backgroundColor: 'yellow-700'}">
             <md-tooltip md-direction="left" md-visible="false">Idea</md-tooltip>
             <md-icon md-svg-src="assets/img/lightbulb.svg"></md-icon>
           </md-button>
