@@ -1,3 +1,6 @@
+* {
+  -webkit-user-select: none !important;
+}
 #toolbar {
     min-height: 2.5em;
 }
