@@ -5,6 +5,9 @@ $md-warn: rgb(244,67,54);
 * {
   -webkit-user-select: none !important;
 }
+span, p, h1, h2, h3, h4, h5, h6 {
+  cursor: default;
+}
 #toolbar {
   min-height: 2.5em;
 }
