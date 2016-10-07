@@ -32,20 +32,27 @@ __Note: The app probably has a mobile version, but it is not ready yet and it's 
 
 Ideas and features to-do
 ----
-Ideas and features to be developed after [beta version](https://github.com/mkermani144/wanna/milestone/1) (sorted based on importance):
+Ideas and features to be developed (sorted based on importance):
+####Before [beta release](https://github.com/mkermani144/wanna/milestone/1):
+- [X] Priorities
+- [X] Time consumption estimation
+- [X] Sidenav
 - [ ] Recurring tasks
 - [ ] Idea bank
 - [ ] One-day tasks
+- [ ] App icon
+- [ ] Help pages
+
+####After beta release:
 - [ ] Flexible
 - [ ] Timer
 - [ ] Moods
 - [ ] Job type
 - [ ] Daily treshold
-- [ ] Time guess
+- [ ] Time consumption AI
 - [ ] Day of thing
-- [ ] Projects
-- [ ] App icon
-
+- [ ] Projects and subtasks
+- [ ] Reports
 
 Known bugs
 ----
