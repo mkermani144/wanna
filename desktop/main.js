@@ -3,22 +3,10 @@ const { app } = electron;
 const { ipcMain: ipc } = electron;
 const { dialog } = electron;
 const { BrowserWindow } = electron;
-// const sass = require('node-sass')
-// const fs = require('fs');
+const fs = require('fs');
+const { exec } = require('child_process');
 
 let win;
-
-// function compileSass() {
-//   sass.render({
-//     file: 'assets/css/main.scss',
-//     outFile: 'assets/css/main.css',
-//     outputStyle: 'comporessed'
-//   }, (err, result) => {
-//     fs.writeFile('assets/css/main.css', result.css, err => {
-//       console.log(err)
-//     })
-//   })
-// }
 
 function createWindow() {
   win = new BrowserWindow({
@@ -28,13 +16,19 @@ function createWindow() {
   win.loadURL(`file://${__dirname}/index.html`);
     // win.webContents.openDevTools()
   win.on('close', () => {
-    // fs.unlink(__dirname + '/assets/css/main.css')
+    fs.unlink(`${__dirname}/assets/css/main.css`);
   });
 }
 
 app.on('ready', () => {
-  // compileSass()
-  createWindow();
+  exec(`${__dirname}/node_modules/node-sass/bin/node-sass --output-style expanded ${__dirname}/assets/css/main.scss > ${__dirname}/assets/css/main.css`, (err, stdout, stderr) => {
+    if (err || stderr) {
+      process.exit(1);
+      throw err;
+    } else {
+      createWindow();
+    }
+  });
 });
 
 ipc.on('insert-error', (ev, err) => {
