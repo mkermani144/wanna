@@ -12,7 +12,7 @@
           <input name="task" ng-model="task" ng-pattern="/.+ @[1-9]\d*[dwmDWM]?(\+(\d+)([dwmDWM]?))?\s?(!){0,2}\s?(~[1-9]\d*[hHmM]?)$/" md-autofocus required>
           <div ng-messages="taskForm.task.$error">
             <div ng-message="pattern">
-              Task is not valid.
+              Task should be in the form of "text @period ~units"
             </div>
             <div ng-message="required">
               Task cannot be empty.
