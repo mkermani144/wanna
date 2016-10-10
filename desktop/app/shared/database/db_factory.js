@@ -74,7 +74,7 @@ function find(type, cb) {
       $and: [{ end: { $lt: now } },
             { status: 0 },
           ],
-    }, { text: 1, start: 1, end: 1 },
+    }, { text: 1, start: 1, end: 1, units: 1 },
         (err, tasks) => {
           if (err) {
             ipc.send('find-error', err);
