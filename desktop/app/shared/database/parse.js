@@ -2,10 +2,10 @@
  * Parse task and return task info if
  * the task is valid, otherwise throw
  * error.
- * @param  {string} query  Enetered task
+ * @param  {string} query  Entered task
  * @return {object}        Task info containing
  *                         task text, start time
- *                         and dealine
+ *                         and deadline
  */
 function parse(query) {
   /**
