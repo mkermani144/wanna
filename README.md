@@ -37,7 +37,7 @@ Ideas and features to be developed (sorted based on importance):
 - [X] Priorities
 - [X] Time consumption estimation
 - [X] Sidenav
-- [ ] Recurring tasks
+- [X] Recurring tasks
 - [ ] Idea bank
 - [ ] One-day tasks
 - [ ] App icon

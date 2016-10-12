@@ -3,7 +3,7 @@ const parse = require('../app/shared/database/parse');
 
 describe('database', () => {
   describe('parse.js', () => {
-    const testQuery = 'Learn something! @3+2w !';
+    const testQuery = 'Learn something! @3+2w ! ~1h';
     it('should return task text', () => {
       assert(parse(testQuery).text === 'Learn something!');
     });
