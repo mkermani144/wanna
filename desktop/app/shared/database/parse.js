@@ -1,3 +1,8 @@
+/*
+eslint max-len: ['error', 100, 2, {
+ ignorePattern: true,
+ }]
+ */
 /**
  * Parse task and return task info if
  * the task is valid, otherwise throw
