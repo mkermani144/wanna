@@ -187,11 +187,12 @@ function edit(taskId, newText, cb) {
 
 angular.module('MainApp')
   .factory('db', () => {
-    return {
+    const ret = {
       insert,
       find,
       markAsDone,
       remove,
       edit,
     };
+    return ret;
   });
