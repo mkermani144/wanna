@@ -116,9 +116,9 @@ function markAsDone(taskId, cb) {
         if (period === -1) {
           db.update({
             _id: taskId,
-          }, {
+          }, { $set: {
             status: 1,
-          }, {}, (errInner) => {
+          } }, {}, (errInner) => {
             if (errInner) {
               ipc.send('update-error', err);
             } else {
@@ -128,10 +128,10 @@ function markAsDone(taskId, cb) {
         } else {
           db.update({
             _id: taskId,
-          }, {
+          }, { $set: {
             start: start + period,
             end: end + period,
-          }, {}, (errInner) => {
+          } }, {}, (errInner) => {
             if (errInner) {
               ipc.send('update-error', err);
             } else {
@@ -187,12 +187,11 @@ function edit(taskId, newText, cb) {
 
 angular.module('MainApp')
   .factory('db', () => {
-    const dbRet = {
+    return {
       insert,
       find,
       markAsDone,
       remove,
       edit,
     };
-    return dbRet;
   });
