@@ -34,6 +34,7 @@ function parse(query) {
   } else {
     units = regexResult[8];
   }
+  const period = 86400000 * regexResult[11] * dwm[regexResult[12]];
   return {
     text: text.trim(),
     start,
@@ -41,6 +42,7 @@ function parse(query) {
     importance,
     status,
     units,
+    period,
   };
 }
 
