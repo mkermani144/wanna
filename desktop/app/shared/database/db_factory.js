@@ -105,17 +105,43 @@ function find(type, cb) {
  * @return {undefined}
  */
 function markAsDone(taskId, cb) {
-  db.update({
-    _id: taskId,
-  }, {
-    status: 1,
-  }, {}, (err) => {
-    if (err) {
-      ipc.send('update-error', err);
-    } else {
-      cb();
+  db.find(
+    { _id: taskId },
+    { start: 1, end: 1, period: 1 },
+    (err, tasks) => {
+      if (err) {
+        ipc.send('find-error', err);
+      } else {
+        const { start, end, period } = tasks[0];
+        if (period === -1) {
+          db.update({
+            _id: taskId,
+          }, {
+            status: 1,
+          }, {}, (errInner) => {
+            if (errInner) {
+              ipc.send('update-error', err);
+            } else {
+              cb();
+            }
+          });
+        } else {
+          db.update({
+            _id: taskId,
+          }, {
+            start: start + period,
+            end: end + period,
+          }, {}, (errInner) => {
+            if (errInner) {
+              ipc.send('update-error', err);
+            } else {
+              cb();
+            }
+          });
+        }
+      }
     }
-  });
+  );
 }
 
 /**
