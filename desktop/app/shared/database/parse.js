@@ -1,7 +1,5 @@
 /*
-eslint max-len: ['error', 100, 2, {
- ignorePattern: true,
- }]
+eslint max-len: ['error', 150, 2, ]
  */
 /**
  * Parse task and return task info if
