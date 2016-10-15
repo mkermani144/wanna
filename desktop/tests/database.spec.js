@@ -19,5 +19,8 @@ describe('database', () => {
     it('should return status', () => {
       assert(parse(testQuery).status === 0);
     });
+    it('should return units', () => {
+      assert(parse(testQuery).units === 60);
+    });
   });
 });
