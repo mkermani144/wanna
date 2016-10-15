@@ -3,7 +3,7 @@ const parse = require('../app/shared/database/parse');
 
 describe('database', () => {
   describe('parse.js', () => {
-    const testQuery = 'Learn something! @3+2w ! ~1h';
+    const testQuery = 'Learn something! @3+2w ! ~1h ev2w';
     it('should return task text', () => {
       assert(parse(testQuery).text === 'Learn something!');
     });
@@ -18,6 +18,12 @@ describe('database', () => {
     });
     it('should return status', () => {
       assert(parse(testQuery).status === 0);
+    });
+    it('should return units', () => {
+      assert(parse(testQuery).units === 60);
+    });
+    it('should return period', () => {
+      assert(parse(testQuery).period === 1209600000);
     });
   });
 });
