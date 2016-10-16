@@ -1,6 +1,9 @@
 /*
 eslint no-shadow: ["error", { "allow": ["$scope"] }]
 */
+/*
+global ipc
+*/
 angular.module('MainApp')
   .controller('FabControl', ($mdToast, $mdDialog, $scope, $rootScope, db) => {
     function DialogController($scope) {
@@ -15,6 +18,7 @@ angular.module('MainApp')
       };
     }
     $scope.addNew = (ev) => {
+      $scope.dialogIsOpen = 1;
       $mdDialog.show({
         controller: DialogController,
         templateUrl: 'app/components/fab/templates/newTaskDialog.html',
@@ -37,7 +41,15 @@ angular.module('MainApp')
           .textContent('Task added.')
           .position('bottom start')
         );
+      })
+      .finally(() => {
+        $scope.dialogIsOpen = 0;
       });
     };
+    ipc.on('Add new task', () => {
+      if (!$scope.dialogIsOpen) {
+        $scope.addNew();
+      }
+    });
   }
 );
