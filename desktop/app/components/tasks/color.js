@@ -20,7 +20,7 @@ function returnColorO(end, current) {
   const currentRounded = (current + (86400000 - (current % 86400000))) +
     (new Date().getTimezoneOffset() * 60000);
   const diff = (currentRounded - end) / 86400000;
-  return `hsl(0, 100%, ${60 / Math.pow(2, diff - 1)}%)`;
+  return `hsl(0, 100%, ${60 / (diff + 1)}%)`;
 }
 
 module.exports = {
