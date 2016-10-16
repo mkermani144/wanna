@@ -9,7 +9,7 @@ describe('tasks', () => {
         (new Date().getTimezoneOffset() * 60000);
       const testTimes = [currentRounded - 86400000, currentRounded + 86400000, now];
       it('should return yellow color hsla', () => {
-        assert(color.returnColor(...testTimes) === 'hsla(60, 100%, 75%, .3)');
+        assert(color.returnColor(...testTimes) === 'hsl(60, 100%, 60%)');
       });
     });
   });
