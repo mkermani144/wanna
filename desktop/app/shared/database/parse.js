@@ -1,11 +1,14 @@
+/*
+eslint max-len: ['error', 150, 2, ]
+ */
 /**
  * Parse task and return task info if
  * the task is valid, otherwise throw
  * error.
- * @param  {string} query  Enetered task
+ * @param  {string} query  Entered task
  * @return {object}        Task info containing
  *                         task text, start time
- *                         and dealine
+ *                         and deadline
  */
 function parse(query) {
   /**
@@ -18,7 +21,7 @@ function parse(query) {
     w: 7,
     m: 30,
   };
-  const regex = /@(\d+)([dwmDWM]?)(\+(\d+)([dwmDWM]?))?\s?(!{0,2})\s?(~([1-9]\d*)([hHmM]?))?$/;
+  const regex = /@(\d+)([dwmDWM]?)(\+(\d+)([dwmDWM]?))?\s?(!{0,2})\s?(~([1-9]\d*)([hHmM]?))(\s?ev([1-9]\d*)([dwmDWM]?))?$/;
   const regexResult = regex.exec(query);
   const text = query.slice(0, regexResult.index);
   let start = Date.now() - ((Date.now() % 86400000) - (new Date().getTimezoneOffset() * 60000));
@@ -34,6 +37,12 @@ function parse(query) {
   } else {
     units = regexResult[8];
   }
+  let period;
+  if (regexResult[10]) {
+    period = 86400000 * regexResult[11] * dwm[regexResult[12]];
+  } else {
+    period = -1;
+  }
   return {
     text: text.trim(),
     start,
@@ -41,6 +50,7 @@ function parse(query) {
     importance,
     status,
     units,
+    period,
   };
 }
 
