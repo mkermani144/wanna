@@ -74,7 +74,7 @@ function find(type, cb) {
       $and: [{ end: { $lt: now } },
             { status: 0 },
           ],
-    }, { text: 1, start: 1, end: 1 },
+    }, { text: 1, start: 1, end: 1, units: 1 },
         (err, tasks) => {
           if (err) {
             ipc.send('find-error', err);
@@ -105,17 +105,43 @@ function find(type, cb) {
  * @return {undefined}
  */
 function markAsDone(taskId, cb) {
-  db.update({
-    _id: taskId,
-  }, {
-    status: 1,
-  }, {}, (err) => {
-    if (err) {
-      ipc.send('update-error', err);
-    } else {
-      cb();
+  db.find(
+    { _id: taskId },
+    { start: 1, end: 1, period: 1 },
+    (err, tasks) => {
+      if (err) {
+        ipc.send('find-error', err);
+      } else {
+        const { start, end, period } = tasks[0];
+        if (period === -1) {
+          db.update({
+            _id: taskId,
+          }, { $set: {
+            status: 1,
+          } }, {}, (errInner) => {
+            if (errInner) {
+              ipc.send('update-error', err);
+            } else {
+              cb();
+            }
+          });
+        } else {
+          db.update({
+            _id: taskId,
+          }, { $set: {
+            start: start + period,
+            end: end + period,
+          } }, {}, (errInner) => {
+            if (errInner) {
+              ipc.send('update-error', err);
+            } else {
+              cb();
+            }
+          });
+        }
+      }
     }
-  });
+  );
 }
 
 /**
@@ -161,12 +187,12 @@ function edit(taskId, newText, cb) {
 
 angular.module('MainApp')
   .factory('db', () => {
-    const dbRet = {
+    const ret = {
       insert,
       find,
       markAsDone,
       remove,
       edit,
     };
-    return dbRet;
+    return ret;
   });

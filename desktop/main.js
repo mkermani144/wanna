@@ -3,6 +3,7 @@ const { app } = electron;
 const { ipcMain: ipc } = electron;
 const { dialog } = electron;
 const { BrowserWindow } = electron;
+const { globalShortcut } = electron;
 const fs = require('fs');
 const { exec } = require('child_process');
 
@@ -27,8 +28,15 @@ app.on('ready', () => {
       throw err;
     } else {
       createWindow();
+      globalShortcut.register('CmdOrCtrl+T', () => {
+        win.webContents.send('Add new task');
+      });
     }
   });
+});
+
+app.on('will-quit', () => {
+  globalShortcut.unregisterAll();
 });
 
 ipc.on('insert-error', (ev, err) => {

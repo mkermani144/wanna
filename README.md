@@ -37,7 +37,7 @@ Ideas and features to be developed (sorted based on importance):
 - [X] Priorities
 - [X] Time consumption estimation
 - [X] Sidenav
-- [ ] Recurring tasks
+- [X] Recurring tasks
 - [ ] Idea bank
 - [ ] One-day tasks
 - [ ] App icon
@@ -53,3 +53,12 @@ Ideas and features to be developed (sorted based on importance):
 - [ ] Day of thing
 - [ ] Projects and subtasks
 - [ ] Reports
+
+
+Technologies
+----
+- [Electron](http://electron.atom.io)
+- [AngularJS](https://angularjs.org)
+- [Angular Material](https://material.angularjs.org/)
+- [Nedb](https://github.com/louischatriot/nedb)
+- [Mocha](https://mochajs.org)
