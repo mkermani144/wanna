@@ -9,7 +9,7 @@
       <div class="md-dialog-content" layout="column">
         <h4>What do you wanna do?</h4>
         <md-input-container md-is-error="taskForm.task.$invalid && taskForm.$submitted" flex>
-          <input name="task" ng-model="task" ng-pattern="/.+ @[1-9]\d*[dwmDWM]?(\+(\d+)([dwmDWM]?))?\s?(!){0,2}\s?(~[1-9]\d*[hHmM]?)(\s?ev[1-9]\d*[dwmDWM]?)?$/" md-autofocus required>
+          <input md-colors="{ borderColor: 'green' }" name="task" ng-model="task" ng-pattern="/.+ @[1-9]\d*[dwmDWM]?(\+(\d+)([dwmDWM]?))?\s?(!){0,2}\s?(~[1-9]\d*[hHmM]?)(\s?ev[1-9]\d*[dwmDWM]?)?$/" md-autofocus required>
           <div ng-messages="taskForm.task.$error">
             <div ng-message="pattern">
               Task should be in the form of "text @period ~units"
