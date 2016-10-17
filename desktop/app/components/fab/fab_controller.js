@@ -18,7 +18,7 @@ angular.module('MainApp')
       };
     }
     $scope.addNewTask = (ev) => {
-      $scope.dialogIsOpen = 1;
+      $scope.taskDialogIsOpen = 1;
       $mdDialog.show({
         controller: DialogController,
         templateUrl: 'app/components/fab/templates/newTaskDialog.html',
@@ -43,11 +43,11 @@ angular.module('MainApp')
         );
       })
       .finally(() => {
-        $scope.dialogIsOpen = 0;
+        $scope.taskDialogIsOpen = 0;
       });
     };
     $scope.addNewIdea = (ev) => {
-      $scope.dialogIsOpen = 1;
+      $scope.ideaDialogIsOpen = 1;
       $mdDialog.show({
         controller: DialogController,
         templateUrl: 'app/components/fab/templates/newIdeaDialog.html',
@@ -67,11 +67,19 @@ angular.module('MainApp')
           .textContent('Idea added.')
           .position('bottom start')
         );
+      })
+      .finally(() => {
+        $scope.taskDialogIsOpen = 0;
       });
     };
     ipc.on('Add new task', () => {
-      if (!$scope.dialogIsOpen) {
+      if (!$scope.taskDialogIsOpen) {
         $scope.addNewTask();
+      }
+    });
+    ipc.on('Add new idea', () => {
+      if (!$scope.ideaDialogIsOpen) {
+        $scope.addNewIdea();
       }
     });
   }
