@@ -25,7 +25,6 @@ angular.module('MainApp')
         angular.element(el[0].children[0].children[0]).append(icon);
         const borderLeft = `5px solid ${color.returnColorO(newVal[attrs.uafo].start, newVal[attrs.uafo].end, Date.now())}`;
         angular.element(el[0]).css('borderLeft', borderLeft);
-        console.log(borderLeft);
       });
     }
   );
