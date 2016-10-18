@@ -2,7 +2,9 @@ const { ipcRenderer: ipc } = require('electron');
 const parse = require('./app/shared/database/parse');
 const crypto = require('crypto');
 const Datastore = require('nedb');
-const db = new Datastore({
+
+const db = {};
+db.tasks = new Datastore({
   filename: `${__dirname}/tasks.db`,
   afterSerialization: (object) => {
     const cipher = crypto.createCipher('aes256', 'sample-key');
@@ -14,6 +16,19 @@ const db = new Datastore({
   },
   autoload: true,
 });
+db.ideas = new Datastore({
+  filename: `${__dirname}/ideas.db`,
+  afterSerialization: (object) => {
+    const cipher = crypto.createCipher('aes256', 'sample-key');
+    return (cipher.update(object, 'utf8', 'hex') + cipher.final('hex'));
+  },
+  beforeDeserialization: (object) => {
+    const decipher = crypto.createDecipher('aes256', 'sample-key');
+    return (decipher.update(object, 'hex', 'utf8') + decipher.final('utf8'));
+  },
+  autoload: true,
+});
+
 
 /**
  * Get a query, parse it and add it to
@@ -24,7 +39,7 @@ const db = new Datastore({
  */
 function insert(query, cb) {
   const taskObj = parse(query);
-  db.insert(taskObj, (err) => {
+  db.tasks.insert(taskObj, (err) => {
     if (err) {
       ipc.send('insert-error', err);
     } else {
@@ -44,7 +59,7 @@ function find(type, cb) {
   const now = Date.now();
   switch (type) {
   case 'open':
-    db.find({
+    db.tasks.find({
       $and: [{ start: { $lt: now } },
             { end: { $gt: now } },
             { status: 0 },
@@ -70,7 +85,7 @@ function find(type, cb) {
         });
     break;
   case 'overdue':
-    db.find({
+    db.tasks.find({
       $and: [{ end: { $lt: now } },
             { status: 0 },
           ],
@@ -105,7 +120,7 @@ function find(type, cb) {
  * @return {undefined}
  */
 function markAsDone(taskId, cb) {
-  db.find(
+  db.tasks.find(
     { _id: taskId },
     { start: 1, end: 1, period: 1 },
     (err, tasks) => {
@@ -114,7 +129,7 @@ function markAsDone(taskId, cb) {
       } else {
         const { start, end, period } = tasks[0];
         if (period === -1) {
-          db.update({
+          db.tasks.update({
             _id: taskId,
           }, { $set: {
             status: 1,
@@ -126,7 +141,7 @@ function markAsDone(taskId, cb) {
             }
           });
         } else {
-          db.update({
+          db.tasks.update({
             _id: taskId,
           }, { $set: {
             start: start + period,
@@ -151,7 +166,7 @@ function markAsDone(taskId, cb) {
  * @return {undefined}
  */
 function remove(taskId, cb) {
-  db.remove({
+  db.tasks.remove({
     _id: taskId,
   }, {}, (err) => {
     if (err) {
@@ -170,7 +185,7 @@ function remove(taskId, cb) {
  * @return {undefined}
  */
 function edit(taskId, newText, cb) {
-  db.update({
+  db.tasks.update({
     _id: taskId,
   }, {
     $set: {
