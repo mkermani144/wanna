@@ -58,7 +58,6 @@ function insertIdea(idea, cb) {
   db.ideas.insert({ idea }, (err) => {
     if (err) {
       ipc.send('insert-error', err);
-      console.log(err);
     } else {
       cb();
     }
