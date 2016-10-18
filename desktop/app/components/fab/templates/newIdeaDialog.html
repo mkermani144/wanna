@@ -10,7 +10,7 @@
         <h4>Do you have an idea?</h4>
         <md-input-container md-is-error="taskForm.task.$invalid && taskForm.$submitted" flex>
           <input md-colors="{ borderColor: 'yellow-700' }" name="idea" ng-model="idea" md-autofocus required>
-          <div ng-messages="taskForm.task.$error">
+          <div ng-messages="ideaForm.idea.$error">
             <div ng-message="required">
               Idea cannot be empty.
             </div>
@@ -20,7 +20,7 @@
     </md-dialog-content>
     <md-dialog-actions layout="row">
       <span flex></span>
-      <md-button type="submit" ng-click="add(task)">
+      <md-button type="submit" ng-click="add(idea)">
         Add
       </md-button>
       <md-button ng-click="cancel()">

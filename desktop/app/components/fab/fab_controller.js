@@ -62,6 +62,9 @@ angular.module('MainApp')
         },
       })
       .then((idea) => {
+        db.insertIdea(idea, () => {
+          $rootScope.$broadcast('Update ideas');
+        });
         $mdToast.show(
           $mdToast.simple()
           .textContent('Idea added.')
@@ -69,7 +72,7 @@ angular.module('MainApp')
         );
       })
       .finally(() => {
-        $scope.taskDialogIsOpen = 0;
+        $scope.ideaDialogIsOpen = 0;
       });
     };
     ipc.on('Add new task', () => {

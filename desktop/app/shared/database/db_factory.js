@@ -19,11 +19,11 @@ db.tasks = new Datastore({
 db.ideas = new Datastore({
   filename: `${__dirname}/ideas.db`,
   afterSerialization: (object) => {
-    const cipher = crypto.createCipher('aes256', 'sample-key');
+    const cipher = crypto.createCipher('aes256', 'sample-key2');
     return (cipher.update(object, 'utf8', 'hex') + cipher.final('hex'));
   },
   beforeDeserialization: (object) => {
-    const decipher = crypto.createDecipher('aes256', 'sample-key');
+    const decipher = crypto.createDecipher('aes256', 'sample-key2');
     return (decipher.update(object, 'hex', 'utf8') + decipher.final('utf8'));
   },
   autoload: true,
@@ -34,7 +34,7 @@ db.ideas = new Datastore({
  * Get a query, parse it and add it to
  * database
  * @param  {string}   query task query
- * @param  {Function} cb  callback
+ * @param  {Function} cb    callback
  * @return {undefined}
  */
 function insert(query, cb) {
@@ -42,6 +42,23 @@ function insert(query, cb) {
   db.tasks.insert(taskObj, (err) => {
     if (err) {
       ipc.send('insert-error', err);
+    } else {
+      cb();
+    }
+  });
+}
+
+/**
+ * Get an idea and add it to database
+ * @param  {string}   idea idea
+ * @param  {Function} cb   callback
+ * @return {undefined}
+ */
+function insertIdea(idea, cb) {
+  db.ideas.insert({ idea }, (err) => {
+    if (err) {
+      ipc.send('insert-error', err);
+      console.log(err);
     } else {
       cb();
     }
@@ -204,6 +221,7 @@ angular.module('MainApp')
   .factory('db', () => {
     const ret = {
       insert,
+      insertIdea,
       find,
       markAsDone,
       remove,
