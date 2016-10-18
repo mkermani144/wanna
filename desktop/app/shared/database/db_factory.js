@@ -128,6 +128,20 @@ function find(type, cb) {
   default:
   }
 }
+/**
+ * Find ideas
+ * @param  {Function} cb   callback
+ * @return {undefined}
+ */
+function findIdeas(cb) {
+  db.ideas.find({}, { idea: 1 }, (err, ideas) => {
+    if (err) {
+      ipc.send('find-error', err);
+    } else {
+      cb(Object.keys(ideas).map(key => ideas[key]));
+    }
+  });
+}
 
 /**
  * Mark a task as done in the database
@@ -222,6 +236,7 @@ angular.module('MainApp')
       insert,
       insertIdea,
       find,
+      findIdeas,
       markAsDone,
       remove,
       edit,

@@ -10,4 +10,8 @@ module.config(($routeProvider) => {
     templateUrl: 'app/components/tasks/templates/main.html',
     controller: 'TaskControl',
   });
+  $routeProvider.when('/ideas', {
+    templateUrl: 'app/components/ideas/templates/main.html',
+    controller: 'IdeaControl',
+  });
 });
