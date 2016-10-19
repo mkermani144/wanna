@@ -12,23 +12,27 @@ const taskControl = function taksControl($scope, $mdDialog, $mdToast, db) {
   $scope.delete = false;
 
   $scope.markAsDone = (taskId) => {
-    db.markAsDone(taskId, () => {
-      $mdToast.show(
-        $mdToast.simple()
-        .textContent('Task done.')
-        .position('bottom start')
-        .hideDelay(1000)
-      );
+    db.markAsDone(taskId, (err) => {
+      if (!err) {
+        $mdToast.show(
+          $mdToast.simple()
+          .textContent('Task done.')
+          .position('bottom start')
+          .hideDelay(1000)
+        );
+      }
     });
   };
   $scope.remove = (taskId) => {
-    db.remove(taskId, () => {
-      $mdToast.show(
-        $mdToast.simple()
-        .textContent('Task deleted.')
-        .position('bottom start')
-        .hideDelay(1000)
-      );
+    db.remove(taskId, (err) => {
+      if (!err) {
+        $mdToast.show(
+          $mdToast.simple()
+          .textContent('Task deleted.')
+          .position('bottom start')
+          .hideDelay(1000)
+        );
+      }
     });
   };
 
@@ -55,21 +59,24 @@ const taskControl = function taksControl($scope, $mdDialog, $mdToast, db) {
       clickOutsideToClose: true,
     })
     .then((task) => {
-      db.edit(cur._id, task);
-      db.find('open', (tasks) => {
-        $scope.openTasks = tasks;
-        $scope.$apply();
+      db.edit(cur._id, task, (err) => {
+        if (!err) {
+          db.find('open', (tasks) => {
+            $scope.openTasks = tasks;
+            $scope.$apply();
+          });
+          db.find('overdue', (tasks) => {
+            $scope.overdueTasks = tasks;
+            $scope.$apply();
+          });
+          $mdToast.show(
+            $mdToast.simple()
+            .textContent('Task edited.')
+            .position('bottom start')
+            .hideDelay(1000)
+          );
+        }
       });
-      db.find('overdue', (tasks) => {
-        $scope.overdueTasks = tasks;
-        $scope.$apply();
-      });
-      $mdToast.show(
-        $mdToast.simple()
-        .textContent('Task edited.')
-        .position('bottom start')
-        .hideDelay(1000)
-      );
     });
   };
   $scope.$on('Update tasks', () => {

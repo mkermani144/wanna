@@ -33,14 +33,16 @@ angular.module('MainApp')
         },
       })
       .then((task) => {
-        db.insert(task, () => {
-          $rootScope.$broadcast('Update tasks');
+        db.insert(task, (err) => {
+          if (!err) {
+            $rootScope.$broadcast('Update tasks');
+            $mdToast.show(
+              $mdToast.simple()
+              .textContent('Task added.')
+              .position('bottom start')
+            );
+          }
         });
-        $mdToast.show(
-          $mdToast.simple()
-          .textContent('Task added.')
-          .position('bottom start')
-        );
       })
       .finally(() => {
         $scope.dialogIsOpen = 0;
