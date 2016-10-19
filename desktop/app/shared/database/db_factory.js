@@ -27,6 +27,7 @@ function insert(query, cb) {
   db.insert(taskObj, (err) => {
     if (err) {
       ipc.send('insert-error', err);
+      cb(err);
     } else {
       cb();
     }
@@ -53,6 +54,7 @@ function find(type, cb) {
         (err, tasks) => {
           if (err) {
             ipc.send('find-error', err);
+            cb(err);
           } else {
             const nowInner = (Date.now() + (86400000 - (Date.now() % 86400000))) +
               (new Date().getTimezoneOffset() * 60000);
@@ -78,6 +80,7 @@ function find(type, cb) {
         (err, tasks) => {
           if (err) {
             ipc.send('find-error', err);
+            cb(err);
           } else {
             const nowInner = (Date.now() + (86400000 - (Date.now() % 86400000))) +
               (new Date().getTimezoneOffset() * 60000);
@@ -111,6 +114,7 @@ function markAsDone(taskId, cb) {
     (err, tasks) => {
       if (err) {
         ipc.send('find-error', err);
+        cb(err);
       } else {
         const { start, end, period } = tasks[0];
         if (period === -1) {
@@ -156,6 +160,7 @@ function remove(taskId, cb) {
   }, {}, (err) => {
     if (err) {
       ipc.send('remove-error', err);
+      cb(err);
     } else {
       cb();
     }
@@ -179,6 +184,7 @@ function edit(taskId, newText, cb) {
   }, {}, (err) => {
     if (err) {
       ipc.send('update-error', err);
+      cb(err);
     } else {
       cb();
     }
