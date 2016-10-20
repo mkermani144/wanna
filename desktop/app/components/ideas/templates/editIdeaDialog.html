@@ -1,6 +1,6 @@
 <md-dialog flex="60">
   <form name="ideaForm" ng-cloak>
-    <md-toolbar class="md-toolbar-tools">
+    <md-toolbar class="md-toolbar-tools" md-colors="{ backgroundColor: 'yellow-700' }">
       <div>
         <h2>Edit idea</h2>
       </div>
@@ -9,7 +9,7 @@
       <div class="md-dialog-content" layout="column">
         <h4>Type new idea description:</h4>
         <md-input-container md-is-error="ideaForm.idea.$invalid && ideaForm.$submitted" flex>
-          <input aria-label="idea" name="idea" ng-model="idea" md-autofocus required>
+          <input aria-label="idea" md-colors="{ borderColor: 'yellow-700' }" name="idea" ng-model="idea" md-autofocus required>
           <div ng-messages="ideaForm.idea.$error">
             <div ng-message="required">
               Idea cannot be empty.

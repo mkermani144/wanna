@@ -9,7 +9,7 @@
       <div class="md-dialog-content" layout="column">
         <h4>Do you have an idea?</h4>
         <md-input-container md-is-error="taskForm.task.$invalid && taskForm.$submitted" flex>
-          <input md-colors="{ borderColor: 'yellow-700' }" name="idea" ng-model="idea" md-autofocus required>
+          <input aria-label="idea" md-colors="{ borderColor: 'yellow-700' }" name="idea" ng-model="idea" md-autofocus required>
           <div ng-messages="ideaForm.idea.$error">
             <div ng-message="required">
               Idea cannot be empty.
