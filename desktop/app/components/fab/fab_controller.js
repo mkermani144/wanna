@@ -64,14 +64,15 @@ angular.module('MainApp')
         },
       })
       .then((idea) => {
-        db.insertIdea(idea, () => {
-          $rootScope.$broadcast('Update ideas');
+        db.insertIdea(idea, (err) => {
+          if (!err) {
+            $mdToast.show(
+              $mdToast.simple()
+              .textContent('Idea added.')
+              .position('bottom start')
+            );
+          }
         });
-        $mdToast.show(
-          $mdToast.simple()
-          .textContent('Idea added.')
-          .position('bottom start')
-        );
       })
       .finally(() => {
         $scope.ideaDialogIsOpen = 0;

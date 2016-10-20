@@ -82,16 +82,20 @@ const taskControl = function taksControl($scope, $mdDialog, $mdToast, db) {
   $scope.$on('Update tasks', () => {
     db.find('open', (tasks) => {
       $scope.openTasks = tasks;
+      $scope.$apply();
     });
     db.find('overdue', (tasks) => {
       $scope.overdueTasks = tasks;
+      $scope.$apply();
     });
   });
   db.find('open', (tasks) => {
     $scope.openTasks = tasks;
+    $scope.$apply();
   });
   db.find('overdue', (tasks) => {
     $scope.overdueTasks = tasks;
+    $scope.$apply();
   });
 };
 

@@ -64,6 +64,7 @@ const ideaControl = function ideaControl($scope, $mdDialog, $mdToast, db) {
 
   db.findIdeas((ideas) => {
     $scope.ideas = ideas;
+    $scope.$apply();
   });
 };
 
