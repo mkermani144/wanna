@@ -66,6 +66,7 @@ angular.module('MainApp')
       .then((idea) => {
         db.insertIdea(idea, (err) => {
           if (!err) {
+            $rootScope.$broadcast('Update ideas');
             $mdToast.show(
               $mdToast.simple()
               .textContent('Idea added.')

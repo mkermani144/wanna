@@ -61,7 +61,11 @@ const ideaControl = function ideaControl($scope, $mdDialog, $mdToast, db) {
       });
     });
   };
-
+  $scope.$on('Update ideas', () => {
+    db.findIdeas((ideas) => {
+      $scope.ideas = ideas;
+    });
+  });
   db.findIdeas((ideas) => {
     $scope.ideas = ideas;
     $scope.$apply();
