@@ -213,6 +213,25 @@ function remove(taskId, cb) {
 }
 
 /**
+ * Remove an idea from database
+ * @param  {number}   ideaId idea id
+ * @param  {Function} cb     callback
+ * @return {undefined}
+ */
+function removeIdea(ideaId, cb) {
+  db.ideas.remove({
+    _id: ideaId,
+  }, {}, (err) => {
+    if (err) {
+      ipc.send('remove-error', err);
+      cb(err);
+    } else {
+      cb();
+    }
+  });
+}
+
+/**
  * Edit a task in database
  * @param  {number}   taskId  task id
  * @param  {string}   newText new task text
@@ -245,6 +264,7 @@ angular.module('MainApp')
       findIdeas,
       markAsDone,
       remove,
+      removeIdea,
       edit,
     };
     return ret;

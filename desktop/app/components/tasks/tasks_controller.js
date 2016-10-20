@@ -12,23 +12,27 @@ const taskControl = function taksControl($scope, $mdDialog, $mdToast, db) {
   $scope.delete = false;
 
   $scope.markAsDone = (taskId) => {
-    db.markAsDone(taskId, () => {
-      $mdToast.show(
-        $mdToast.simple()
-        .textContent('Task done.')
-        .position('bottom start')
-        .hideDelay(1000)
-      );
+    db.markAsDone(taskId, (err) => {
+      if (!err) {
+        $mdToast.show(
+          $mdToast.simple()
+          .textContent('Task done.')
+          .position('bottom start')
+          .hideDelay(1000)
+        );
+      }
     });
   };
   $scope.remove = (taskId) => {
-    db.remove(taskId, () => {
-      $mdToast.show(
-        $mdToast.simple()
-        .textContent('Task deleted.')
-        .position('bottom start')
-        .hideDelay(1000)
-      );
+    db.remove(taskId, (err) => {
+      if (!err) {
+        $mdToast.show(
+          $mdToast.simple()
+          .textContent('Task deleted.')
+          .position('bottom start')
+          .hideDelay(1000)
+        );
+      }
     });
   };
 

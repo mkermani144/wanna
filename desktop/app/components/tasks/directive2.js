@@ -2,7 +2,7 @@
  * Used for saving id of the task whose status
  * is going to become 1.
  *
- * Cast on mark-as-done icon buttons
+ * Cast on mark-as-done, edit and delete icon buttons
  */
 angular.module('MainApp')
 .directive('setcurrent', () =>
