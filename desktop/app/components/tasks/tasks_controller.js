@@ -59,21 +59,24 @@ const taskControl = function taksControl($scope, $mdDialog, $mdToast, db) {
       clickOutsideToClose: true,
     })
     .then((task) => {
-      db.edit(cur._id, task);
-      db.find('open', (tasks) => {
-        $scope.openTasks = tasks;
-        $scope.$apply();
+      db.edit(cur._id, task, (err) => {
+        if (!err) {
+          db.find('open', (tasks) => {
+            $scope.openTasks = tasks;
+            $scope.$apply();
+          });
+          db.find('overdue', (tasks) => {
+            $scope.overdueTasks = tasks;
+            $scope.$apply();
+          });
+          $mdToast.show(
+            $mdToast.simple()
+            .textContent('Task edited.')
+            .position('bottom start')
+            .hideDelay(1000)
+          );
+        }
       });
-      db.find('overdue', (tasks) => {
-        $scope.overdueTasks = tasks;
-        $scope.$apply();
-      });
-      $mdToast.show(
-        $mdToast.simple()
-        .textContent('Task edited.')
-        .position('bottom start')
-        .hideDelay(1000)
-      );
     });
   };
   $scope.$on('Update tasks', () => {

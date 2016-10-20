@@ -45,17 +45,20 @@ const ideaControl = function ideaControl($scope, $mdDialog, $mdToast, db) {
       clickOutsideToClose: true,
     })
     .then((idea) => {
-      db.editIdea(cur._id, idea);
-      db.findIdeas((ideas) => {
-        $scope.ideas = ideas;
-        $scope.$apply();
+      db.editIdea(cur._id, idea, (err) => {
+        if (!err) {
+          db.findIdeas((ideas) => {
+            $scope.ideas = ideas;
+            $scope.$apply();
+          });
+          $mdToast.show(
+            $mdToast.simple()
+            .textContent('Idea edited.')
+            .position('bottom start')
+            .hideDelay(1000)
+          );
+        }
       });
-      $mdToast.show(
-        $mdToast.simple()
-        .textContent('Idea edited.')
-        .position('bottom start')
-        .hideDelay(1000)
-      );
     });
   };
 
