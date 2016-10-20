@@ -255,6 +255,30 @@ function edit(taskId, newText, cb) {
   });
 }
 
+/**
+ * Edit an idea in database
+ * @param  {number}   ideaId  idea id
+ * @param  {string}   newText new idea text
+ * @param  {Function} cb      callback
+ * @return {undefined}
+ */
+function editIdea(ideaId, newIdea, cb) {
+  db.ideas.update({
+    _id: ideaId,
+  }, {
+    $set: {
+      idea: newIdea,
+    },
+  }, {}, (err) => {
+    if (err) {
+      ipc.send('update-error', err);
+      cb(err);
+    } else {
+      cb();
+    }
+  });
+}
+
 angular.module('MainApp')
   .factory('db', () => {
     const ret = {
@@ -266,6 +290,7 @@ angular.module('MainApp')
       remove,
       removeIdea,
       edit,
+      editIdea,
     };
     return ret;
   });
