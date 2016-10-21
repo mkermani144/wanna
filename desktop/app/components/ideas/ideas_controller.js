@@ -22,7 +22,7 @@ const ideaControl = function ideaControl($scope, $mdDialog, $mdToast, db) {
     });
   };
 
-  function DialogController($scope, idea) {
+  function EditDialogController($scope, idea) {
     $scope.idea = idea;
     $scope.cancel = function cancel() {
       $mdDialog.cancel();
@@ -35,7 +35,7 @@ const ideaControl = function ideaControl($scope, $mdDialog, $mdToast, db) {
   }
   $scope.edit = (ev, cur) => {
     $mdDialog.show({
-      controller: DialogController,
+      controller: EditDialogController,
       locals: {
         idea: cur.idea,
       },
@@ -59,6 +59,44 @@ const ideaControl = function ideaControl($scope, $mdDialog, $mdToast, db) {
           );
         }
       });
+    });
+  };
+
+  function SplitDialogController($scope) {
+    $scope.tasks = [];
+    $scope.numOfTasks = 1;
+    $scope.cancel = function cancel() {
+      $mdDialog.cancel();
+    };
+    $scope.split = function update(splittedTasks, numOfTasks) {
+      if (splittedTasks.length === numOfTasks) {
+        $mdDialog.hide(splittedTasks);
+      }
+    };
+  }
+  $scope.split = (ev) => {
+    $mdDialog.show({
+      controller: SplitDialogController,
+      templateUrl: 'app/components/ideas/templates/splitIdeaDialog.html',
+      parent: angular.element(document.body),
+      targetEvent: ev,
+      clickOutsideToClose: true,
+    })
+    .then((tasks) => {
+      // db.editIdea(cur._id, idea, (err) => {
+      //   if (!err) {
+      //     db.findIdeas((ideas) => {
+      //       $scope.ideas = ideas;
+      //       $scope.$apply();
+      //     });
+      //     $mdToast.show(
+      //       $mdToast.simple()
+      //       .textContent('Idea edited.')
+      //       .position('bottom start')
+      //       .hideDelay(1000)
+      //     );
+      //   }
+      // });
     });
   };
   $scope.$on('Update ideas', () => {
