@@ -3,7 +3,7 @@
  * @param  {array} array
  * @return {array}
  */
-function shuffle(array) {
+function shuffle(...array) {
   let currentIndex = array.length;
   let temporaryValue;
   let randomIndex;

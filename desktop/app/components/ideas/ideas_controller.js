@@ -5,6 +5,8 @@ eslint no-shadow: ["error", { "allow": ["$scope"] }]
 eslint no-underscore-dangle: ["error", { "allow": ["_id",] }]
 */
 
+const shuffle = require('./app/components/ideas/shuffle');
+
 const ideaControl = function ideaControl($scope, $rootScope, $mdDialog, $mdToast, db) {
   $scope.isShown = true;
   $scope.current = undefined;
@@ -107,25 +109,46 @@ const ideaControl = function ideaControl($scope, $rootScope, $mdDialog, $mdToast
     });
   };
 
-  function RandomDialogController($scope) {
+  function RandomDialogController($scope, left, right) {
+    $scope.left = left;
+    $scope.right = right;
     $scope.cancel = function cancel() {
       $mdDialog.cancel();
     };
-    $scope.split = function update() {
-      console.log(left, right);
+    $scope.split = function update(choice) {
+      $mdDialog.hide(choice);
     };
   }
   $scope.random = (ev) => {
-    $mdDialog.show({
-      controller: RandomDialogController,
-      templateUrl: 'app/components/ideas/templates/randomIdeaDialog.html',
-      parent: angular.element(document.body),
-      targetEvent: ev,
-      clickOutsideToClose: true,
-    })
-    .then((choice) => {
-      console.log(choice);
-    });
+    if ($scope.ideas.length < 5) {
+      $mdDialog.show(
+        $mdDialog.alert()
+          .parent(angular.element(document.body))
+          .clickOutsideToClose(true)
+          .title('Insufficient ideas')
+          .textContent('You should have at least 5 ideas to get random ones.')
+          .ariaLabel('Insufficient ideas alert')
+          .ok('Got it!')
+          .targetEvent(ev)
+      );
+    } else {
+      const ideasShuffled = shuffle(...$scope.ideas);
+      $mdDialog.show({
+        controller: RandomDialogController,
+        templateUrl: 'app/components/ideas/templates/randomIdeaDialog.html',
+        locals: {
+          left: ideasShuffled[0],
+          right: ideasShuffled[1],
+        },
+        parent: angular.element(document.body),
+        targetEvent: ev,
+        clickOutsideToClose: true,
+      })
+      .then((choice) => {
+        $scope.current = choice;
+        $scope.split(null, $scope.current);
+      });
+    }
   };
 
   $scope.$on('Update ideas', () => {

@@ -3,16 +3,16 @@
   <md-dialog-content layout="row">
     <div md-colors="{ backgroundColor: 'blue' }" layout="column" layout-align="center center" flex="50">
       <h4>
-        Lorem ipsum dolor sit amet
+        {{left.idea}}
       </h4>
-      <md-button md-colors="{ color: 'blue' }" class="md-raised" ng-click="null">Choose me</md-button>
+      <md-button md-colors="{ color: 'blue' }" class="md-raised" ng-click="split(left)">Choose me</md-button>
       <br>
     </div>
     <div md-colors="{ backgroundColor: 'deep-orange' }" layout="column" layout-align="center center" flex="50">
       <h4>
-        Lorem ipsum dolor sit amet
+        {{right.idea}}
       </h4>
-      <md-button md-colors="{ color: 'deep-orange' }" class="md-raised" ng-click="null">Choose me</md-button>
+      <md-button md-colors="{ color: 'deep-orange' }" class="md-raised" ng-click="split(right)">Choose me</md-button>
       <br>
     </div>
   </md-dialog-content>
