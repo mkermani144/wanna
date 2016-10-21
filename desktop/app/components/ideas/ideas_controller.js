@@ -106,6 +106,28 @@ const ideaControl = function ideaControl($scope, $rootScope, $mdDialog, $mdToast
       }
     });
   };
+
+  function RandomDialogController($scope) {
+    $scope.cancel = function cancel() {
+      $mdDialog.cancel();
+    };
+    $scope.split = function update() {
+      console.log(left, right);
+    };
+  }
+  $scope.random = (ev) => {
+    $mdDialog.show({
+      controller: RandomDialogController,
+      templateUrl: 'app/components/ideas/templates/randomIdeaDialog.html',
+      parent: angular.element(document.body),
+      targetEvent: ev,
+      clickOutsideToClose: true,
+    })
+    .then((choice) => {
+      console.log(choice);
+    });
+  };
+
   $scope.$on('Update ideas', () => {
     db.findIdeas((ideas) => {
       $scope.ideas = ideas;

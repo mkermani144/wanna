@@ -1,6 +1,6 @@
 <md-list id="idea-list" flex>
   <div layout="row" layout-align="center">
-    <md-button class="md-raised md-warn">random</md-button>
+    <md-button class="md-raised md-warn" ng-click="random($event)">random</md-button>
   </div>
   <md-list-item class="cur-d" ng-class="{'delete': delete}" ng-repeat="idea in ideas" ng-show="isShown" uafi="{{$index}}">
     <div class="md-list-item-text">
