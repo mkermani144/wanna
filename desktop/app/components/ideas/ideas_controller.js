@@ -74,7 +74,7 @@ const ideaControl = function ideaControl($scope, $rootScope, $mdDialog, $mdToast
       }
     };
   }
-  $scope.split = (ev) => {
+  $scope.split = (ev, cur) => {
     $mdDialog.show({
       controller: SplitDialogController,
       templateUrl: 'app/components/ideas/templates/splitIdeaDialog.html',
@@ -92,12 +92,17 @@ const ideaControl = function ideaControl($scope, $rootScope, $mdDialog, $mdToast
         });
       });
       if (!hasErr) {
-        $rootScope.$broadcast('Update tasks');
-        $mdToast.show(
-          $mdToast.simple()
-          .textContent('Idea splitted into tasks.')
-          .position('bottom start')
-        );
+        db.removeIdea(cur._id, (err) => {
+          if (!err) {
+            $rootScope.$broadcast('Update tasks');
+            $rootScope.$broadcast('Update ideas');
+            $mdToast.show(
+              $mdToast.simple()
+              .textContent('Idea splitted into tasks.')
+              .position('bottom start')
+            );
+          }
+        });
       }
     });
   };
