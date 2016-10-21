@@ -64,7 +64,8 @@ const ideaControl = function ideaControl($scope, $rootScope, $mdDialog, $mdToast
     });
   };
 
-  function SplitDialogController($scope) {
+  function SplitDialogController($scope, cur) {
+    $scope.cur = cur;
     $scope.tasks = [];
     $scope.numOfTasks = 1;
     $scope.cancel = function cancel() {
@@ -80,6 +81,9 @@ const ideaControl = function ideaControl($scope, $rootScope, $mdDialog, $mdToast
     $mdDialog.show({
       controller: SplitDialogController,
       templateUrl: 'app/components/ideas/templates/splitIdeaDialog.html',
+      locals: {
+        cur: $scope.current,
+      },
       parent: angular.element(document.body),
       targetEvent: ev,
       clickOutsideToClose: true,
