@@ -5,7 +5,7 @@ eslint no-shadow: ["error", { "allow": ["$scope"] }]
 eslint no-underscore-dangle: ["error", { "allow": ["_id",] }]
 */
 
-const ideaControl = function ideaControl($scope, $mdDialog, $mdToast, db) {
+const ideaControl = function ideaControl($scope, $rootScope, $mdDialog, $mdToast, db) {
   $scope.isShown = true;
   $scope.current = undefined;
 
@@ -83,20 +83,22 @@ const ideaControl = function ideaControl($scope, $mdDialog, $mdToast, db) {
       clickOutsideToClose: true,
     })
     .then((tasks) => {
-      // db.editIdea(cur._id, idea, (err) => {
-      //   if (!err) {
-      //     db.findIdeas((ideas) => {
-      //       $scope.ideas = ideas;
-      //       $scope.$apply();
-      //     });
-      //     $mdToast.show(
-      //       $mdToast.simple()
-      //       .textContent('Idea edited.')
-      //       .position('bottom start')
-      //       .hideDelay(1000)
-      //     );
-      //   }
-      // });
+      let hasErr = false;
+      tasks.forEach((task) => {
+        db.insert(task, (err) => {
+          if (err) {
+            hasErr = true;
+          }
+        });
+      });
+      if (!hasErr) {
+        $rootScope.$broadcast('Update tasks');
+        $mdToast.show(
+          $mdToast.simple()
+          .textContent('Idea splitted into tasks.')
+          .position('bottom start')
+        );
+      }
     });
   };
   $scope.$on('Update ideas', () => {
