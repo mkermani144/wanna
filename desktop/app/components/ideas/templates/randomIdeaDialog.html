@@ -2,16 +2,20 @@
 
   <md-dialog-content layout="row">
     <div md-colors="{ backgroundColor: 'blue' }" layout="column" layout-align="center center" flex="50">
-      <h4>
-        {{left.idea}}
-      </h4>
+      <div layout="column" layout-align="center center" flex>
+        <h4 class="align-center" flex="15">
+          {{left.idea}}
+        </h4>
+      </div>
       <md-button md-colors="{ color: 'blue' }" class="md-raised" ng-click="convert(left)">Choose me</md-button>
       <br>
     </div>
     <div md-colors="{ backgroundColor: 'deep-orange' }" layout="column" layout-align="center center" flex="50">
-      <h4>
-        {{right.idea}}
-      </h4>
+      <div layout="column" layout-align="center center" flex>
+        <h4 class="align-center" flex="15">
+          {{right.idea}}
+        </h4>
+      </div>
       <md-button md-colors="{ color: 'deep-orange' }" class="md-raised" ng-click="convert(right)">Choose me</md-button>
       <br>
     </div>
