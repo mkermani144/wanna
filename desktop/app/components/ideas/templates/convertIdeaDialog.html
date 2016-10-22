@@ -1,12 +1,13 @@
 <md-dialog flex="60">
-  <form name="splitForm" ng-cloak>
+  <form name="convertForm" ng-cloak>
     <md-toolbar class="md-toolbar-tools" md-colors="{ backgroundColor: 'green' }">
       <div>
-        <h2>Splitting "{{cur.idea}}"</h2>
+        <h2>Converting idea</h2>
       </div>
     </md-toolbar>
     <md-dialog-content>
       <div class="md-dialog-content" layout="column">
+        <h5>Converting idea: {{cur.idea}}</h5>
         <md-input-container>
           <label>Number of tasks</label>
           <md-select ng-model="numOfTasks">
@@ -15,10 +16,10 @@
             </md-option>
           </md-select>
         </md-input-container>
-        <md-input-container ng-show="0 < numOfTasks" md-is-error="splitForm.task1.$invalid && splitForm.$submitted" flex>
+        <md-input-container ng-show="0 < numOfTasks" md-is-error="convertForm.task1.$invalid && convertForm.$submitted" flex>
           <label>Task 1</label>
           <input aria-label="task1" md-colors="{ borderColor: 'green' }" name="task1" ng-model="tasks[0]" ng-pattern="/.+ @[1-9]\d*[dwmDWM]?(\+(\d+)([dwmDWM]?))?\s?(!){0,2}\s?(~[1-9]\d*[hHmM]?)(\s?ev[1-9]\d*[dwmDWM]?)?$/" ng-required="0 < numOfTasks" md-no-asterisk>
-          <div ng-messages="splitForm.task1.$error">
+          <div ng-messages="convertForm.task1.$error">
             <div ng-message="pattern">
               Task should be in the form of "text @period ~units"
             </div>
@@ -27,10 +28,10 @@
             </div>
           </div>
         </md-input-container>
-        <md-input-container ng-show="1 < numOfTasks" md-is-error="splitForm.task2.$invalid && splitForm.$submitted" flex>
+        <md-input-container ng-show="1 < numOfTasks" md-is-error="convertForm.task2.$invalid && convertForm.$submitted" flex>
           <label>Task 2</label>
           <input aria-label="task2" md-colors="{ borderColor: 'green' }" name="task2" ng-model="tasks[1]" ng-pattern="/.+ @[1-9]\d*[dwmDWM]?(\+(\d+)([dwmDWM]?))?\s?(!){0,2}\s?(~[1-9]\d*[hHmM]?)(\s?ev[1-9]\d*[dwmDWM]?)?$/" ng-required="1 < numOfTasks" md-no-asterisk>
-          <div ng-messages="splitForm.task2.$error">
+          <div ng-messages="convertForm.task2.$error">
             <div ng-message="pattern">
               Task should be in the form of "text @period ~units"
             </div>
@@ -39,10 +40,10 @@
             </div>
           </div>
         </md-input-container>
-        <md-input-container ng-show="2 < numOfTasks" md-is-error="splitForm.task3.$invalid && splitForm.$submitted" flex>
+        <md-input-container ng-show="2 < numOfTasks" md-is-error="convertForm.task3.$invalid && convertForm.$submitted" flex>
           <label>Task 3</label>
           <input aria-label="task3" md-colors="{ borderColor: 'green' }" name="task3" ng-model="tasks[2]" ng-pattern="/.+ @[1-9]\d*[dwmDWM]?(\+(\d+)([dwmDWM]?))?\s?(!){0,2}\s?(~[1-9]\d*[hHmM]?)(\s?ev[1-9]\d*[dwmDWM]?)?$/" ng-required="2 < numOfTasks" md-no-asterisk>
-          <div ng-messages="splitForm.task3.$error">
+          <div ng-messages="convertForm.task3.$error">
             <div ng-message="pattern">
               Task should be in the form of "text @period ~units"
             </div>
@@ -51,10 +52,10 @@
             </div>
           </div>
         </md-input-container>
-        <md-input-container ng-show="3 < numOfTasks" md-is-error="splitForm.task4.$invalid && splitForm.$submitted" flex>
+        <md-input-container ng-show="3 < numOfTasks" md-is-error="convertForm.task4.$invalid && convertForm.$submitted" flex>
           <label>Task 4</label>
           <input aria-label="task4" md-colors="{ borderColor: 'green' }" name="task4" ng-model="tasks[3]" ng-pattern="/.+ @[1-9]\d*[dwmDWM]?(\+(\d+)([dwmDWM]?))?\s?(!){0,2}\s?(~[1-9]\d*[hHmM]?)(\s?ev[1-9]\d*[dwmDWM]?)?$/" ng-required="3 < numOfTasks" md-no-asterisk>
-          <div ng-messages="splitForm.task4.$error">
+          <div ng-messages="convertForm.task4.$error">
             <div ng-message="pattern">
               Task should be in the form of "text @period ~units"
             </div>
@@ -63,10 +64,10 @@
             </div>
           </div>
         </md-input-container>
-        <md-input-container ng-show="4 < numOfTasks" md-is-error="splitForm.task5.$invalid && splitForm.$submitted" flex>
+        <md-input-container ng-show="4 < numOfTasks" md-is-error="convertForm.task5.$invalid && convertForm.$submitted" flex>
           <label>Task 5</label>
           <input aria-label="task5" md-colors="{ borderColor: 'green' }" name="task5" ng-model="tasks[4]" ng-pattern="/.+ @[1-9]\d*[dwmDWM]?(\+(\d+)([dwmDWM]?))?\s?(!){0,2}\s?(~[1-9]\d*[hHmM]?)(\s?ev[1-9]\d*[dwmDWM]?)?$/" ng-required="4 < numOfTasks" md-no-asterisk>
-          <div ng-messages="splitForm.task5.$error">
+          <div ng-messages="convertForm.task5.$error">
             <div ng-message="pattern">
               Task should be in the form of "text @period ~units"
             </div>
@@ -75,10 +76,10 @@
             </div>
           </div>
         </md-input-container>
-        <md-input-container ng-show="5 < numOfTasks" md-is-error="splitForm.task6.$invalid && splitForm.$submitted" flex>
+        <md-input-container ng-show="5 < numOfTasks" md-is-error="convertForm.task6.$invalid && convertForm.$submitted" flex>
           <label>Task 6</label>
           <input aria-label="task6" md-colors="{ borderColor: 'green' }" name="task6" ng-model="tasks[5]" ng-pattern="/.+ @[1-9]\d*[dwmDWM]?(\+(\d+)([dwmDWM]?))?\s?(!){0,2}\s?(~[1-9]\d*[hHmM]?)(\s?ev[1-9]\d*[dwmDWM]?)?$/" ng-required="5 < numOfTasks" md-no-asterisk>
-          <div ng-messages="splitForm.task6.$error">
+          <div ng-messages="convertForm.task6.$error">
             <div ng-message="pattern">
               Task should be in the form of "text @period ~units"
             </div>
@@ -87,10 +88,10 @@
             </div>
           </div>
         </md-input-container>
-        <md-input-container ng-show="6 < numOfTasks" md-is-error="splitForm.task7.$invalid && splitForm.$submitted" flex>
+        <md-input-container ng-show="6 < numOfTasks" md-is-error="convertForm.task7.$invalid && convertForm.$submitted" flex>
           <label>Task 7</label>
           <input aria-label="task7" md-colors="{ borderColor: 'green' }" name="task7" ng-model="tasks[6]" ng-pattern="/.+ @[1-9]\d*[dwmDWM]?(\+(\d+)([dwmDWM]?))?\s?(!){0,2}\s?(~[1-9]\d*[hHmM]?)(\s?ev[1-9]\d*[dwmDWM]?)?$/" ng-required="6 < numOfTasks" md-no-asterisk>
-          <div ng-messages="splitForm.task7.$error">
+          <div ng-messages="convertForm.task7.$error">
             <div ng-message="pattern">
               Task should be in the form of "text @period ~units"
             </div>
@@ -99,10 +100,10 @@
             </div>
           </div>
         </md-input-container>
-        <md-input-container ng-show="7 < numOfTasks" md-is-error="splitForm.task8.$invalid && splitForm.$submitted" flex>
+        <md-input-container ng-show="7 < numOfTasks" md-is-error="convertForm.task8.$invalid && convertForm.$submitted" flex>
           <label>Task 8</label>
           <input aria-label="task8" md-colors="{ borderColor: 'green' }" name="task8" ng-model="tasks[7]" ng-pattern="/.+ @[1-9]\d*[dwmDWM]?(\+(\d+)([dwmDWM]?))?\s?(!){0,2}\s?(~[1-9]\d*[hHmM]?)(\s?ev[1-9]\d*[dwmDWM]?)?$/" ng-required="7 < numOfTasks" md-no-asterisk>
-          <div ng-messages="splitForm.task8.$error">
+          <div ng-messages="convertForm.task8.$error">
             <div ng-message="pattern">
               Task should be in the form of "text @period ~units"
             </div>
@@ -111,10 +112,10 @@
             </div>
           </div>
         </md-input-container>
-        <md-input-container ng-show="8 < numOfTasks" md-is-error="splitForm.task9.$invalid && splitForm.$submitted" flex>
+        <md-input-container ng-show="8 < numOfTasks" md-is-error="convertForm.task9.$invalid && convertForm.$submitted" flex>
           <label>Task 9</label>
           <input aria-label="task9" md-colors="{ borderColor: 'green' }" name="task9" ng-model="tasks[8]" ng-pattern="/.+ @[1-9]\d*[dwmDWM]?(\+(\d+)([dwmDWM]?))?\s?(!){0,2}\s?(~[1-9]\d*[hHmM]?)(\s?ev[1-9]\d*[dwmDWM]?)?$/" ng-required="8 < numOfTasks" md-no-asterisk>
-          <div ng-messages="splitForm.task9.$error">
+          <div ng-messages="convertForm.task9.$error">
             <div ng-message="pattern">
               Task should be in the form of "text @period ~units"
             </div>
@@ -127,8 +128,8 @@
     </md-dialog-content>
     <md-dialog-actions layout="row">
       <span flex></span>
-      <md-button type="submit" ng-click="split(tasks, numOfTasks)">
-        Split
+      <md-button type="submit" ng-click="convert(tasks, numOfTasks)">
+        Convert
       </md-button>
       <md-button ng-click="cancel()">
         Cancel

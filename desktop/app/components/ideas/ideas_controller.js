@@ -68,25 +68,25 @@ const ideaControl = function ideaControl($scope, $rootScope, $mdDialog, $mdToast
     });
   };
 
-  function SplitDialogController($scope, cur) {
+  function ConvertDialogController($scope, cur) {
     $scope.cur = cur;
     $scope.tasks = [];
     $scope.numOfTasks = 1;
     $scope.cancel = function cancel() {
       $mdDialog.cancel();
     };
-    $scope.split = function update(splittedTasks, numOfTasks) {
-      if (splittedTasks.length === numOfTasks) {
-        $mdDialog.hide(splittedTasks);
+    $scope.convert = function update(convertedTasks, numOfTasks) {
+      if (convertedTasks.length === numOfTasks) {
+        $mdDialog.hide(convertedTasks);
       }
     };
   }
-  $scope.split = (ev, cur) => {
+  $scope.convert = (ev, cur) => {
     $mdDialog.show({
-      controller: SplitDialogController,
-      templateUrl: 'app/components/ideas/templates/splitIdeaDialog.html',
+      controller: ConvertDialogController,
+      templateUrl: 'app/components/ideas/templates/convertIdeaDialog.html',
       locals: {
-        cur: $scope.current,
+        cur,
       },
       parent: angular.element(document.body),
       targetEvent: ev,
@@ -111,7 +111,7 @@ const ideaControl = function ideaControl($scope, $rootScope, $mdDialog, $mdToast
             });
             $mdToast.show(
               $mdToast.simple()
-              .textContent('Idea splitted into tasks.')
+              .textContent('Idea converted to tasks.')
               .position('bottom start')
             );
           }
@@ -126,7 +126,7 @@ const ideaControl = function ideaControl($scope, $rootScope, $mdDialog, $mdToast
     $scope.cancel = function cancel() {
       $mdDialog.cancel();
     };
-    $scope.split = function update(choice) {
+    $scope.convert = function update(choice) {
       $mdDialog.hide(choice);
     };
   }
@@ -157,7 +157,7 @@ const ideaControl = function ideaControl($scope, $rootScope, $mdDialog, $mdToast
       })
       .then((choice) => {
         $scope.current = choice;
-        $scope.split(null, $scope.current);
+        $scope.convert(null, $scope.current);
       });
     }
   };
