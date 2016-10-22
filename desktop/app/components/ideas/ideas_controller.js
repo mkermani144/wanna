@@ -14,6 +14,10 @@ const ideaControl = function ideaControl($scope, $rootScope, $mdDialog, $mdToast
   $scope.remove = (idea) => {
     db.removeIdea(idea, (err) => {
       if (!err) {
+        db.findIdeas((ideas) => {
+          $scope.ideas = ideas;
+          $scope.$apply();
+        });
         $mdToast.show(
           $mdToast.simple()
           .textContent('Idea deleted.')
@@ -101,7 +105,10 @@ const ideaControl = function ideaControl($scope, $rootScope, $mdDialog, $mdToast
         db.removeIdea(cur._id, (err) => {
           if (!err) {
             $rootScope.$broadcast('Update tasks');
-            $rootScope.$broadcast('Update ideas');
+            db.findIdeas((ideas) => {
+              $scope.ideas = ideas;
+              $scope.$apply();
+            });
             $mdToast.show(
               $mdToast.simple()
               .textContent('Idea splitted into tasks.')
