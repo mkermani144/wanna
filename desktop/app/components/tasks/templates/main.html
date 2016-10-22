@@ -1,6 +1,6 @@
 <md-list id="task-list" flex>
   <md-subheader class="md-warn cur-d" md-ink-ripple>Overdue</md-subheader>
-  <md-list-item class="cur-d" ng-class="{'do': do, 'delete': delete}" ng-repeat="task in overdueTasks" ng-show="isShown" uafo="{{$index}}">
+  <md-list-item class="cur-d" ng-class="{'do': do, 'delete': delete}" ng-repeat="task in overdueTasks" ng-show="isShown" uafo="{{::$index}}">
     <div class="md-list-item-text">
       <div>
 
@@ -22,7 +22,7 @@
   </md-list-item>
   <md-divider></md-divider>
   <md-subheader class="md-primary cur-d" md-ink-ripple>Open</md-subheader>
-  <md-list-item class="cur-d" ng-class="{'do': do, 'delete': delete}" ng-repeat="task in openTasks" ng-show="isShown" uaf="{{$index}}">
+  <md-list-item class="cur-d" ng-class="{'do': do, 'delete': delete}" ng-repeat="task in openTasks" ng-show="isShown" uaf="{{::$index}}">
     <div class="md-list-item-text">
       <div>
 
