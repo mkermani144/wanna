@@ -2,7 +2,7 @@ wanna [![Build Status](https://travis-ci.org/mkermani144/wanna.svg?branch=master
 ====
 
 
-**_Latest (16 Oct 2016) app look in a thousand of words:_** :sunglasses::sunglasses:
+**_Latest (22 Oct 2016) app look in a thousand of words:_** :sunglasses::sunglasses:
 
 ![alt img](current.gif)
 
@@ -38,7 +38,7 @@ Ideas and features to be developed (sorted based on importance):
 - [X] Time consumption estimation
 - [X] Sidenav
 - [X] Recurring tasks
-- [ ] Idea bank
+- [X] Idea bank
 - [ ] One-day tasks
 - [ ] App icon
 - [ ] Help pages
