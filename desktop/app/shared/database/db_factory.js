@@ -2,7 +2,9 @@ const { ipcRenderer: ipc } = require('electron');
 const parse = require('./app/shared/database/parse');
 const crypto = require('crypto');
 const Datastore = require('nedb');
-const db = new Datastore({
+
+const db = {};
+db.tasks = new Datastore({
   filename: `${__dirname}/tasks.db`,
   afterSerialization: (object) => {
     const cipher = crypto.createCipher('aes256', 'sample-key');
@@ -14,17 +16,46 @@ const db = new Datastore({
   },
   autoload: true,
 });
+db.ideas = new Datastore({
+  filename: `${__dirname}/ideas.db`,
+  afterSerialization: (object) => {
+    const cipher = crypto.createCipher('aes256', 'sample-key2');
+    return (cipher.update(object, 'utf8', 'hex') + cipher.final('hex'));
+  },
+  beforeDeserialization: (object) => {
+    const decipher = crypto.createDecipher('aes256', 'sample-key2');
+    return (decipher.update(object, 'hex', 'utf8') + decipher.final('utf8'));
+  },
+  autoload: true,
+});
+
 
 /**
  * Get a query, parse it and add it to
  * database
  * @param  {string}   query task query
- * @param  {Function} cb  callback
+ * @param  {Function} cb    callback
  * @return {undefined}
  */
 function insert(query, cb) {
   const taskObj = parse(query);
-  db.insert(taskObj, (err) => {
+  db.tasks.insert(taskObj, (err) => {
+    if (err) {
+      ipc.send('insert-error', err);
+    } else {
+      cb();
+    }
+  });
+}
+
+/**
+ * Get an idea and add it to database
+ * @param  {string}   idea idea
+ * @param  {Function} cb   callback
+ * @return {undefined}
+ */
+function insertIdea(idea, cb) {
+  db.ideas.insert({ idea }, (err) => {
     if (err) {
       ipc.send('insert-error', err);
       cb(err);
@@ -45,7 +76,7 @@ function find(type, cb) {
   const now = Date.now();
   switch (type) {
   case 'open':
-    db.find({
+    db.tasks.find({
       $and: [{ start: { $lt: now } },
             { end: { $gt: now } },
             { status: 0 },
@@ -72,7 +103,7 @@ function find(type, cb) {
         });
     break;
   case 'overdue':
-    db.find({
+    db.tasks.find({
       $and: [{ end: { $lt: now } },
             { status: 0 },
           ],
@@ -100,6 +131,20 @@ function find(type, cb) {
   default:
   }
 }
+/**
+ * Find ideas
+ * @param  {Function} cb   callback
+ * @return {undefined}
+ */
+function findIdeas(cb) {
+  db.ideas.find({}, { idea: 1 }, (err, ideas) => {
+    if (err) {
+      ipc.send('find-error', err);
+    } else {
+      cb(Object.keys(ideas).map(key => ideas[key]));
+    }
+  });
+}
 
 /**
  * Mark a task as done in the database
@@ -108,7 +153,7 @@ function find(type, cb) {
  * @return {undefined}
  */
 function markAsDone(taskId, cb) {
-  db.find(
+  db.tasks.find(
     { _id: taskId },
     { start: 1, end: 1, period: 1 },
     (err, tasks) => {
@@ -118,7 +163,7 @@ function markAsDone(taskId, cb) {
       } else {
         const { start, end, period } = tasks[0];
         if (period === -1) {
-          db.update({
+          db.tasks.update({
             _id: taskId,
           }, { $set: {
             status: 1,
@@ -130,7 +175,7 @@ function markAsDone(taskId, cb) {
             }
           });
         } else {
-          db.update({
+          db.tasks.update({
             _id: taskId,
           }, { $set: {
             start: start + period,
@@ -155,8 +200,27 @@ function markAsDone(taskId, cb) {
  * @return {undefined}
  */
 function remove(taskId, cb) {
-  db.remove({
+  db.tasks.remove({
     _id: taskId,
+  }, {}, (err) => {
+    if (err) {
+      ipc.send('remove-error', err);
+      cb(err);
+    } else {
+      cb();
+    }
+  });
+}
+
+/**
+ * Remove an idea from database
+ * @param  {number}   ideaId idea id
+ * @param  {Function} cb     callback
+ * @return {undefined}
+ */
+function removeIdea(ideaId, cb) {
+  db.ideas.remove({
+    _id: ideaId,
   }, {}, (err) => {
     if (err) {
       ipc.send('remove-error', err);
@@ -175,7 +239,7 @@ function remove(taskId, cb) {
  * @return {undefined}
  */
 function edit(taskId, newText, cb) {
-  db.update({
+  db.tasks.update({
     _id: taskId,
   }, {
     $set: {
@@ -191,14 +255,42 @@ function edit(taskId, newText, cb) {
   });
 }
 
+/**
+ * Edit an idea in database
+ * @param  {number}   ideaId  idea id
+ * @param  {string}   newText new idea text
+ * @param  {Function} cb      callback
+ * @return {undefined}
+ */
+function editIdea(ideaId, newIdea, cb) {
+  db.ideas.update({
+    _id: ideaId,
+  }, {
+    $set: {
+      idea: newIdea,
+    },
+  }, {}, (err) => {
+    if (err) {
+      ipc.send('update-error', err);
+      cb(err);
+    } else {
+      cb();
+    }
+  });
+}
+
 angular.module('MainApp')
   .factory('db', () => {
     const ret = {
       insert,
+      insertIdea,
       find,
+      findIdeas,
       markAsDone,
       remove,
+      removeIdea,
       edit,
+      editIdea,
     };
     return ret;
   });

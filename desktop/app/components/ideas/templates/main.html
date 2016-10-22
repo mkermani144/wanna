@@ -1,0 +1,25 @@
+<md-list id="idea-list" flex>
+  <div layout="row" layout-align="center">
+    <md-button class="md-raised md-warn" ng-click="random($event)">random</md-button>
+  </div>
+  <md-list-item class="cur-d" ng-class="{'delete': delete}" ng-repeat="idea in ideas" ng-show="isShown" uafi="{{$index}}">
+    <div class="md-list-item-text">
+      <div>
+
+      </div>
+    </div>
+    <md-button class="md-primary md-secondary md-icon-button" ng-click="convert($event, current)" setcurrenti>
+      <md-tooltip md-direction="top" md-visible="false">Convert to tasks</md-tooltip>
+      <md-icon md-svg-src="assets/img/fork.svg"></md-icon>
+    </md-button>
+    <md-button class="md-secondary md-icon-button" ng-click="edit($event, current)" setcurrenti>
+      <md-tooltip md-direction="top" md-visible="false">Edit</md-tooltip>
+      <md-icon md-svg-src="assets/img/pencil.svg"></md-icon>
+    </md-button>
+    <md-button class="md-warn md-hue-1 md-secondary md-icon-button" ng-click="isShown = false; delete = true; remove(current._id);" setcurrenti>
+      <md-tooltip md-direction="top" md-visible="false">Delete</md-tooltip>
+      <md-icon md-svg-src="assets/img/delete.svg"></md-icon>
+    </md-button>
+    <md-divider class="task-divider" ng-if="!$last"></md-divider>
+  </md-list-item>
+</md-list>

@@ -31,6 +31,9 @@ app.on('ready', () => {
       globalShortcut.register('CmdOrCtrl+T', () => {
         win.webContents.send('Add new task');
       });
+      globalShortcut.register('CmdOrCtrl+I', () => {
+        win.webContents.send('Add new idea');
+      });
     }
   });
 });

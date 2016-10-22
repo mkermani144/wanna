@@ -11,14 +11,14 @@ angular.module('MainApp')
         $mdDialog.cancel();
       };
 
-      $scope.add = function add(task) {
-        if (task) {
-          $mdDialog.hide(task);
+      $scope.add = function add(taskOrIdea) {
+        if (taskOrIdea) {
+          $mdDialog.hide(taskOrIdea);
         }
       };
     }
-    $scope.addNew = (ev) => {
-      $scope.dialogIsOpen = 1;
+    $scope.addNewTask = (ev) => {
+      $scope.taskDialogIsOpen = 1;
       $mdDialog.show({
         controller: DialogController,
         templateUrl: 'app/components/fab/templates/newTaskDialog.html',
@@ -45,12 +45,48 @@ angular.module('MainApp')
         });
       })
       .finally(() => {
-        $scope.dialogIsOpen = 0;
+        $scope.taskDialogIsOpen = 0;
+      });
+    };
+    $scope.addNewIdea = (ev) => {
+      $scope.ideaDialogIsOpen = 1;
+      $mdDialog.show({
+        controller: DialogController,
+        templateUrl: 'app/components/fab/templates/newIdeaDialog.html',
+        parent: angular.element(document.body),
+        targetEvent: ev,
+        clickOutsideToClose: true,
+        closeTo: {
+          top: 520,
+          left: 0,
+          width: 40,
+          height: 30,
+        },
+      })
+      .then((idea) => {
+        db.insertIdea(idea, (err) => {
+          if (!err) {
+            $rootScope.$broadcast('Update ideas');
+            $mdToast.show(
+              $mdToast.simple()
+              .textContent('Idea added.')
+              .position('bottom start')
+            );
+          }
+        });
+      })
+      .finally(() => {
+        $scope.ideaDialogIsOpen = 0;
       });
     };
     ipc.on('Add new task', () => {
-      if (!$scope.dialogIsOpen) {
-        $scope.addNew();
+      if (!$scope.taskDialogIsOpen) {
+        $scope.addNewTask();
+      }
+    });
+    ipc.on('Add new idea', () => {
+      if (!$scope.ideaDialogIsOpen) {
+        $scope.addNewIdea();
       }
     });
   }
