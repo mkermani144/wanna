@@ -21,14 +21,14 @@ function parse(query) {
     w: 7,
     m: 30,
   };
-  const regex = /@(\d+)([dwmDWM]?)(\+(\d+)([dwmDWM]?))?\s?(!{0,2})\s?(~([1-9]\d*)([hHmM]?))(\s?ev([1-9]\d*)([dwmDWM]?))?$/;
+  const regex = /@(\d*)([dwmDWM]?)(\+(\d+)([dwmDWM]?))?\s?(!{0,2})\s?(~([1-9]\d*)([hHmM]?))(\s?ev([1-9]\d*)([dwmDWM]?))?$/;
   const regexResult = regex.exec(query);
   const text = query.slice(0, regexResult.index);
   let start = Date.now() - ((Date.now() % 86400000) - (new Date().getTimezoneOffset() * 60000));
   if (regexResult[3]) {
     start += 86400000 * regexResult[4] * dwm[regexResult[5]];
   }
-  const end = start + (86400000 * regexResult[1] * dwm[regexResult[2]]);
+  const end = start + (86400000 * (regexResult[1] || 1) * (dwm[regexResult[2]] || 1));
   const importance = regexResult[6].length + 1;
   const status = 0;
   let units;

@@ -10,19 +10,31 @@ angular.module('MainApp')
     (scope, el, attrs) => {
       scope.$watch('openTasks', (newVal) => {
         const icon = $compile('<md-icon md-svg-src="assets/img/cube.svg" class="small md-primary"></md-icon>')(scope);
+        const isOneday = (newVal[attrs.uaf].end - newVal[attrs.uaf].start) === 86400000;
+        let oneday;
+        if (isOneday) {
+          oneday = $compile('<md-icon md-svg-src="assets/img/one.svg" class="medium md-accent"></md-icon>')(scope);
+        }
         el[0].children[0].children[0].innerHTML = `<p class="inline">${newVal[attrs.uaf].text}</p>&nbsp;&nbsp;<h6 class="inline mp">${newVal[attrs.uaf].units}</h6>`;
         angular.element(el[0].children[0].children[0]).append(icon);
+        angular.element(el[0].children[0].children[0]).append(oneday);
         const borderLeft = `5px solid ${color.returnColor(newVal[attrs.uaf].start, newVal[attrs.uaf].end, Date.now())}`;
         angular.element(el[0]).css('borderLeft', borderLeft);
       });
     }
   )
-  .directive('uafo', $compile =>  // uaf-o = Update after find, overdue
+  .directive('uafo', $compile =>  // uafo = Update after find, overdue
     (scope, el, attrs) => {
       scope.$watch('overdueTasks', (newVal) => {
         const icon = $compile('<md-icon md-svg-src="assets/img/cube.svg" class="small md-warn"></md-icon>')(scope);
+        const isOneday = (newVal[attrs.uafo].end - newVal[attrs.uafo].start) === 86400000;
+        let oneday;
+        if (isOneday) {
+          oneday = $compile('<md-icon md-svg-src="assets/img/one.svg" class="medium md-accent"></md-icon>')(scope);
+        }
         el[0].children[0].children[0].innerHTML = `<p class="inline">${newVal[attrs.uafo].text}</p>&nbsp;<h6 class="inline mw">${newVal[attrs.uafo].units}</h6>`;
         angular.element(el[0].children[0].children[0]).append(icon);
+        angular.element(el[0].children[0].children[0]).append(oneday);
         const borderLeft = `5px solid ${color.returnColorO(newVal[attrs.uafo].start, newVal[attrs.uafo].end, Date.now())}`;
         angular.element(el[0]).css('borderLeft', borderLeft);
       });
