@@ -2,6 +2,7 @@ $green: #008000;
 $dark-red: darken(#f00, 15%);
 $md-primary: rgb(33,150,243);
 $md-warn: rgb(244,67,54);
+$grey: grey;
 * {
   -webkit-user-select: none !important;
 }
@@ -79,4 +80,7 @@ md-list-item.ng-hide {
 }
 .align-center {
   text-align: center;
+}
+.grey {
+  color: $grey !important;
 }
