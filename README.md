@@ -39,7 +39,7 @@ Ideas and features to be developed (sorted based on importance):
 - [X] Sidenav
 - [X] Recurring tasks
 - [X] Idea bank
-- [ ] One-day tasks
+- [X] One-day tasks
 - [ ] App icon
 - [ ] Help pages
 
