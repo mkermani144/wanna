@@ -31,14 +31,14 @@ function parse(query) {
   const end = start + (86400000 * (regexResult[1] || 1) * (dwm[regexResult[2]] || 1));
   const status = 0;
   let units;
-  if (regexResult[9] === 'h') {
-    units = regexResult[8] * 60;
+  if (regexResult[8] === 'h') {
+    units = regexResult[7] * 60;
   } else {
-    units = regexResult[8];
+    units = regexResult[7];
   }
   let period;
-  if (regexResult[10]) {
-    period = 86400000 * regexResult[11] * dwm[regexResult[12]];
+  if (regexResult[9]) {
+    period = 86400000 * regexResult[10] * dwm[regexResult[11]];
   } else {
     period = -1;
   }
