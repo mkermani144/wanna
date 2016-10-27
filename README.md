@@ -40,10 +40,10 @@ Ideas and features to be developed (sorted based on importance):
 - [X] Recurring tasks
 - [X] Idea bank
 - [X] One-day tasks
-- [ ] App icon
 - [ ] Help pages
 
 ####After beta release:
+- [ ] Github pages
 - [ ] Flexible
 - [ ] Timer
 - [ ] Moods

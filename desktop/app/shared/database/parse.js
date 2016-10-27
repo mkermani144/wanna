@@ -21,7 +21,7 @@ function parse(query) {
     w: 7,
     m: 30,
   };
-  const regex = /@(\d*)([dwmDWM]?)(\+(\d+)([dwmDWM]?))?\s?(!{0,2})\s?(~([1-9]\d*)([hHmM]?))(\s?ev([1-9]\d*)([dwmDWM]?))?$/;
+  const regex = /@(\d*)([dwmDWM]?)(\+(\d+)([dwmDWM]?))?\s?(~([1-9]\d*)([hHmM]?))(\s?ev([1-9]\d*)([dwmDWM]?))?$/;
   const regexResult = regex.exec(query);
   if (!regexResult) {
     return undefined;
@@ -32,17 +32,16 @@ function parse(query) {
     start += 86400000 * regexResult[4] * dwm[regexResult[5]];
   }
   const end = start + (86400000 * (regexResult[1] || 1) * (dwm[regexResult[2]] || 1));
-  const importance = regexResult[6].length + 1;
   const status = 0;
   let units;
-  if (regexResult[9] === 'h') {
-    units = regexResult[8] * 60;
+  if (regexResult[8] === 'h') {
+    units = regexResult[7] * 60;
   } else {
-    units = regexResult[8];
+    units = regexResult[7];
   }
   let period;
-  if (regexResult[10]) {
-    period = 86400000 * regexResult[11] * dwm[regexResult[12]];
+  if (regexResult[9]) {
+    period = 86400000 * regexResult[10] * dwm[regexResult[11]];
   } else {
     period = -1;
   }
@@ -50,7 +49,6 @@ function parse(query) {
     text: text.trim(),
     start,
     end,
-    importance,
     status,
     units,
     period,
