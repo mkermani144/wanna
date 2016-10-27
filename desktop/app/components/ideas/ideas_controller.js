@@ -75,8 +75,9 @@ const ideaControl = function ideaControl($scope, $rootScope, $mdDialog, $mdToast
     $scope.cancel = function cancel() {
       $mdDialog.cancel();
     };
+    const isNotUndefined = el => el;
     $scope.convert = function update(convertedTasks, numOfTasks) {
-      if (convertedTasks.length === numOfTasks) {
+      if (convertedTasks.length === numOfTasks && convertedTasks.every(isNotUndefined)) {
         $mdDialog.hide(convertedTasks);
       }
     };
