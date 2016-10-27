@@ -23,6 +23,9 @@ function parse(query) {
   };
   const regex = /@(\d*)([dwmDWM]?)(\+(\d+)([dwmDWM]?))?\s?(!{0,2})\s?(~([1-9]\d*)([hHmM]?))(\s?ev([1-9]\d*)([dwmDWM]?))?$/;
   const regexResult = regex.exec(query);
+  if (!regexResult) {
+    return undefined;
+  }
   const text = query.slice(0, regexResult.index);
   let start = Date.now() - ((Date.now() % 86400000) - (new Date().getTimezoneOffset() * 60000));
   if (regexResult[3]) {
