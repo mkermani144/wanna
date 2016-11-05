@@ -18,3 +18,6 @@ For example:
 Go gym @1w+2d ~2h ev1w
 ```
 Let's know what each part means:
+
+#### Text
+Text part of task query is the description of the job you want to do. Everything you type as task query is counted as text, unless it comes after the last `@` character. Imperative sentenses  are suggested form for task text (i.e. _"go gym"_ is preferred over _"going gym"_). 
