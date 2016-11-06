@@ -20,4 +20,8 @@ Go gym @1w+2d ~2h ev1w
 Let's know what each part means:
 
 #### Text
-Text part of task query is the description of the job you want to do. Everything you type as task query is counted as text, unless it comes after the last `@` character. Imperative sentenses  are suggested form for task text (i.e. _"go gym"_ is preferred over _"going gym"_). 
+Text part of task query is the description of the task you want to do. Everything you type as task query is counted as text, unless it comes after the last `@` character. Imperative sentenses  are suggested form for task text (i.e. _"go gym"_ is preferred over _"going gym"_). 
+
+#### Period
+Period part of task query determines period of time in which you want to do the task. It should come exactly after the last `@` character in task query. Period is composed of a number, and optionally one of the characters `d`, `w` or `m` indicating day, week and month respectively. If you don't specify any of the characters, `d` is selected by default. If you specify neither the number nor the character, `1d` is chosen as period. Such a task (with period of one day) is called one-day task.    
+So, for example, in `Go gym @ ~2h` period is 1 day, in `Call Joseph @5 ~2` period is 5 days and in `Read 10 pages of book X @5w ~20` period is 5 weeks.
