@@ -25,3 +25,7 @@ Text part of task query is the description of the task you want to do. Everythin
 #### Period
 Period part of task query determines period of time in which you want to do the task. It should come exactly after the last `@` character in task query. Period is composed of a number, and optionally one of the characters `d`, `w` or `m` indicating day, week and month respectively. If you don't specify any of the characters, `d` is selected by default. If you specify neither the number nor the character, `1d` is chosen as period. Such a task (with period of one day) is called one-day task.    
 So, for example, in `Go gym @ ~2h` period is 1 day, in `Call Joseph @5 ~2` period is 5 days and in `Read 10 pages of book X @5w ~20` period is 5 weeks.
+
+#### Starting point
+Next part is starting point. Starting point should come exactly after the plus (`+`) sign which comes after period part. This part determines when the task period will start. It has a format quite like period. If you don't specify starting point, today will be chosen by default.  
+So, for instance, in `Go gym @ ~2h+3` starting point is 3 days from now.
