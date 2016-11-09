@@ -28,4 +28,8 @@ So, for example, in `Go gym @ ~2h` period is 1 day, in `Call Joseph @5 ~2` perio
 
 #### Starting point
 Next part is starting point. Starting point should come exactly after the plus (`+`) sign which comes after period part. This part determines when the task period will start. It has a format quite like period. If you don't specify starting point, today will be chosen by default.  
-So, for instance, in `Go gym @ ~2h+3` starting point is 3 days from now.
+So, for instance, in `Go gym @+3 ~2h` starting point is 3 days from now.
+
+#### Units
+In wanna, the time a task consumes is called units. Units part, which comes after `~` character is a number and one of the characters `m` or `h` indicating minute(s) or hour(s) respectively. If you don't specify `m` or `h`, `m` will be selected by default. You must specify units number yourself and there is no default value for it.
+As an example, in `Go gym @ ~2` units is 2 minutes.
