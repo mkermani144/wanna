@@ -31,5 +31,9 @@ Next part is starting point. Starting point should come exactly after the plus (
 So, for instance, in `Go gym @+3 ~2h` starting point is 3 days from now.
 
 #### Units
-In wanna, the time a task consumes is called units. Units part, which comes after `~` character is a number and one of the characters `m` or `h` indicating minute(s) or hour(s) respectively. If you don't specify `m` or `h`, `m` will be selected by default. You must specify units number yourself and there is no default value for it.
+In wanna, the time a task consumes is called units. Units part, which comes after `~` character is a number and one of the characters `m` or `h` indicating minute(s) or hour(s) respectively. If you don't specify `m` or `h`, `m` will be selected by default. You must specify units number yourself and there is no default value for it.  
 As an example, in `Go gym @ ~2` units is 2 minutes.
+
+#### Repetition period
+If you want a task to repeat, you can use this part of task query. Repetition period part which comes after `ev` term (indicating _every_), has exactly the same form as period part, that is, you specify a number and one of the characters `d`, `w` or `m`. Note that it does not make sense to repeat a task before its period is finished, so repetition periods should always be larger than or equal to period.  
+For example, in `Go gym @1w ~2h ev1W`, repetition period is 1 week. In other words, this task repeats every 1 week.
