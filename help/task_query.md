@@ -17,7 +17,14 @@ For example:
 ```
 Go gym @1w+2d ~2h ev1w
 ```
-Let's know what each part means: (Note that these parts must come respectively)
+Look at the examples; then go for descriptions. You will know everything you need to know about task query.
+
+| task query | period | start | units | repetition period |
+| ---------- | ------ | ----- | ----- | ----------------- |
+| Go gym @1w+2d ~2h ev10d | 1 week | 2 days from today | 120 | 10 days |
+| Go gym @1W ~2H | 1 week | today | 120 | not repeating |
+| Go gym @ ~2h | 1 day | today | 120 | not repeating |
+| Go gym @4+3 ~45 ev10 | 4 days | 3 days from today | 45 | 10 days |
 
 #### Text
 Text part of task query is the description of the task you want to do. Everything you type as task query is counted as text, unless it comes after the last `@` character. Imperative sentenses  are suggested form for task text (i.e. _"go gym"_ is preferred over _"going gym"_). 
