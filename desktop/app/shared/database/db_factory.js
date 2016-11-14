@@ -80,7 +80,7 @@ function find(type, cb) {
       $and: [{ start: { $lt: now } },
             { end: { $gt: now } },
             { status: 0 },
-          ],
+      ],
     }, { text: 1, start: 1, end: 1, units: 1, period: 1 },
         (err, tasks) => {
           if (err) {
@@ -106,7 +106,7 @@ function find(type, cb) {
     db.tasks.find({
       $and: [{ end: { $lt: now } },
             { status: 0 },
-          ],
+      ],
     }, { text: 1, start: 1, end: 1, units: 1, period: 1 },
         (err, tasks) => {
           if (err) {
