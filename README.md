@@ -41,16 +41,18 @@ Ideas and features to-do
 ----
 Ideas and features to be developed (sorted based on importance):
 ####Before [beta release](https://github.com/mkermani144/wanna/milestone/1):
+
 - [X] Priorities
 - [X] Time consumption estimation
 - [X] Sidenav
 - [X] Recurring tasks
 - [X] Idea bank
 - [X] One-day tasks
-- [ ] Help pages
+- [X] Help pages
+- [ ] Github pages
 
 ####After beta release:
-- [ ] Github pages
+
 - [ ] Flexible
 - [ ] Timer
 - [ ] Moods
