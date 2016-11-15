@@ -30,20 +30,29 @@ electron .
 __Note: The app probably has a mobile version, but it is not ready yet and it's development is not started. My focus is on desktop version at this time.__
 
 
+Help pages
+----
+[1.Intro](https://github.com/mkermani144/wanna/tree/master/help/intro.md)  
+[2.Task query](https://github.com/mkermani144/wanna/tree/master/help/task_query.md)  
+[3.Keyboard shortcuts](https://github.com/mkermani144/wanna/tree/master/help/keyboard_shortcuts.md)
+
+
 Ideas and features to-do
 ----
 Ideas and features to be developed (sorted based on importance):
 ####Before [beta release](https://github.com/mkermani144/wanna/milestone/1):
+
 - [X] Priorities
 - [X] Time consumption estimation
 - [X] Sidenav
 - [X] Recurring tasks
 - [X] Idea bank
 - [X] One-day tasks
-- [ ] Help pages
+- [X] Help pages
+- [ ] Github pages
 
 ####After beta release:
-- [ ] Github pages
+
 - [ ] Flexible
 - [ ] Timer
 - [ ] Moods
