@@ -27,9 +27,9 @@ angular.module('MainApp')
         let dueToday = '';
         let dueTomorrow = '';
         if (isDueToday) {
-          dueToday = '<p class="inline">Due Today</p>';
+          dueToday = '<p class="inline label duetoday">Due Today</p>';
         } else if (isDueTomorrow) {
-          dueTomorrow = '<p class="inline">Due Tomorrow</p>';
+          dueTomorrow = '<p class="inline label duetomorrow">Due Tomorrow</p>';
         }
         el[0].children[0].children[0].innerHTML = `<p class="inline">${newVal[attrs.uaf].text}</p>&nbsp;&nbsp;<h6 class="inline mp">${newVal[attrs.uaf].units}</h6>`;
         angular.element(el[0].children[0].children[0]).append(icon);
