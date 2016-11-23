@@ -38,6 +38,19 @@ app.on('ready', () => {
   });
 });
 
+app.on('browser-window-focus', () => {
+  globalShortcut.register('CmdOrCtrl+T', () => {
+    win.webContents.send('Add new task');
+  });
+  globalShortcut.register('CmdOrCtrl+I', () => {
+    win.webContents.send('Add new idea');
+  });
+});
+
+app.on('browser-window-blur', () => {
+  globalShortcut.unregisterAll();
+});
+
 app.on('will-quit', () => {
   globalShortcut.unregisterAll();
 });
