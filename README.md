@@ -32,9 +32,9 @@ __Note: The app probably has a mobile version, but it is not ready yet and it's 
 
 Help pages
 ----
-[1.Intro](https://github.com/mkermani144/wanna/tree/master/help/intro.md)  
-[2.Task query](https://github.com/mkermani144/wanna/tree/master/help/task_query.md)  
-[3.Keyboard shortcuts](https://github.com/mkermani144/wanna/tree/master/help/keyboard_shortcuts.md)
+[1. Intro](https://github.com/mkermani144/wanna/tree/master/help/intro.md)  
+[2. Task query](https://github.com/mkermani144/wanna/tree/master/help/task_query.md)  
+[3. Keyboard shortcuts](https://github.com/mkermani144/wanna/tree/master/help/keyboard_shortcuts.md)
 
 
 Ideas and features to-do

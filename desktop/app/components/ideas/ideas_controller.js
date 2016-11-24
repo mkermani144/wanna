@@ -8,16 +8,13 @@ eslint no-underscore-dangle: ["error", { "allow": ["_id",] }]
 const shuffle = require('./app/components/ideas/shuffle');
 
 const ideaControl = function ideaControl($scope, $rootScope, $mdDialog, $mdToast, db) {
-  $scope.isShown = true;
   $scope.current = undefined;
+  $scope.isShown = true;
+  $scope.delete = false;
 
   $scope.remove = (idea) => {
     db.removeIdea(idea, (err) => {
       if (!err) {
-        db.findIdeas((ideas) => {
-          $scope.ideas = ideas;
-          $scope.$apply();
-        });
         $mdToast.show(
           $mdToast.simple()
           .textContent('Idea deleted.')
