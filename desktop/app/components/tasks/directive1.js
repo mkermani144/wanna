@@ -85,7 +85,7 @@ angular.module('MainApp')
         angular.element(el[0].children[0].children[0]).append(icon);
         angular.element(el[0].children[0].children[0]).append(oneday);
         angular.element(el[0].children[0].children[0]).append(period);
-        const borderLeft = `5px solid ${color.returnColorN(newVal[attrs.uafn].start, newVal[attrs.uafn].end, Date.now())}`;
+        const borderLeft = `5px solid ${color.returnColorN(newVal[attrs.uafn].start, Date.now())}`;
         angular.element(el[0]).css('borderLeft', borderLeft);
       });
     }
