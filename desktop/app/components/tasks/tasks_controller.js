@@ -69,6 +69,10 @@ const taskControl = function taksControl($scope, $mdDialog, $mdToast, db) {
             $scope.overdueTasks = tasks;
             $scope.$apply();
           });
+          db.find('notyet', (tasks) => {
+            $scope.notYetTasks = tasks;
+            $scope.$apply();
+          });
           $mdToast.show(
             $mdToast.simple()
             .textContent('Task edited.')
@@ -86,6 +90,9 @@ const taskControl = function taksControl($scope, $mdDialog, $mdToast, db) {
     db.find('overdue', (tasks) => {
       $scope.overdueTasks = tasks;
     });
+    db.find('notyet', (tasks) => {
+      $scope.notYetTasks = tasks;
+    });
   });
   db.find('open', (tasks) => {
     $scope.openTasks = tasks;
@@ -93,6 +100,10 @@ const taskControl = function taksControl($scope, $mdDialog, $mdToast, db) {
   });
   db.find('overdue', (tasks) => {
     $scope.overdueTasks = tasks;
+    $scope.$apply();
+  });
+  db.find('notyet', (tasks) => {
+    $scope.notYetTasks = tasks;
     $scope.$apply();
   });
 };
