@@ -98,3 +98,7 @@ md-list-item.ng-hide {
     background-color: $md-warn;
   }
 }
+.md-secondary-container {
+  opacity: 0;
+  transition-duration: .2s;
+}
