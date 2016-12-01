@@ -130,7 +130,7 @@ function find(type, cb) {
     break;
   case 'notyet':
     db.tasks.find({
-      $and: [{ end: { $gt: now } },
+      $and: [{ start: { $gt: now } },
             { status: 0 },
       ],
     }, { text: 1, start: 1, end: 1, units: 1, period: 1 },
