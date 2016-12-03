@@ -16,5 +16,6 @@ module.config(($routeProvider) => {
   });
   $routeProvider.when('/about', {
     templateUrl: 'app/components/about/templates/main.html',
+    controller: 'AboutControl',
   });
 });
