@@ -14,4 +14,7 @@ module.config(($routeProvider) => {
     templateUrl: 'app/components/ideas/templates/main.html',
     controller: 'IdeaControl',
   });
+  $routeProvider.when('/about', {
+    templateUrl: 'app/components/about/templates/main.html',
+  });
 });
