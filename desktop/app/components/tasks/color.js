@@ -23,7 +23,15 @@ function returnColorO(end, current) {
   return `hsl(0, 100%, ${60 / (diff + 1)}%)`;
 }
 
+function returnColorN(start, current) {
+  const currentRounded = (current + (86400000 - (current % 86400000))) +
+    (new Date().getTimezoneOffset() * 60000);
+  const diff = (start - currentRounded) / 86400000;
+  return `hsl(${120 * ((120 + diff) / 120)}, 100%, 60%)`;
+}
+
 module.exports = {
   returnColor,
   returnColorO,
+  returnColorN,
 };

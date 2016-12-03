@@ -128,6 +128,32 @@ function find(type, cb) {
           }
         });
     break;
+  case 'notyet':
+    db.tasks.find({
+      $and: [{ start: { $gt: now } },
+            { status: 0 },
+      ],
+    }, { text: 1, start: 1, end: 1, units: 1, period: 1 },
+        (err, tasks) => {
+          if (err) {
+            ipc.send('find-error', err);
+            cb(err);
+          } else {
+            const nowInner = (Date.now() + (86400000 - (Date.now() % 86400000))) +
+              (new Date().getTimezoneOffset() * 60000);
+            const sorted = Object.keys(tasks).sort((a, b) => {
+              const totalA = tasks[a].end - tasks[a].start;
+              const totalB = tasks[b].end - tasks[b].start;
+              const partialA = nowInner - tasks[a].start;
+              const partialB = nowInner - tasks[b].start;
+              const ratioA = partialA / totalA;
+              const ratioB = partialB / totalB;
+              return ratioB - ratioA;
+            });
+            cb(sorted.map(key => tasks[key]));
+          }
+        });
+    break;
   default:
   }
 }
