@@ -9,7 +9,6 @@ module.run((db, $rootScope) => {
   db.setDefaultSettings(() => {
     db.fetchNotYet((notyet) => {
       $rootScope.notyet = notyet;
-      $rootScope.$broadcast('Update not-yet');
     });
   });
 });
