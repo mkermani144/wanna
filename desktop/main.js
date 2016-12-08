@@ -15,7 +15,9 @@ function createWindow() {
     minHeight: 600,
   });
   win.loadURL(`file://${__dirname}/index.html`);
-    // win.webContents.openDevTools()
+  if (process.argv[2] === 'debug') {
+    win.webContents.openDevTools();
+  }
   win.on('close', () => {
     fs.unlink(`${__dirname}/assets/css/main.css`);
   });
