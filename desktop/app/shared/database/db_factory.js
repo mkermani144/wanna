@@ -28,6 +28,18 @@ db.ideas = new Datastore({
   },
   autoload: true,
 });
+db.settings = new Datastore({
+  filename: `${__dirname}/settings`,
+  afterSerialization: (object) => {
+    const cipher = crypto.createCipher('aes256', 'sample-key');
+    return (cipher.update(object, 'utf8', 'hex') + cipher.final('hex'));
+  },
+  beforeDeserialization: (object) => {
+    const decipher = crypto.createDecipher('aes256', 'sample-key');
+    return (decipher.update(object, 'hex', 'utf8') + decipher.final('utf8'));
+  },
+  autoload: true,
+});
 
 
 /**
@@ -305,6 +317,27 @@ function editIdea(ideaId, newIdea, cb) {
   });
 }
 
+/**
+ * Fuction to set default settings
+ * for the app.
+ */
+function setDefaultSettings() {
+  db.settings.find(
+    { name: 'settings' },
+    {},
+    (err, settings) => {
+      if (err) {
+        ipc.send('find-error', err);
+      } else if (settings.length === 0) {
+        db.settings.insert({
+          name: 'settings',
+          notyet: 'true',
+        });
+      }
+    }
+  );
+}
+
 angular.module('MainApp')
   .factory('db', () => {
     const ret = {
@@ -317,6 +350,7 @@ angular.module('MainApp')
       removeIdea,
       edit,
       editIdea,
+      setDefaultSettings,
     };
     return ret;
   });

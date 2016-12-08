@@ -5,6 +5,9 @@ module.config(($mdThemingProvider) => {
     .accentPalette('pink')
     .warnPalette('red');
 });
+module.run((db) => {
+  db.setDefaultSettings();
+});
 module.config(($routeProvider) => {
   $routeProvider.when('/', {
     templateUrl: 'app/components/tasks/templates/main.html',
@@ -16,7 +19,7 @@ module.config(($routeProvider) => {
   });
   $routeProvider.when('/settings', {
     templateUrl: 'app/components/settings/templates/main.html',
-    controller: 'IdeaControl',
+    controller: 'SettingsControl',
   });
   $routeProvider.when('/about', {
     templateUrl: 'app/components/about/templates/main.html',
