@@ -320,8 +320,9 @@ function editIdea(ideaId, newIdea, cb) {
 /**
  * Fuction to set default settings
  * for the app.
+ * @param  {Function} cb callback
  */
-function setDefaultSettings() {
+function setDefaultSettings(cb) {
   db.settings.find(
     { name: 'settings' },
     {},
@@ -332,7 +333,31 @@ function setDefaultSettings() {
         db.settings.insert({
           name: 'settings',
           notyet: 'true',
+        }, () => {
+          cb();
         });
+      } else {
+        cb();
+      }
+    }
+  );
+}
+
+/**
+ * Fetch showing not-yet tasks status
+ * from database
+ * @param  {Function} cb callback
+ * @return {undefined}
+ */
+function fetchNotYet(cb) {
+  db.settings.find(
+    { name: 'settings' },
+    { notyet: 1 },
+    (err, settings) => {
+      if (err) {
+        ipc.send('find-error', err);
+      } else {
+        cb(settings[0].notyet);
       }
     }
   );
@@ -351,6 +376,7 @@ angular.module('MainApp')
       edit,
       editIdea,
       setDefaultSettings,
+      fetchNotYet,
     };
     return ret;
   });

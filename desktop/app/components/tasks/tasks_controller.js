@@ -5,7 +5,7 @@ eslint no-shadow: ["error", { "allow": ["$scope"] }]
 eslint no-underscore-dangle: ["error", { "allow": ["_id",] }]
 */
 
-const taskControl = function taksControl($scope, $mdDialog, $mdToast, db) {
+const taskControl = function taksControl($scope, $rootScope, $mdDialog, $mdToast, db) {
   $scope.current = undefined;
   $scope.isShown = true;
   $scope.do = false;
@@ -106,6 +106,7 @@ const taskControl = function taksControl($scope, $mdDialog, $mdToast, db) {
     $scope.notYetTasks = tasks;
     $scope.$apply();
   });
+  $scope.notyet = $rootScope.notyet;
 };
 
 angular.module('MainApp')

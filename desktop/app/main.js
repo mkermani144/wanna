@@ -5,8 +5,13 @@ module.config(($mdThemingProvider) => {
     .accentPalette('pink')
     .warnPalette('red');
 });
-module.run((db) => {
-  db.setDefaultSettings();
+module.run((db, $rootScope) => {
+  db.setDefaultSettings(() => {
+    db.fetchNotYet((notyet) => {
+      $rootScope.notyet = notyet;
+      $rootScope.$broadcast('Update not-yet');
+    });
+  });
 });
 module.config(($routeProvider) => {
   $routeProvider.when('/', {
