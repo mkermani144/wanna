@@ -8,6 +8,7 @@ module.config(($mdThemingProvider) => {
 module.run((db, $rootScope) => {
   db.setDefaultSettings(() => {
     db.fetchNotYet((notyet) => {
+      console.log(notyet);
       $rootScope.notyet = notyet;
     });
   });

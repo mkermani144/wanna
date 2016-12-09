@@ -29,7 +29,7 @@ db.ideas = new Datastore({
   autoload: true,
 });
 db.settings = new Datastore({
-  filename: `${__dirname}/settings`,
+  filename: `${__dirname}/settings.db`,
   afterSerialization: (object) => {
     const cipher = crypto.createCipher('aes256', 'sample-key');
     return (cipher.update(object, 'utf8', 'hex') + cipher.final('hex'));
@@ -332,7 +332,7 @@ function setDefaultSettings(cb) {
       } else if (settings.length === 0) {
         db.settings.insert({
           name: 'settings',
-          notyet: 'true',
+          notyet: true,
         }, () => {
           cb();
         });
@@ -352,7 +352,7 @@ function setDefaultSettings(cb) {
 function fetchNotYet(cb) {
   db.settings.find(
     { name: 'settings' },
-    { notyet: 1 },
+    { notyet: 1, _id: 0 },
     (err, settings) => {
       if (err) {
         ipc.send('find-error', err);
@@ -361,6 +361,22 @@ function fetchNotYet(cb) {
       }
     }
   );
+}
+
+/**
+ * Set showing not-yet tasks status
+ * into database
+ * @param  {Function} cb callback
+ * @return {undefined}
+ */
+function setNotYet(state) {
+  console.log(state);
+  db.settings.update(
+    { name: 'settings' },
+    { $set: {
+      notyet: state,
+    },
+  });
 }
 
 angular.module('MainApp')
@@ -377,6 +393,7 @@ angular.module('MainApp')
       editIdea,
       setDefaultSettings,
       fetchNotYet,
+      setNotYet,
     };
     return ret;
   });
