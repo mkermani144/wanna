@@ -10,7 +10,6 @@ const taskControl = function taksControl($scope, $rootScope, $mdDialog, $mdToast
   $scope.isShown = true;
   $scope.do = false;
   $scope.delete = false;
-
   $scope.markAsDone = (taskId) => {
     db.markAsDone(taskId, (err) => {
       if (!err) {
@@ -107,6 +106,12 @@ const taskControl = function taksControl($scope, $rootScope, $mdDialog, $mdToast
     $scope.$apply();
   });
   $scope.notyet = $rootScope.notyet;
+
+  // Only needed at controller instantiation time
+  $scope.$on('Update not-yet', (ev, args) => {
+    $scope.notyet = args.notyet;
+    $scope.$apply();
+  });
 };
 
 angular.module('MainApp')
