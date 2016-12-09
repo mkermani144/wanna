@@ -370,13 +370,10 @@ function fetchNotYet(cb) {
  * @return {undefined}
  */
 function setNotYet(state) {
-  console.log(state);
   db.settings.update(
     { name: 'settings' },
-    { $set: {
-      notyet: state,
-    },
-  });
+    { $set: { notyet: state } }
+  );
 }
 
 angular.module('MainApp')
