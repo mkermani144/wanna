@@ -103,7 +103,7 @@ md-list-item {
     background-color: $md-warn;
   }
 }
-.md-secondary-container {
+#task-list .md-secondary-container, #idea-list .md-secondary-container {
   opacity: 0;
   transition-duration: .2s;
 }

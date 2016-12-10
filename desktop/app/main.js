@@ -5,6 +5,15 @@ module.config(($mdThemingProvider) => {
     .accentPalette('pink')
     .warnPalette('red');
 });
+module.run((db, $rootScope) => {
+  db.fetchNotYet((notyet) => {
+    $rootScope.notyet = notyet;
+    $rootScope.$broadcast('Update not-yet', { notyet });
+  });
+  db.fetchFullscreen((fullscreen) => {
+    $rootScope.fullscreen = fullscreen;
+  });
+});
 module.config(($routeProvider) => {
   $routeProvider.when('/', {
     templateUrl: 'app/components/tasks/templates/main.html',
@@ -13,6 +22,10 @@ module.config(($routeProvider) => {
   $routeProvider.when('/ideas', {
     templateUrl: 'app/components/ideas/templates/main.html',
     controller: 'IdeaControl',
+  });
+  $routeProvider.when('/settings', {
+    templateUrl: 'app/components/settings/templates/main.html',
+    controller: 'SettingsControl',
   });
   $routeProvider.when('/about', {
     templateUrl: 'app/components/about/templates/main.html',

@@ -5,12 +5,11 @@ eslint no-shadow: ["error", { "allow": ["$scope"] }]
 eslint no-underscore-dangle: ["error", { "allow": ["_id",] }]
 */
 
-const taskControl = function taksControl($scope, $mdDialog, $mdToast, db) {
+const taskControl = function taksControl($scope, $rootScope, $mdDialog, $mdToast, db) {
   $scope.current = undefined;
   $scope.isShown = true;
   $scope.do = false;
   $scope.delete = false;
-
   $scope.markAsDone = (taskId) => {
     db.markAsDone(taskId, (err) => {
       if (!err) {
@@ -104,6 +103,13 @@ const taskControl = function taksControl($scope, $mdDialog, $mdToast, db) {
   });
   db.find('notyet', (tasks) => {
     $scope.notYetTasks = tasks;
+    $scope.$apply();
+  });
+  $scope.notyet = $rootScope.notyet;
+
+  // Only needed at controller instantiation time
+  $scope.$on('Update not-yet', (ev, args) => {
+    $scope.notyet = args.notyet;
     $scope.$apply();
   });
 };

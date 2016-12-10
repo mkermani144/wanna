@@ -28,6 +28,18 @@ db.ideas = new Datastore({
   },
   autoload: true,
 });
+db.settings = new Datastore({
+  filename: `${__dirname}/settings.db`,
+  afterSerialization: (object) => {
+    const cipher = crypto.createCipher('aes256', 'sample-key');
+    return (cipher.update(object, 'utf8', 'hex') + cipher.final('hex'));
+  },
+  beforeDeserialization: (object) => {
+    const decipher = crypto.createDecipher('aes256', 'sample-key');
+    return (decipher.update(object, 'hex', 'utf8') + decipher.final('utf8'));
+  },
+  autoload: true,
+});
 
 
 /**
@@ -305,6 +317,98 @@ function editIdea(ideaId, newIdea, cb) {
   });
 }
 
+/**
+ * Fuction to set default settings
+ * for the app.
+ * @param  {Function} cb callback
+ */
+function setDefaultSettings(cb) {
+  db.settings.find(
+    { name: 'settings' },
+    {},
+    (err, settings) => {
+      if (err) {
+        ipc.send('find-error', err);
+      } else if (settings.length === 0) {
+        db.settings.insert({
+          name: 'settings',
+          notyet: true,
+        }, () => {
+          cb();
+        });
+      } else {
+        cb();
+      }
+    }
+  );
+}
+
+/**
+ * Fetch showing not-yet tasks status
+ * from database
+ * @param  {Function} cb callback
+ * @return {undefined}
+ */
+function fetchNotYet(cb) {
+  db.settings.find(
+    { name: 'settings' },
+    { notyet: 1, _id: 0 },
+    (err, settings) => {
+      if (err) {
+        ipc.send('find-error', err);
+      } else {
+        cb(settings[0].notyet);
+      }
+    }
+  );
+}
+
+/**
+ * Fetch running app in fullscreen status
+ * from database
+ * @param  {Function} cb callback
+ * @return {undefined}
+ */
+function fetchFullscreen(cb) {
+  db.settings.find(
+    { name: 'settings' },
+    { fullscreen: 1, _id: 0 },
+    (err, settings) => {
+      if (err) {
+        ipc.send('find-error', err);
+      } else {
+        cb(settings[0].fullscreen);
+      }
+    }
+  );
+}
+
+/**
+ * Set showing not-yet tasks status
+ * into database
+ * @param  {Function} cb callback
+ * @return {undefined}
+ */
+function setNotYet(state) {
+  db.settings.update(
+    { name: 'settings' },
+    { $set: { notyet: state } }
+  );
+}
+
+/**
+ * Set running app in fullscreen status
+ * into database
+ * @param  {Function} cb callback
+ * @return {undefined}
+ */
+function setFullscreen(state) {
+  db.settings.update(
+    { name: 'settings' },
+    { $set: { fullscreen: state } }
+  );
+}
+
 angular.module('MainApp')
   .factory('db', () => {
     const ret = {
@@ -317,6 +421,11 @@ angular.module('MainApp')
       removeIdea,
       edit,
       editIdea,
+      setDefaultSettings,
+      fetchNotYet,
+      fetchFullscreen,
+      setNotYet,
+      setFullscreen,
     };
     return ret;
   });
