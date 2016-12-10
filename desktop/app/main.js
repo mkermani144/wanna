@@ -6,11 +6,9 @@ module.config(($mdThemingProvider) => {
     .warnPalette('red');
 });
 module.run((db, $rootScope) => {
-  db.setDefaultSettings(() => {
-    db.fetchNotYet((notyet) => {
-      $rootScope.notyet = notyet;
-      $rootScope.$broadcast('Update not-yet', { notyet });
-    });
+  db.fetchNotYet((notyet) => {
+    $rootScope.notyet = notyet;
+    $rootScope.$broadcast('Update not-yet', { notyet });
   });
 });
 module.config(($routeProvider) => {
