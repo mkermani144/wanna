@@ -10,6 +10,9 @@ module.run((db, $rootScope) => {
     $rootScope.notyet = notyet;
     $rootScope.$broadcast('Update not-yet', { notyet });
   });
+  db.fetchFullscreen((fullscreen) => {
+    $rootScope.fullscreen = fullscreen;
+  });
 });
 module.config(($routeProvider) => {
   $routeProvider.when('/', {

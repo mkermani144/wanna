@@ -58,7 +58,7 @@ app.on('ready', () => {
             db.insert({
               name: 'settings',
               notyet: true,
-              fullscreen: true,
+              fullscreen: false,
             }, () => {
               db.find(
                 { name: 'settings' },

@@ -364,6 +364,26 @@ function fetchNotYet(cb) {
 }
 
 /**
+ * Fetch running app in fullscreen status
+ * from database
+ * @param  {Function} cb callback
+ * @return {undefined}
+ */
+function fetchFullscreen(cb) {
+  db.settings.find(
+    { name: 'settings' },
+    { fullscreen: 1, _id: 0 },
+    (err, settings) => {
+      if (err) {
+        ipc.send('find-error', err);
+      } else {
+        cb(settings[0].fullscreen);
+      }
+    }
+  );
+}
+
+/**
  * Set showing not-yet tasks status
  * into database
  * @param  {Function} cb callback
@@ -373,6 +393,19 @@ function setNotYet(state) {
   db.settings.update(
     { name: 'settings' },
     { $set: { notyet: state } }
+  );
+}
+
+/**
+ * Set running app in fullscreen status
+ * into database
+ * @param  {Function} cb callback
+ * @return {undefined}
+ */
+function setFullscreen(state) {
+  db.settings.update(
+    { name: 'settings' },
+    { $set: { fullscreen: state } }
   );
 }
 
@@ -390,7 +423,9 @@ angular.module('MainApp')
       editIdea,
       setDefaultSettings,
       fetchNotYet,
+      fetchFullscreen,
       setNotYet,
+      setFullscreen,
     };
     return ret;
   });
