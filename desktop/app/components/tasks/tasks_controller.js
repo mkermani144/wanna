@@ -5,7 +5,7 @@ eslint no-shadow: ["error", { "allow": ["$scope"] }]
 eslint no-underscore-dangle: ["error", { "allow": ["_id",] }]
 */
 
-const taskControl = function taksControl($scope, $rootScope, $mdDialog, $mdToast, db) {
+const taskControl = function taksControl($scope, $rootScope, $mdDialog, $mdToast, $timeout, db) {
   $scope.current = undefined;
   $scope.isShown = true;
   $scope.do = false;
@@ -19,6 +19,11 @@ const taskControl = function taksControl($scope, $rootScope, $mdDialog, $mdToast
           .position('bottom start')
           .hideDelay(1000)
         );
+        db.find('notyet', (tasks) => {
+          $timeout(() => {
+            $scope.notYetTasks = tasks;
+          }, 1000);
+        });
       }
     });
   };
