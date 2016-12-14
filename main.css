@@ -1,0 +1,18 @@
+body {
+  margin: 0;
+}
+#hero {
+  width: 100vw;
+  height: 100vh;
+  background-image: url('hero.png');
+  background-size: cover;
+  text-align: center;
+}
+#wanna {
+  position: absolute;
+  top: 10%;
+  left: 50vw;
+  transform: translate(-50%, -50%);
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 600%;
+}
