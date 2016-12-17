@@ -4,7 +4,7 @@ body {
 #hero {
   width: 100vw;
   height: 100vh;
-  background-image: url('hero.png');
+  background-image: url('hero.jpg');
   background-size: cover;
   display: flex;
   flex-direction: column;
