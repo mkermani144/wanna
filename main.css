@@ -15,14 +15,31 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   font-family: 'Josefin Sans', sans-serif;
+}
+#wanna > div {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 #wanna p {
   font-size: 5vw;
   margin: 0;
-  margin-top: -200px;
 }
 #wanna small {
   font-size: 2.5vw;
+}
+#l {
+  background-image: url('lc.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: bottom;
+  transition-duration: 20ms;
+  width: 50vw;
+  flex:1;
+}
+#l:hover {
+  background-image: url('l.png');
 }
