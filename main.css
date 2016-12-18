@@ -18,7 +18,7 @@ body {
   font-family: 'Josefin Sans', sans-serif;
 }
 #wanna > div {
-  flex: 1;
+  flex: 2;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -31,7 +31,16 @@ body {
 #wanna small {
   font-size: 2.5vw;
 }
-#l {
+#chevron {
+  flex: 1 !important;
+  background-image: url('chevrony.png');
+  background-size: contain;
+  background-position: top;
+  background-repeat: no-repeat;
+  width: 3vw;
+  animation: updown 2s linear infinite;
+}
+#macbook {
   flex-grow: 0 !important;
   flex-basis: 23.18vmax !important;
   background-image: url('lc.png');
@@ -41,6 +50,27 @@ body {
   transition-duration: 20ms;
   width: 40vmax;
 }
-#l:hover {
+#macbook:hover {
   background-image: url('l.png');
+}
+
+
+@keyframes updown {
+  0%, 20% {
+    opacity: 0;
+    background-position: top;
+  }
+  40%, 80% {
+    opacity: .8;
+  }
+  60% {
+    opacity: 1;
+    margin-top: 0;
+    background-position: center;
+    background-image: url('chevronw.png');
+  }
+  100% {
+    opacity: 0;
+    background-position: bottom;
+  }
 }
