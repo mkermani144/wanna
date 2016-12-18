@@ -16,7 +16,7 @@ body {
   flex-direction: column;
   align-items: center;
   font-family: 'Josefin Sans', sans-serif;
-  color: rgb(37, 17, 0);
+  color: rgb(51, 23, 0);
 }
 #wanna > div {
   flex: 1;
@@ -36,16 +36,17 @@ body {
   margin-top: 5%;
   width: 20vmax;
   height: 5vmax;
+  color: rgb(51, 23, 0) !important;
   background-color: transparent;
-  border: 3px solid rgba(37, 17, 0, .7);
+  border: 3px solid rgba(51, 23, 0, .7);
   font-size: 150%;
   font-family: 'Josefin Sans', sans-serif;
+  font-weight: 700;
   transition-duration: .23s;
 }
 #wanna button:hover {
-  background-color: rgb(37, 17, 0);
-  font-weight: bold;
-  color: rgba(128, 255, 255, 1);
+  background-color: rgb(51, 23, 0);
+  color: rgba(128, 255, 255, 1) !important;
   cursor: pointer;
 }
 #chevron {
