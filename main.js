@@ -1,6 +1,6 @@
-document.querySelectorAll('#wanna img')[0].addEventListener('mouseover', () => {
-  this.src = 'l1.png';
-});
-document.querySelectorAll('#wanna img')[0].addEventListener('mouseout', () => {
-  this.src = 'lc.png';
-});
+const oses = {
+  'Linux x86_64': 'Linux',
+  Win32: 'Windows',
+  // TODO: Add Os X entry
+};
+document.querySelectorAll('#wanna button')[0].innerHTML += ` for ${oses[navigator.platform]}`;
