@@ -36,10 +36,12 @@ body {
   margin-top: 5%;
   width: 20vmax;
   height: 5vmax;
+  max-width: 240px;
+  max-height: 60px;
   color: rgb(51, 23, 0) !important;
   background-color: transparent;
-  border: 3px solid rgba(51, 23, 0, .7);
-  font-size: 150%;
+  border: 2px solid rgba(51, 23, 0, .7);
+  font-size: 1.8vmax;
   font-family: 'Josefin Sans', sans-serif;
   font-weight: 700;
   transition-duration: .23s;
