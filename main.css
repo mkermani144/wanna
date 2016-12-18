@@ -16,13 +16,14 @@ body {
   flex-direction: column;
   align-items: center;
   font-family: 'Josefin Sans', sans-serif;
+  color: rgb(37, 17, 0);
 }
 #wanna > div {
-  flex: 2;
+  flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
 }
 #wanna p {
   font-size: 5vw;
@@ -30,6 +31,22 @@ body {
 }
 #wanna small {
   font-size: 2.5vw;
+}
+#wanna button {
+  margin-top: 5%;
+  width: 20vmax;
+  height: 5vmax;
+  background-color: transparent;
+  border: 3px solid rgba(37, 17, 0, .7);
+  font-size: 150%;
+  font-family: 'Josefin Sans', sans-serif;
+  transition-duration: .23s;
+}
+#wanna button:hover {
+  background-color: rgb(37, 17, 0);
+  font-weight: bold;
+  color: rgba(128, 255, 255, 1);
+  cursor: pointer;
 }
 #chevron {
   flex: 1 !important;
@@ -42,13 +59,13 @@ body {
 }
 #macbook {
   flex-grow: 0 !important;
-  flex-basis: 23.18vmax !important;
+  flex-basis: 17.39vmax !important;
   background-image: url('lc.png');
   background-size: contain;
   background-repeat: no-repeat;
   background-position: bottom;
   transition-duration: 20ms;
-  width: 40vmax;
+  width: 30vmax;
 }
 #macbook:hover {
   background-image: url('l.png');
