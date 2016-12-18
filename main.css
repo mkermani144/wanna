@@ -37,7 +37,7 @@ body {
   background-size: contain;
   background-position: top;
   background-repeat: no-repeat;
-  width: 3vw;
+  width: 2vw;
   animation: updown 2s linear infinite;
 }
 #macbook {
