@@ -4,7 +4,7 @@ body {
 #hero {
   width: 100vw;
   height: 100vh;
-  background: linear-gradient(60deg, rgba(100, 0, 255, 1) 0%, rgba(85,220,250,1) 50%, rgba(85,239,203,1) 100%);
+  background: linear-gradient(60deg, rgba(100, 0, 255, 1) 0%, rgba(85, 220, 250, 1) 50%, rgba(85, 239, 203, 1) 100%);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -15,6 +15,7 @@ body {
   flex-direction: column;
   align-items: center;
   font-family: 'Josefin Sans', sans-serif;
+  font-weight: 300;
   color: white;
   z-index: 1;
 }
@@ -43,7 +44,7 @@ body {
   border: 2px solid white;
   font-size: 1.8vmax;
   font-family: 'Josefin Sans', sans-serif;
-  font-weight: 700;
+  font-weight: 400 !important;
   transition-duration: .23s;
   overflow: hidden !important;
   position: relative;
@@ -64,7 +65,7 @@ body {
   z-index: -1;
 }
 #wanna button:hover {
-  color: rgba(0, 255, 255, 1) !important;
+  color: rgba(85, 220, 250, 1) !important;
   cursor: pointer;
 }
 #wanna button:hover:before {
