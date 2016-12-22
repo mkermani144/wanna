@@ -20,7 +20,7 @@ body {
   z-index: 1;
 }
 #wanna > div {
-  flex: 1;
+  flex: 3;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -72,7 +72,7 @@ body {
   color: white;
 }
 #chevron {
-  flex: 1 !important;
+  flex: 2 !important;
   background-image: url('chevrony.png');
   background-size: contain;
   background-position: top;
@@ -80,20 +80,6 @@ body {
   width: 2vw;
   animation: updown 2s linear infinite;
 }
-#macbook {
-  flex-grow: 0 !important;
-  flex-basis: 17.39vmax !important;
-  background-image: url('lc.png');
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: bottom;
-  transition-duration: 20ms;
-  width: 30vmax;
-}
-#macbook:hover {
-  background-image: url('l.png');
-}
-
 
 @keyframes updown {
   0%, 20% {
