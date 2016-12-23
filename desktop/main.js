@@ -28,6 +28,7 @@ function createWindow(fullscreen) {
   win = new BrowserWindow({
     minWidth: 800,
     minHeight: 600,
+    icon: `${__dirname}/wanna.png`,
   });
   win.loadURL(`file://${__dirname}/index.html`);
   if (process.argv[2] === 'debug') {
