@@ -118,7 +118,7 @@ app.on('browser-window-blur', () => {
   globalShortcut.unregisterAll();
 });
 
-app.on('will-quit', () => {
+app.on('window-all-closed', () => {
   globalShortcut.unregisterAll();
 });
 
