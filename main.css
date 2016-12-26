@@ -71,6 +71,15 @@ body {
   width: 120%;
   color: white;
 }
+#wanna a {
+  text-decoration: none;
+  color: white;
+  margin-top: 3%;
+  transition-duration: .23s;
+}
+#wanna a:hover {
+  color: yellow;
+}
 #chevron {
   flex: 2 !important;
   background-image: url('chevrony.png');
