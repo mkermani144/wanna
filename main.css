@@ -1,10 +1,14 @@
+/*
+primary color: hsl(207, 90%, 54%)
+accent color: hsl(54, 100%, 62%)
+ */
 body {
   margin: 0;
 }
 #hero {
   width: 100vw;
   height: 100vh;
-  background: linear-gradient(60deg, rgba(100, 0, 255, 1) 0%, rgba(85, 220, 250, 1) 50%, rgba(85, 239, 203, 1) 100%);
+  background: hsl(198, 52%, 95%);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -16,7 +20,7 @@ body {
   align-items: center;
   font-family: 'Josefin Sans', sans-serif;
   font-weight: 300;
-  color: white;
+  color: hsl(220, 95%, 12%);
   z-index: 1;
 }
 #wanna > div {
@@ -38,9 +42,9 @@ body {
   margin-top: 5%;
   width: 20vmax;
   height: 5vmax;
-  color: white !important;
+  color: hsl(207, 90%, 54%) !important;
   background-color: transparent;
-  border: 1px solid white;
+  border: 1px solid hsl(207, 90%, 54%);
   font-size: 1.8vmax;
   font-family: 'Josefin Sans', sans-serif;
   font-weight: 400 !important;
@@ -58,25 +62,25 @@ body {
   bottom: 0;
   width: 0;
   height: 5vmax !important;
-  background-color: white;
+  background-color: hsl(207, 90%, 54%);
   transform: skewX(-30deg);
   transition-duration: .23s;
   z-index: -1;
 }
 #wanna button:hover {
-  color: rgba(85, 220, 250, 1) !important;
+  color: hsl(198, 52%, 95%) !important;
   cursor: pointer;
 }
 #wanna button:hover:before {
   width: 120%;
-  color: white;
+  color: hsl(207, 90%, 54%);
 }
 #wanna a {
   text-decoration: none;
-  color: white;
+  color: hsl(207, 90%, 54%);
   margin-top: 3%;
   transition-duration: .23s;
 }
 #wanna a:hover {
-  color: yellow;
+  color: hsl(207, 95%, 40%);
 }
