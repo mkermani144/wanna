@@ -18,7 +18,8 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-family: 'Josefin Sans', sans-serif;
+  font-size: 1.1vmax;
+  font-family: ubuntu, sans-serif;
   font-weight: 300;
   color: hsl(220, 95%, 12%);
   z-index: 1;
@@ -31,23 +32,22 @@ body {
   justify-content: center;
 }
 #wanna p {
-  font-family: 'Ceviche One';
-  font-size: 15vw;
+  font-family: 'Indie flower';
+  font-size: 16vmax;
   margin: 0;
 }
 #wanna small {
-  font-size: 1.5vw;
+  font-size: 1.3vmax;
 }
 #wanna button {
   margin-top: 5%;
-  width: 20vmax;
-  height: 5vmax;
+  width: 12vmax;
+  height: 3vmax;
   color: hsl(207, 90%, 54%) !important;
   background-color: transparent;
   border: 1px solid hsl(207, 90%, 54%);
-  font-size: 1.8vmax;
-  font-family: 'Josefin Sans', sans-serif;
-  font-weight: 400 !important;
+  font-size: 1.2vmax;
+  font-family: ubuntu, sans-serif;
   transition-duration: .23s;
   overflow: hidden !important;
   position: relative;
