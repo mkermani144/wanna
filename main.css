@@ -80,32 +80,3 @@ body {
 #wanna a:hover {
   color: yellow;
 }
-#chevron {
-  flex: 2 !important;
-  background-image: url('chevrony.png');
-  background-size: contain;
-  background-position: top;
-  background-repeat: no-repeat;
-  width: 2vw;
-  animation: updown 2s linear infinite;
-}
-
-@keyframes updown {
-  0%, 20% {
-    opacity: 0;
-    background-position: top;
-  }
-  40%, 80% {
-    opacity: .8;
-  }
-  60% {
-    opacity: 1;
-    margin-top: 0;
-    background-position: center;
-    background-image: url('chevronw.png');
-  }
-  100% {
-    opacity: 0;
-    background-position: bottom;
-  }
-}
