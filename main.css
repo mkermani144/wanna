@@ -83,3 +83,8 @@ body {
 #wrapper a:hover {
   color: hsl(207, 95%, 40%);
 }
+#wrapper #sorry {
+  margin-top: 15%;
+  font-family: ubuntu;
+  font-size: 2vmax;
+}
