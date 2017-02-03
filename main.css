@@ -62,10 +62,17 @@ body {
 #wrapper button:hover {
   color: hsl(198, 52%, 95%) !important;
   cursor: pointer;
+  box-shadow: 0px 5px 5px -1px #aaa;
 }
 #wrapper button:hover:before {
   width: 120%;
-  color: hsl(207, 90%, 54%);
+}
+#wrapper button:active {
+  box-shadow: none;
+  outline: 0px;
+}
+#wrapper button:active:before {
+  background-color: hsl(207, 90%, 48%);
 }
 #wrapper a {
   text-decoration: none;
