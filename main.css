@@ -4,16 +4,16 @@ primary color: hsl(207, 90%, 54%)
 body {
   margin: 0;
 }
-#hero {
+#main {
   width: 100vw;
   height: 100vh;
   background: hsl(198, 52%, 95%);
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 }
-#wanna {
-  flex: 1;
+#wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -23,22 +23,15 @@ body {
   color: hsl(220, 95%, 12%);
   z-index: 1;
 }
-#wanna > div {
-  flex: 3;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-#wanna p {
+#wrapper p {
   font-family: 'Indie flower';
   font-size: 16vmax;
   margin: 0;
 }
-#wanna small {
+#wrapper small {
   font-size: 1.3vmax;
 }
-#wanna button {
+#wrapper button {
   margin-top: 5%;
   width: 12vmax;
   height: 3vmax;
@@ -51,7 +44,7 @@ body {
   overflow: hidden !important;
   position: relative;
 }
-#wanna button:before {
+#wrapper button:before {
   content: '';
   position: absolute;
   display: flex;
@@ -66,20 +59,20 @@ body {
   transition-duration: .23s;
   z-index: -1;
 }
-#wanna button:hover {
+#wrapper button:hover {
   color: hsl(198, 52%, 95%) !important;
   cursor: pointer;
 }
-#wanna button:hover:before {
+#wrapper button:hover:before {
   width: 120%;
   color: hsl(207, 90%, 54%);
 }
-#wanna a {
+#wrapper a {
   text-decoration: none;
   color: hsl(207, 90%, 54%);
   margin-top: 3%;
   transition-duration: .23s;
 }
-#wanna a:hover {
+#wrapper a:hover {
   color: hsl(207, 95%, 40%);
 }

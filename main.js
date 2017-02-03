@@ -5,4 +5,4 @@ const os = {
   Win32: 'Windows',
   MacIntel: 'Mac OS X',
 };
-$('#wanna button').html(`Download for ${os[navigator.platform]}`);
+$('#wrapper button').html(`Download for ${os[navigator.platform]}`);
