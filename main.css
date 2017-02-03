@@ -32,8 +32,8 @@ body {
   font-size: 1.3vmax;
 }
 #wrapper button {
-  margin-top: 5%;
-  width: 12vmax;
+  margin-top: 15%;
+  width: 18vmax;
   height: 3vmax;
   color: hsl(207, 90%, 54%) !important;
   background-color: transparent;
