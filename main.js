@@ -1,7 +1,7 @@
 /* global $ */
 /* global navigator */
 const oses = {
-  'inux x86_64': 'Linux',
+  'Linux x86_64': 'Linux',
   Win32: 'Windows',
   MacIntel: 'Mac OS X',
 };
