@@ -27,9 +27,11 @@ body {
   font-family: 'Indie flower';
   font-size: 16vmax;
   margin: 0;
+  cursor: default;
 }
 #wrapper small {
   font-size: 1.3vmax;
+  cursor: default;
 }
 #wrapper button {
   margin-top: 15%;
