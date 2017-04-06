@@ -40,7 +40,7 @@ Help pages
 Ideas and features to-do
 ----
 Ideas and features to be developed (sorted based on importance):
-####Before [beta release](https://github.com/mkermani144/wanna/milestone/1):
+#### Before [beta release](https://github.com/mkermani144/wanna/milestone/1):
 
 - [X] Priorities
 - [X] Time consumption estimation
@@ -51,7 +51,7 @@ Ideas and features to be developed (sorted based on importance):
 - [X] Help pages
 - [ ] Github pages
 
-####After beta release:
+#### After beta release:
 
 - [ ] Flexible
 - [ ] Timer
