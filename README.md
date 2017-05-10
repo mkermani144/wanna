@@ -49,7 +49,7 @@ Ideas and features to be developed (sorted based on importance):
 - [X] Idea bank
 - [X] One-day tasks
 - [X] Help pages
-- [ ] Github pages
+- [X] Github pages
 
 #### After beta release:
 
