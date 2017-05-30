@@ -1,1 +1,9 @@
-
+.App {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+.App > div {
+  display: flex;
+  flex-direction: row;
+}

@@ -1,0 +1,8 @@
+.Sidebar {
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 1;
+}
+.Sidebar > *:hover {
+  filter: brightness(110%);
+}
