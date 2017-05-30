@@ -1,0 +1,23 @@
+{
+  "name": "wanna",
+  "version": "0.1.0",
+  "private": true,
+  "main": "main.js",
+  "devDependencies": {
+    "electron": "^1.6.10",
+    "react-scripts": "1.0.7"
+  },
+  "dependencies": {
+    "material-ui": "^0.18.1",
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4",
+    "react-tap-event-plugin": "^2.0.1"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "electron": "electron . | BROWSER=none react-scripts start"
+  }
+}
