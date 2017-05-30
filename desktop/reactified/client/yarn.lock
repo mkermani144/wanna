@@ -4952,6 +4952,10 @@ react-event-listener@^0.4.5:
     prop-types "^15.5.4"
     warning "^3.0.0"
 
+react-mui-speeddial@^0.0.6:
+  version "0.0.6"
+  resolved "https://registry.yarnpkg.com/react-mui-speeddial/-/react-mui-speeddial-0.0.6.tgz#072e0be07f3013d7d137f13d87c5ad7d3b77a107"
+
 react-scripts@1.0.7:
   version "1.0.7"
   resolved "https://registry.yarnpkg.com/react-scripts/-/react-scripts-1.0.7.tgz#fe1436dda03bb45465c76d097cfea4f32eb7cbbb"

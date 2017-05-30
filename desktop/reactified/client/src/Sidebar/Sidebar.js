@@ -40,22 +40,26 @@ class Sidebar extends Component {
       <div className="Sidebar">
         <IconButton
           style={styles.doneAll}
-          iconStyle={iconStyle}>
+          iconStyle={iconStyle}
+        >
           <DoneAll />
         </IconButton>
         <IconButton
           style={styles.lightbulbOutline}
-          iconStyle={iconStyle}>
+          iconStyle={iconStyle}
+        >
           <LightbulbOutline />
         </IconButton>
         <IconButton
           style={styles.settings}
-          iconStyle={iconStyle}>
+          iconStyle={iconStyle}
+        >
           <Settings />
         </IconButton>
         <IconButton
           style={styles.info}
-          iconStyle={iconStyle}>
+          iconStyle={iconStyle}
+        >
           <InfoOutline />
         </IconButton>
       </div>
