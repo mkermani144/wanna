@@ -7,7 +7,7 @@
 .Task > * {
   flex-basis: 0;
 }
-.Task .Diamond {
+.Task .Circle {
   flex-grow: 0;
   margin-right: 10px;
 }

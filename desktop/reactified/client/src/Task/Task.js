@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import Diamond from './Diamond';
+import Circle from './Circle';
 import Units from './Units';
 import DueDate from './DueDate';
 import Repeat from './Repeat';
@@ -19,7 +19,7 @@ class Task extends Component {
     } = this.props;
     return (
       <div className="Task">
-        <Diamond color={color} />
+        <Circle color={color} />
         <p>{text}</p>
         <Units units={units} />
         <DueDate due={due}/>
