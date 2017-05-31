@@ -26,12 +26,13 @@ class DueDate extends Component {
               <Timer color={colors.tomorrow} /><small style={styles.tomorrow}>Tomorrow</small>
             </span>
           )
-          :
+          : this.props.due === 'today' ?
           (
             <span>
               <Timer color={colors.today} /><small style={styles.today}>Today</small>
             </span>
           )
+          : null
         }
       </span>
     );
