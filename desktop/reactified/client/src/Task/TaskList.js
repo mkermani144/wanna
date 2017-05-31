@@ -31,6 +31,7 @@ class TaskList extends Component {
       case 'overdue': subheader = <Subheader style={styles.overdue}>Overdue</Subheader>; break;
       case 'open': subheader = <Subheader style={styles.open}>Open</Subheader>; break;
       case 'not-yet': subheader = <Subheader style={styles.notYet}>Not yet</Subheader>; break;
+      default: subheader = null;
     }
     return (
       <div className="TaskList">
