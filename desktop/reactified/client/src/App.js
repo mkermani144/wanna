@@ -36,6 +36,7 @@ class App extends Component {
             <Task
               color='#4CAF50'
               text='Fix issue #69 of Wanna'
+              due='today'
               units={120}
             />
           </TaskList>

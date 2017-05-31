@@ -33,7 +33,7 @@ class DueDate extends Component {
           : this.props.due === 'today' ?
           (
             <span>
-              <Timer color={colors.today} /><small style={styles.today}>Today</small>
+              <Timer style={styles.icon} color={colors.today} /><small style={styles.today}>Today</small>
             </span>
           )
           : <span></span>
