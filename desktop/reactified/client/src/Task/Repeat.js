@@ -10,7 +10,13 @@ class Repeat extends Component {
       color: grey500,
     };
     return (
-      <small className="Repeat" style={style}><RepeatIcon color={grey500} />{this.props.repeat}</small>
+      <small className="Repeat" style={style}>
+        {this.props.repeat ?
+          <RepeatIcon color={grey500} />
+          :
+          null
+        }{this.props.repeat}
+      </small>
     );
   }
 }

@@ -20,9 +20,24 @@ class App extends Component {
           <Sidebar />
           <FAB />
           <TaskList>
-            <Task />
-            <Task />
-            <Task />
+            <Task
+              color='red'
+              text='Fix issue #67 of Wanna'
+              units={120}
+              due='tomorrow'
+              repeat={'5 days'}
+            />
+            <Task
+              color='orange'
+              text='Fix issue #68 of Wanna'
+              units={120}
+              repeat={'5 days'}
+            />
+            <Task
+              color='green'
+              text='Fix issue #69 of Wanna'
+              units={120}
+            />
           </TaskList>
         </div>
       </MuiThemeProvider>

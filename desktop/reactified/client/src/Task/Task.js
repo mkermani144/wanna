@@ -10,13 +10,20 @@ import './Task.css';
 
 class Task extends Component {
   render() {
+    const {
+      color,
+      text,
+      units,
+      due,
+      repeat,
+    } = this.props;
     return (
       <div className="Task">
-        <Diamond color='red' />
-        <p>Sample task</p>
-        <Units units={120} />
-        <DueDate />
-        <Repeat repeat={'2 days'}/>
+        <Diamond color={color} />
+        <p>{text}</p>
+        <Units units={units} />
+        <DueDate due={due}/>
+        <Repeat repeat={repeat}/>
         <Actions />
       </div>
     );

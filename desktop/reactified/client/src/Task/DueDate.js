@@ -32,7 +32,7 @@ class DueDate extends Component {
               <Timer color={colors.today} /><small style={styles.today}>Today</small>
             </span>
           )
-          : null
+          : <span></span>
         }
       </span>
     );
