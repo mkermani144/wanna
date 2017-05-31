@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import IconButton from 'material-ui/IconButton';
+import Paper from 'material-ui/Paper';
 
 import DoneAll from 'material-ui/svg-icons/action/done-all';
 import LightbulbOutline from 'material-ui/svg-icons/action/lightbulb-outline';
@@ -37,7 +38,7 @@ class Sidebar extends Component {
       color: grey50,
     };
     return (
-      <div className="Sidebar">
+      <Paper className="Sidebar">
         <IconButton
           style={styles.doneAll}
           iconStyle={iconStyle}
@@ -62,7 +63,7 @@ class Sidebar extends Component {
         >
           <InfoOutline />
         </IconButton>
-      </div>
+      </Paper>
     );
   }
 }
