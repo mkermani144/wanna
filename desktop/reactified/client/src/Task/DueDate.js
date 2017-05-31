@@ -16,14 +16,18 @@ class DueDate extends Component {
       },
       today: {
         color: red500,
-      }
+      },
+      icon: {
+        width: 16,
+        height: 16
+      },
     };
     return (
       <span className="DueDate">
         {this.props.due === 'tomorrow' ?
           (
             <span>
-              <Timer color={colors.tomorrow} /><small style={styles.tomorrow}>Tomorrow</small>
+              <Timer style={styles.icon} color={colors.tomorrow} /><small style={styles.tomorrow}>Tomorrow</small>
             </span>
           )
           : this.props.due === 'today' ?

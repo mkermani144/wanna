@@ -6,13 +6,19 @@ import { grey500 } from 'material-ui/styles/colors';
 
 class Repeat extends Component {
   render() {
-    const style = {
-      color: grey500,
+    const styles = {
+      text: {
+        color: grey500,
+      },
+      icon: {
+        width: 16,
+        height: 16
+      },
     };
     return (
-      <small className="Repeat" style={style}>
+      <small className="Repeat" style={styles.text}>
         {this.props.repeat ?
-          <RepeatIcon color={grey500} />
+          <RepeatIcon style={styles.icon} color={grey500} />
           :
           null
         }{this.props.repeat}
