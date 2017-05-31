@@ -2,17 +2,17 @@ import React, { Component } from 'react';
 
 import Timer from 'material-ui/svg-icons/image/timer';
 
-import { amber500, red500 } from 'material-ui/styles/colors';
+import { amber800, red500 } from 'material-ui/styles/colors';
 
 class DueDate extends Component {
   render() {
     const colors = {
-      tomorrow: amber500,
+      tomorrow: amber800,
       today: red500,
     };
     const styles = {
       tomorrow: {
-        color: amber500,
+        color: amber800,
       },
       today: {
         color: red500,
