@@ -19,27 +19,67 @@ class App extends Component {
         <div className="App">
           <Sidebar />
           <FAB />
-          <TaskList>
-            <Task
-              color='#F44336'
-              text='Fix issue #67 of Wanna'
-              units={120}
-              due='tomorrow'
-              repeat={'5 days'}
-            />
-            <Task
-              color='#FFC107'
-              text='Fix issue #68 of Wanna'
-              units={120}
-              repeat={'5 days'}
-            />
-            <Task
-              color='#4CAF50'
-              text='Fix issue #69 of Wanna'
-              due='today'
-              units={120}
-            />
-          </TaskList>
+          <div className="lists">
+            <TaskList type='overdue'>
+              <Task
+                color='#F44336'
+                text='Fix issue #67 of Wanna'
+                units={120}
+                repeat={'5 days'}
+              />
+              <Task
+                color='#FFC107'
+                text='Fix issue #68 of Wanna'
+                units={120}
+                repeat={'5 days'}
+              />
+              <Task
+                color='#4CAF50'
+                text='Fix issue #69 of Wanna'
+                units={120}
+              />
+            </TaskList>
+            <TaskList type='open'>
+              <Task
+                color='#F44336'
+                text='Fix issue #67 of Wanna'
+                units={120}
+                due='today'
+                repeat={'5 days'}
+              />
+              <Task
+                color='#FFC107'
+                text='Fix issue #68 of Wanna'
+                units={120}
+                due='tomorrow'
+                repeat={'5 days'}
+              />
+              <Task
+                color='#4CAF50'
+                text='Fix issue #69 of Wanna'
+                units={120}
+              />
+            </TaskList>
+            <TaskList type='not-yet'>
+              <Task
+                color='#F44336'
+                text='Fix issue #67 of Wanna'
+                units={120}
+                repeat={'5 days'}
+              />
+              <Task
+                color='#FFC107'
+                text='Fix issue #68 of Wanna'
+                units={120}
+                repeat={'5 days'}
+              />
+              <Task
+                color='#4CAF50'
+                text='Fix issue #69 of Wanna'
+                units={120}
+              />
+            </TaskList>
+          </div>
         </div>
       </MuiThemeProvider>
     );
