@@ -5,6 +5,8 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 
 import Sidebar from './Sidebar/Sidebar';
 import FAB from './FAB/FAB';
+import TaskList from './Task/TaskList';
+import Task from './Task/Task';
 
 import './App.css';
 
@@ -17,6 +19,11 @@ class App extends Component {
         <div className="App">
           <Sidebar />
           <FAB />
+          <TaskList>
+            <Task />
+            <Task />
+            <Task />
+          </TaskList>
         </div>
       </MuiThemeProvider>
     );
