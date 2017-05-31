@@ -21,20 +21,20 @@ class App extends Component {
           <FAB />
           <TaskList>
             <Task
-              color='red'
+              color='#F44336'
               text='Fix issue #67 of Wanna'
               units={120}
               due='tomorrow'
               repeat={'5 days'}
             />
             <Task
-              color='orange'
+              color='#FFC107'
               text='Fix issue #68 of Wanna'
               units={120}
               repeat={'5 days'}
             />
             <Task
-              color='green'
+              color='#4CAF50'
               text='Fix issue #69 of Wanna'
               units={120}
             />

@@ -2,14 +2,14 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  margin-left: 15px;
-  margin-right: 15px;
+  border-bottom: 1px solid #eee;
 }
 .Task > * {
   flex-basis: 0;
 }
 .Task .Diamond {
   flex-grow: 0;
+  margin-right: 10px;
 }
 .Task p {
   flex-grow: 5;
@@ -19,6 +19,7 @@
 }
 .Task .DueDate {
   flex-grow: 1;
+  flex-basis: 20px;
 }
 .Task .DueDate > span{
   display: flex;

@@ -3,4 +3,6 @@
   flex-direction: column;
   justify-content: flex-start;
   flex: 1;
+  margin-left: 3vw;
+  margin-right: 3vw;
 }
