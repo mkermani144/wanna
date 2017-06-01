@@ -9,6 +9,7 @@ import TaskList from './Task/TaskList';
 import Task from './Task/Task';
 import IdeaList from './Idea/IdeaList';
 import Idea from './Idea/Idea';
+import Settings from './Settings/Settings';
 
 import './App.css';
 
