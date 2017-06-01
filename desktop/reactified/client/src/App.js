@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { Route, BrowserRouter as Router } from 'react-router-dom';
+import { Redirect, Route, BrowserRouter as Router } from 'react-router-dom';
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
@@ -32,6 +32,7 @@ class App extends Component {
           <div className="App">
             <Sidebar />
             <FAB />
+            <Redirect from="/" to="tasks" />
             <Route path="/tasks" component={TaskList} />
             <Route path="/ideas" component={IdeaList} />
             <Route path="/settings" component={Settings} />
