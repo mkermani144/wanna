@@ -3,6 +3,9 @@
   flex-direction: column;
   flex-shrink: 1;
 }
+.Sidebar > * {
+  width: 100%;
+}
 .Sidebar > *:hover {
   filter: brightness(110%);
 }
