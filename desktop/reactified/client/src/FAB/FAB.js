@@ -10,7 +10,6 @@ import LightbulbOutline from 'material-ui/svg-icons/action/lightbulb-outline';
 import {
   green600,
   yellow800,
-  blue500,
 } from 'material-ui/styles/colors';
 
 class FAB extends Component {
@@ -29,12 +28,8 @@ class FAB extends Component {
         color: yellow800,
       },
     };
-    const FABProps = {
-      backgroundColor: blue500,
-    };
     return (
       <SpeedDial
-        fabProps={FABProps}
         className="SpeedDial"
         fabContentOpen={<Add />}
         fabContentClose={<Close />}
