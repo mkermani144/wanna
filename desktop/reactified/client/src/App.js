@@ -7,6 +7,8 @@ import Sidebar from './Sidebar/Sidebar';
 import FAB from './FAB/FAB';
 import TaskList from './Task/TaskList';
 import Task from './Task/Task';
+import IdeaList from './Idea/IdeaList';
+import Idea from './Idea/Idea';
 
 import './App.css';
 
