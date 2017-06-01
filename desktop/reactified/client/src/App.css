@@ -4,8 +4,3 @@
   width: 100vw;
   height: 100vh;
 }
-.App .lists {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-}

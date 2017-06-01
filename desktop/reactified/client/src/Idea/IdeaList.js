@@ -1,12 +1,22 @@
 import React, { Component } from 'react';
 
+import Idea from './Idea';
+
 import './IdeaList.css';
 
 class IdeaList extends Component {
   render() {
     return (
       <div className="IdeaList">
-        {this.props.children}
+        <Idea
+          text="Sample Idea"
+        />
+        <Idea
+          text="Sample Idea"
+        />
+        <Idea
+          text="Sample Idea"
+        />
       </div>
     );
   }

@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import { Link } from 'react-router-dom';
+
 import IconButton from 'material-ui/IconButton';
 import Paper from 'material-ui/Paper';
 
@@ -42,24 +44,28 @@ class Sidebar extends Component {
         <IconButton
           style={styles.doneAll}
           iconStyle={iconStyle}
+          containerElement={<Link to="/tasks" />}
         >
           <DoneAll />
         </IconButton>
         <IconButton
           style={styles.lightbulbOutline}
           iconStyle={iconStyle}
+          containerElement={<Link to="/ideas" />}
         >
           <LightbulbOutline />
         </IconButton>
         <IconButton
           style={styles.settings}
           iconStyle={iconStyle}
+          containerElement={<Link to="/settings" />}
         >
           <Settings />
         </IconButton>
         <IconButton
           style={styles.info}
           iconStyle={iconStyle}
+          containerElement={<Link to="/about" />}
         >
           <InfoOutline />
         </IconButton>

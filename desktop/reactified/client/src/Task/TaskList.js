@@ -8,6 +8,8 @@ import {
   blue500
 } from 'material-ui/styles/colors';
 
+import Task from './Task';
+
 import './TaskList.css';
 
 class TaskList extends Component {
@@ -26,17 +28,64 @@ class TaskList extends Component {
         marginTop: 20,
       },
     }
-    let subheader;
-    switch (this.props.type) {
-      case 'overdue': subheader = <Subheader style={styles.overdue}>Overdue</Subheader>; break;
-      case 'open': subheader = <Subheader style={styles.open}>Open</Subheader>; break;
-      case 'not-yet': subheader = <Subheader style={styles.notYet}>Not yet</Subheader>; break;
-      default: subheader = null;
-    }
     return (
       <div className="TaskList">
-        {subheader}
-        {this.props.children}
+        <Subheader style={styles.overdue}>Overdue</Subheader>
+        <Task
+          color='#F44336'
+          text='Fix issue #67 of Wanna'
+          units={120}
+          repeat={'5 days'}
+        />
+        <Task
+          color='#FFC107'
+          text='Fix issue #68 of Wanna'
+          units={120}
+          repeat={'5 days'}
+        />
+        <Task
+          color='#4CAF50'
+          text='Fix issue #69 of Wanna'
+          units={120}
+        />
+        <Subheader style={styles.open}>Open</Subheader>
+        <Task
+          color='#F44336'
+          text='Fix issue #67 of Wanna'
+          units={120}
+          due='today'
+          repeat={'5 days'}
+        />
+        <Task
+          color='#FFC107'
+          text='Fix issue #68 of Wanna'
+          units={120}
+          due='tomorrow'
+          repeat={'5 days'}
+        />
+        <Task
+          color='#4CAF50'
+          text='Fix issue #69 of Wanna'
+          units={120}
+        />
+        <Subheader style={styles.notYet}>Not Yet</Subheader>
+        <Task
+          color='#F44336'
+          text='Fix issue #67 of Wanna'
+          units={120}
+          repeat={'5 days'}
+        />
+        <Task
+          color='#FFC107'
+          text='Fix issue #68 of Wanna'
+          units={120}
+          repeat={'5 days'}
+        />
+        <Task
+          color='#4CAF50'
+          text='Fix issue #69 of Wanna'
+          units={120}
+        />
       </div>
     );
   }
