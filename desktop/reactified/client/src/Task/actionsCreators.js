@@ -5,7 +5,7 @@ const doTask = taskId => ({
 const editTask = (taskId, newTask) => ({
   type: 'EDIT_IDEA',
   taskId,
-  ...newTask
+  newTask
 });
 const deleteTask = taskId => ({
   type: 'DELETE_IDEA',

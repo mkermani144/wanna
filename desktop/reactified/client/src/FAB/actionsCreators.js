@@ -1,10 +1,10 @@
 const addTask = (task) => ({
   type: 'ADD_TASK',
-  ...task
+  task,
 });
 const addIdea = (idea) => ({
   type: 'ADD_IDEA',
-  ...idea
+  idea,
 });
 
 export { addTask, addIdea };
