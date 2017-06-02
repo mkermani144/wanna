@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 
+import { Provider } from 'react-redux';
+import store from './store';
+
 import { Redirect, Route, BrowserRouter as Router } from 'react-router-dom';
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
@@ -27,19 +30,21 @@ class App extends Component {
       },
     });
     return (
-      <Router>
-        <MuiThemeProvider muiTheme={muiTheme}>
-          <div className="App">
-            <Sidebar />
-            <FAB />
-            <Redirect from="/" to="tasks" />
-            <Route path="/tasks" component={TaskList} />
-            <Route path="/ideas" component={IdeaList} />
-            <Route path="/settings" component={Settings} />
-            <Route path="/about" component={About} />
-          </div>
-        </MuiThemeProvider>
-      </Router>
+      <Provider store={store}>
+        <Router>
+          <MuiThemeProvider muiTheme={muiTheme}>
+            <div className="App">
+              <Sidebar />
+              <FAB />
+              <Redirect from="/" to="tasks" />
+              <Route path="/tasks" component={TaskList} />
+              <Route path="/ideas" component={IdeaList} />
+              <Route path="/settings" component={Settings} />
+              <Route path="/about" component={About} />
+            </div>
+          </MuiThemeProvider>
+        </Router>
+      </Provider>
     );
   }
 }
