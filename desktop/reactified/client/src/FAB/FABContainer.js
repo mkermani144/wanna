@@ -7,6 +7,6 @@ import FAB from './FAB';
 
 const mapDispatchToProps = dispatch => bindActionCreators(actionCreators, dispatch);
 
-const DashboardContainer = connect(null, mapDispatchToProps)(FAB);
+const FABContainer = connect(null, mapDispatchToProps)(FAB);
 
-export default DashboardContainer;
+export default FABContainer;
