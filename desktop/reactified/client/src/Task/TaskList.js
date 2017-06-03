@@ -8,7 +8,7 @@ import {
   blue500
 } from 'material-ui/styles/colors';
 
-import Task from './Task';
+import TaskContainer from './TaskContainer';
 
 import './TaskList.css';
 
@@ -31,57 +31,57 @@ class TaskList extends Component {
     return (
       <div className="TaskList">
         <Subheader style={styles.overdue}>Overdue</Subheader>
-        <Task
+        <TaskContainer
           color='#F44336'
           text='Fix issue #67 of Wanna'
           units={120}
           repeat={'5 days'}
         />
-        <Task
+        <TaskContainer
           color='#FFC107'
           text='Fix issue #68 of Wanna'
           units={120}
           repeat={'5 days'}
         />
-        <Task
+        <TaskContainer
           color='#4CAF50'
           text='Fix issue #69 of Wanna'
           units={120}
         />
         <Subheader style={styles.open}>Open</Subheader>
-        <Task
+        <TaskContainer
           color='#F44336'
           text='Fix issue #67 of Wanna'
           units={120}
           due='today'
           repeat={'5 days'}
         />
-        <Task
+        <TaskContainer
           color='#FFC107'
           text='Fix issue #68 of Wanna'
           units={120}
           due='tomorrow'
           repeat={'5 days'}
         />
-        <Task
+        <TaskContainer
           color='#4CAF50'
           text='Fix issue #69 of Wanna'
           units={120}
         />
         <Subheader style={styles.notYet}>Not Yet</Subheader>
-        <Task
+        <TaskContainer
           color='#F44336'
           text='Fix issue #67 of Wanna'
           units={120}
           repeat={'5 days'}
         />
-        <Task
+        <TaskContainer
           color='#FFC107'
           text='Fix issue #68 of Wanna'
           units={120}
           repeat={'5 days'}
         />
-        <Task
+        <TaskContainer
           color='#4CAF50'
           text='Fix issue #69 of Wanna'
           units={120}
