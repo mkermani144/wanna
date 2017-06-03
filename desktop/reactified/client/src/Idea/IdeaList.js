@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import Idea from './Idea';
+import IdeaContainer from './IdeaContainer';
 
 import './IdeaList.css';
 
@@ -8,13 +8,13 @@ class IdeaList extends Component {
   render() {
     return (
       <div className="IdeaList">
-        <Idea
+        <IdeaContainer
           text="Sample Idea"
         />
-        <Idea
+        <IdeaContainer
           text="Sample Idea"
         />
-        <Idea
+        <IdeaContainer
           text="Sample Idea"
         />
       </div>
