@@ -12,10 +12,10 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 import { blue500 } from 'material-ui/styles/colors';
 
 import Sidebar from './Sidebar/Sidebar';
-import FAB from './FAB/FAB';
-import TaskList from './Task/TaskList';
-import IdeaList from './Idea/IdeaList';
-import Settings from './Settings/Settings';
+import FABContainer from './FAB/FABContainer';
+import TaskListContainer from './Task/TaskListContainer';
+import IdeaListContainer from './Idea/IdeaListContainer';
+import SettingsContainer from './Settings/SettingsContainer';
 import About from './About/About';
 
 import './App.css';
@@ -35,11 +35,11 @@ class App extends Component {
           <MuiThemeProvider muiTheme={muiTheme}>
             <div className="App">
               <Sidebar />
-              <FAB />
+              <FABContainer />
               <Redirect from="/" to="tasks" />
-              <Route path="/tasks" component={TaskList} />
-              <Route path="/ideas" component={IdeaList} />
-              <Route path="/settings" component={Settings} />
+              <Route path="/tasks" component={TaskListContainer} />
+              <Route path="/ideas" component={IdeaListContainer} />
+              <Route path="/settings" component={SettingsContainer} />
               <Route path="/about" component={About} />
             </div>
           </MuiThemeProvider>
