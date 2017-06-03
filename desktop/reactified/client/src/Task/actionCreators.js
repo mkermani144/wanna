@@ -12,4 +12,4 @@ const deleteTask = taskId => ({
   taskId,
 });
 
-export { convertIdea, editIdea, deleteIdea };
+export { doTask, editTask, deleteTask };

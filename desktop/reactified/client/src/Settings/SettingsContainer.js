@@ -3,10 +3,10 @@ import { bindActionCreators } from 'redux';
 
 import * as actionCreators from './actionCreators';
 
-import FAB from './FAB';
+import Settings from './Settings';
 
 const mapDispatchToProps = dispatch => bindActionCreators(actionCreators, dispatch);
 
-const FABContainer = connect(null, mapDispatchToProps)(FAB);
+const SettingsContainer = connect(null, mapDispatchToProps)(Settings);
 
-export default FABContainer;
+export default SettingsContainer;
