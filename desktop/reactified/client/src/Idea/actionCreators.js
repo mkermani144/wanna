@@ -1,8 +1,3 @@
-const convertIdea = (index, tasks) => ({
-  type: 'CONVERT_IDEA',
-  index,
-  tasks,
-});
 const editIdea = (index, newIdea) => ({
   type: 'EDIT_IDEA',
   index,
@@ -12,5 +7,9 @@ const deleteIdea = index => ({
   type: 'DELETE_IDEA',
   index,
 });
+const addTask = (task) => ({
+  type: 'ADD_TASK',
+  task,
+});
 
-export { convertIdea, editIdea, deleteIdea };
+export { editIdea, deleteIdea, addTask };

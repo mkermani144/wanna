@@ -1,5 +1,10 @@
-const TaskRedcuer = (state, action) => {
+const taskReducer = (state=[], action) => {
   switch (action.type) {
+    case 'ADD_TASK':
+      return [
+        ...state,
+        action.task
+      ];
     case 'DO_TASK':
       return [
         ...state.slice(0, action.index),
@@ -25,4 +30,4 @@ const TaskRedcuer = (state, action) => {
   }
 };
 
-export default TaskRedcuer;
+export default taskReducer;
