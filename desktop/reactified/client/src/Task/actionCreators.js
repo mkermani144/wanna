@@ -1,15 +1,15 @@
-const doTask = taskId => ({
-  type: 'CONVERT_IDEA',
-  taskId,
+const doTask = index => ({
+  type: 'DO_TASK',
+  index,
 });
-const editTask = (taskId, newTask) => ({
-  type: 'EDIT_IDEA',
-  taskId,
+const editTask = (index, newTask) => ({
+  type: 'EDIT_TASK',
+  index,
   newTask
 });
-const deleteTask = taskId => ({
-  type: 'DELETE_IDEA',
-  taskId,
+const deleteTask = index => ({
+  type: 'DELETE_TASK',
+  index,
 });
 
 export { doTask, editTask, deleteTask };

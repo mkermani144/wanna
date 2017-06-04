@@ -1,16 +1,16 @@
-const convertIdea = (ideaId, tasks) => ({
+const convertIdea = (index, tasks) => ({
   type: 'CONVERT_IDEA',
-  ideaId,
+  index,
   tasks,
 });
-const editIdea = (ideaId, newIdea) => ({
+const editIdea = (index, newIdea) => ({
   type: 'EDIT_IDEA',
-  ideaId,
+  index,
   newIdea,
 });
-const deleteIdea = ideaId => ({
+const deleteIdea = index => ({
   type: 'DELETE_IDEA',
-  ideaId,
+  index,
 });
 
 export { convertIdea, editIdea, deleteIdea };
