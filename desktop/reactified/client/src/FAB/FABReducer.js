@@ -20,3 +20,5 @@ const FABReducer = (state, action) => {
       return state;
   }
 };
+
+export default FABReducer;

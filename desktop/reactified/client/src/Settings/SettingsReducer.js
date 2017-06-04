@@ -8,3 +8,5 @@ const SettingsReducer = (state, action) => {
       return state;
   }
 };
+
+export default SettingsReducer;

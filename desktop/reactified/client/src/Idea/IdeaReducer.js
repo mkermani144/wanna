@@ -33,3 +33,5 @@ const IdeaReducer = (state, action) => {
       return state;
   }
 };
+
+export default IdeaReducer;
