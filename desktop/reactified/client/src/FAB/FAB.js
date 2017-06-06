@@ -9,7 +9,7 @@ import LightbulbOutline from 'material-ui/svg-icons/action/lightbulb-outline';
 
 import NewTaskDialog from './NewTaskDialog';
 
-import * as time from '../time';
+import * as time from '../lib/time';
 
 import {
   green600,

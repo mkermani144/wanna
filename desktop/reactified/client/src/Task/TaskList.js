@@ -12,6 +12,8 @@ import TaskContainer from './TaskContainer';
 
 import './TaskList.css';
 
+import classify from '../lib/classify';
+
 class TaskList extends Component {
   render() {
     const styles = {
@@ -27,10 +29,23 @@ class TaskList extends Component {
         color: blue500,
         marginTop: 20,
       },
-    }
+    };
+    const classifiedTasks = classify(this.props.tasks);
+    console.log(classifiedTasks);
     return (
       <div className="TaskList">
         <Subheader style={styles.overdue}>Overdue</Subheader>
+        {
+          classifiedTasks.overdue.map(task => {
+            return (
+              <TaskContainer
+                color={task.color}
+                text={task.task}
+                units={task.units}
+              />
+            );
+          })
+        }
         <TaskContainer
           color='#F44336'
           text='Fix issue #67 of Wanna'
@@ -49,6 +64,18 @@ class TaskList extends Component {
           units={120}
         />
         <Subheader style={styles.open}>Open</Subheader>
+        {
+          classifiedTasks.open.map(task => {
+            return (
+              <TaskContainer
+                color={task.color}
+                text={task.task}
+                units={task.units}
+                due={task.due}
+              />
+            );
+          })
+        }
         <TaskContainer
           color='#F44336'
           text='Fix issue #67 of Wanna'
@@ -69,6 +96,17 @@ class TaskList extends Component {
           units={120}
         />
         <Subheader style={styles.notYet}>Not Yet</Subheader>
+        {
+          classifiedTasks.notYet.map(task => {
+            return (
+              <TaskContainer
+                color={task.color}
+                text={task.task}
+                units={task.units}
+              />
+            );
+          })
+        }
         <TaskContainer
           color='#F44336'
           text='Fix issue #67 of Wanna'
