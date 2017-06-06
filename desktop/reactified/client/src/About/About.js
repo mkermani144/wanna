@@ -22,7 +22,7 @@ class About extends Component {
           <Divider />
           <ListItem
             primaryText="Star Wanna on Github"
-            secondaryText="Stars: 4"
+            secondaryText="Stars: 6"
           />
           <Divider />
           <ListItem
