@@ -9,6 +9,8 @@ import LightbulbOutline from 'material-ui/svg-icons/action/lightbulb-outline';
 
 import NewTaskDialog from './NewTaskDialog';
 
+import * as time from '../time';
+
 import {
   green600,
   yellow800,
@@ -32,12 +34,18 @@ class FAB extends Component {
     });
   }
   handleRequestTaskAdd = (taskInfo) => {
+    const startDays = taskInfo.start * taskInfo.startValue;
+    console.log(startDays);
+    const periodDays = taskInfo.period * taskInfo.periodValue;
+    const repetitionDays = taskInfo.repetition * taskInfo.repetitionValue;
+    const start = time.addDays(time.today(), startDays);
+    const end = time.addDays(start, periodDays);
     this.props.addTask({
       task: taskInfo.task,
-      period: taskInfo.period * taskInfo.periodValue,
-      start: taskInfo.start * taskInfo.startValue,
+      start,
+      end,
       estimation: taskInfo.estimation * taskInfo.estimationValue,
-      repetition: taskInfo.repetition * taskInfo.repetitionValue,
+      repetition: repetitionDays,
     });
     this.handleRequestClose();
   }
