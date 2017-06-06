@@ -7,12 +7,40 @@ import Close from 'material-ui/svg-icons/navigation/close';
 import Done from 'material-ui/svg-icons/action/done';
 import LightbulbOutline from 'material-ui/svg-icons/action/lightbulb-outline';
 
+import NewTaskDialog from './NewTaskDialog';
+
 import {
   green600,
   yellow800,
 } from 'material-ui/styles/colors';
 
 class FAB extends Component {
+  constructor() {
+    super();
+    this.state = {
+      taskDialogOpen: false,
+    };
+  }
+  handleRequestClose = () => {
+    this.setState({
+      taskDialogOpen: false,
+    });
+  }
+  handleRequestTaskDialogOpen = () => {
+    this.setState({
+      taskDialogOpen: true,
+    });
+  }
+  handleRequestTaskAdd = (taskInfo) => {
+    this.props.addTask({
+      task: taskInfo.task,
+      period: taskInfo.period * taskInfo.periodValue,
+      start: taskInfo.start * taskInfo.startValue,
+      estimation: taskInfo.estimation * taskInfo.estimationValue,
+      repetition: taskInfo.repetition * taskInfo.repetitionValue,
+    });
+    this.handleRequestClose();
+  }
   render() {
     const styles = {
       speedDial: {
@@ -37,9 +65,15 @@ class FAB extends Component {
       >
         <SpeedDialItem
           fabContent={<Done />}
+          onTouchTap={this.handleRequestTaskDialogOpen}
         />
         <SpeedDialItem
           fabContent={<LightbulbOutline />}
+        />
+        <NewTaskDialog
+          open={this.state.taskDialogOpen}
+          onRequestClose={this.handleRequestClose}
+          onRequestAdd={this.handleRequestTaskAdd}
         />
       </SpeedDial>
     );
