@@ -68,18 +68,46 @@ class NewTaskDialog extends Component {
       repetition: e.target.value,
     });
   }
+  handleRequestClose = () => {
+    this.setState({
+      periodValue: 1,
+      startValue: 1,
+      estimationValue: 1,
+      repetitionValue: 1,
+      task: '',
+      period: '',
+      start: '',
+      estimation: '',
+      repetition: '',
+    });
+    this.props.onRequestClose();
+  }
+  handleRequestAdd = () => {
+    this.props.onRequestAdd(this.state);
+    this.setState({
+      periodValue: 1,
+      startValue: 1,
+      estimationValue: 1,
+      repetitionValue: 1,
+      task: '',
+      period: '',
+      start: '',
+      estimation: '',
+      repetition: '',
+    });
+  }
   render() {
     const actions = [
       <FlatButton
         label="Add"
         primary={true}
         disabled={!Boolean(this.state.task && this.state.period && this.state.estimation)}
-        onTouchTap={() => this.props.onRequestAdd(this.state)}
+        onTouchTap={this.handleRequestAdd}
       />,
       <FlatButton
         label="Cancle"
         primary={true}
-        onTouchTap={this.props.onRequestClose}
+        onTouchTap={this.handleRequestClose}
       />,
     ];
     return (
