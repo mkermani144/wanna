@@ -73,6 +73,7 @@ class NewTaskDialog extends Component {
       <FlatButton
         label="Add"
         primary={true}
+        disabled={!Boolean(this.state.task && this.state.period && this.state.estimation)}
         onTouchTap={() => this.props.onRequestAdd(this.state)}
       />,
       <FlatButton
