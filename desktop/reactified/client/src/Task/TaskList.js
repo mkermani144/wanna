@@ -31,7 +31,6 @@ class TaskList extends Component {
       },
     };
     const classifiedTasks = classify(this.props.tasks);
-    console.log(classifiedTasks);
     return (
       <div className="TaskList">
         {classifiedTasks.overdue.length > 0 &&
