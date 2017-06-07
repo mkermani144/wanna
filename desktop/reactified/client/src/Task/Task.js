@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import Circle from './Circle';
-import Units from './Units';
+import Estimation from './Estimation';
 import DueDate from './DueDate';
 import Repeat from './Repeat';
 import Actions from './Actions';
@@ -13,7 +13,7 @@ class Task extends Component {
     const {
       color,
       text,
-      units,
+      estimation,
       due,
       repeat,
     } = this.props;
@@ -21,7 +21,7 @@ class Task extends Component {
       <div className="Task">
         <Circle color={color} />
         <p>{text}</p>
-        <Units units={units} />
+        <Estimation estimation={estimation} />
         <DueDate due={due}/>
         <Repeat repeat={repeat}/>
         <Actions />

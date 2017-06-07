@@ -14,7 +14,7 @@
 .Task p {
   flex-grow: 5;
 }
-.Task .Units {
+.Task .Estimation {
   flex-grow: 1;
 }
 .Task .DueDate {
