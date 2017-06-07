@@ -13,15 +13,6 @@ class IdeaList extends Component {
             text={idea.idea}
           />
         ))}
-        <IdeaContainer
-          text="Sample Idea"
-        />
-        <IdeaContainer
-          text="Sample Idea"
-        />
-        <IdeaContainer
-          text="Sample Idea"
-        />
       </div>
     );
   }
