@@ -8,6 +8,7 @@ import Done from 'material-ui/svg-icons/action/done';
 import LightbulbOutline from 'material-ui/svg-icons/action/lightbulb-outline';
 
 import NewTaskDialog from './NewTaskDialog';
+import NewIdeaDialog from './NewIdeaDialog';
 
 import * as time from '../lib/time';
 
@@ -21,11 +22,13 @@ class FAB extends Component {
     super();
     this.state = {
       taskDialogOpen: false,
+      ideaDialogOpen: false,
     };
   }
   handleRequestClose = () => {
     this.setState({
       taskDialogOpen: false,
+      ideaDialogOpen: false,
     });
   }
   handleRequestTaskDialogOpen = () => {
@@ -33,9 +36,13 @@ class FAB extends Component {
       taskDialogOpen: true,
     });
   }
+  handleRequestIdeaDialogOpen = () => {
+    this.setState({
+      ideaDialogOpen: true,
+    });
+  }
   handleRequestTaskAdd = (taskInfo) => {
     const startDays = taskInfo.start * taskInfo.startValue;
-    console.log(startDays);
     const periodDays = taskInfo.period * taskInfo.periodValue;
     const repetitionDays = taskInfo.repetition * taskInfo.repetitionValue;
     const start = time.addDays(time.today(), startDays);
@@ -46,6 +53,12 @@ class FAB extends Component {
       end,
       estimation: taskInfo.estimation * taskInfo.estimationValue,
       repetition: repetitionDays,
+    });
+    this.handleRequestClose();
+  }
+  handleRequestIdeaAdd = (ideaInfo) => {
+    this.props.addIdea({
+      idea: ideaInfo.idea,
     });
     this.handleRequestClose();
   }
@@ -77,11 +90,17 @@ class FAB extends Component {
         />
         <SpeedDialItem
           fabContent={<LightbulbOutline />}
+          onTouchTap={this.handleRequestIdeaDialogOpen}
         />
         <NewTaskDialog
           open={this.state.taskDialogOpen}
           onRequestClose={this.handleRequestClose}
           onRequestAdd={this.handleRequestTaskAdd}
+        />
+      <NewIdeaDialog
+          open={this.state.ideaDialogOpen}
+          onRequestClose={this.handleRequestClose}
+          onRequestAdd={this.handleRequestIdeaAdd}
         />
       </SpeedDial>
     );
