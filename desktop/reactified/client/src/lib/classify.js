@@ -17,7 +17,7 @@ const classify = (tasks) => {
     open: [],
     notYet: [],
   };
-  tasks.map((task) => {
+  tasks.forEach((task) => {
     const now = Date.now();
     const { start, end } = task;
     if (now < start) {
