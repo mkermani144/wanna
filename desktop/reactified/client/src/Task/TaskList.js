@@ -34,7 +34,9 @@ class TaskList extends Component {
     console.log(classifiedTasks);
     return (
       <div className="TaskList">
-        <Subheader style={styles.overdue}>Overdue</Subheader>
+        {classifiedTasks.overdue.length > 0 &&
+          <Subheader style={styles.overdue}>Overdue</Subheader>
+        }
         {
           classifiedTasks.overdue.map(task => {
             return (
@@ -47,24 +49,9 @@ class TaskList extends Component {
             );
           })
         }
-        <TaskContainer
-          color='#F44336'
-          text='Fix issue #67 of Wanna'
-          units={120}
-          repeat={'5 days'}
-        />
-        <TaskContainer
-          color='#FFC107'
-          text='Fix issue #68 of Wanna'
-          units={120}
-          repeat={'5 days'}
-        />
-        <TaskContainer
-          color='#4CAF50'
-          text='Fix issue #69 of Wanna'
-          units={120}
-        />
-        <Subheader style={styles.open}>Open</Subheader>
+        {classifiedTasks.open.length > 0 &&
+          <Subheader style={styles.open}>Open</Subheader>
+        }
         {
           classifiedTasks.open.map(task => {
             return (
@@ -78,26 +65,9 @@ class TaskList extends Component {
             );
           })
         }
-        <TaskContainer
-          color='#F44336'
-          text='Fix issue #67 of Wanna'
-          units={120}
-          due='today'
-          repeat={'5 days'}
-        />
-        <TaskContainer
-          color='#FFC107'
-          text='Fix issue #68 of Wanna'
-          units={120}
-          due='tomorrow'
-          repeat={'5 days'}
-        />
-        <TaskContainer
-          color='#4CAF50'
-          text='Fix issue #69 of Wanna'
-          units={120}
-        />
-        <Subheader style={styles.notYet}>Not Yet</Subheader>
+        {classifiedTasks.notYet.length > 0 &&
+          <Subheader style={styles.notYet}>Not Yet</Subheader>
+        }
         {
           classifiedTasks.notYet.map(task => {
             return (
@@ -110,23 +80,6 @@ class TaskList extends Component {
             );
           })
         }
-        <TaskContainer
-          color='#F44336'
-          text='Fix issue #67 of Wanna'
-          units={120}
-          repeat={'5 days'}
-        />
-        <TaskContainer
-          color='#FFC107'
-          text='Fix issue #68 of Wanna'
-          units={120}
-          repeat={'5 days'}
-        />
-        <TaskContainer
-          color='#4CAF50'
-          text='Fix issue #69 of Wanna'
-          units={120}
-        />
       </div>
     );
   }
