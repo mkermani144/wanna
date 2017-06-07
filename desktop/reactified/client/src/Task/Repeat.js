@@ -21,7 +21,8 @@ class Repeat extends Component {
           <RepeatIcon style={styles.icon} color={grey500} />
           :
           null
-        }{this.props.repeat}
+        }
+        {this.props.repeat || null}
       </small>
     );
   }
