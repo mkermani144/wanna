@@ -17,12 +17,12 @@ class Repeat extends Component {
     };
     return (
       <small className="Repeat" style={styles.text}>
-        {this.props.repeat ?
+        {this.props.repeat.indexOf('0') !== 0 ?
           <RepeatIcon style={styles.icon} color={grey500} />
           :
           null
         }
-        {this.props.repeat || null}
+        {this.props.repeat.indexOf('0') !== 0 || null}
       </small>
     );
   }
