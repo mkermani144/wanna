@@ -20,7 +20,9 @@ class Actions extends Component {
         <IconButton className="IconButton">
           <Arrow color={colors.arrow} />
         </IconButton>
-        <IconButton className="IconButton">
+        <IconButton className="IconButton"
+          onTouchTap={this.props.onRequestEditDialogOpen}
+        >
           <Edit color={colors.edit} />
         </IconButton>
         <IconButton className="IconButton">

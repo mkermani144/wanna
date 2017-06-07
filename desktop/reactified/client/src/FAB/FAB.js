@@ -97,7 +97,7 @@ class FAB extends Component {
           onRequestClose={this.handleRequestClose}
           onRequestAdd={this.handleRequestTaskAdd}
         />
-      <NewIdeaDialog
+        <NewIdeaDialog
           open={this.state.ideaDialogOpen}
           onRequestClose={this.handleRequestClose}
           onRequestAdd={this.handleRequestIdeaAdd}

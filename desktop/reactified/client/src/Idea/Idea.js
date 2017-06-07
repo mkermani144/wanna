@@ -9,7 +9,9 @@ class Idea extends Component {
     return (
       <div className="Idea">
         <p>{this.props.text}</p>
-        <Actions />
+        <Actions
+          onRequestEditDialogOpen={() => this.props.onRequestEditDialogOpen(this.props.index)}
+        />
       </div>
     );
   }
