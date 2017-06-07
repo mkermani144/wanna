@@ -41,7 +41,8 @@ class TaskList extends Component {
               <TaskContainer
                 color={task.color}
                 text={task.task}
-                units={task.units}
+                units={task.estimation}
+                repeat={`${task.repetition} days`}
               />
             );
           })
@@ -70,8 +71,9 @@ class TaskList extends Component {
               <TaskContainer
                 color={task.color}
                 text={task.task}
-                units={task.units}
+                units={task.estimation}
                 due={task.due}
+                repeat={`${task.repetition} days`}
               />
             );
           })
@@ -102,7 +104,8 @@ class TaskList extends Component {
               <TaskContainer
                 color={task.color}
                 text={task.task}
-                units={task.units}
+                units={task.estimation}
+                repeat={`${task.repetition} days`}
               />
             );
           })
