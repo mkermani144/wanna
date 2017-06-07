@@ -37,13 +37,14 @@ class TaskList extends Component {
           <Subheader style={styles.overdue}>Overdue</Subheader>
         }
         {
-          classifiedTasks.overdue.map(task => {
+          classifiedTasks.overdue.map((task, index) => {
             return (
               <TaskContainer
                 color={task.color}
                 text={task.task}
                 estimation={task.estimation}
                 repeat={`${task.repetition} days`}
+                key={index}
               />
             );
           })
@@ -52,7 +53,7 @@ class TaskList extends Component {
           <Subheader style={styles.open}>Open</Subheader>
         }
         {
-          classifiedTasks.open.map(task => {
+          classifiedTasks.open.map((task, index) => {
             return (
               <TaskContainer
                 color={task.color}
@@ -60,6 +61,7 @@ class TaskList extends Component {
                 estimation={task.estimation}
                 due={task.due}
                 repeat={`${task.repetition} days`}
+                key={index}
               />
             );
           })
@@ -68,13 +70,14 @@ class TaskList extends Component {
           <Subheader style={styles.notYet}>Not Yet</Subheader>
         }
         {
-          classifiedTasks.notYet.map(task => {
+          classifiedTasks.notYet.map((task, index) => {
             return (
               <TaskContainer
                 color={task.color}
                 text={task.task}
                 estimation={task.estimation}
                 repeat={`${task.repetition} days`}
+                key={index}
               />
             );
           })
