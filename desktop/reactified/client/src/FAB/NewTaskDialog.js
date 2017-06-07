@@ -105,7 +105,7 @@ class NewTaskDialog extends Component {
         onTouchTap={this.handleRequestAdd}
       />,
       <FlatButton
-        label="Cancle"
+        label="Cancel"
         primary={true}
         onTouchTap={this.handleRequestClose}
       />,
