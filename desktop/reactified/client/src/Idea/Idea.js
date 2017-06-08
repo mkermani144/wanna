@@ -5,13 +5,32 @@ import Actions from './Actions';
 import './Idea.css';
 
 class Idea extends Component {
+  constructor() {
+    super();
+    this.state = {
+      class: '',
+    }
+  }
+  handleRequestDelete = () => {
+    this.setState({
+      class: 'will-be-deleted',
+    }, () => {
+      setTimeout(() => {
+        this.setState({
+          class: '',
+        }, () => {
+          this.props.onRequestDelete(this.props.index);
+        });
+      }, 1000);
+    });
+  }
   render() {
     return (
-      <div className="Idea">
+      <div className={`Idea ${this.state.class}`}>
         <p>{this.props.text}</p>
         <Actions
           onRequestEditDialogOpen={() => this.props.onRequestEditDialogOpen(this.props.index)}
-          onRequestDelete={() => this.props.onRequestDelete(this.props.index)}
+          onRequestDelete={this.handleRequestDelete}
         />
       </div>
     );

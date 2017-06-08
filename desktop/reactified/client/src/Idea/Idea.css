@@ -3,6 +3,12 @@
   flex-direction: row;
   align-items: center;
   border-bottom: 1px solid #eee;
+  transition: transform cubic-bezier(0.19, 1, 0.22, 1);
+}
+.Idea.will-be-deleted {
+  transform: translate3d(105%, 0, 0);
+  background-color: #B71C1C;
+  transition-duration: 1s;
 }
 .Idea > * {
   flex-basis: 0;
