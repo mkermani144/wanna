@@ -20,6 +20,7 @@ class Idea extends Component {
           class: '',
         }, () => {
           this.props.onRequestDelete(this.props.index);
+          this.props.onRequestSnackbar('Idea deleted');
         });
       }, 1000);
     });

@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import Snackbar from 'material-ui/Snackbar';
+
 import Idea from './Idea';
 
 import EditIdeaDialog from './EditIdeaDialog';
@@ -11,6 +13,8 @@ class IdeaList extends Component {
     super();
     this.state = {
       ideaDialogOpen: false,
+      snackbarOpen: false,
+      snackbarMessage: '',
       index: -1,
     };
   }
@@ -34,6 +38,12 @@ class IdeaList extends Component {
   handleRequestIdeaDelete = (index) => {
     this.props.deleteIdea(index);
   }
+  handleRequestSnackbar = (message) => {
+    this.setState({
+      snackbarOpen: true,
+      snackbarMessage: message,
+    });
+  }
   render() {
     return (
       <div className="IdeaList">
@@ -42,6 +52,7 @@ class IdeaList extends Component {
             text={idea.idea}
             onRequestEditDialogOpen={this.handleRequestIdeaDialogOpen}
             onRequestDelete={this.handleRequestIdeaDelete}
+            onRequestSnackbar={this.handleRequestSnackbar}
             index={index}
             key={index}
           />
@@ -54,6 +65,11 @@ class IdeaList extends Component {
             null
           }
           open={this.state.ideaDialogOpen}
+        />
+        <Snackbar
+          open={this.state.snackbarOpen}
+          message={this.state.snackbarMessage}
+          autoHideDuration={3000}
         />
       </div>
     );
