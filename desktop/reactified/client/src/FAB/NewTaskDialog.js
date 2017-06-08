@@ -125,6 +125,7 @@ class NewTaskDialog extends Component {
               floatingLabelText="Task title"
               fullWidth={true}
               onChange={this.handleTaskChange}
+              autoFocus
             />
             <div className="row">
               <TextField

@@ -49,6 +49,7 @@ class EditIdeaDialog extends Component {
             fullWidth={true}
             defaultValue={this.props.idea}
             onChange={this.handleIdeaChange}
+            autoFocus
           />
         </Dialog>
       </div>

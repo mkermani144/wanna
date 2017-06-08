@@ -50,6 +50,7 @@ class NewIdeaDialog extends Component {
             floatingLabelText="Idea title"
             fullWidth={true}
             onChange={this.handleIdeaChange}
+            autoFocus
           />
         </Dialog>
       </div>
