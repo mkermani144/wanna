@@ -25,7 +25,9 @@ class Actions extends Component {
         >
           <Edit color={colors.edit} />
         </IconButton>
-        <IconButton className="IconButton">
+        <IconButton className="IconButton"
+          onTouchTap={this.props.onRequestDelete}
+        >
           <Delete color={colors.delete} />
         </IconButton>
       </div>

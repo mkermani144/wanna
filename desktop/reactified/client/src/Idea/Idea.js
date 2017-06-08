@@ -11,6 +11,7 @@ class Idea extends Component {
         <p>{this.props.text}</p>
         <Actions
           onRequestEditDialogOpen={() => this.props.onRequestEditDialogOpen(this.props.index)}
+          onRequestDelete={() => this.props.onRequestDelete(this.props.index)}
         />
       </div>
     );

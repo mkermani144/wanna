@@ -13,8 +13,8 @@ const ideaReducer = (state=[], action) => {
       ];
     case 'DELETE_IDEA':
       return [
-        ...state.ideas.slice(0, action.index),
-        ...state.ideas.slice(action.index + 1),
+        ...state.slice(0, action.index),
+        ...state.slice(action.index + 1),
       ]
     default:
       return state;

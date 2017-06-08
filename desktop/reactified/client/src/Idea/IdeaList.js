@@ -31,6 +31,9 @@ class IdeaList extends Component {
     });
     this.handleRequestClose();
   }
+  handleRequestIdeaDelete = (index) => {
+    this.props.deleteIdea(index);
+  }
   render() {
     return (
       <div className="IdeaList">
@@ -38,6 +41,7 @@ class IdeaList extends Component {
           <Idea
             text={idea.idea}
             onRequestEditDialogOpen={this.handleRequestIdeaDialogOpen}
+            onRequestDelete={this.handleRequestIdeaDelete}
             index={index}
             key={index}
           />
