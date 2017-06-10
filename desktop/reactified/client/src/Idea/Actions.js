@@ -17,7 +17,9 @@ class Actions extends Component {
     };
     return (
       <div className="Actions">
-        <IconButton className="IconButton">
+        <IconButton className="IconButton"
+          onTouchTap={this.props.onRequestConvertDialogOpen}
+        >
           <Arrow color={colors.arrow} />
         </IconButton>
         <IconButton className="IconButton"

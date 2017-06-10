@@ -32,6 +32,7 @@ class Idea extends Component {
         <Actions
           onRequestEditDialogOpen={() => this.props.onRequestEditDialogOpen(this.props.index)}
           onRequestDelete={this.handleRequestDelete}
+          onRequestConvertDialogOpen={() => this.props.onRequestConvertDialogOpen(this.props.index)}
         />
       </div>
     );
