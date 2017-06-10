@@ -1,0 +1,17 @@
+.textfields {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+}
+.row {
+  width: 50%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.row > div:first-of-type {
+  width: 60% !important;
+}
+.row > div:last-of-type {
+  width: 40% !important;
+}
