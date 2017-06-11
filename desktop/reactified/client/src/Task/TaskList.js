@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import Subheader from 'material-ui/Subheader';
+import Snackbar from 'material-ui/Snackbar';
 
 import {
   red500,
@@ -21,6 +22,9 @@ class TaskList extends Component {
     super();
     this.state = {
       taskDialogOpen: false,
+      snackbarOpen: false,
+      snackbarMessage: '',
+      index: -1,
     }
   }
   handleRequestTaskDialogClose = () => {
@@ -39,6 +43,15 @@ class TaskList extends Component {
       task: taskInfo.task,
     });
     this.handleRequestTaskDialogClose();
+  }
+  handleRequestTaskDelete = (index) => {
+    this.props.deleteTask(index);
+  }
+  handleRequestSnackbar = (message) => {
+    this.setState({
+      snackbarOpen: true,
+      snackbarMessage: message,
+    });
   }
   render() {
     const styles = {
@@ -72,6 +85,8 @@ class TaskList extends Component {
                 key={index}
                 index={index}
                 onRequestEditTaskOpen={this.handleRequestTaskDialogOpen}
+                onRequestDelete={this.handleRequestTaskDelete}
+                onRequestSnackbar={this.handleRequestSnackbar}
               />
             );
           })
@@ -91,6 +106,8 @@ class TaskList extends Component {
                 key={index}
                 index={index}
                 onRequestEditTaskOpen={this.handleRequestTaskDialogOpen}
+                onRequestDelete={this.handleRequestTaskDelete}
+                onRequestSnackbar={this.handleRequestSnackbar}
               />
             );
           })
@@ -109,6 +126,8 @@ class TaskList extends Component {
                 key={index}
                 index={index}
                 onRequestEditTaskOpen={this.handleRequestTaskDialogOpen}
+                onRequestDelete={this.handleRequestTaskDelete}
+                onRequestSnackbar={this.handleRequestSnackbar}
               />
             );
           })
@@ -121,6 +140,11 @@ class TaskList extends Component {
             null
           }
           open={this.state.taskDialogOpen}
+        />
+        <Snackbar
+          open={this.state.snackbarOpen}
+          message={this.state.snackbarMessage}
+          autoHideDuration={3000}
         />
       </div>
     );

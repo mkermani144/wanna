@@ -9,6 +9,26 @@ import Actions from './Actions';
 import './Task.css';
 
 class Task extends Component {
+  constructor() {
+    super();
+    this.state = {
+      class: '',
+    }
+  }
+  handleRequestDelete = () => {
+    this.setState({
+      class: 'will-be-deleted',
+    }, () => {
+      setTimeout(() => {
+        this.setState({
+          class: '',
+        }, () => {
+          this.props.onRequestDelete(this.props.index);
+          this.props.onRequestSnackbar('Task deleted');
+        });
+      }, 1000);
+    });
+  }
   render() {
     const {
       color,
@@ -18,7 +38,7 @@ class Task extends Component {
       repeat,
     } = this.props;
     return (
-      <div className="Task">
+      <div className={`Task ${this.state.class}`}>
         <Circle color={color} />
         <p>{text}</p>
         <Estimation estimation={estimation} />
@@ -26,6 +46,7 @@ class Task extends Component {
         <Repeat repeat={repeat}/>
         <Actions
           onRequestEditDialogOpen={() => this.props.onRequestEditTaskOpen(this.props.index)}
+          onRequestDelete={this.handleRequestDelete}
         />
       </div>
     );
