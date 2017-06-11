@@ -17,7 +17,10 @@ const taskReducer = (state=[], action) => {
     case 'EDIT_TASK':
       return [
         ...state.slice(0, action.index),
-        action.newTask,
+        {
+          ...state[action.index],
+          task: action.newTask.task
+        },
         ...state.slice(action.index + 1),
       ];
     case 'DELETE_TASK':
