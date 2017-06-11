@@ -8,13 +8,38 @@ import {
   blue500
 } from 'material-ui/styles/colors';
 
-import TaskContainer from './TaskContainer';
+import Task from './Task';
+
+import EditTaskDialog from './EditTaskDialog';
 
 import './TaskList.css';
 
 import classify from '../lib/classify';
 
 class TaskList extends Component {
+  constructor() {
+    super();
+    this.state = {
+      taskDialogOpen: false,
+    }
+  }
+  handleRequestTaskDialogClose = () => {
+    this.setState({
+      taskDialogOpen: false,
+    });
+  }
+  handleRequestTaskDialogOpen = (index) => {
+    this.setState({
+      taskDialogOpen: true,
+      index,
+    });
+  }
+  handleRequestTaskEdit = (taskInfo) => {
+    this.props.editTask(this.state.index, {
+      task: taskInfo.task,
+    });
+    this.handleRequestTaskDialogClose();
+  }
   render() {
     const styles = {
       overdue: {
@@ -39,12 +64,14 @@ class TaskList extends Component {
         {
           classifiedTasks.overdue.map((task, index) => {
             return (
-              <TaskContainer
+              <Task
                 color={task.color}
                 text={task.task}
                 estimation={task.estimation}
                 repeat={`${task.repetition} days`}
                 key={index}
+                index={index}
+                onRequestEditTaskOpen={this.handleRequestTaskDialogOpen}
               />
             );
           })
@@ -55,13 +82,15 @@ class TaskList extends Component {
         {
           classifiedTasks.open.map((task, index) => {
             return (
-              <TaskContainer
+              <Task
                 color={task.color}
                 text={task.task}
                 estimation={task.estimation}
                 due={task.due}
                 repeat={`${task.repetition} days`}
                 key={index}
+                index={index}
+                onRequestEditTaskOpen={this.handleRequestTaskDialogOpen}
               />
             );
           })
@@ -72,16 +101,27 @@ class TaskList extends Component {
         {
           classifiedTasks.notYet.map((task, index) => {
             return (
-              <TaskContainer
+              <Task
                 color={task.color}
                 text={task.task}
                 estimation={task.estimation}
                 repeat={`${task.repetition} days`}
                 key={index}
+                index={index}
+                onRequestEditTaskOpen={this.handleRequestTaskDialogOpen}
               />
             );
           })
         }
+        <EditTaskDialog
+          onRequestClose={this.handleRequestTaskDialogClose}
+          onRequestEdit={this.handleRequestTaskEdit}
+          task={this.props.tasks[this.state.index] ?
+            this.props.tasks[this.state.index].task :
+            null
+          }
+          open={this.state.taskDialogOpen}
+        />
       </div>
     );
   }

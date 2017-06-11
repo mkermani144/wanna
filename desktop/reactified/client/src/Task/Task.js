@@ -24,7 +24,9 @@ class Task extends Component {
         <Estimation estimation={estimation} />
         <DueDate due={due}/>
         <Repeat repeat={repeat}/>
-        <Actions />
+        <Actions
+          onRequestEditDialogOpen={() => this.props.onRequestEditTaskOpen(this.props.index)}
+        />
       </div>
     );
   }
