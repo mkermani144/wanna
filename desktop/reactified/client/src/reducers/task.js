@@ -6,14 +6,28 @@ const taskReducer = (state=[], action) => {
         action.task
       ];
     case 'DO_TASK':
-      return [
-        ...state.slice(0, action.index),
-        {
-          ...state[action.index],
-          done: true,
-        },
-        ...state.slice(action.index + 1),
-      ];
+      if (state[action.index].repetition) {
+        const task = state[action.index];
+        const period = task.end - task.start;
+        return [
+          ...state.slice(0, action.index),
+          {
+            ...state[action.index],
+            start: task.end + task.repetition * 86400000,
+            end: task.end + task.repetition * 86400000 + period,
+          },
+          ...state.slice(action.index + 1),
+        ];
+      } else {
+        return [
+          ...state.slice(0, action.index),
+          {
+            ...state[action.index],
+            done: true,
+          },
+          ...state.slice(action.index + 1),
+        ];
+      }
     case 'EDIT_TASK':
       return [
         ...state.slice(0, action.index),
