@@ -47,6 +47,9 @@ class TaskList extends Component {
   handleRequestTaskDelete = (index) => {
     this.props.deleteTask(index);
   }
+  handleRequestTaskDo = (index) => {
+    this.props.doTask(index);
+  }
   handleRequestSnackbar = (message) => {
     this.setState({
       snackbarOpen: true,
@@ -67,6 +70,10 @@ class TaskList extends Component {
         color: blue500,
         marginTop: 20,
       },
+      done: {
+        color: blue500,
+        marginTop: 20,
+      },
     };
     const classifiedTasks = classify(this.props.tasks);
     return (
@@ -82,10 +89,11 @@ class TaskList extends Component {
                 text={task.task}
                 estimation={task.estimation}
                 repeat={`${task.repetition} days`}
-                key={index}
-                index={index}
+                key={task.index}
+                index={task.index}
                 onRequestEditTaskOpen={this.handleRequestTaskDialogOpen}
                 onRequestDelete={this.handleRequestTaskDelete}
+                onRequestDo={this.handleRequestTaskDo}
                 onRequestSnackbar={this.handleRequestSnackbar}
               />
             );
@@ -103,10 +111,11 @@ class TaskList extends Component {
                 estimation={task.estimation}
                 due={task.due}
                 repeat={`${task.repetition} days`}
-                key={index}
-                index={index}
+                key={task.index}
+                index={task.index}
                 onRequestEditTaskOpen={this.handleRequestTaskDialogOpen}
                 onRequestDelete={this.handleRequestTaskDelete}
+                onRequestDo={this.handleRequestTaskDo}
                 onRequestSnackbar={this.handleRequestSnackbar}
               />
             );
@@ -123,11 +132,32 @@ class TaskList extends Component {
                 text={task.task}
                 estimation={task.estimation}
                 repeat={`${task.repetition} days`}
-                key={index}
-                index={index}
+                key={task.index}
+                index={task.index}
                 onRequestEditTaskOpen={this.handleRequestTaskDialogOpen}
                 onRequestDelete={this.handleRequestTaskDelete}
+                onRequestDo={this.handleRequestTaskDo}
                 onRequestSnackbar={this.handleRequestSnackbar}
+              />
+            );
+          })
+        }
+        {classifiedTasks.done.length > 0 &&
+          <Subheader style={styles.notYet}>Done</Subheader>
+        }
+        {
+          classifiedTasks.done.map((task, index) => {
+            return (
+              <Task
+                color={task.color}
+                text={task.task}
+                estimation={task.estimation}
+                repeat={`${task.repetition} days`}
+                key={task.index}
+                index={task.index}
+                onRequestDelete={this.handleRequestTaskDelete}
+                onRequestSnackbar={this.handleRequestSnackbar}
+                done={true}
               />
             );
           })

@@ -10,6 +10,23 @@
   background-color: #B71C1C;
   transition-duration: 1s;
 }
+.Task.done .text p {
+  color: #9E9E9E;
+  transition-duration: 1s;
+}
+.Task .text p:before {
+  content: '';
+  position: absolute;
+  width: 0%;
+  height: 1px;
+  top: 55%;
+  margin-top: -0.5px;
+  background: #424242;
+}
+.Task.done .text p:before {
+  width: 100%;
+  transition: width 1s cubic-bezier(.55, 0, .1, 1);
+}
 .Task > * {
   flex-basis: 0;
 }
@@ -17,8 +34,13 @@
   flex-grow: 0;
   margin-right: 10px;
 }
-.Task p {
+.Task .text {
   flex-grow: 5;
+  position: relative;
+}
+.Task .text p {
+  display: inline-block;
+  position: relative;
 }
 .Task .Estimation {
   flex-grow: 1;
@@ -40,7 +62,7 @@
 .Task .Actions {
   flex-grow: 2;
   display: flex;
-  flex-direction: row;
+  flex-direction: row-reverse;
 }
 .Task .Actions .IconButton {
   opacity: 0;

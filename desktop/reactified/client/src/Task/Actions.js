@@ -17,19 +17,25 @@ class Actions extends Component {
     };
     return (
       <div className="Actions">
-        <IconButton className="IconButton">
-          <Done color={colors.done} />
-        </IconButton>
-        <IconButton className="IconButton"
-          onTouchTap={this.props.onRequestEditDialogOpen}
-        >
-          <Edit color={colors.edit} />
-        </IconButton>
         <IconButton className="IconButton"
           onTouchTap={this.props.onRequestDelete}
         >
           <Delete color={colors.delete} />
         </IconButton>
+        {!this.props.done &&
+          <IconButton className="IconButton"
+            onTouchTap={this.props.onRequestEditDialogOpen}
+          >
+            <Edit color={colors.edit} />
+          </IconButton>
+        }
+        {!this.props.done &&
+          <IconButton className="IconButton"
+            onTouchTap={this.props.onRequestDo}
+          >
+            <Done color={colors.done} />
+          </IconButton>
+        }
       </div>
     );
   }

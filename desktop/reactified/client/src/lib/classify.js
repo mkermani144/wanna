@@ -16,14 +16,22 @@ const classify = (tasks) => {
     overdue: [],
     open: [],
     notYet: [],
+    done: [],
   };
-  tasks.forEach((task) => {
+  tasks.forEach((task, index) => {
     const now = Date.now();
     const { start, end } = task;
-    if (now < start) {
+    if (task.done) {
+      classifiedTasks.done.push({
+        ...task,
+        color: 'white',
+        index,
+      });
+    } else if (now < start) {
       classifiedTasks.notYet.push({
         ...task,
         color: 'hsl(180, 100%, 50%)',
+        index,
       });
     } else if (now <= end) {
       const remaining = end - now;
@@ -32,11 +40,13 @@ const classify = (tasks) => {
         ...task,
         due: setDue(remaining),
         color: setColor(remaining, total),
+        index,
       });
     } else {
       classifiedTasks.overdue.push({
         ...task,
         color: 'hsl(0, 100%, 75%)',
+        index,
       });
     }
   });

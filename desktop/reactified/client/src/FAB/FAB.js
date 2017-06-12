@@ -53,6 +53,7 @@ class FAB extends Component {
       end,
       estimation: taskInfo.estimation * taskInfo.estimationValue,
       repetition: repetitionDays,
+      done: false,
     });
     this.handleRequestClose();
   }
