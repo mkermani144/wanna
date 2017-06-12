@@ -6,7 +6,8 @@ import Snackbar from 'material-ui/Snackbar';
 import {
   red500,
   green500,
-  blue500
+  blue500,
+  purple500,
 } from 'material-ui/styles/colors';
 
 import Task from './Task';
@@ -71,7 +72,7 @@ class TaskList extends Component {
         marginTop: 20,
       },
       done: {
-        color: blue500,
+        color: purple500,
         marginTop: 20,
       },
     };
@@ -143,7 +144,7 @@ class TaskList extends Component {
           })
         }
         {classifiedTasks.done.length > 0 &&
-          <Subheader style={styles.notYet}>Done</Subheader>
+          <Subheader style={styles.done}>Done</Subheader>
         }
         {
           classifiedTasks.done.map((task, index) => {

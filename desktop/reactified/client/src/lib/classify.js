@@ -24,7 +24,7 @@ const classify = (tasks) => {
     if (task.done) {
       classifiedTasks.done.push({
         ...task,
-        color: 'white',
+        color: '#AB47BC',
         index,
       });
     } else if (now < start) {
