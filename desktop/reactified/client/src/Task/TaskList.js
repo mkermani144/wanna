@@ -122,10 +122,10 @@ class TaskList extends Component {
             );
           })
         }
-        {classifiedTasks.notYet.length > 0 &&
+        {classifiedTasks.notYet.length > 0 && this.props.showNotYetTasks &&
           <Subheader style={styles.notYet}>Not Yet</Subheader>
         }
-        {
+        {this.props.showNotYetTasks &&
           classifiedTasks.notYet.map((task, index) => {
             return (
               <Task

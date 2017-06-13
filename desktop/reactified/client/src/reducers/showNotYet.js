@@ -1,9 +1,7 @@
 const showNoyYetReducer = (state={}, action) => {
   switch (action.type) {
     case 'TOGGLE_NOT_YET':
-      return {
-        showNotYetTasks: action.flag,
-      };
+      return action.flag;
     default:
       return state;
   }

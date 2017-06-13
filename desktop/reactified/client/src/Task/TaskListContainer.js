@@ -5,7 +5,7 @@ import * as actionCreators from './actionCreators';
 
 import TaskList from './TaskList';
 
-const mapStateToProps = state => ({ tasks: state.tasks });
+const mapStateToProps = state => ({ tasks: state.tasks, showNotYetTasks: state.showNotYetTasks });
 
 const mapDispatchToProps = dispatch => bindActionCreators(actionCreators, dispatch);
 

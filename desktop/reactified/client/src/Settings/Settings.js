@@ -7,12 +7,20 @@ import Divider from 'material-ui/Divider';
 import './Settings.css';
 
 class Settings extends Component {
+  handleCheck = (e, checked) => {
+    this.props.toggleNotYet(checked);
+  }
   render() {
     return (
       <div className="Settings">
         <List>
           <ListItem
-            leftCheckbox={<Checkbox />}
+            leftCheckbox={
+              <Checkbox
+                defaultChecked={true}
+                onCheck={this.handleCheck}
+              />
+            }
             primaryText="Show not-yet tasks"
           />
           <Divider />
