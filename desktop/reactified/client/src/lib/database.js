@@ -1,6 +1,3 @@
-//import low from 'lowdb';
-import crypto from 'crypto';
-
 const fs = window.require('fs');
 
 const fetchInitialState = () => {
