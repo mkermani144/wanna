@@ -4,7 +4,7 @@ import crypto from 'crypto';
 const fs = window.require('fs');
 
 const fetchInitialState = () => {
-  const data = fs.readFileSync('ideas.json', 'utf-8');
+  const data = fs.readFileSync('.config/db', 'utf-8');
   console.log(data);
   if (data) {
     return JSON.parse(data);
@@ -13,7 +13,7 @@ const fetchInitialState = () => {
   }
 }
 const update = (state) => {
-  fs.writeFileSync('ideas.json', JSON.stringify(state), 'utf-8');
+  fs.writeFileSync('.config/db', JSON.stringify(state), 'utf-8');
 }
 
 
