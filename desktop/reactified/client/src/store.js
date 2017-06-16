@@ -1,7 +1,9 @@
 import { createStore } from 'redux';
 import rootReducer from './reducer';
 
-const defaultState = {
+import { fetchInitialState } from './lib/database';
+
+const defaultState = fetchInitialState() || {
   tasks: [],
   ideas: [],
   showNotYetTasks: true,

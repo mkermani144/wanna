@@ -18,6 +18,8 @@ import IdeaListContainer from './Idea/IdeaListContainer';
 import SettingsContainer from './Settings/SettingsContainer';
 import About from './About/About';
 
+import { update } from './lib/database';
+
 import './App.css';
 
 injectTapEventPlugin();
@@ -28,6 +30,9 @@ class App extends Component {
       palette: {
         primary1Color: blue500,
       },
+    });
+    store.subscribe(() => {
+      update(store.getState());
     });
     return (
       <Provider store={store}>
