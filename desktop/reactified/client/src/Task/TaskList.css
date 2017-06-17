@@ -1,8 +1,0 @@
-.TaskList {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  margin-left: 3vw;
-  margin-right: 3vw;
-  flex: 1;
-}
