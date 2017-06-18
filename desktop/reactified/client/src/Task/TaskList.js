@@ -62,18 +62,22 @@ class TaskList extends Component {
       overdue: {
         color: red500,
         marginTop: 20,
+        cursor: 'default',
       },
       open: {
         color: green500,
         marginTop: 20,
+        cursor: 'default',
       },
       notYet: {
         color: blue500,
         marginTop: 20,
+        cursor: 'default',
       },
       done: {
         color: purple500,
         marginTop: 20,
+        cursor: 'default',
       },
     };
     const classifiedTasks = classify(this.props.tasks);

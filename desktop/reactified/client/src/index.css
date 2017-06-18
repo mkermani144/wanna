@@ -10,3 +10,6 @@ body {
 * {
   font-family: 'Titillium', sans-serif;
 }
+p, small {
+  cursor: default;
+}
