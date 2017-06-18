@@ -6,6 +6,8 @@ import TextField from 'material-ui/TextField';
 import DropDownMenu from 'material-ui/DropDownMenu';
 import MenuItem from 'material-ui/MenuItem';
 
+import { green600, grey50 } from 'material-ui/styles/colors';
+
 import './NewTaskDialog.css';
 
 class NewTaskDialog extends Component {
@@ -110,6 +112,18 @@ class NewTaskDialog extends Component {
         onTouchTap={this.handleRequestClose}
       />,
     ];
+    const dialogTitleStyle = {
+      backgroundColor: green600,
+      color: grey50,
+    };
+    const textFieldStyles = {
+      underlineFocusStyle: {
+        borderColor: green600,
+      },
+      floatingLabelFocusStyle: {
+        color: green600,
+      },
+    };
     return (
       <div className="NewTaskDialog">
         <Dialog
@@ -117,19 +131,25 @@ class NewTaskDialog extends Component {
           actions={actions}
           open={this.props.open}
           onRequestClose={this.props.onRequestClose}
+          titleStyle={dialogTitleStyle}
         >
+          <br />
           What do you wanna do?
           <br />
           <div className="textfields">
             <TextField
               floatingLabelText="Task title"
               fullWidth={true}
+              underlineFocusStyle={textFieldStyles.underlineFocusStyle}
+              floatingLabelFocusStyle={textFieldStyles.floatingLabelFocusStyle}
               onChange={this.handleTaskChange}
               autoFocus
             />
             <div className="row">
               <TextField
                 floatingLabelText="Period         "
+                underlineFocusStyle={textFieldStyles.underlineFocusStyle}
+                floatingLabelFocusStyle={textFieldStyles.floatingLabelFocusStyle}
                 onChange={this.handlePeriodChange}
               />
               <DropDownMenu
@@ -143,6 +163,8 @@ class NewTaskDialog extends Component {
             <div className="row">
               <TextField
                 floatingLabelText="Time to start"
+                underlineFocusStyle={textFieldStyles.underlineFocusStyle}
+                floatingLabelFocusStyle={textFieldStyles.floatingLabelFocusStyle}
                 onChange={this.handleStartChange}
               />
               <DropDownMenu
@@ -156,6 +178,8 @@ class NewTaskDialog extends Component {
             <div className="row">
               <TextField
                 floatingLabelText="Estimated time"
+                underlineFocusStyle={textFieldStyles.underlineFocusStyle}
+                floatingLabelFocusStyle={textFieldStyles.floatingLabelFocusStyle}
                 onChange={this.handleEstimationChange}
               />
               <DropDownMenu
@@ -169,6 +193,8 @@ class NewTaskDialog extends Component {
             <div className="row">
               <TextField
                 floatingLabelText="Repetition period"
+                underlineFocusStyle={textFieldStyles.underlineFocusStyle}
+                floatingLabelFocusStyle={textFieldStyles.floatingLabelFocusStyle}
                 onChange={this.handleRepetitionChange}
               />
               <DropDownMenu
