@@ -2,7 +2,6 @@ const fs = window.require('fs');
 
 const fetchInitialState = () => {
   const data = fs.readFileSync('.config/db', 'utf-8');
-  console.log(data);
   if (data) {
     return JSON.parse(data);
   } else {
