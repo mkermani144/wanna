@@ -4,6 +4,8 @@ import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import TextField from 'material-ui/TextField';
 
+import { yellow800, grey50 } from 'material-ui/styles/colors';
+
 class EditIdeaDialog extends Component {
   constructor(props) {
     super(props);
@@ -34,11 +36,24 @@ class EditIdeaDialog extends Component {
         onTouchTap={this.handleRequestClose}
       />,
     ];
+    const dialogTitleStyle = {
+      backgroundColor: yellow800,
+      color: grey50,
+    };
+    const textFieldStyles = {
+      underlineFocusStyle: {
+        borderColor: yellow800,
+      },
+      floatingLabelFocusStyle: {
+        color: yellow800,
+      },
+    };
     return (
       <div className="EditIdeaDialog">
         <Dialog
           title="Edit idea"
           actions={actions}
+          titleStyle={dialogTitleStyle}
           open={this.props.open}
           onRequestClose={this.props.onRequestClose}
         >
@@ -47,6 +62,8 @@ class EditIdeaDialog extends Component {
           <TextField
             floatingLabelText="Idea title"
             fullWidth={true}
+            underlineFocusStyle={textFieldStyles.underlineFocusStyle}
+            floatingLabelFocusStyle={textFieldStyles.floatingLabelFocusStyle}
             defaultValue={this.props.idea}
             onChange={this.handleIdeaChange}
             autoFocus
