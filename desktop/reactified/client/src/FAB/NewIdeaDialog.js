@@ -55,9 +55,9 @@ class NewIdeaDialog extends Component {
         <Dialog
           title="Add new idea"
           actions={actions}
+          titleStyle={dialogTitleStyle}
           open={this.props.open}
           onRequestClose={this.props.onRequestClose}
-          titleStyle={dialogTitleStyle}
         >
           <br />
           Do you have an idea?

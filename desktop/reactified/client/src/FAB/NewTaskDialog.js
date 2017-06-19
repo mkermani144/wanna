@@ -129,9 +129,9 @@ class NewTaskDialog extends Component {
         <Dialog
           title="Add new task"
           actions={actions}
+          titleStyle={dialogTitleStyle}
           open={this.props.open}
           onRequestClose={this.props.onRequestClose}
-          titleStyle={dialogTitleStyle}
         >
           <br />
           What do you wanna do?
