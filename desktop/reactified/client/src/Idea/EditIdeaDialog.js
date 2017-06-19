@@ -57,6 +57,7 @@ class EditIdeaDialog extends Component {
           open={this.props.open}
           onRequestClose={this.props.onRequestClose}
         >
+          <br />
           Edit you idea
           <br />
           <TextField
