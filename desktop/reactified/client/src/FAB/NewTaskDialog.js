@@ -25,6 +25,17 @@ class NewTaskDialog extends Component {
       repetition: '',
     };
   }
+  buttonDisabled = () => {
+    return !Boolean(
+      this.state.task
+      && this.state.period
+      && this.state.estimation
+      && /^[0-9]*$/.test(this.state.period)
+      && /^[0-9]*$/.test(this.state.start)
+      && /^[0-9]*$/.test(this.state.estimation)
+      && /^[0-9]*$/.test(this.state.repetition)
+    );
+  }
   handlePeriodMenuChange = (e, i, value) => {
     this.setState({
       periodValue: value,
@@ -103,7 +114,7 @@ class NewTaskDialog extends Component {
       <FlatButton
         label="Add"
         primary={true}
-        disabled={!Boolean(this.state.task && this.state.period && this.state.estimation)}
+        disabled={this.buttonDisabled()}
         onTouchTap={this.handleRequestAdd}
       />,
       <FlatButton
@@ -151,6 +162,11 @@ class NewTaskDialog extends Component {
                 underlineFocusStyle={textFieldStyles.underlineFocusStyle}
                 floatingLabelFocusStyle={textFieldStyles.floatingLabelFocusStyle}
                 onChange={this.handlePeriodChange}
+                errorText={
+                  /^[0-9]*$/.test(this.state.period) ?
+                  '' :
+                  'Period should be a number'
+                }
               />
               <DropDownMenu
                 value={this.state.periodValue}
@@ -166,6 +182,11 @@ class NewTaskDialog extends Component {
                 underlineFocusStyle={textFieldStyles.underlineFocusStyle}
                 floatingLabelFocusStyle={textFieldStyles.floatingLabelFocusStyle}
                 onChange={this.handleStartChange}
+                errorText={
+                  /^[0-9]*$/.test(this.state.start) ?
+                  '' :
+                  'Time to start should be a number'
+                }
               />
               <DropDownMenu
                 value={this.state.startValue}
@@ -181,6 +202,11 @@ class NewTaskDialog extends Component {
                 underlineFocusStyle={textFieldStyles.underlineFocusStyle}
                 floatingLabelFocusStyle={textFieldStyles.floatingLabelFocusStyle}
                 onChange={this.handleEstimationChange}
+                errorText={
+                  /^[0-9]*$/.test(this.state.estimation) ?
+                  '' :
+                  'Estimated time should be a number'
+                }
               />
               <DropDownMenu
                 value={this.state.estimationValue}
@@ -196,6 +222,11 @@ class NewTaskDialog extends Component {
                 underlineFocusStyle={textFieldStyles.underlineFocusStyle}
                 floatingLabelFocusStyle={textFieldStyles.floatingLabelFocusStyle}
                 onChange={this.handleRepetitionChange}
+                errorText={
+                  /^[0-9]*$/.test(this.state.repetition) ?
+                  '' :
+                  'Repetition period should be a number'
+                }
               />
               <DropDownMenu
                 value={this.state.repetitionValue}
