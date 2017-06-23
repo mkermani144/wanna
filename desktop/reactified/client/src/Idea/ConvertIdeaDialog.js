@@ -23,6 +23,17 @@ class NewTaskDialog extends Component {
       repetition: '',
     };
   }
+  buttonDisabled = () => {
+    return !Boolean(
+      this.state.task
+      && this.state.period
+      && this.state.estimation
+      && /^[0-9]*$/.test(this.state.period)
+      && /^[0-9]*$/.test(this.state.start)
+      && /^[0-9]*$/.test(this.state.estimation)
+      && /^[0-9]*$/.test(this.state.repetition)
+    );
+  }
   handlePeriodMenuChange = (e, i, value) => {
     this.setState({
       periodValue: value,
@@ -117,13 +128,13 @@ class NewTaskDialog extends Component {
       <FlatButton
         label="Add and finish"
         primary={true}
-        disabled={!Boolean(this.state.task && this.state.period && this.state.estimation)}
+        disabled={this.buttonDisabled()}
         onTouchTap={this.handleRequestFinish}
       />,
       <FlatButton
         label="Add and continue"
         primary={true}
-        disabled={!Boolean(this.state.task && this.state.period && this.state.estimation)}
+        disabled={this.buttonDisabled()}
         onTouchTap={this.handleRequestConvert}
       />,
       <FlatButton
@@ -155,6 +166,11 @@ class NewTaskDialog extends Component {
                 floatingLabelText="Period         "
                 onChange={this.handlePeriodChange}
                 value={this.state.period}
+                errorText={
+                  /^[0-9]*$/.test(this.state.period) ?
+                  '' :
+                  'Period should be a number'
+                }
               />
               <DropDownMenu
                 value={this.state.periodValue}
@@ -169,6 +185,11 @@ class NewTaskDialog extends Component {
                 floatingLabelText="Time to start"
                 onChange={this.handleStartChange}
                 value={this.state.start}
+                errorText={
+                  /^[0-9]*$/.test(this.state.start) ?
+                  '' :
+                  'Time to start should be a number'
+                }
               />
               <DropDownMenu
                 value={this.state.startValue}
@@ -183,6 +204,11 @@ class NewTaskDialog extends Component {
                 floatingLabelText="Estimated time"
                 onChange={this.handleEstimationChange}
                 value={this.state.estimation}
+                errorText={
+                  /^[0-9]*$/.test(this.state.estimation) ?
+                  '' :
+                  'Estimated time should be a number'
+                }
               />
               <DropDownMenu
                 value={this.state.estimationValue}
@@ -197,6 +223,11 @@ class NewTaskDialog extends Component {
                 floatingLabelText="Repetition period"
                 onChange={this.handleRepetitionChange}
                 value={this.state.repetition}
+                errorText={
+                  /^[0-9]*$/.test(this.state.repetition) ?
+                  '' :
+                  'Repetition period should be a number'
+                }
               />
               <DropDownMenu
                 value={this.state.repetitionValue}
