@@ -4,6 +4,8 @@ import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import TextField from 'material-ui/TextField';
 
+import { green600, grey50 } from 'material-ui/styles/colors';
+
 class EditTaskDialog extends Component {
   constructor(props) {
     super(props);
@@ -40,19 +42,35 @@ class EditTaskDialog extends Component {
         onTouchTap={this.handleRequestClose}
       />,
     ];
+    const dialogTitleStyle = {
+      backgroundColor: green600,
+      color: grey50,
+    };
+    const textFieldStyles = {
+      underlineFocusStyle: {
+        borderColor: green600,
+      },
+      floatingLabelFocusStyle: {
+        color: green600,
+      },
+    };
     return (
       <div className="EditTaskDialog">
         <Dialog
           title="Edit task"
           actions={actions}
+          titleStyle={dialogTitleStyle}
           open={this.props.open}
           onRequestClose={this.props.onRequestClose}
         >
+          <br />
           Edit your task
           <br />
           <TextField
             floatingLabelText="Task title"
             fullWidth={true}
+            underlineFocusStyle={textFieldStyles.underlineFocusStyle}
+            floatingLabelFocusStyle={textFieldStyles.floatingLabelFocusStyle}
             defaultValue={this.props.task}
             onChange={this.handleTaskChange}
             autoFocus

@@ -4,6 +4,8 @@ import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import TextField from 'material-ui/TextField';
 
+import { yellow800, grey50 } from 'material-ui/styles/colors';
+
 class NewIdeaDialog extends Component {
   constructor() {
     super();
@@ -36,19 +38,35 @@ class NewIdeaDialog extends Component {
         onTouchTap={this.handleRequestClose}
       />,
     ];
+    const dialogTitleStyle = {
+      backgroundColor: yellow800,
+      color: grey50,
+    };
+    const textFieldStyles = {
+      underlineFocusStyle: {
+        borderColor: yellow800,
+      },
+      floatingLabelFocusStyle: {
+        color: yellow800,
+      },
+    };
     return (
       <div className="NewIdeaDialog">
         <Dialog
           title="Add new idea"
           actions={actions}
+          titleStyle={dialogTitleStyle}
           open={this.props.open}
           onRequestClose={this.props.onRequestClose}
         >
+          <br />
           Do you have an idea?
           <br />
           <TextField
             floatingLabelText="Idea title"
             fullWidth={true}
+            underlineFocusStyle={textFieldStyles.underlineFocusStyle}
+            floatingLabelFocusStyle={textFieldStyles.floatingLabelFocusStyle}
             onChange={this.handleIdeaChange}
             autoFocus
           />
