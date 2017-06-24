@@ -20,7 +20,7 @@ class Settings extends Component {
           <ListItem
             leftCheckbox={
               <Checkbox
-                defaultChecked={true}
+                defaultChecked={this.props.showNotYetTasks}
                 onCheck={this.handleCheckShowNotYet}
               />
             }
@@ -30,7 +30,7 @@ class Settings extends Component {
           <ListItem
             leftCheckbox={
               <Checkbox
-                defaultChecked={true}
+                defaultChecked={this.props.fullscreen}
                 onCheck={this.handleCheckFullscreen}
               />
             }
