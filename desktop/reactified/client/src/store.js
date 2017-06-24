@@ -6,7 +6,10 @@ import { fetchInitialState } from './lib/database';
 const defaultState = fetchInitialState() || {
   tasks: [],
   ideas: [],
-  showNotYetTasks: true,
+  appProperties: {
+    showNotYetTasks: true,
+    fullscreen: true,
+  }
 };
 
 const store = createStore(rootReducer, defaultState);

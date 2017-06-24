@@ -7,8 +7,11 @@ import Divider from 'material-ui/Divider';
 import './Settings.css';
 
 class Settings extends Component {
-  handleCheck = (e, checked) => {
+  handleCheckShowNotYet = (e, checked) => {
     this.props.toggleNotYet(checked);
+  }
+  handleCheckFullscreen = (e, checked) => {
+    this.props.toggleFullscreen(checked);
   }
   render() {
     return (
@@ -18,14 +21,19 @@ class Settings extends Component {
             leftCheckbox={
               <Checkbox
                 defaultChecked={true}
-                onCheck={this.handleCheck}
+                onCheck={this.handleCheckShowNotYet}
               />
             }
             primaryText="Show not-yet tasks"
           />
           <Divider />
           <ListItem
-            leftCheckbox={<Checkbox />}
+            leftCheckbox={
+              <Checkbox
+                defaultChecked={true}
+                onCheck={this.handleCheckFullscreen}
+              />
+            }
             primaryText="Start app in fullscreen mode (Needs app restart)"
           />
           <Divider />
