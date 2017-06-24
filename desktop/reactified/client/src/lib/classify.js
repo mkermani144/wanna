@@ -12,14 +12,14 @@ const setColor = (remaining, total) => {
   return `hsl(${ratio * 180}, 100%, 50%)`;
 };
 const classify = (tasks) => {
-  let classifiedTasks = {
+  const classifiedTasks = {
     overdue: [],
     open: [],
     notYet: [],
     done: [],
   };
+  const now = Date.now();
   tasks.forEach((task, index) => {
-    const now = Date.now();
     const { start, end } = task;
     if (task.done) {
       classifiedTasks.done.push({
@@ -50,6 +50,13 @@ const classify = (tasks) => {
       });
     }
   });
+  for (let group in classifiedTasks) {
+    classifiedTasks[group].sort((a, b) => {
+      const aRatio = (now - a.start) / (a.end - a.start);
+      const bRatio = (now - b.start) / (b.end - b.start);
+      return bRatio - aRatio;
+    });
+  }
   return classifiedTasks;
 };
 
