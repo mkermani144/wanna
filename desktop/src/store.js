@@ -9,7 +9,7 @@ const defaultState = fetchInitialState() || {
   appProperties: {
     showNotYetTasks: true,
     fullscreen: true,
-  }
+  },
 };
 
 const store = createStore(rootReducer, defaultState);
