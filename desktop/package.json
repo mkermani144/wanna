@@ -4,10 +4,15 @@
   "private": true,
   "main": "main.js",
   "devDependencies": {
-    "electron": "^1.6.10",
+    "eslint": "3^",
+    "eslint-config-airbnb": "^15.0.1",
+    "eslint-plugin-import": "^2.6.0",
+    "eslint-plugin-jsx-a11y": "^5.0.3",
+    "eslint-plugin-react": "^7.1.0",
     "react-scripts": "1.0.7"
   },
   "dependencies": {
+    "electron": "^1.6.10",
     "material-ui": "^0.18.1",
     "moment": "^2.18.1",
     "react": "^15.5.4",
@@ -22,7 +27,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
+    "test": "eslint main.js src/",
     "eject": "react-scripts eject",
     "electron": "electron . | BROWSER=none react-scripts start"
   }
