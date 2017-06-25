@@ -2,7 +2,6 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import * as actionCreators from './actionCreators';
-
 import Settings from './Settings';
 
 const mapStateToProps = state => ({
