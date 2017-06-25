@@ -94,7 +94,7 @@ class TaskList extends Component {
                 text={task.task}
                 estimation={task.estimation}
                 repeat={`${task.repetition} days`}
-                key={task.index}
+                key={task.id}
                 index={task.index}
                 onRequestEditTaskOpen={this.handleRequestTaskDialogOpen}
                 onRequestDelete={this.handleRequestTaskDelete}
@@ -116,7 +116,7 @@ class TaskList extends Component {
                 estimation={task.estimation}
                 due={task.due}
                 repeat={`${task.repetition} days`}
-                key={task.index}
+                key={task.id}
                 index={task.index}
                 onRequestEditTaskOpen={this.handleRequestTaskDialogOpen}
                 onRequestDelete={this.handleRequestTaskDelete}
@@ -137,7 +137,7 @@ class TaskList extends Component {
                 text={task.task}
                 estimation={task.estimation}
                 repeat={`${task.repetition} days`}
-                key={task.index}
+                key={task.id}
                 index={task.index}
                 onRequestEditTaskOpen={this.handleRequestTaskDialogOpen}
                 onRequestDelete={this.handleRequestTaskDelete}
@@ -158,7 +158,7 @@ class TaskList extends Component {
                 text={task.task}
                 estimation={task.estimation}
                 repeat={`${task.repetition} days`}
-                key={task.index}
+                key={task.id}
                 index={task.index}
                 onRequestDelete={this.handleRequestTaskDelete}
                 onRequestSnackbar={this.handleRequestSnackbar}

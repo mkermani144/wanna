@@ -1,15 +1,14 @@
 import React, { Component } from 'react';
 import { SpeedDial, SpeedDialItem } from 'react-mui-speeddial';
-
 import Add from 'material-ui/svg-icons/content/add';
 import Close from 'material-ui/svg-icons/navigation/close';
 import Done from 'material-ui/svg-icons/action/done';
 import LightbulbOutline from 'material-ui/svg-icons/action/lightbulb-outline';
 import { green600, yellow800 } from 'material-ui/styles/colors';
+import shortid from 'shortid';
 
 import NewTaskDialog from './NewTaskDialog';
 import NewIdeaDialog from './NewIdeaDialog';
-
 import * as time from '../lib/time';
 
 
@@ -43,6 +42,7 @@ class FAB extends Component {
     const repetitionDays = taskInfo.repetition * taskInfo.repetitionValue;
     const start = time.addDays(time.today(), startDays);
     const end = time.addDays(start, periodDays);
+    const id = shortid.generate();
     this.props.addTask({
       task: taskInfo.task,
       start,
@@ -50,12 +50,15 @@ class FAB extends Component {
       estimation: taskInfo.estimation * taskInfo.estimationValue,
       repetition: repetitionDays,
       done: false,
+      id,
     });
     this.handleRequestClose();
   }
   handleRequestIdeaAdd = (ideaInfo) => {
+    const id = shortid.generate();
     this.props.addIdea({
       idea: ideaInfo.idea,
+      id,
     });
     this.handleRequestClose();
   }

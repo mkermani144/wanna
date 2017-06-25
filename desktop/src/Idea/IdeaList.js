@@ -1,14 +1,11 @@
 import React, { Component } from 'react';
-
 import Snackbar from 'material-ui/Snackbar';
+import shortid from 'shortid';
 
 import Idea from './Idea';
-
 import EditIdeaDialog from './EditIdeaDialog';
 import ConvertIdeaDialog from './ConvertIdeaDialog';
-
 import * as time from '../lib/time';
-
 import './IdeaList.css';
 
 class IdeaList extends Component {
@@ -62,12 +59,14 @@ class IdeaList extends Component {
     const repetitionDays = taskInfo.repetition * taskInfo.repetitionValue;
     const start = time.addDays(time.today(), startDays);
     const end = time.addDays(start, periodDays);
+    const id = shortid.generate();
     this.props.addTask({
       task: taskInfo.task,
       start,
       end,
       estimation: taskInfo.estimation * taskInfo.estimationValue,
       repetition: repetitionDays,
+      id,
     });
   }
   handleRequestSnackbar = (message) => {
@@ -87,7 +86,7 @@ class IdeaList extends Component {
             onRequestConvertDialogOpen={this.handleRequestConvertDialogOpen}
             onRequestSnackbar={this.handleRequestSnackbar}
             index={index}
-            key={index}
+            key={idea.id}
           />
         ))}
         <EditIdeaDialog
