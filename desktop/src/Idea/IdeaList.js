@@ -69,10 +69,16 @@ class IdeaList extends Component {
       id,
     });
   }
-  handleRequestSnackbar = (message) => {
+  handleRequestSnackbarOpen = (message) => {
     this.setState({
       snackbarOpen: true,
       snackbarMessage: message,
+    });
+  }
+  handleRequestSnackbarClose = () => {
+    this.setState({
+      snackbarOpen: false,
+      snackbarMessage: '',
     });
   }
   render() {
@@ -84,7 +90,7 @@ class IdeaList extends Component {
             onRequestEditDialogOpen={this.handleRequestIdeaDialogOpen}
             onRequestDelete={this.handleRequestIdeaDelete}
             onRequestConvertDialogOpen={this.handleRequestConvertDialogOpen}
-            onRequestSnackbar={this.handleRequestSnackbar}
+            onRequestSnackbar={this.handleRequestSnackbarOpen}
             index={index}
             key={idea.id}
           />
@@ -112,6 +118,7 @@ class IdeaList extends Component {
           open={this.state.snackbarOpen}
           message={this.state.snackbarMessage}
           autoHideDuration={3000}
+          onRequestClose={this.handleRequestSnackbarClose}
         />
       </div>
     );

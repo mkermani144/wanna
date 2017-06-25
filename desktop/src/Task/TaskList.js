@@ -46,10 +46,16 @@ class TaskList extends Component {
   handleRequestTaskDo = (index) => {
     this.props.doTask(index);
   }
-  handleRequestSnackbar = (message) => {
+  handleRequestSnackbarOpen = (message) => {
     this.setState({
       snackbarOpen: true,
       snackbarMessage: message,
+    });
+  }
+  handleRequestSnackbarClose = () => {
+    this.setState({
+      snackbarOpen: false,
+      snackbarMessage: '',
     });
   }
   render() {
@@ -93,7 +99,7 @@ class TaskList extends Component {
               onRequestEditTaskOpen={this.handleRequestTaskDialogOpen}
               onRequestDelete={this.handleRequestTaskDelete}
               onRequestDo={this.handleRequestTaskDo}
-              onRequestSnackbar={this.handleRequestSnackbar}
+              onRequestSnackbar={this.handleRequestSnackbarOpen}
             />
           ))
         }
@@ -113,7 +119,7 @@ class TaskList extends Component {
               onRequestEditTaskOpen={this.handleRequestTaskDialogOpen}
               onRequestDelete={this.handleRequestTaskDelete}
               onRequestDo={this.handleRequestTaskDo}
-              onRequestSnackbar={this.handleRequestSnackbar}
+              onRequestSnackbar={this.handleRequestSnackbarOpen}
             />
           ))
         }
@@ -132,7 +138,7 @@ class TaskList extends Component {
               onRequestEditTaskOpen={this.handleRequestTaskDialogOpen}
               onRequestDelete={this.handleRequestTaskDelete}
               onRequestDo={this.handleRequestTaskDo}
-              onRequestSnackbar={this.handleRequestSnackbar}
+              onRequestSnackbar={this.handleRequestSnackbarOpen}
             />
           ))
         }
@@ -149,7 +155,7 @@ class TaskList extends Component {
               key={task.id}
               index={task.index}
               onRequestDelete={this.handleRequestTaskDelete}
-              onRequestSnackbar={this.handleRequestSnackbar}
+              onRequestSnackbar={this.handleRequestSnackbarOpen}
               done
             />
           ))
@@ -167,6 +173,7 @@ class TaskList extends Component {
           open={this.state.snackbarOpen}
           message={this.state.snackbarMessage}
           autoHideDuration={3000}
+          onRequestClose={this.handleRequestSnackbarClose}
         />
       </div>
     );
