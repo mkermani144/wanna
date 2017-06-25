@@ -1,0 +1,15 @@
+@font-face {
+  font-family: 'Titillium';
+  src: url('./TitilliumWeb-Regular.ttf');
+}
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+* {
+  font-family: 'Titillium', sans-serif;
+}
+p, small {
+  cursor: default;
+}
