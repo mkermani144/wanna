@@ -5,7 +5,7 @@ const doTask = index => ({
 const editTask = (index, newTask) => ({
   type: 'EDIT_TASK',
   index,
-  newTask
+  newTask,
 });
 const deleteTask = index => ({
   type: 'DELETE_TASK',

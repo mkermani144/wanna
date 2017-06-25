@@ -1,11 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class Circle extends Component {
-  render() {
-    return (
-      <p className="Circle" style={{ color: this.props.color }}>&#9679;</p>
-    );
-  }
-}
+const Circle = ({ color }) => (
+  <p className="Circle" style={{ color }}>&#9679;</p>
+);
 
 export default Circle;

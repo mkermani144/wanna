@@ -5,7 +5,6 @@ import Estimation from './Estimation';
 import DueDate from './DueDate';
 import Repeat from './Repeat';
 import Actions from './Actions';
-
 import './Task.css';
 
 class Task extends Component {
@@ -13,7 +12,7 @@ class Task extends Component {
     super();
     this.state = {
       class: '',
-    }
+    };
   }
   handleRequestDelete = () => {
     this.setState({
@@ -46,15 +45,15 @@ class Task extends Component {
       estimation,
       due,
       repeat,
-      done
+      done,
     } = this.props;
     return (
       <div className={`Task ${this.state.class} ${done ? 'done' : ''}`}>
         <Circle color={color} />
-        <div className='text'><p>{text}</p></div>
+        <div className={'text'}><p>{text}</p></div>
         <Estimation estimation={estimation} />
-        <DueDate due={due}/>
-        <Repeat repeat={repeat}/>
+        <DueDate due={due} />
+        <Repeat repeat={repeat} />
         <Actions
           onRequestEditDialogOpen={() => this.props.onRequestEditTaskOpen(this.props.index)}
           onRequestDelete={this.handleRequestDelete}

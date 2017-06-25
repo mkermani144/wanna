@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import TextField from 'material-ui/TextField';
-
 import { green600, grey50 } from 'material-ui/styles/colors';
 
 class EditTaskDialog extends Component {
@@ -32,13 +30,13 @@ class EditTaskDialog extends Component {
     const actions = [
       <FlatButton
         label="Edit"
-        primary={true}
-        disabled={!Boolean(this.state.task)}
+        primary
+        disabled={!(this.state.task)}
         onTouchTap={this.handleRequestEdit}
       />,
       <FlatButton
         label="Cancel"
-        primary={true}
+        primary
         onTouchTap={this.handleRequestClose}
       />,
     ];
@@ -68,7 +66,7 @@ class EditTaskDialog extends Component {
           <br />
           <TextField
             floatingLabelText="Task title"
-            fullWidth={true}
+            fullWidth
             underlineFocusStyle={textFieldStyles.underlineFocusStyle}
             floatingLabelFocusStyle={textFieldStyles.floatingLabelFocusStyle}
             defaultValue={this.props.task}
