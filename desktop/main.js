@@ -1,5 +1,6 @@
 const fs = require('fs');
 const electron = require('electron');
+
 const { app } = electron;
 const { BrowserWindow } = electron;
 
@@ -7,14 +8,13 @@ const isFullscreen = () => {
   const data = fs.readFileSync('.config/db', 'utf-8');
   if (data) {
     return JSON.parse(data).appProperties.fullscreen;
-  } else {
-    return true;
   }
-}
+  return true;
+};
 
 let win;
 
-function createWindow(fullscreen) {
+function createWindow() {
   win = new BrowserWindow({
     minWidth: 800,
     minHeight: 600,
