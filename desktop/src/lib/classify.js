@@ -3,9 +3,8 @@ const setDue = (remaining) => {
     return 'today';
   } else if (remaining <= 172800000) {
     return 'tomorrow';
-  } else {
-    return '';
   }
+  return '';
 };
 const setColor = (remaining, total) => {
   const ratio = remaining / total;
@@ -50,13 +49,13 @@ const classify = (tasks) => {
       });
     }
   });
-  for (let group in classifiedTasks) {
+  Object.keys(classifiedTasks).forEach(group =>
     classifiedTasks[group].sort((a, b) => {
       const aRatio = (now - a.start) / (a.end - a.start);
       const bRatio = (now - b.start) / (b.end - b.start);
       return bRatio - aRatio;
-    });
-  }
+    }),
+  );
   return classifiedTasks;
 };
 
