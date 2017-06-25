@@ -1,8 +1,8 @@
-const addTask = (task) => ({
+const addTask = task => ({
   type: 'ADD_TASK',
   task,
 });
-const addIdea = (idea) => ({
+const addIdea = idea => ({
   type: 'ADD_IDEA',
   idea,
 });

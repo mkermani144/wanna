@@ -1,21 +1,17 @@
 import React, { Component } from 'react';
-
 import { SpeedDial, SpeedDialItem } from 'react-mui-speeddial';
 
 import Add from 'material-ui/svg-icons/content/add';
 import Close from 'material-ui/svg-icons/navigation/close';
 import Done from 'material-ui/svg-icons/action/done';
 import LightbulbOutline from 'material-ui/svg-icons/action/lightbulb-outline';
+import { green600, yellow800 } from 'material-ui/styles/colors';
 
 import NewTaskDialog from './NewTaskDialog';
 import NewIdeaDialog from './NewIdeaDialog';
 
 import * as time from '../lib/time';
 
-import {
-  green600,
-  yellow800,
-} from 'material-ui/styles/colors';
 
 class FAB extends Component {
   constructor() {

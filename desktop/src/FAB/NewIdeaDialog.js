@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import TextField from 'material-ui/TextField';
-
 import { yellow800, grey50 } from 'material-ui/styles/colors';
 
 class NewIdeaDialog extends Component {
@@ -28,13 +27,13 @@ class NewIdeaDialog extends Component {
     const actions = [
       <FlatButton
         label="Add"
-        primary={true}
-        disabled={!Boolean(this.state.idea)}
+        primary
+        disabled={!(this.state.idea)}
         onTouchTap={this.handleRequestAdd}
       />,
       <FlatButton
         label="Cancel"
-        primary={true}
+        primary
         onTouchTap={this.handleRequestClose}
       />,
     ];
@@ -64,7 +63,7 @@ class NewIdeaDialog extends Component {
           <br />
           <TextField
             floatingLabelText="Idea title"
-            fullWidth={true}
+            fullWidth
             underlineFocusStyle={textFieldStyles.underlineFocusStyle}
             floatingLabelFocusStyle={textFieldStyles.floatingLabelFocusStyle}
             onChange={this.handleIdeaChange}
