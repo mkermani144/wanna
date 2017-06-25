@@ -8,7 +8,10 @@ const ideaReducer = (state = [], action) => {
     case 'EDIT_IDEA':
       return [
         ...state.slice(0, action.index),
-        action.newIdea,
+        {
+          ...state[action.index],
+          idea: action.newIdea.idea,
+        },
         ...state.slice(action.index + 1),
       ];
     case 'DELETE_IDEA':
