@@ -1,4 +1,4 @@
-const appPropertiesReducer = (state={}, action) => {
+const appPropertiesReducer = (state = {}, action) => {
   switch (action.type) {
     case 'TOGGLE_NOT_YET':
       return {

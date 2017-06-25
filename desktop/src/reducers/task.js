@@ -1,9 +1,9 @@
-const taskReducer = (state=[], action) => {
+const taskReducer = (state = [], action) => {
   switch (action.type) {
     case 'ADD_TASK':
       return [
         ...state,
-        action.task
+        action.task,
       ];
     case 'DO_TASK':
       if (state[action.index].repetition) {
@@ -13,27 +13,26 @@ const taskReducer = (state=[], action) => {
           ...state.slice(0, action.index),
           {
             ...state[action.index],
-            start: task.end + task.repetition * 86400000,
-            end: task.end + task.repetition * 86400000 + period,
-          },
-          ...state.slice(action.index + 1),
-        ];
-      } else {
-        return [
-          ...state.slice(0, action.index),
-          {
-            ...state[action.index],
-            done: true,
+            start: task.end + (task.repetition * 86400000),
+            end: task.end + (task.repetition * 86400000) + period,
           },
           ...state.slice(action.index + 1),
         ];
       }
+      return [
+        ...state.slice(0, action.index),
+        {
+          ...state[action.index],
+          done: true,
+        },
+        ...state.slice(action.index + 1),
+      ];
     case 'EDIT_TASK':
       return [
         ...state.slice(0, action.index),
         {
           ...state[action.index],
-          task: action.newTask.task
+          task: action.newTask.task,
         },
         ...state.slice(action.index + 1),
       ];

@@ -1,9 +1,9 @@
-const ideaReducer = (state=[], action) => {
+const ideaReducer = (state = [], action) => {
   switch (action.type) {
     case 'ADD_IDEA':
       return [
         ...state,
-        action.idea
+        action.idea,
       ];
     case 'EDIT_IDEA':
       return [
@@ -15,7 +15,7 @@ const ideaReducer = (state=[], action) => {
       return [
         ...state.slice(0, action.index),
         ...state.slice(action.index + 1),
-      ]
+      ];
     default:
       return state;
   }
