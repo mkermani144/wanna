@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 
 import Actions from './Actions';
-
 import './Idea.css';
 
 class Idea extends Component {
@@ -9,7 +8,7 @@ class Idea extends Component {
     super();
     this.state = {
       class: '',
-    }
+    };
   }
   handleRequestDelete = () => {
     this.setState({

@@ -7,7 +7,7 @@ const deleteIdea = index => ({
   type: 'DELETE_IDEA',
   index,
 });
-const addTask = (task) => ({
+const addTask = task => ({
   type: 'ADD_TASK',
   task,
 });

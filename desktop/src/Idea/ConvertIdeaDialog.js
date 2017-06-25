@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
-
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import TextField from 'material-ui/TextField';
 import DropDownMenu from 'material-ui/DropDownMenu';
 import MenuItem from 'material-ui/MenuItem';
-
 import { green600, grey50 } from 'material-ui/styles/colors';
 
 import './ConvertIdeaDialog.css';
@@ -25,17 +23,15 @@ class NewTaskDialog extends Component {
       repetition: '',
     };
   }
-  buttonDisabled = () => {
-    return !Boolean(
-      this.state.task
-      && this.state.period
-      && this.state.estimation
-      && /^[0-9]*$/.test(this.state.period)
-      && /^[0-9]*$/.test(this.state.start)
-      && /^[0-9]*$/.test(this.state.estimation)
-      && /^[0-9]*$/.test(this.state.repetition)
-    );
-  }
+  buttonDisabled = () => !(
+    this.state.task
+    && this.state.period
+    && this.state.estimation
+    && /^[0-9]*$/.test(this.state.period)
+    && /^[0-9]*$/.test(this.state.start)
+    && /^[0-9]*$/.test(this.state.estimation)
+    && /^[0-9]*$/.test(this.state.repetition)
+  );
   handlePeriodMenuChange = (e, i, value) => {
     this.setState({
       periodValue: value,
@@ -129,19 +125,19 @@ class NewTaskDialog extends Component {
     const actions = [
       <FlatButton
         label="Add and finish"
-        primary={true}
+        primary
         disabled={this.buttonDisabled()}
         onTouchTap={this.handleRequestFinish}
       />,
       <FlatButton
         label="Add and continue"
-        primary={true}
+        primary
         disabled={this.buttonDisabled()}
         onTouchTap={this.handleRequestConvert}
       />,
       <FlatButton
         label="Cancel"
-        primary={true}
+        primary
         onTouchTap={this.handleRequestClose}
       />,
     ];
@@ -172,7 +168,7 @@ class NewTaskDialog extends Component {
           <div className="textfields">
             <TextField
               floatingLabelText="Task title"
-              fullWidth={true}
+              fullWidth
               underlineFocusStyle={textFieldStyles.underlineFocusStyle}
               floatingLabelFocusStyle={textFieldStyles.floatingLabelFocusStyle}
               onChange={this.handleTaskChange}
