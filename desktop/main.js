@@ -6,7 +6,7 @@ const { BrowserWindow } = electron;
 
 const isFullscreen = () => {
   const data = fs.readFileSync('.config/db', 'utf-8');
-  if (data) {
+  if (JSON.parse(data).appProperties) {
     return JSON.parse(data).appProperties.fullscreen;
   }
   return true;
