@@ -1,6 +1,8 @@
 wanna [![Build Status](https://travis-ci.org/mkermani144/wanna.svg?branch=master)](https://travis-ci.org/mkermani144/wanna)
 ====
 
+[![Join the chat at https://gitter.im/wannachat/Lobby](https://badges.gitter.im/wannachat/Lobby.svg)](https://gitter.im/wannachat/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 
 **_Latest (2 Dec 2016) app look in a thousand of words:_** :sunglasses::sunglasses:
 
