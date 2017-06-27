@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 
 import Actions from './Actions';
 import './Idea.css';
 
-class Idea extends Component {
+class Idea extends PureComponent {
   constructor() {
     super();
     this.state = {
