@@ -9,7 +9,6 @@ import shortid from 'shortid';
 
 import NewTaskDialog from './NewTaskDialog';
 import NewIdeaDialog from './NewIdeaDialog';
-import * as time from '../lib/time';
 
 
 class FAB extends PureComponent {
@@ -37,16 +36,12 @@ class FAB extends PureComponent {
     });
   }
   handleRequestTaskAdd = (taskInfo) => {
-    const startDays = taskInfo.start * taskInfo.startValue;
-    const periodDays = taskInfo.period * taskInfo.periodValue;
     const repetitionDays = taskInfo.repetition * taskInfo.repetitionValue;
-    const start = time.addDays(time.today(), startDays);
-    const end = time.addDays(start, periodDays);
     const id = shortid.generate();
     this.props.addTask({
       task: taskInfo.task,
-      start,
-      end,
+      start: taskInfo.start,
+      end: taskInfo.end + 86400000,
       estimation: taskInfo.estimation * taskInfo.estimationValue,
       repetition: repetitionDays,
       done: false,
