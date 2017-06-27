@@ -5,7 +5,6 @@ import shortid from 'shortid';
 import Idea from './Idea';
 import EditIdeaDialog from './EditIdeaDialog';
 import ConvertIdeaDialog from './ConvertIdeaDialog';
-import * as time from '../lib/time';
 import './IdeaList.css';
 
 class IdeaList extends Component {
@@ -69,18 +68,15 @@ class IdeaList extends Component {
     });
   }
   handleRequestIdeaConvert = (taskInfo) => {
-    const startDays = taskInfo.start * taskInfo.startValue;
-    const periodDays = taskInfo.period * taskInfo.periodValue;
     const repetitionDays = taskInfo.repetition * taskInfo.repetitionValue;
-    const start = time.addDays(time.today(), startDays);
-    const end = time.addDays(start, periodDays);
     const id = shortid.generate();
     this.props.addTask({
       task: taskInfo.task,
-      start,
-      end,
+      start: taskInfo.start,
+      end: taskInfo.end + 86400000,
       estimation: taskInfo.estimation * taskInfo.estimationValue,
       repetition: repetitionDays,
+      done: false,
       id,
     });
   }
