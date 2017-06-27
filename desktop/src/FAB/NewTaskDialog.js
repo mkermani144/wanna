@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
@@ -9,7 +9,7 @@ import { green600, grey50 } from 'material-ui/styles/colors';
 
 import './NewTaskDialog.css';
 
-class NewTaskDialog extends Component {
+class NewTaskDialog extends PureComponent {
   constructor() {
     super();
     this.state = {

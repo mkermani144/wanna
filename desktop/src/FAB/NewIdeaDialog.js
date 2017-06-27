@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import TextField from 'material-ui/TextField';
 import { yellow800, grey50 } from 'material-ui/styles/colors';
 
-class NewIdeaDialog extends Component {
+class NewIdeaDialog extends PureComponent {
   constructor() {
     super();
     this.state = { idea: '' };

@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import TextField from 'material-ui/TextField';
 import { green600, grey50 } from 'material-ui/styles/colors';
 
-class EditTaskDialog extends Component {
+class EditTaskDialog extends PureComponent {
   constructor(props) {
     super(props);
     this.state = { task: this.props.task };

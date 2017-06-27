@@ -23,6 +23,18 @@ class TaskList extends Component {
       index: -1,
     };
   }
+  shouldComponentUpdate(nextProps, nextState) {
+    if (this.state.taskDialogOpen !== nextState.taskDialogOpen) {
+      return true;
+    }
+    if (this.state.snackbarOpen !== nextState.snackbarOpen) {
+      return true;
+    }
+    if (JSON.stringify(this.props) !== JSON.stringify(nextProps)) {
+      return true;
+    }
+    return false;
+  }
   handleRequestTaskDialogClose = () => {
     this.setState({
       taskDialogOpen: false,

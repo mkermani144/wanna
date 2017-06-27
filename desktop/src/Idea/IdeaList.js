@@ -19,6 +19,21 @@ class IdeaList extends Component {
       index: -1,
     };
   }
+  shouldComponentUpdate(nextProps, nextState) {
+    if (this.state.ideaDialogOpen !== nextState.ideaDialogOpen) {
+      return true;
+    }
+    if (this.state.convertDialogOpen !== nextState.convertDialogOpen) {
+      return true;
+    }
+    if (this.state.snackbarOpen !== nextState.snackbarOpen) {
+      return true;
+    }
+    if (JSON.stringify(this.props) !== JSON.stringify(nextProps)) {
+      return true;
+    }
+    return false;
+  }
   handleRequestIdeaDialogClose = () => {
     this.setState({
       ideaDialogOpen: false,

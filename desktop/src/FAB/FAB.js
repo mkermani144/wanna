@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { SpeedDial, SpeedDialItem } from 'react-mui-speeddial';
 import Add from 'material-ui/svg-icons/content/add';
 import Close from 'material-ui/svg-icons/navigation/close';
@@ -12,7 +12,7 @@ import NewIdeaDialog from './NewIdeaDialog';
 import * as time from '../lib/time';
 
 
-class FAB extends Component {
+class FAB extends PureComponent {
   constructor() {
     super();
     this.state = {
