@@ -10,6 +10,11 @@ const appPropertiesReducer = (state = {}, action) => {
         ...state,
         fullscreen: action.isFullscreen,
       };
+    case 'CHANGE_CALENDAR_SYSTEM':
+      return {
+        ...state,
+        calendarSystem: action.calendarSystem,
+      };
     default:
       return state;
   }

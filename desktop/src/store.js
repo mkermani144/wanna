@@ -9,6 +9,7 @@ const defaultState = fetchInitialState() || {
   appProperties: {
     showNotYetTasks: true,
     fullscreen: true,
+    calendarSystem: 'EN-en',
   },
 };
 

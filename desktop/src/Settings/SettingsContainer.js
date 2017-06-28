@@ -7,6 +7,7 @@ import Settings from './Settings';
 const mapStateToProps = state => ({
   fullscreen: state.appProperties.fullscreen,
   showNotYetTasks: state.appProperties.showNotYetTasks,
+  calendarSystem: state.appProperties.calendarSystem,
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators(actionCreators, dispatch);
