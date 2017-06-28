@@ -8,6 +8,7 @@ const mapStateToProps = state => ({
   fullscreen: state.appProperties.fullscreen,
   showNotYetTasks: state.appProperties.showNotYetTasks,
   calendarSystem: state.appProperties.calendarSystem,
+  firstDayOfWeek: state.appProperties.firstDayOfWeek,
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators(actionCreators, dispatch);
