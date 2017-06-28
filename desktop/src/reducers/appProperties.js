@@ -15,6 +15,11 @@ const appPropertiesReducer = (state = {}, action) => {
         ...state,
         calendarSystem: action.calendarSystem,
       };
+    case 'CHANGE_CALENDAR_SYSTEM':
+      return {
+        ...state,
+        calendarSystem: action.calendarSystem,
+      };
     default:
       return state;
   }

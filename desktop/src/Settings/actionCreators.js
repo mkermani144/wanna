@@ -10,5 +10,9 @@ const changeCalendarSystem = calendarSystem => ({
   type: 'CHANGE_CALENDAR_SYSTEM',
   calendarSystem,
 });
+const changeFirstDayOfWeek = dayNumber => ({
+  type: 'CHANGE_FIRST_DAY_OF_WEEK',
+  dayNumber,
+});
 
-export { toggleNotYet, toggleFullscreen, changeCalendarSystem };
+export { toggleNotYet, toggleFullscreen, changeCalendarSystem, changeFirstDayOfWeek };
