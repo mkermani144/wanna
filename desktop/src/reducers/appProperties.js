@@ -10,6 +10,16 @@ const appPropertiesReducer = (state = {}, action) => {
         ...state,
         fullscreen: action.isFullscreen,
       };
+    case 'CHANGE_CALENDAR_SYSTEM':
+      return {
+        ...state,
+        calendarSystem: action.calendarSystem,
+      };
+    case 'CHANGE_FIRST_DAY_OF_WEEK':
+      return {
+        ...state,
+        firstDayOfWeek: action.firstDayOfWeek,
+      };
     default:
       return state;
   }

@@ -9,7 +9,6 @@ import shortid from 'shortid';
 
 import NewTaskDialog from './NewTaskDialog';
 import NewIdeaDialog from './NewIdeaDialog';
-import * as time from '../lib/time';
 
 
 class FAB extends PureComponent {
@@ -37,16 +36,16 @@ class FAB extends PureComponent {
     });
   }
   handleRequestTaskAdd = (taskInfo) => {
-    const startDays = taskInfo.start * taskInfo.startValue;
-    const periodDays = taskInfo.period * taskInfo.periodValue;
     const repetitionDays = taskInfo.repetition * taskInfo.repetitionValue;
-    const start = time.addDays(time.today(), startDays);
-    const end = time.addDays(start, periodDays);
     const id = shortid.generate();
+    let offset = 0;
+    if (this.props.calendarSystem === 'fa-IR') {
+      offset = 56429000;
+    }
     this.props.addTask({
       task: taskInfo.task,
-      start,
-      end,
+      start: taskInfo.start - offset,
+      end: (taskInfo.end + 86400000) - offset,
       estimation: taskInfo.estimation * taskInfo.estimationValue,
       repetition: repetitionDays,
       done: false,
@@ -96,6 +95,8 @@ class FAB extends PureComponent {
           open={this.state.taskDialogOpen}
           onRequestClose={this.handleRequestClose}
           onRequestAdd={this.handleRequestTaskAdd}
+          calendarSystem={this.props.calendarSystem}
+          firstDayOfWeek={this.props.firstDayOfWeek}
         />
         <NewIdeaDialog
           open={this.state.ideaDialogOpen}

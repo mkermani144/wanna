@@ -2,6 +2,18 @@
   display: flex;
   flex-flow: row wrap;
   align-items: center;
+  justify-content: space-between;
+}
+.datepicker {
+  width: 48%;
+  display: flex;
+}
+.datepicker > div {
+  flex-grow: 1;
+  display: flex;
+}
+.datepicker > div > div:first-of-type {
+  flex-grow: 1;
 }
 .row {
   width: 50%;

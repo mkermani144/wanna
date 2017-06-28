@@ -2,46 +2,37 @@ import React, { PureComponent } from 'react';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import TextField from 'material-ui/TextField';
+import DatePicker from 'material-ui/DatePicker';
 import DropDownMenu from 'material-ui/DropDownMenu';
 import MenuItem from 'material-ui/MenuItem';
 import { green600, grey50 } from 'material-ui/styles/colors';
+import defaultUtils from 'material-ui/DatePicker/dateUtils';
+import persianUtils from 'material-ui-persian-date-picker-utils';
 
 import './ConvertIdeaDialog.css';
 
 class NewTaskDialog extends PureComponent {
   constructor() {
     super();
+    const todayStart = new Date();
+    todayStart.setHours(0, 0, 0, 0);
     this.state = {
-      periodValue: 1,
-      startValue: 1,
       estimationValue: 1,
       repetitionValue: 1,
       task: '',
-      period: '',
-      start: '',
+      start: Date.parse(todayStart),
+      end: 0,
       estimation: '',
       repetition: '',
     };
   }
   buttonDisabled = () => !(
     this.state.task
-    && this.state.period
+    && this.state.end
     && this.state.estimation
-    && /^[0-9]*$/.test(this.state.period)
-    && /^[0-9]*$/.test(this.state.start)
     && /^[0-9]*$/.test(this.state.estimation)
     && /^[0-9]*$/.test(this.state.repetition)
   );
-  handlePeriodMenuChange = (e, i, value) => {
-    this.setState({
-      periodValue: value,
-    });
-  }
-  handleStartMenuChange = (e, i, value) => {
-    this.setState({
-      startValue: value,
-    });
-  }
   handleEstimationMenuChange = (e, i, value) => {
     this.setState({
       estimationValue: value,
@@ -57,14 +48,14 @@ class NewTaskDialog extends PureComponent {
       task: e.target.value,
     });
   }
-  handlePeriodChange = (e) => {
+  handleStartChange = (e, start) => {
     this.setState({
-      period: e.target.value,
+      start: Date.parse(start),
     });
   }
-  handleStartChange = (e) => {
+  handleEndChange = (e, end) => {
     this.setState({
-      start: e.target.value,
+      end: Date.parse(end),
     });
   }
   handleEstimationChange = (e) => {
@@ -78,14 +69,14 @@ class NewTaskDialog extends PureComponent {
     });
   }
   handleRequestClose = () => {
+    const todayStart = new Date();
+    todayStart.setHours(0, 0, 0, 0);
     this.setState({
-      periodValue: 1,
-      startValue: 1,
       estimationValue: 1,
       repetitionValue: 1,
       task: '',
-      period: '',
-      start: '',
+      start: Date.parse(todayStart),
+      end: 0,
       estimation: '',
       repetition: '',
     });
@@ -93,14 +84,14 @@ class NewTaskDialog extends PureComponent {
   }
   handleRequestConvert = () => {
     this.props.onRequestConvert(this.state);
+    const todayStart = new Date();
+    todayStart.setHours(0, 0, 0, 0);
     this.setState({
-      periodValue: 1,
-      startValue: 1,
       estimationValue: 1,
       repetitionValue: 1,
       task: '',
-      period: '',
-      start: '',
+      start: Date.parse(todayStart),
+      end: 0,
       estimation: '',
       repetition: '',
     });
@@ -109,18 +100,21 @@ class NewTaskDialog extends PureComponent {
     this.props.onRequestConvert(this.state);
     this.props.onRequestDelete();
     this.props.onRequestClose();
+    const todayStart = new Date();
+    todayStart.setHours(0, 0, 0, 0);
     this.setState({
-      periodValue: 1,
-      startValue: 1,
       estimationValue: 1,
       repetitionValue: 1,
       task: '',
-      period: '',
-      start: '',
+      start: Date.parse(todayStart),
+      end: 0,
       estimation: '',
       repetition: '',
     });
   }
+  disablePassed = date => Date.parse(date) < Date.now() - 86400000;
+  disableEndBeforeStart = date => Date.parse(date) < this.state.start ||
+                                  Date.parse(date) < Date.now() - 86400000;
   render() {
     const actions = [
       <FlatButton
@@ -153,6 +147,12 @@ class NewTaskDialog extends PureComponent {
         color: green600,
       },
     };
+    const datePickerStyles = {
+      textFieldStyle: {
+        flex: 1,
+      },
+    };
+    const DateTimeFormat = global.Intl.DateTimeFormat;
     return (
       <div className="NewTaskDialog">
         <Dialog
@@ -175,47 +175,40 @@ class NewTaskDialog extends PureComponent {
               autoFocus
               value={this.state.task}
             />
-            <div className="row">
-              <TextField
-                floatingLabelText="Period         "
-                underlineFocusStyle={textFieldStyles.underlineFocusStyle}
-                floatingLabelFocusStyle={textFieldStyles.floatingLabelFocusStyle}
-                onChange={this.handlePeriodChange}
-                value={this.state.period}
-                errorText={
-                  /^[0-9]*$/.test(this.state.period) ?
-                  '' :
-                  'Period should be a number'
+            <div className="datepicker">
+              <DatePicker
+                hintText="Start"
+                defaultDate={new Date()}
+                autoOk
+                DateTimeFormat={DateTimeFormat}
+                locale={this.props.calendarSystem}
+                utils={
+                  this.props.calendarSystem === 'fa-IR' ?
+                  persianUtils :
+                  defaultUtils
                 }
-              />
-              <DropDownMenu
-                value={this.state.periodValue}
-                onChange={this.handlePeriodMenuChange}
-              >
-                <MenuItem value={1} primaryText="Days" />
-                <MenuItem value={7} primaryText="Weeks" />
-              </DropDownMenu>
-            </div>
-            <div className="row">
-              <TextField
-                floatingLabelText="Time to start"
-                underlineFocusStyle={textFieldStyles.underlineFocusStyle}
-                floatingLabelFocusStyle={textFieldStyles.floatingLabelFocusStyle}
+                firstDayOfWeek={this.props.firstDayOfWeek}
+                textFieldStyle={datePickerStyles.textFieldStyle}
+                shouldDisableDate={this.disablePassed}
                 onChange={this.handleStartChange}
-                value={this.state.start}
-                errorText={
-                  /^[0-9]*$/.test(this.state.start) ?
-                  '' :
-                  'Time to start should be a number'
-                }
               />
-              <DropDownMenu
-                value={this.state.startValue}
-                onChange={this.handleStartMenuChange}
-              >
-                <MenuItem value={1} primaryText="Days" />
-                <MenuItem value={7} primaryText="Weeks" />
-              </DropDownMenu>
+            </div>
+            <div className="datepicker">
+              <DatePicker
+                hintText="End"
+                autoOk
+                DateTimeFormat={DateTimeFormat}
+                locale={this.props.calendarSystem}
+                utils={
+                  this.props.calendarSystem === 'fa-IR' ?
+                  persianUtils :
+                  defaultUtils
+                }
+                firstDayOfWeek={this.props.firstDayOfWeek}
+                textFieldStyle={datePickerStyles.textFieldStyle}
+                shouldDisableDate={this.disableEndBeforeStart}
+                onChange={this.handleEndChange}
+              />
             </div>
             <div className="row">
               <TextField

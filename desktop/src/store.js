@@ -9,6 +9,8 @@ const defaultState = fetchInitialState() || {
   appProperties: {
     showNotYetTasks: true,
     fullscreen: true,
+    calendarSystem: 'en-US',
+    firstDayOfWeek: 1,
   },
 };
 
