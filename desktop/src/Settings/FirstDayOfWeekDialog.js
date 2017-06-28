@@ -39,7 +39,7 @@ class CalendarSystemDialog extends PureComponent {
       >
         <RadioButtonGroup
           name="firstDayOfWeek"
-          defaultSelected={this.props.firstDayOfWeek}
+          defaultSelected={`${this.props.firstDayOfWeek}`}
           onChange={this.handleRequestClose}
         >
           <RadioButton
