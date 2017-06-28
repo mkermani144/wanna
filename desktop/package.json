@@ -14,6 +14,7 @@
   "dependencies": {
     "electron": "^1.6.10",
     "material-ui": "^0.18.1",
+    "material-ui-persian-date-picker-utils": "^0.1.2",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-mui-speeddial": "^0.0.6",
