@@ -38,10 +38,14 @@ class FAB extends PureComponent {
   handleRequestTaskAdd = (taskInfo) => {
     const repetitionDays = taskInfo.repetition * taskInfo.repetitionValue;
     const id = shortid.generate();
+    let offset = 0;
+    if (this.props.calendarSystem === 'fa-IR') {
+      offset = 56429000;
+    }
     this.props.addTask({
       task: taskInfo.task,
-      start: taskInfo.start,
-      end: taskInfo.end + 86400000,
+      start: taskInfo.start - offset,
+      end: (taskInfo.end + 86400000) - offset,
       estimation: taskInfo.estimation * taskInfo.estimationValue,
       repetition: repetitionDays,
       done: false,
@@ -91,6 +95,7 @@ class FAB extends PureComponent {
           open={this.state.taskDialogOpen}
           onRequestClose={this.handleRequestClose}
           onRequestAdd={this.handleRequestTaskAdd}
+          calendarSystem={this.props.calendarSystem}
         />
         <NewIdeaDialog
           open={this.state.ideaDialogOpen}

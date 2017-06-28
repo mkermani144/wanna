@@ -43,13 +43,13 @@ class CalendarSystemDialog extends PureComponent {
           onChange={this.handleRequestClose}
         >
           <RadioButton
-            label="EN-us"
-            value="EN-us"
+            label="en-US"
+            value="en-US"
             style={radioButtonStyle}
           />
           <RadioButton
-            label="IR-fa"
-            value="IR-fa"
+            label="fa-IR"
+            value="fa-IR"
             style={radioButtonStyle}
           />
         </RadioButtonGroup>

@@ -5,8 +5,10 @@ import * as actionCreators from './actionCreators';
 
 import FAB from './FAB';
 
+const mapStateToProps = state => ({ calendarSystem: state.appProperties.calendarSystem });
+
 const mapDispatchToProps = dispatch => bindActionCreators(actionCreators, dispatch);
 
-const FABContainer = connect(null, mapDispatchToProps)(FAB);
+const FABContainer = connect(mapStateToProps, mapDispatchToProps)(FAB);
 
 export default FABContainer;
