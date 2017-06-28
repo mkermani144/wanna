@@ -7,6 +7,7 @@ import IdeaList from './IdeaList';
 const mapStateToProps = state => ({
   ideas: state.ideas,
   calendarSystem: state.appProperties.calendarSystem,
+  firstDayOfWeek: state.appProperties.firstDayOfWeek,
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators(actionCreators, dispatch);

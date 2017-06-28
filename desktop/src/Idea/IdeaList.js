@@ -129,6 +129,7 @@ class IdeaList extends Component {
           }
           open={this.state.convertDialogOpen}
           calendarSystem={this.props.calendarSystem}
+          firstDayOfWeek={this.props.firstDayOfWeek}
         />
         <Snackbar
           open={this.state.snackbarOpen}
