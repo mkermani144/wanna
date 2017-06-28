@@ -10,6 +10,7 @@ const defaultState = fetchInitialState() || {
     showNotYetTasks: true,
     fullscreen: true,
     calendarSystem: 'en-US',
+    firstDayOfWeek: 1,
   },
 };
 
