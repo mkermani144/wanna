@@ -16,7 +16,7 @@ class NewTaskDialog extends PureComponent {
   constructor() {
     super();
     const todayStart = new Date();
-    todayStart.setHours(0, 3, 30, 0);
+    todayStart.setHours(0, 0, 0, 0);
     this.state = {
       estimationValue: 1,
       repetitionValue: 1,
@@ -160,7 +160,6 @@ class NewTaskDialog extends PureComponent {
                 autoOk
                 DateTimeFormat={DateTimeFormat}
                 locale={this.props.calendarSystem}
-                firstDayOfWeek={6}
                 utils={
                   this.props.calendarSystem === 'fa-IR' ?
                   persianUtils :
@@ -177,7 +176,6 @@ class NewTaskDialog extends PureComponent {
                 autoOk
                 DateTimeFormat={DateTimeFormat}
                 locale={this.props.calendarSystem}
-                firstDayOfWeek={6}
                 utils={
                   this.props.calendarSystem === 'fa-IR' ?
                   persianUtils :
