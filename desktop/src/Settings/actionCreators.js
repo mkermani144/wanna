@@ -10,9 +10,9 @@ const changeCalendarSystem = calendarSystem => ({
   type: 'CHANGE_CALENDAR_SYSTEM',
   calendarSystem,
 });
-const changeFirstDayOfWeek = dayNumber => ({
+const changeFirstDayOfWeek = firstDayOfWeek => ({
   type: 'CHANGE_FIRST_DAY_OF_WEEK',
-  dayNumber,
+  firstDayOfWeek,
 });
 
 export { toggleNotYet, toggleFullscreen, changeCalendarSystem, changeFirstDayOfWeek };

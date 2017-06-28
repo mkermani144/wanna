@@ -4,6 +4,7 @@ import Checkbox from 'material-ui/Checkbox';
 import Divider from 'material-ui/Divider';
 
 import CalendarSystemDialog from './CalendarSystemDialog';
+import FirstDayOfWeekDialog from './FirstDayOfWeekDialog';
 import './Settings.css';
 
 class Settings extends PureComponent {
@@ -11,6 +12,7 @@ class Settings extends PureComponent {
     super();
     this.state = {
       calendarSystemDialogOpen: false,
+      firstDayOfWeekDialogOpen: false,
     };
   }
   handleCheckShowNotYet = (e, checked) => {
@@ -27,13 +29,29 @@ class Settings extends PureComponent {
       calendarSystemDialogOpen: true,
     });
   }
-  handleRequestClose = (calendarSystem) => {
+  handleRequestFirstDayOfWeekDialogOpen = () => {
+    this.setState({
+      firstDayOfWeekDialogOpen: true,
+    });
+  }
+  handleRequestCalendarSystemDialogClose = (calendarSystem) => {
     this.props.changeCalendarSystem(calendarSystem);
     this.setState({
       calendarSystemDialogOpen: false,
     });
   }
+  handleRequestFirstDayOfWeekDialogClose = (dayNumber) => {
+    this.props.changeFirstDayOfWeek(+dayNumber);
+    this.setState({
+      firstDayOfWeekDialogOpen: false,
+    });
+  }
   render() {
+    const weekDays = {
+      0: 'Sunday',
+      1: 'Monday',
+      6: 'Saturday',
+    };
     return (
       <div className="Settings">
         <List>
@@ -63,11 +81,22 @@ class Settings extends PureComponent {
             onClick={this.handleRequestCalendarSystemDialogOpen}
           />
           <Divider />
+          <ListItem
+            primaryText="First day of week"
+            secondaryText={weekDays[this.props.firstDayOfWeek]}
+            onClick={this.handleRequestFirstDayOfWeekDialogOpen}
+          />
+          <Divider />
         </List>
         <CalendarSystemDialog
-          onRequestClose={this.handleRequestClose}
+          onRequestClose={this.handleRequestCalendarSystemDialogClose}
           open={this.state.calendarSystemDialogOpen}
           calendarSystem={this.props.calendarSystem}
+        />
+        <FirstDayOfWeekDialog
+          onRequestClose={this.handleRequestFirstDayOfWeekDialogClose}
+          open={this.state.firstDayOfWeekDialogOpen}
+          firstDayOfWeek={this.props.firstDayOfWeek}
         />
       </div>
     );
