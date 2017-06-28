@@ -5,7 +5,10 @@ import * as actionCreators from './actionCreators';
 
 import FAB from './FAB';
 
-const mapStateToProps = state => ({ calendarSystem: state.appProperties.calendarSystem });
+const mapStateToProps = state => ({
+  calendarSystem: state.appProperties.calendarSystem,
+  firstDayOfWeek: state.appProperties.firstDayOfWeek,
+});
 
 const mapDispatchToProps = dispatch => bindActionCreators(actionCreators, dispatch);
 

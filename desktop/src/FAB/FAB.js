@@ -96,6 +96,7 @@ class FAB extends PureComponent {
           onRequestClose={this.handleRequestClose}
           onRequestAdd={this.handleRequestTaskAdd}
           calendarSystem={this.props.calendarSystem}
+          firstDayOfWeek={this.props.firstDayOfWeek}
         />
         <NewIdeaDialog
           open={this.state.ideaDialogOpen}

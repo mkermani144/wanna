@@ -165,6 +165,7 @@ class NewTaskDialog extends PureComponent {
                   persianUtils :
                   defaultUtils
                 }
+                firstDayOfWeek={this.props.firstDayOfWeek}
                 textFieldStyle={datePickerStyles.textFieldStyle}
                 shouldDisableDate={this.disablePassed}
                 onChange={this.handleStartChange}
@@ -181,6 +182,7 @@ class NewTaskDialog extends PureComponent {
                   persianUtils :
                   defaultUtils
                 }
+                firstDayOfWeek={this.props.firstDayOfWeek}
                 textFieldStyle={datePickerStyles.textFieldStyle}
                 shouldDisableDate={this.disableEndBeforeStart}
                 onChange={this.handleEndChange}
