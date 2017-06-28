@@ -15,10 +15,10 @@ const appPropertiesReducer = (state = {}, action) => {
         ...state,
         calendarSystem: action.calendarSystem,
       };
-    case 'CHANGE_CALENDAR_SYSTEM':
+    case 'CHANGE_FIRST_DAY_OF_WEEK':
       return {
         ...state,
-        calendarSystem: action.calendarSystem,
+        firstDayOfWeek: action.firstDayOfWeek,
       };
     default:
       return state;
