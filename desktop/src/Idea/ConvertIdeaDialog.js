@@ -6,17 +6,21 @@ import DatePicker from 'material-ui/DatePicker';
 import DropDownMenu from 'material-ui/DropDownMenu';
 import MenuItem from 'material-ui/MenuItem';
 import { green600, grey50 } from 'material-ui/styles/colors';
+import defaultUtils from 'material-ui/DatePicker/dateUtils';
+import persianUtils from 'material-ui-persian-date-picker-utils';
 
 import './ConvertIdeaDialog.css';
 
 class NewTaskDialog extends PureComponent {
   constructor() {
     super();
+    const todayStart = new Date();
+    todayStart.setHours(0, 3, 30, 0);
     this.state = {
       estimationValue: 1,
       repetitionValue: 1,
       task: '',
-      start: Date.now() - 86400000,
+      start: Date.parse(todayStart),
       end: 0,
       estimation: '',
       repetition: '',
@@ -65,11 +69,13 @@ class NewTaskDialog extends PureComponent {
     });
   }
   handleRequestClose = () => {
+    const todayStart = new Date();
+    todayStart.setHours(0, 0, 0, 0);
     this.setState({
       estimationValue: 1,
       repetitionValue: 1,
       task: '',
-      start: Date.now() - 86400000,
+      start: Date.parse(todayStart),
       end: 0,
       estimation: '',
       repetition: '',
@@ -78,11 +84,13 @@ class NewTaskDialog extends PureComponent {
   }
   handleRequestConvert = () => {
     this.props.onRequestConvert(this.state);
+    const todayStart = new Date();
+    todayStart.setHours(0, 0, 0, 0);
     this.setState({
       estimationValue: 1,
       repetitionValue: 1,
       task: '',
-      start: Date.now() - 86400000,
+      start: Date.parse(todayStart),
       end: 0,
       estimation: '',
       repetition: '',
@@ -92,18 +100,21 @@ class NewTaskDialog extends PureComponent {
     this.props.onRequestConvert(this.state);
     this.props.onRequestDelete();
     this.props.onRequestClose();
+    const todayStart = new Date();
+    todayStart.setHours(0, 0, 0, 0);
     this.setState({
       estimationValue: 1,
       repetitionValue: 1,
       task: '',
-      start: Date.now() - 86400000,
+      start: Date.parse(todayStart),
       end: 0,
       estimation: '',
       repetition: '',
     });
   }
   disablePassed = date => Date.parse(date) < Date.now() - 86400000;
-  disableEndBeforeStart = date => Date.parse(date) < this.state.start;
+  disableEndBeforeStart = date => Date.parse(date) < this.state.start ||
+                                  Date.parse(date) < Date.now() - 86400000;
   render() {
     const actions = [
       <FlatButton
@@ -141,6 +152,7 @@ class NewTaskDialog extends PureComponent {
         flex: 1,
       },
     };
+    const DateTimeFormat = global.Intl.DateTimeFormat;
     return (
       <div className="NewTaskDialog">
         <Dialog
@@ -166,10 +178,16 @@ class NewTaskDialog extends PureComponent {
             <div className="datepicker">
               <DatePicker
                 hintText="Start"
-                container="inline"
                 defaultDate={new Date()}
-                mode="landscape"
                 autoOk
+                DateTimeFormat={DateTimeFormat}
+                locale={this.props.calendarSystem}
+                firstDayOfWeek={6}
+                utils={
+                  this.props.calendarSystem === 'fa-IR' ?
+                  persianUtils :
+                  defaultUtils
+                }
                 textFieldStyle={datePickerStyles.textFieldStyle}
                 shouldDisableDate={this.disablePassed}
                 onChange={this.handleStartChange}
@@ -178,9 +196,16 @@ class NewTaskDialog extends PureComponent {
             <div className="datepicker">
               <DatePicker
                 hintText="End"
-                container="inline"
-                mode="landscape"
                 autoOk
+                DateTimeFormat={DateTimeFormat}
+                locale={this.props.calendarSystem}
+                firstDayOfWeek={6}
+                utils={
+                  this.props.calendarSystem === 'fa-IR' ?
+                  persianUtils :
+                  defaultUtils
+                }
+                textFieldStyle={datePickerStyles.textFieldStyle}
                 shouldDisableDate={this.disableEndBeforeStart}
                 onChange={this.handleEndChange}
               />
