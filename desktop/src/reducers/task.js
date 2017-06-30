@@ -1,3 +1,5 @@
+import undoable, { includeAction } from 'redux-undo';
+
 const taskReducer = (state = [], action) => {
   switch (action.type) {
     case 'ADD_TASK':
@@ -46,4 +48,7 @@ const taskReducer = (state = [], action) => {
   }
 };
 
-export default taskReducer;
+export default undoable(taskReducer, {
+  limit: 1,
+  filter: includeAction(['DO_TASK', 'DELETE_TASK']),
+});

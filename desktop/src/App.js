@@ -4,7 +4,7 @@ import { Redirect, Route, BrowserRouter as Router } from 'react-router-dom';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import injectTapEventPlugin from 'react-tap-event-plugin';
-import { blue500, green800 } from 'material-ui/styles/colors';
+import { blue500, green800, pink300 } from 'material-ui/styles/colors';
 
 import store from './store';
 import Sidebar from './Sidebar/Sidebar';
@@ -27,6 +27,9 @@ const App = () => {
     },
     datePicker: {
       selectColor: green800,
+    },
+    snackbar: {
+      actionColor: pink300,
     },
   });
   store.subscribe(() => {

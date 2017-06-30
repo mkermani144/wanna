@@ -1,3 +1,5 @@
+import { ActionCreators as UndoActionCreators } from 'redux-undo';
+
 const editIdea = (index, newIdea) => ({
   type: 'EDIT_IDEA',
   index,
@@ -11,5 +13,6 @@ const addTask = task => ({
   type: 'ADD_TASK',
   task,
 });
+const { undo } = UndoActionCreators;
 
-export { editIdea, deleteIdea, addTask };
+export { editIdea, deleteIdea, addTask, undo };

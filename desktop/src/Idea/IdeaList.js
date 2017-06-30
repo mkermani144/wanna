@@ -96,6 +96,10 @@ class IdeaList extends Component {
       snackbarMessage: '',
     });
   }
+  handleUndo = () => {
+    this.props.undo();
+    this.handleRequestSnackbarClose();
+  }
   render() {
     return (
       <div className="IdeaList">
@@ -135,6 +139,8 @@ class IdeaList extends Component {
           open={this.state.snackbarOpen}
           message={this.state.snackbarMessage}
           autoHideDuration={3000}
+          action="undo"
+          onActionTouchTap={this.handleUndo}
           onRequestClose={this.handleRequestSnackbarClose}
         />
       </div>
