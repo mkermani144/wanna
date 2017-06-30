@@ -70,6 +70,10 @@ class TaskList extends Component {
       snackbarMessage: '',
     });
   }
+  handleUndo = () => {
+    this.props.undo();
+    this.handleRequestSnackbarClose();
+  }
   render() {
     const styles = {
       overdue: {
@@ -185,6 +189,8 @@ class TaskList extends Component {
           open={this.state.snackbarOpen}
           message={this.state.snackbarMessage}
           autoHideDuration={3000}
+          action="undo"
+          onActionTouchTap={this.handleUndo}
           onRequestClose={this.handleRequestSnackbarClose}
         />
       </div>

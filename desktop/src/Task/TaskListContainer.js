@@ -5,8 +5,8 @@ import * as actionCreators from './actionCreators';
 import TaskList from './TaskList';
 
 const mapStateToProps = state => ({
-  tasks: state.tasks,
-  showNotYetTasks: state.appProperties.showNotYetTasks,
+  tasks: state.tasks.present,
+  showNotYetTasks: state.appProperties.showNotYetTasks.present,
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators(actionCreators, dispatch);
