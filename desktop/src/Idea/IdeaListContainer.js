@@ -5,9 +5,9 @@ import * as actionCreators from './actionCreators';
 import IdeaList from './IdeaList';
 
 const mapStateToProps = state => ({
-  ideas: state.ideas,
-  calendarSystem: state.appProperties.calendarSystem,
-  firstDayOfWeek: state.appProperties.firstDayOfWeek,
+  ideas: state.ideas.present,
+  calendarSystem: state.appProperties.calendarSystem.present,
+  firstDayOfWeek: state.appProperties.firstDayOfWeek.present,
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators(actionCreators, dispatch);
