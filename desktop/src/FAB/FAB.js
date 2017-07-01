@@ -51,7 +51,6 @@ class FAB extends PureComponent {
       done: false,
       id,
     });
-    this.handleRequestClose();
   }
   handleRequestIdeaAdd = (ideaInfo) => {
     const id = shortid.generate();
