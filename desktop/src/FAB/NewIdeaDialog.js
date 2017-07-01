@@ -23,10 +23,20 @@ class NewIdeaDialog extends PureComponent {
     this.props.onRequestAdd(this.state);
     this.setState({ idea: '' });
   }
+  handleRequestFinish = () => {
+    this.handleRequestAdd();
+    this.handleRequestClose();
+  }
   render() {
     const actions = [
       <FlatButton
-        label="Add"
+        label="Add and finish"
+        primary
+        disabled={!(this.state.idea)}
+        onTouchTap={this.handleRequestFinish}
+      />,
+      <FlatButton
+        label="Add and continue"
         primary
         disabled={!(this.state.idea)}
         onTouchTap={this.handleRequestAdd}
@@ -66,6 +76,7 @@ class NewIdeaDialog extends PureComponent {
             fullWidth
             underlineFocusStyle={textFieldStyles.underlineFocusStyle}
             floatingLabelFocusStyle={textFieldStyles.floatingLabelFocusStyle}
+            value={this.state.idea}
             onChange={this.handleIdeaChange}
             autoFocus
           />

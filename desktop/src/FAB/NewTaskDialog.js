@@ -97,13 +97,23 @@ class NewTaskDialog extends PureComponent {
       repetition: '',
     });
   }
+  handleRequestFinish = () => {
+    this.handleRequestAdd();
+    this.handleRequestClose();
+  }
   disablePassed = date => Date.parse(date) < Date.now() - 86400000;
   disableEndBeforeStart = date => Date.parse(date) < this.state.start ||
                                   Date.parse(date) < Date.now() - 86400000;
   render() {
     const actions = [
       <FlatButton
-        label="Add"
+        label="Add and finish"
+        primary
+        disabled={this.buttonDisabled()}
+        onTouchTap={this.handleRequestFinish}
+      />,
+      <FlatButton
+        label="Add and continue"
         primary
         disabled={this.buttonDisabled()}
         onTouchTap={this.handleRequestAdd}
@@ -150,6 +160,7 @@ class NewTaskDialog extends PureComponent {
               fullWidth
               underlineFocusStyle={textFieldStyles.underlineFocusStyle}
               floatingLabelFocusStyle={textFieldStyles.floatingLabelFocusStyle}
+              value={this.state.task}
               onChange={this.handleTaskChange}
               autoFocus
             />
@@ -168,6 +179,7 @@ class NewTaskDialog extends PureComponent {
                 firstDayOfWeek={this.props.firstDayOfWeek}
                 textFieldStyle={datePickerStyles.textFieldStyle}
                 shouldDisableDate={this.disablePassed}
+                value={new Date(this.state.start)}
                 onChange={this.handleStartChange}
               />
             </div>
@@ -185,6 +197,11 @@ class NewTaskDialog extends PureComponent {
                 firstDayOfWeek={this.props.firstDayOfWeek}
                 textFieldStyle={datePickerStyles.textFieldStyle}
                 shouldDisableDate={this.disableEndBeforeStart}
+                value={
+                  this.state.end ?
+                  new Date(this.state.end) :
+                  ''
+                }
                 onChange={this.handleEndChange}
               />
             </div>
@@ -193,6 +210,7 @@ class NewTaskDialog extends PureComponent {
                 floatingLabelText="Estimated time"
                 underlineFocusStyle={textFieldStyles.underlineFocusStyle}
                 floatingLabelFocusStyle={textFieldStyles.floatingLabelFocusStyle}
+                value={this.state.estimation}
                 onChange={this.handleEstimationChange}
                 errorText={
                   /^[0-9]*$/.test(this.state.estimation) ?
@@ -213,6 +231,7 @@ class NewTaskDialog extends PureComponent {
                 floatingLabelText="Repetition period"
                 underlineFocusStyle={textFieldStyles.underlineFocusStyle}
                 floatingLabelFocusStyle={textFieldStyles.floatingLabelFocusStyle}
+                value={this.state.repetition}
                 onChange={this.handleRepetitionChange}
                 errorText={
                   /^[0-9]*$/.test(this.state.repetition) ?

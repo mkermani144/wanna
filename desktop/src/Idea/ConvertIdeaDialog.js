@@ -189,6 +189,7 @@ class NewTaskDialog extends PureComponent {
                 }
                 firstDayOfWeek={this.props.firstDayOfWeek}
                 textFieldStyle={datePickerStyles.textFieldStyle}
+                value={new Date(this.state.start)}
                 shouldDisableDate={this.disablePassed}
                 onChange={this.handleStartChange}
               />
@@ -206,6 +207,11 @@ class NewTaskDialog extends PureComponent {
                 }
                 firstDayOfWeek={this.props.firstDayOfWeek}
                 textFieldStyle={datePickerStyles.textFieldStyle}
+                value={
+                  this.state.end ?
+                  new Date(this.state.end) :
+                  ''
+                }
                 shouldDisableDate={this.disableEndBeforeStart}
                 onChange={this.handleEndChange}
               />
