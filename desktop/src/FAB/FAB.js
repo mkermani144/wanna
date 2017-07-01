@@ -59,7 +59,6 @@ class FAB extends PureComponent {
       idea: ideaInfo.idea,
       id,
     });
-    this.handleRequestClose();
   }
   render() {
     const styles = {
