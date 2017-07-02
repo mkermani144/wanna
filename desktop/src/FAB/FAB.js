@@ -1,3 +1,5 @@
+/* eslint-env browser */
+
 import React, { PureComponent } from 'react';
 import { SpeedDial, SpeedDialItem } from 'react-mui-speeddial';
 import Add from 'material-ui/svg-icons/content/add';
@@ -6,6 +8,7 @@ import Done from 'material-ui/svg-icons/action/done';
 import LightbulbOutline from 'material-ui/svg-icons/action/lightbulb-outline';
 import { green600, yellow800 } from 'material-ui/styles/colors';
 import shortid from 'shortid';
+import { HotKeys } from 'react-hotkeys';
 
 import NewTaskDialog from './NewTaskDialog';
 import NewIdeaDialog from './NewIdeaDialog';
@@ -17,6 +20,10 @@ class FAB extends PureComponent {
     this.state = {
       taskDialogOpen: false,
       ideaDialogOpen: false,
+    };
+    this.keyMap = {
+      addNewIdea: 'ctrl+i',
+      addNewTask: 'ctrl+t',
     };
   }
   handleRequestClose = () => {
@@ -74,34 +81,45 @@ class FAB extends PureComponent {
         color: yellow800,
       },
     };
+    const handlers = {
+      addNewIdea: this.handleRequestIdeaDialogOpen,
+      addNewTask: this.handleRequestTaskDialogOpen,
+    };
     return (
-      <SpeedDial
-        className="SpeedDial"
-        fabContentOpen={<Add />}
-        fabContentClose={<Close />}
-        style={styles.speedDial}
+      <HotKeys
+        focused
+        attach={window}
+        keyMap={this.keyMap}
+        handlers={handlers}
       >
-        <SpeedDialItem
-          fabContent={<Done />}
-          onTouchTap={this.handleRequestTaskDialogOpen}
-        />
-        <SpeedDialItem
-          fabContent={<LightbulbOutline />}
-          onTouchTap={this.handleRequestIdeaDialogOpen}
-        />
-        <NewTaskDialog
-          open={this.state.taskDialogOpen}
-          onRequestClose={this.handleRequestClose}
-          onRequestAdd={this.handleRequestTaskAdd}
-          calendarSystem={this.props.calendarSystem}
-          firstDayOfWeek={this.props.firstDayOfWeek}
-        />
-        <NewIdeaDialog
-          open={this.state.ideaDialogOpen}
-          onRequestClose={this.handleRequestClose}
-          onRequestAdd={this.handleRequestIdeaAdd}
-        />
-      </SpeedDial>
+        <SpeedDial
+          className="SpeedDial"
+          fabContentOpen={<Add />}
+          fabContentClose={<Close />}
+          style={styles.speedDial}
+        >
+          <SpeedDialItem
+            fabContent={<Done />}
+            onTouchTap={this.handleRequestTaskDialogOpen}
+          />
+          <SpeedDialItem
+            fabContent={<LightbulbOutline />}
+            onTouchTap={this.handleRequestIdeaDialogOpen}
+          />
+          <NewTaskDialog
+            open={this.state.taskDialogOpen}
+            onRequestClose={this.handleRequestClose}
+            onRequestAdd={this.handleRequestTaskAdd}
+            calendarSystem={this.props.calendarSystem}
+            firstDayOfWeek={this.props.firstDayOfWeek}
+          />
+          <NewIdeaDialog
+            open={this.state.ideaDialogOpen}
+            onRequestClose={this.handleRequestClose}
+            onRequestAdd={this.handleRequestIdeaAdd}
+          />
+        </SpeedDial>
+      </HotKeys>
     );
   }
 }
