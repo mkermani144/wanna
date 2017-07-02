@@ -23,6 +23,7 @@ class FAB extends PureComponent {
     };
     this.keyMap = {
       addNewIdea: 'ctrl+i',
+      addNewTask: 'ctrl+t',
     };
   }
   handleRequestClose = () => {
@@ -82,6 +83,7 @@ class FAB extends PureComponent {
     };
     const handlers = {
       addNewIdea: this.handleRequestIdeaDialogOpen,
+      addNewTask: this.handleRequestTaskDialogOpen,
     };
     return (
       <HotKeys
