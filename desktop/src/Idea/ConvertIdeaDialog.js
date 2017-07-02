@@ -210,7 +210,7 @@ class NewTaskDialog extends PureComponent {
                 value={
                   this.state.end ?
                   new Date(this.state.end) :
-                  ''
+                  null
                 }
                 shouldDisableDate={this.disableEndBeforeStart}
                 onChange={this.handleEndChange}
