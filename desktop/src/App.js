@@ -5,6 +5,7 @@ import { Provider } from 'react-redux';
 import { Redirect, Route, BrowserRouter as Router } from 'react-router-dom';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import AppBar from 'material-ui/AppBar';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import { blue500, green800, pink300 } from 'material-ui/styles/colors';
 import { HotKeys } from 'react-hotkeys';
@@ -103,25 +104,28 @@ class App extends PureComponent {
           <Router>
             <MuiThemeProvider muiTheme={muiTheme}>
               <div className="App">
-                <Sidebar />
-                <FABContainer />
-                <Redirect from="/" to="tasks" />
-                {this.state.toTasks &&
-                  <Redirect to="/tasks" />
-                }
-                {this.state.toIdeas &&
-                  <Redirect to="/ideas" />
-                }
-                {this.state.toSettings &&
-                  <Redirect to="/settings" />
-                }
-                {this.state.toAbout &&
-                  <Redirect to="/about" />
-                }
-                <Route path="/tasks" component={TaskListContainer} />
-                <Route path="/ideas" component={IdeaListContainer} />
-                <Route path="/settings" component={SettingsContainer} />
-                <Route path="/about" component={About} />
+                <AppBar title="Wanna" />
+                <div className="main">
+                  <Sidebar />
+                  <FABContainer />
+                  <Redirect from="/" to="tasks" />
+                  {this.state.toTasks &&
+                    <Redirect to="/tasks" />
+                  }
+                  {this.state.toIdeas &&
+                    <Redirect to="/ideas" />
+                  }
+                  {this.state.toSettings &&
+                    <Redirect to="/settings" />
+                  }
+                  {this.state.toAbout &&
+                    <Redirect to="/about" />
+                  }
+                  <Route path="/tasks" component={TaskListContainer} />
+                  <Route path="/ideas" component={IdeaListContainer} />
+                  <Route path="/settings" component={SettingsContainer} />
+                  <Route path="/about" component={About} />
+                </div>
               </div>
             </MuiThemeProvider>
           </Router>
