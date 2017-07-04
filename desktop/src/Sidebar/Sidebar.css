@@ -5,10 +5,10 @@
   position: fixed;
   left: 0;
   top: 0;
+  z-index: 10;
 }
-.Sidebar > * {
-  width: 100%;
-}
-.Sidebar > *:hover {
-  filter: brightness(110%);
+.Sidebar > div {
+  padding-top: 64px;
+  overflow-x: hidden !important;
+  transition: width .45s cubic-bezier(0.23, 1, 0.32, 1) 0ms !important;
 }

@@ -5,7 +5,6 @@
   border-bottom: 1px solid #eee;
   transition: transform cubic-bezier(0.19, 1, 0.22, 1);
   min-height: 60px;
-  margin-left: 16px;
 }
 .Task.will-be-deleted {
   transform: translate3d(105%, 0, 0);
