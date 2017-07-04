@@ -101,8 +101,23 @@ class IdeaList extends Component {
     this.handleRequestSnackbarClose();
   }
   render() {
+    const marginStyles = {
+      expanded: {
+        marginLeft: 216,
+      },
+      mini: {
+        marginLeft: 72,
+      },
+    };
     return (
-      <div className="IdeaList">
+      <div
+        className="IdeaList"
+        style={
+          this.props.sidebarExpanded ?
+          marginStyles.expanded :
+          marginStyles.mini
+        }
+      >
         {this.props.ideas.map((idea, index) => (
           <Idea
             text={idea.idea}

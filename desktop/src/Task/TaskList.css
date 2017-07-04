@@ -3,7 +3,7 @@
   flex-direction: column;
   justify-content: flex-start;
   flex-wrap: nowrap;
-  margin-left: 65px;
-  margin-right: 17px;
+  margin-right: 16px;
   flex: 1;
+  transition: margin .45s cubic-bezier(0.23, 1, 0.32, 1) 0ms;
 }

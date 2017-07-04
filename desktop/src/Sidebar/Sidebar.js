@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
 import { Link } from 'react-router-dom';
-import IconButton from 'material-ui/IconButton';
-import Paper from 'material-ui/Paper';
+import { List, ListItem } from 'material-ui/List';
+import Drawer from 'material-ui/Drawer';
 import DoneAll from 'material-ui/svg-icons/action/done-all';
 import LightbulbOutline from 'material-ui/svg-icons/action/lightbulb-outline';
 import Settings from 'material-ui/svg-icons/action/settings';
@@ -11,61 +11,50 @@ import {
   yellow800,
   blueGrey600,
   grey600,
-  grey50,
 } from 'material-ui/styles/colors';
 
 import './Sidebar.css';
 
-const Sidebar = () => {
-  const styles = {
-    doneAll: {
-      backgroundColor: green600,
-    },
-    lightbulbOutline: {
-      backgroundColor: yellow800,
-    },
-    settings: {
-      backgroundColor: blueGrey600,
-    },
-    info: {
-      backgroundColor: grey600,
-    },
-  };
-  const iconStyle = {
-    color: grey50,
-  };
-  return (
-    <Paper className="Sidebar">
-      <IconButton
-        style={styles.doneAll}
-        iconStyle={iconStyle}
-        containerElement={<Link to="/tasks" />}
+class Sidebar extends PureComponent {
+  constructor() {
+    super();
+    this.state = {
+      expanded: false,
+    };
+  }
+  render() {
+    return (
+      <Drawer
+        className="Sidebar"
+        width={this.props.expanded === false ? 56 : 200}
+        zDepth={1}
+        open
       >
-        <DoneAll />
-      </IconButton>
-      <IconButton
-        style={styles.lightbulbOutline}
-        iconStyle={iconStyle}
-        containerElement={<Link to="/ideas" />}
-      >
-        <LightbulbOutline />
-      </IconButton>
-      <IconButton
-        style={styles.settings}
-        iconStyle={iconStyle}
-        containerElement={<Link to="/settings" />}
-      >
-        <Settings />
-      </IconButton>
-      <IconButton
-        style={styles.info}
-        iconStyle={iconStyle}
-        containerElement={<Link to="/about" />}
-      >
-        <InfoOutline />
-      </IconButton>
-    </Paper>
-  );
-};
+        <List>
+          <ListItem
+            primaryText="Tasks"
+            leftIcon={<DoneAll color={green600} />}
+            containerElement={<Link to="/tasks" />}
+          />
+          <ListItem
+            primaryText="Ideas"
+            leftIcon={<LightbulbOutline color={yellow800} />}
+            containerElement={<Link to="/ideas" />}
+          />
+          <ListItem
+            primaryText="Settings"
+            leftIcon={<Settings color={blueGrey600} />}
+            containerElement={<Link to="/settings" />}
+          />
+          <ListItem
+            primaryText="About"
+            leftIcon={<InfoOutline color={grey600} />}
+            containerElement={<Link to="/about" />}
+          />
+        </List>
+      </Drawer>
+    );
+  }
+}
 
 export default Sidebar;

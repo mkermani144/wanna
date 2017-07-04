@@ -32,6 +32,7 @@ class App extends PureComponent {
       toIdeas: false,
       toSettings: false,
       toAbout: false,
+      sidebarExpanded: false,
     };
     this.keyMap = {
       showTasks: 'shift+t',
@@ -39,6 +40,9 @@ class App extends PureComponent {
       showSettings: 'shift+s',
       showAbout: 'shift+a',
     };
+  }
+  handleSidebarToggle = () => {
+    this.setState(prevState => ({ sidebarExpanded: !prevState.sidebarExpanded }));
   }
   render() {
     const muiTheme = getMuiTheme({
@@ -104,9 +108,12 @@ class App extends PureComponent {
           <Router>
             <MuiThemeProvider muiTheme={muiTheme}>
               <div className="App">
-                <AppBar title="Wanna" />
+                <AppBar
+                  title="Wanna"
+                  onLeftIconButtonTouchTap={this.handleSidebarToggle}
+                />
                 <div className="main">
-                  <Sidebar />
+                  <Sidebar expanded={this.state.sidebarExpanded} />
                   <FABContainer />
                   <Redirect from="/" to="tasks" />
                   {this.state.toTasks &&
@@ -121,10 +128,30 @@ class App extends PureComponent {
                   {this.state.toAbout &&
                     <Redirect to="/about" />
                   }
-                  <Route path="/tasks" component={TaskListContainer} />
-                  <Route path="/ideas" component={IdeaListContainer} />
-                  <Route path="/settings" component={SettingsContainer} />
-                  <Route path="/about" component={About} />
+                  <Route
+                    path="/tasks"
+                    render={() =>
+                      (<TaskListContainer sidebarExpanded={this.state.sidebarExpanded} />)
+                    }
+                  />
+                  <Route
+                    path="/ideas"
+                    render={() =>
+                      (<IdeaListContainer sidebarExpanded={this.state.sidebarExpanded} />)
+                    }
+                  />
+                  <Route
+                    path="/settings"
+                    render={() =>
+                      (<SettingsContainer sidebarExpanded={this.state.sidebarExpanded} />)
+                    }
+                  />
+                  <Route
+                    path="/about"
+                    render={() =>
+                      (<About sidebarExpanded={this.state.sidebarExpanded} />)
+                    }
+                  />
                 </div>
               </div>
             </MuiThemeProvider>

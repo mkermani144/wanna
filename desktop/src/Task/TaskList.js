@@ -98,8 +98,23 @@ class TaskList extends Component {
       },
     };
     const classifiedTasks = classify(this.props.tasks);
+    const marginStyles = {
+      expanded: {
+        marginLeft: 216,
+      },
+      mini: {
+        marginLeft: 72,
+      },
+    };
     return (
-      <div className="TaskList">
+      <div
+        className="TaskList"
+        style={
+          this.props.sidebarExpanded ?
+          marginStyles.expanded :
+          marginStyles.mini
+        }
+      >
         {classifiedTasks.overdue.length > 0 &&
           <Subheader style={styles.overdue}>Overdue</Subheader>
         }

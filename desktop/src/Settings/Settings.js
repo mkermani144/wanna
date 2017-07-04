@@ -52,8 +52,23 @@ class Settings extends PureComponent {
       1: 'Monday',
       6: 'Saturday',
     };
+    const marginStyles = {
+      expanded: {
+        marginLeft: 216,
+      },
+      mini: {
+        marginLeft: 72,
+      },
+    };
     return (
-      <div className="Settings">
+      <div
+        className="Settings"
+        style={
+          this.props.sidebarExpanded ?
+          marginStyles.expanded :
+          marginStyles.mini
+        }
+      >
         <List>
           <ListItem
             leftCheckbox={
