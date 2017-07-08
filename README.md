@@ -28,7 +28,7 @@ Installation
 ----
 Wanna is under active development. You can see a list of its releases [here](https://github.com/mkermani144/wanna/releases). At this time, the only release of the app is [Beta release for Linux](https://github.com/mkermani144/wanna/releases/tag/beta). However, you can easily download the repo's source code and build a version suitable for your own platform with just a bit of effort. In the near future, other platforms will be officially supported.  
 You can also clone the repository to see development version of the app in action:
-```
+```sh
 git clone https://github.com/mkermani144/wanna.git
 cd wanna/desktop
 yarn && yarn electron # Or `npm i && npm electron`
