@@ -109,6 +109,7 @@ class App extends PureComponent {
             <MuiThemeProvider muiTheme={muiTheme}>
               <div className="App">
                 <AppBar
+                  className="AppBar"
                   title="Wanna"
                   onLeftIconButtonTouchTap={this.handleSidebarToggle}
                 />

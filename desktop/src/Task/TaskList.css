@@ -1,4 +1,5 @@
 .TaskList {
+  padding-top: 64px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -6,4 +7,27 @@
   margin-right: 16px;
   flex: 1;
   transition: margin .45s cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+}
+.tasks-empty-state {
+  flex: 1;
+  background-color: #FAFAFA;
+  color: #78909C;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: margin .45s cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+  cursor: default;
+  user-select: none;
+}
+.tasks-empty-state h1 {
+  font-size: 500%;
+  margin-bottom: 0;
+  opacity: .2;
+}
+.tasks-empty-state h4 {
+  font-size: 200%;
+  margin-top: 0;
+  opacity: .25;
 }

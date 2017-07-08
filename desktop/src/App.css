@@ -4,10 +4,14 @@
   width: 100vw;
   height: 100vh;
   overflow-x: hidden;
+  background-color: #FAFAFA;
 }
 .App .main {
   display: flex;
   flex-direction: row;
+}
+.AppBar {
+  position: fixed !important;
 }
 
 *::-webkit-scrollbar-track

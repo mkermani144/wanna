@@ -109,6 +109,41 @@ class IdeaList extends Component {
         marginLeft: 72,
       },
     };
+    const emptyStateMarginStyles = {
+      expanded: {
+        marginLeft: 200,
+      },
+      mini: {
+        marginLeft: 56,
+      },
+    };
+    if (this.props.ideas.length === 0) {
+      return (
+        <div
+          className="ideas-empty-state"
+          style={
+            this.props.sidebarExpanded ?
+            emptyStateMarginStyles.expanded :
+            emptyStateMarginStyles.mini
+          }
+        >
+          <h1>
+            Ideas gone
+          </h1>
+          <h4>
+            Your ideas list is empty
+          </h4>
+          <Snackbar
+            open={this.state.snackbarOpen}
+            message={this.state.snackbarMessage}
+            autoHideDuration={3000}
+            action="undo"
+            onActionTouchTap={this.handleUndo}
+            onRequestClose={this.handleRequestSnackbarClose}
+          />
+        </div>
+      );
+    }
     return (
       <div
         className="IdeaList"
