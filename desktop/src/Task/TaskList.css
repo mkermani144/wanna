@@ -10,7 +10,7 @@
 }
 .tasks-empty-state {
   flex: 1;
-  background-color: #C8E6C9;
+  background-color: #FAFAFA;
   color: #78909C;
   height: 100vh;
   display: flex;
