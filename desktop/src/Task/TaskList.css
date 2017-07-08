@@ -1,4 +1,5 @@
 .TaskList {
+  padding-top: 64px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
