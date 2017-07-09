@@ -41,9 +41,7 @@ function createWindow() {
   let width = 800;
   let height = 600;
   if (isFullscreen()) {
-    const screen = electron.screen.getPrimaryDisplay();
-    width = screen.size.width;
-    height = screen.size.height;
+    ({ width, height } = electron.screen.getPrimaryDisplay().size);
   }
   win = new BrowserWindow({
     minWidth: 800,
