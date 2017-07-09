@@ -100,10 +100,12 @@ class FAB extends PureComponent {
         >
           <SpeedDialItem
             fabContent={<Done />}
+            label="Task"
             onTouchTap={this.handleRequestTaskDialogOpen}
           />
           <SpeedDialItem
             fabContent={<LightbulbOutline />}
+            label="Idea"
             onTouchTap={this.handleRequestIdeaDialogOpen}
           />
           <NewTaskDialog
