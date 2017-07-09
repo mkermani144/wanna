@@ -38,14 +38,20 @@ function createWindow() {
   if (dbExists() === false) {
     createDatabase();
   }
+  let width = 800;
+  let height = 600;
+  if (isFullscreen()) {
+    const screen = electron.screen.getPrimaryDisplay();
+    width = screen.size.width;
+    height = screen.size.height;
+  }
   win = new BrowserWindow({
     minWidth: 800,
     minHeight: 600,
+    width,
+    height,
     icon: `${__dirname}/wanna.png`,
   });
-  if (isFullscreen()) {
-    win.maximize();
-  }
   win.loadURL('http://localhost:3000');
 }
 
