@@ -35,6 +35,11 @@ class Task extends PureComponent {
       setTimeout(() => {
         this.props.onRequestDo(this.props.index);
         this.props.onRequestSnackbar('Task done');
+        if (this.props.repeat) {
+          this.setState({
+            class: '',
+          });
+        }
       }, 1000);
     });
   }
