@@ -7,10 +7,10 @@ import './About.css';
 const About = ({ sidebarExpanded }) => {
   const marginStyles = {
     expanded: {
-      marginLeft: 216,
+      marginLeft: 200,
     },
     mini: {
-      marginLeft: 72,
+      marginLeft: 56,
     },
   };
   return (
