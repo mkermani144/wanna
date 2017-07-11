@@ -29,9 +29,9 @@ class Idea extends PureComponent {
       <div className={`Idea ${this.state.class}`}>
         <p>{this.props.text}</p>
         <Actions
-          onRequestEditDialogOpen={() => this.props.onRequestEditDialogOpen(this.props.index)}
-          onRequestDelete={this.handleRequestDelete}
           onRequestConvertDialogOpen={() => this.props.onRequestConvertDialogOpen(this.props.index)}
+          onRequestDelete={this.handleRequestDelete}
+          onRequestEditDialogOpen={() => this.props.onRequestEditDialogOpen(this.props.index)}
         />
       </div>
     );

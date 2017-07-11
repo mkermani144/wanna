@@ -24,7 +24,7 @@
 .Idea .Actions {
   flex-grow: 2;
   display: flex;
-  flex-direction: row;
+  flex-direction: row-reverse;
 }
 .Idea .Actions .IconButton {
   opacity: 0;
