@@ -87,7 +87,8 @@ class Settings extends PureComponent {
                 onCheck={this.handleCheckFullscreen}
               />
             }
-            primaryText="Start app in fullscreen mode (Needs app restart)"
+            primaryText="Start app in fullscreen mode"
+            secondaryText="Changes will apply after restarting the app"
           />
           <Divider />
           <ListItem
