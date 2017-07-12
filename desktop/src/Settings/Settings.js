@@ -77,7 +77,7 @@ class Settings extends PureComponent {
           />
           <Divider />
           <ListItem
-            primaryText="First day of week"
+            primaryText="First day of the week"
             secondaryText={weekDays[this.props.firstDayOfWeek]}
             onClick={this.handleRequestFirstDayOfWeekDialogOpen}
           />
@@ -89,8 +89,8 @@ class Settings extends PureComponent {
                 onCheck={this.handleCheckFullscreen}
               />
             }
-            primaryText="Start app in fullscreen mode"
-            secondaryText="Changes will apply after restarting the app"
+            primaryText="Fullscreen mode"
+            secondaryText="Start the app in full width and height. Changes will apply after restarting the app"
           />
           <Divider />
           <ListItem
@@ -100,7 +100,8 @@ class Settings extends PureComponent {
                 onCheck={this.handleCheckShowNotYet}
               />
             }
-            primaryText="Show not-yet tasks"
+            primaryText="Not-yet tasks"
+            secondaryText="Show the section in task list"
           />
           <Divider />
         </List>
