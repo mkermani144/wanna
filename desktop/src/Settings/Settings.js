@@ -71,13 +71,15 @@ class Settings extends PureComponent {
       >
         <List>
           <ListItem
-            leftCheckbox={
-              <Checkbox
-                defaultChecked={this.props.showNotYetTasks}
-                onCheck={this.handleCheckShowNotYet}
-              />
-            }
-            primaryText="Show not-yet tasks"
+            primaryText="Calendar system"
+            secondaryText={this.props.calendarSystem}
+            onClick={this.handleRequestCalendarSystemDialogOpen}
+          />
+          <Divider />
+          <ListItem
+            primaryText="First day of week"
+            secondaryText={weekDays[this.props.firstDayOfWeek]}
+            onClick={this.handleRequestFirstDayOfWeekDialogOpen}
           />
           <Divider />
           <ListItem
@@ -92,15 +94,13 @@ class Settings extends PureComponent {
           />
           <Divider />
           <ListItem
-            primaryText="Calendar system"
-            secondaryText={this.props.calendarSystem}
-            onClick={this.handleRequestCalendarSystemDialogOpen}
-          />
-          <Divider />
-          <ListItem
-            primaryText="First day of week"
-            secondaryText={weekDays[this.props.firstDayOfWeek]}
-            onClick={this.handleRequestFirstDayOfWeekDialogOpen}
+            leftCheckbox={
+              <Checkbox
+                defaultChecked={this.props.showNotYetTasks}
+                onCheck={this.handleCheckShowNotYet}
+              />
+            }
+            primaryText="Show not-yet tasks"
           />
           <Divider />
         </List>
