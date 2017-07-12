@@ -155,15 +155,14 @@ class IdeaList extends Component {
         }
       >
         {this.props.ideas.map((idea, index) => (
-          <div>
+          <div key={idea.id}>
             <Idea
               text={idea.idea}
+              index={index}
               onRequestEditDialogOpen={this.handleRequestIdeaDialogOpen}
               onRequestDelete={this.handleRequestIdeaDelete}
               onRequestConvertDialogOpen={this.handleRequestConvertDialogOpen}
               onRequestSnackbar={this.handleRequestSnackbarOpen}
-              index={index}
-              key={idea.id}
             />
             <Divider />
           </div>
