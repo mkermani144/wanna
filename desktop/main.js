@@ -19,7 +19,7 @@ const createDatabase = () => {
     ideas: [],
     appProperties: {
       showNotYetTasks: true,
-      fullscreen: true,
+      fullscreen: false,
       calendarSystem: 'en-US',
       firstDayOfWeek: 1,
     },
