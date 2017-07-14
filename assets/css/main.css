@@ -9,3 +9,6 @@
 .page-header {
   background-color: #1E88E5;
 }
+.page-header small {
+  font-size: 50%;
+}
