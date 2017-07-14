@@ -8,7 +8,13 @@
 
 .page-header {
   background-color: #1E88E5;
+  overflow-x: hidden;
 }
 .page-header small {
   font-size: 50%;
+}
+.page-header img {
+  max-width: 300vw !important;
+  /*width: 780px;*/
+  height: 450px;
 }
