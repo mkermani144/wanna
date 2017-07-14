@@ -1,0 +1,7 @@
+.navbar-brand div {
+  margin-top: -10px;
+}
+.navbar-brand span {
+  margin-left: -18px;
+  line-height: 1.3rem !important;
+}
