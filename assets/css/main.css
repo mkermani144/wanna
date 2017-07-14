@@ -9,6 +9,7 @@
 .page-header {
   background-color: #1E88E5;
   overflow-x: hidden;
+  height: auto !important;
 }
 .page-header small {
   font-size: 50%;
