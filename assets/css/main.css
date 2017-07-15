@@ -4,13 +4,13 @@
   }
   11% {
     transform: translate(-5px, 5px);
-    color: #FFF59D;
+    color: #EF9A9A;
   }
   22% {
     transform: translate(10px, -10px);
     color: #FFEBEE;
   }
-  33% {
+  100% {
     transform: translate(0px, 0px);
   }
 }
