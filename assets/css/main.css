@@ -1,3 +1,20 @@
+@keyframes fly {
+  0% {
+    transform: translate(0px, 0px);
+  }
+  33% {
+    transform: translate(-5px, 5px);
+    color: #FFF59D;
+  }
+  66% {
+    transform: translate(10px, -10px);
+    color: #E1F5FE;
+  }
+  100% {
+    transform: translate(0px, 0px);
+  }
+}
+
 .navbar-brand div {
   margin-top: -10px;
 }
@@ -21,4 +38,8 @@
 }
 .fa-rocket {
   font-size: 12em;
+    animation: fly 2s linear infinite;
+}
+.fa-rocket:hover {
+  animation: fly 2s linear infinite;
 }
