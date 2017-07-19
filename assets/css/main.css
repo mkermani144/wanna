@@ -95,3 +95,8 @@
 .section:nth-of-type(5) {
   background-color: #FAFAFA;
 }
+
+.quote {
+  border-left: 1px solid #fafafa;
+  border-right: 1px solid #fafafa;
+}
