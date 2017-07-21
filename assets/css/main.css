@@ -100,3 +100,10 @@
   border-left: 1px solid #fafafa;
   border-right: 1px solid #fafafa;
 }
+
+#workflow h5:nth-of-type(2n - 1) {
+  border-left: 1px solid white;
+}
+#workflow h5:nth-of-type(2n) {
+  border-right: 1px solid white;
+}
