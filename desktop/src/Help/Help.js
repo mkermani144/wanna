@@ -4,6 +4,11 @@ import Divider from 'material-ui/Divider';
 
 import './Help.css';
 
+const { shell } = window.require('electron');
+const versionURL = 'https://github.com/mkermani144/wanna/releases/tag/flex-alpha';
+const repoURL = 'https://github.com/mkermani144/wanna';
+const licenseURL = 'https://github.com/mkermani144/wanna/blob/master/LICENSE.md';
+
 const Help = ({ sidebarExpanded }) => {
   const marginStyles = {
     expanded: {
@@ -26,16 +31,19 @@ const Help = ({ sidebarExpanded }) => {
         <ListItem
           primaryText="Version"
           secondaryText="Flex (1.0.0)"
+          onClick={() => shell.openExternal(versionURL)}
         />
         <Divider />
         <ListItem
           primaryText="Github repository"
           secondaryText="https://github.com/mkermani144/wanna"
+          onClick={() => shell.openExternal(repoURL)}
         />
         <Divider />
         <ListItem
           primaryText="License"
           secondaryText="MIT"
+          onClick={() => shell.openExternal(licenseURL)}
         />
         <Divider />
       </List>
