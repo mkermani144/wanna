@@ -16,7 +16,7 @@ import FABContainer from './FAB/FABContainer';
 import TaskListContainer from './Task/TaskListContainer';
 import IdeaListContainer from './Idea/IdeaListContainer';
 import SettingsContainer from './Settings/SettingsContainer';
-import About from './About/About';
+import Help from './Help/Help';
 
 import { update } from './lib/database';
 
@@ -31,14 +31,14 @@ class App extends PureComponent {
       toTasks: false,
       toIdeas: false,
       toSettings: false,
-      toAbout: false,
+      toHelp: false,
       sidebarExpanded: false,
     };
     this.keyMap = {
       showTasks: 'shift+t',
       showIdeas: 'shift+i',
       showSettings: 'shift+s',
-      showAbout: 'shift+a',
+      showHelp: 'shift+a',
     };
   }
   handleSidebarToggle = () => {
@@ -87,12 +87,12 @@ class App extends PureComponent {
           });
         });
       },
-      showAbout: () => {
+      showHelp: () => {
         this.setState({
-          toAbout: true,
+          toHelp: true,
         }, () => {
           this.setState({
-            toAbout: false,
+            toHelp: false,
           });
         });
       },
@@ -126,8 +126,8 @@ class App extends PureComponent {
                   {this.state.toSettings &&
                     <Redirect to="/settings" />
                   }
-                  {this.state.toAbout &&
-                    <Redirect to="/about" />
+                  {this.state.toHelp &&
+                    <Redirect to="/help" />
                   }
                   <Route
                     path="/tasks"
@@ -148,9 +148,9 @@ class App extends PureComponent {
                     }
                   />
                   <Route
-                    path="/about"
+                    path="/help"
                     render={() =>
-                      (<About sidebarExpanded={this.state.sidebarExpanded} />)
+                      (<Help sidebarExpanded={this.state.sidebarExpanded} />)
                     }
                   />
                 </div>

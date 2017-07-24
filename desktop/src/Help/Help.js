@@ -2,9 +2,9 @@ import React from 'react';
 import { List, ListItem } from 'material-ui/List';
 import Divider from 'material-ui/Divider';
 
-import './About.css';
+import './Help.css';
 
-const About = ({ sidebarExpanded }) => {
+const Help = ({ sidebarExpanded }) => {
   const marginStyles = {
     expanded: {
       marginLeft: 200,
@@ -15,7 +15,7 @@ const About = ({ sidebarExpanded }) => {
   };
   return (
     <div
-      className="About"
+      className="Help"
       style={
         sidebarExpanded ?
         marginStyles.expanded :
@@ -48,4 +48,4 @@ const About = ({ sidebarExpanded }) => {
   );
 };
 
-export default About;
+export default Help;
