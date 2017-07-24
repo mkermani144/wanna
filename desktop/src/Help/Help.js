@@ -34,11 +34,6 @@ const Help = ({ sidebarExpanded }) => {
         />
         <Divider />
         <ListItem
-          primaryText="Star Wanna on Github"
-          secondaryText="Stars: 6"
-        />
-        <Divider />
-        <ListItem
           primaryText="License"
           secondaryText="MIT"
         />
