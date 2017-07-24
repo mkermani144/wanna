@@ -5,7 +5,7 @@ import Drawer from 'material-ui/Drawer';
 import DoneAll from 'material-ui/svg-icons/action/done-all';
 import LightbulbOutline from 'material-ui/svg-icons/action/lightbulb-outline';
 import Settings from 'material-ui/svg-icons/action/settings';
-import InfoOutline from 'material-ui/svg-icons/action/info-outline';
+import Help from 'material-ui/svg-icons/action/help';
 import {
   green600,
   green800,
@@ -43,7 +43,7 @@ class Sidebar extends PureComponent {
       settings: {
         color: indigo900,
       },
-      about: {
+      help: {
         color: cyan700,
       },
     };
@@ -113,23 +113,23 @@ class Sidebar extends PureComponent {
             onClick={() => this.changeActiveTab('settings')}
           />
           <ListItem
-            primaryText="About"
+            primaryText="Help"
             leftIcon={
-              <InfoOutline
+              <Help
                 color={
-                  this.state.current === 'about' ?
+                  this.state.current === 'help' ?
                   cyan600 :
                   null
                 }
               />
             }
             style={
-              this.state.current === 'about' ?
-              styles.about :
+              this.state.current === 'help' ?
+              styles.help :
               null
             }
-            containerElement={<Link to="/about" />}
-            onClick={() => this.changeActiveTab('about')}
+            containerElement={<Link to="/help" />}
+            onClick={() => this.changeActiveTab('help')}
           />
         </List>
       </Drawer>

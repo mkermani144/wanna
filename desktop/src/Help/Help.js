@@ -1,21 +1,28 @@
+/* eslint-env browser */
+
 import React from 'react';
 import { List, ListItem } from 'material-ui/List';
 import Divider from 'material-ui/Divider';
 
-import './About.css';
+import './Help.css';
 
-const About = ({ sidebarExpanded }) => {
+const { shell } = window.require('electron');
+const versionURL = 'https://github.com/mkermani144/wanna/releases/tag/flex-alpha';
+const repoURL = 'https://github.com/mkermani144/wanna';
+const licenseURL = 'https://github.com/mkermani144/wanna/blob/master/LICENSE.md';
+
+const Help = ({ sidebarExpanded }) => {
   const marginStyles = {
     expanded: {
-      marginLeft: 216,
+      marginLeft: 200,
     },
     mini: {
-      marginLeft: 72,
+      marginLeft: 56,
     },
   };
   return (
     <div
-      className="About"
+      className="Help"
       style={
         sidebarExpanded ?
         marginStyles.expanded :
@@ -26,21 +33,19 @@ const About = ({ sidebarExpanded }) => {
         <ListItem
           primaryText="Version"
           secondaryText="Flex (1.0.0)"
+          onClick={() => shell.openExternal(versionURL)}
         />
         <Divider />
         <ListItem
           primaryText="Github repository"
           secondaryText="https://github.com/mkermani144/wanna"
-        />
-        <Divider />
-        <ListItem
-          primaryText="Star Wanna on Github"
-          secondaryText="Stars: 6"
+          onClick={() => shell.openExternal(repoURL)}
         />
         <Divider />
         <ListItem
           primaryText="License"
           secondaryText="MIT"
+          onClick={() => shell.openExternal(licenseURL)}
         />
         <Divider />
       </List>
@@ -48,4 +53,4 @@ const About = ({ sidebarExpanded }) => {
   );
 };
 
-export default About;
+export default Help;

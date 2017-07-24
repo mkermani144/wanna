@@ -16,10 +16,10 @@ const Actions = (props) => {
     <div className="Actions">
       <IconButton
         className="IconButton"
-        tooltip="Convert"
-        onTouchTap={props.onRequestConvertDialogOpen}
+        tooltip="Delete"
+        onTouchTap={props.onRequestDelete}
       >
-        <Fork color={colors.arrow} />
+        <Delete color={colors.delete} />
       </IconButton>
       <IconButton
         className="IconButton"
@@ -30,10 +30,10 @@ const Actions = (props) => {
       </IconButton>
       <IconButton
         className="IconButton"
-        tooltip="Delete"
-        onTouchTap={props.onRequestDelete}
+        tooltip="Convert"
+        onTouchTap={props.onRequestConvertDialogOpen}
       >
-        <Delete color={colors.delete} />
+        <Fork color={colors.arrow} />
       </IconButton>
     </div>
   );

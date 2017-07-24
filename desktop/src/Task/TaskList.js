@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Subheader from 'material-ui/Subheader';
+import Divider from 'material-ui/Divider';
 import Snackbar from 'material-ui/Snackbar';
 import {
   red500,
@@ -100,10 +101,10 @@ class TaskList extends Component {
     const classifiedTasks = classify(this.props.tasks);
     const marginStyles = {
       expanded: {
-        marginLeft: 216,
+        marginLeft: 200,
       },
       mini: {
-        marginLeft: 72,
+        marginLeft: 56,
       },
     };
     const emptyStateMarginStyles = {
@@ -113,6 +114,9 @@ class TaskList extends Component {
       mini: {
         marginLeft: 56,
       },
+    };
+    const dividerStyle = {
+      marginTop: 12,
     };
     const numOfTasks = classifiedTasks.overdue.length + classifiedTasks.open.length
                         + classifiedTasks.notYet.length;
@@ -172,6 +176,9 @@ class TaskList extends Component {
             />
           ))
         }
+        {classifiedTasks.overdue.length > 0 &&
+          <Divider style={dividerStyle} />
+        }
         {classifiedTasks.open.length > 0 &&
           <Subheader style={styles.open}>Open</Subheader>
         }
@@ -192,6 +199,9 @@ class TaskList extends Component {
             />
           ))
         }
+        {classifiedTasks.open.length > 0 &&
+          <Divider style={dividerStyle} />
+        }
         {classifiedTasks.notYet.length > 0 && this.props.showNotYetTasks &&
           <Subheader style={styles.notYet}>Not Yet</Subheader>
         }
@@ -211,6 +221,9 @@ class TaskList extends Component {
             />
           ))
         }
+        {classifiedTasks.notYet.length > 0 &&
+          <Divider style={dividerStyle} />
+        }
         {classifiedTasks.done.length > 0 &&
           <Subheader style={styles.done}>Done</Subheader>
         }
@@ -228,6 +241,10 @@ class TaskList extends Component {
               done
             />
           ))
+        }
+
+        {classifiedTasks.done.length > 0 &&
+          <Divider style={dividerStyle} />
         }
         <EditTaskDialog
           onRequestClose={this.handleRequestTaskDialogClose}
