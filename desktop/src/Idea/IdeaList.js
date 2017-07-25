@@ -90,12 +90,14 @@ class IdeaList extends Component {
       snackbarOpen: true,
       snackbarMessage: message,
     });
+    this.props.raiseFab();
   }
   handleRequestSnackbarClose = () => {
     this.setState({
       snackbarOpen: false,
       snackbarMessage: '',
     });
+    this.props.lowerFab();
   }
   handleUndo = () => {
     this.props.undo();
