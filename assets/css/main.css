@@ -140,3 +140,11 @@
   padding: 3px;
   font-size: 80%;
 }
+footer {
+  background-color: #222 !important;
+}
+.browserstack img {
+  width: 50%;
+  background-color: white;
+  opacity: .9;
+}
