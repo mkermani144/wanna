@@ -12,6 +12,7 @@ import { HotKeys } from 'react-hotkeys';
 
 import NewTaskDialog from './NewTaskDialog';
 import NewIdeaDialog from './NewIdeaDialog';
+import './FAB.css';
 
 
 class FAB extends PureComponent {
@@ -98,6 +99,7 @@ class FAB extends PureComponent {
           className="SpeedDial"
           fabContentOpen={<Add />}
           fabContentClose={<Close />}
+          fabProps={{ className: 'SpeedDial' }}
           style={styles.speedDial}
         >
           <SpeedDialItem

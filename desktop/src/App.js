@@ -11,7 +11,7 @@ import { blue500, green800, pink300 } from 'material-ui/styles/colors';
 import { HotKeys } from 'react-hotkeys';
 
 import store from './store';
-import Sidebar from './Sidebar/Sidebar';
+import SidebarContainer from './Sidebar/SidebarContainer';
 import FABContainer from './FAB/FABContainer';
 import TaskListContainer from './Task/TaskListContainer';
 import IdeaListContainer from './Idea/IdeaListContainer';
@@ -38,7 +38,7 @@ class App extends PureComponent {
       showTasks: 'shift+t',
       showIdeas: 'shift+i',
       showSettings: 'shift+s',
-      showHelp: 'shift+a',
+      showHelp: 'shift+h',
     };
   }
   handleSidebarToggle = () => {
@@ -51,6 +51,7 @@ class App extends PureComponent {
       },
       datePicker: {
         selectColor: green800,
+        headerColor: green800,
       },
       snackbar: {
         actionColor: pink300,
@@ -61,6 +62,7 @@ class App extends PureComponent {
     });
     const handlers = {
       showTasks: () => {
+        this.props.changeTab('tasks');
         this.setState({
           toTasks: true,
         }, () => {
@@ -70,6 +72,7 @@ class App extends PureComponent {
         });
       },
       showIdeas: () => {
+        this.props.changeTab('ideas');
         this.setState({
           toIdeas: true,
         }, () => {
@@ -79,6 +82,7 @@ class App extends PureComponent {
         });
       },
       showSettings: () => {
+        this.props.changeTab('settings');
         this.setState({
           toSettings: true,
         }, () => {
@@ -88,6 +92,7 @@ class App extends PureComponent {
         });
       },
       showHelp: () => {
+        this.props.changeTab('help');
         this.setState({
           toHelp: true,
         }, () => {
@@ -114,7 +119,7 @@ class App extends PureComponent {
                   onLeftIconButtonTouchTap={this.handleSidebarToggle}
                 />
                 <div className="main">
-                  <Sidebar expanded={this.state.sidebarExpanded} />
+                  <SidebarContainer expanded={this.state.sidebarExpanded} />
                   <FABContainer />
                   <Redirect from="/" to="tasks" />
                   {this.state.toTasks &&

@@ -24,13 +24,7 @@ class Sidebar extends PureComponent {
     super();
     this.state = {
       expanded: false,
-      current: 'tasks',
     };
-  }
-  changeActiveTab = (tab) => {
-    this.setState({
-      current: tab,
-    });
   }
   render() {
     const styles = {
@@ -60,76 +54,76 @@ class Sidebar extends PureComponent {
             leftIcon={
               <DoneAll
                 color={
-                  this.state.current === 'tasks' ?
+                  this.props.currentTab === 'tasks' ?
                   green600 :
                   null
                 }
               />
             }
             style={
-              this.state.current === 'tasks' ?
+              this.props.currentTab === 'tasks' ?
               styles.tasks :
               null
             }
             containerElement={<Link to="/tasks" />}
-            onClick={() => this.changeActiveTab('tasks')}
+            onClick={() => this.props.changeTab('tasks')}
           />
           <ListItem
             primaryText="Ideas"
             leftIcon={
               <LightbulbOutline
                 color={
-                  this.state.current === 'ideas' ?
+                  this.props.currentTab === 'ideas' ?
                   yellow800 :
                   null
                 }
               />
             }
             style={
-              this.state.current === 'ideas' ?
+              this.props.currentTab === 'ideas' ?
               styles.ideas :
               null
             }
             containerElement={<Link to="/ideas" />}
-            onClick={() => this.changeActiveTab('ideas')}
+            onClick={() => this.props.changeTab('ideas')}
           />
           <ListItem
             primaryText="Settings"
             leftIcon={
               <Settings
                 color={
-                  this.state.current === 'settings' ?
+                  this.props.currentTab === 'settings' ?
                   indigo600 :
                   null
                 }
               />
             }
             style={
-              this.state.current === 'settings' ?
+              this.props.currentTab === 'settings' ?
               styles.settings :
               null
             }
             containerElement={<Link to="/settings" />}
-            onClick={() => this.changeActiveTab('settings')}
+            onClick={() => this.props.changeTab('settings')}
           />
           <ListItem
             primaryText="Help"
             leftIcon={
               <Help
                 color={
-                  this.state.current === 'help' ?
+                  this.props.currentTab === 'help' ?
                   cyan600 :
                   null
                 }
               />
             }
             style={
-              this.state.current === 'help' ?
+              this.props.currentTab === 'help' ?
               styles.help :
               null
             }
             containerElement={<Link to="/help" />}
-            onClick={() => this.changeActiveTab('help')}
+            onClick={() => this.props.changeTab('help')}
           />
         </List>
       </Drawer>
