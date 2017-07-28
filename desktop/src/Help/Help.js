@@ -32,7 +32,7 @@ const Help = ({ sidebarExpanded }) => {
       <List>
         <ListItem
           primaryText="Version"
-          secondaryText="Flex (1.0.0)"
+          secondaryText="Flex alpha"
           onClick={() => shell.openExternal(versionURL)}
         />
         <Divider />
