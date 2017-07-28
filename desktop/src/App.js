@@ -51,6 +51,7 @@ class App extends PureComponent {
       },
       datePicker: {
         selectColor: green800,
+        headerColor: green800,
       },
       snackbar: {
         actionColor: pink300,
