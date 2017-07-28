@@ -223,7 +223,7 @@ class TaskList extends Component {
             />
           ))
         }
-        {classifiedTasks.notYet.length > 0 &&
+        {classifiedTasks.notYet.length > 0 && this.props.showNotYetTasks &&
           <Divider style={dividerStyle} />
         }
         {classifiedTasks.done.length > 0 &&
