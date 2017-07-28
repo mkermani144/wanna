@@ -38,14 +38,14 @@ function createWindow() {
   if (dbExists() === false) {
     createDatabase();
   }
-  let width = 800;
-  let height = 600;
+  let width = 1024;
+  let height = 768;
   if (isFullscreen()) {
     ({ width, height } = electron.screen.getPrimaryDisplay().size);
   }
   win = new BrowserWindow({
-    minWidth: 800,
-    minHeight: 600,
+    minWidth: 1024,
+    minHeight: 768,
     width,
     height,
     icon: `${__dirname}/wanna.png`,
