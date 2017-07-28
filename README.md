@@ -53,13 +53,20 @@ See [contributing guidelines](CONTRIBUTING.md).
 Technologies and libraries
 ----
 Like the other apps and libraries, Wanna stands on the shoulders of giants. This is a list of mostly used awesome technologies and libraries that power Wanna:  
-- [Electron](https://electron.atom.io)
-- [React.js](https://facebook.github.io/react/)
-- [Material-UI](www.material-ui.com)
-- [Create-react-app](https://github.com/facebookincubator/create-react-app)
-- [React-Router](https://github.com/ReactTraining/react-router)
-- [Redux](http://redux.js.org)
-- [Eslint](http://eslint.org)
+- [Electron](https://electron.atom.io): Build cross platform desktop apps with JavaScript, HTML, and CSS.
+- [React.js](https://facebook.github.io/react/): A declarative, efficient, and flexible JavaScript library for building user interfaces.
+- [Material-UI](http://www.material-ui.com): React Components that Implement Google's Material Design.
+- [Create-react-app](https://github.com/facebookincubator/create-react-app): Create React apps with no build configuration.
+- [React-Router](https://github.com/ReactTraining/react-router): Declarative routing for React.
+- [Redux](http://redux.js.org): Predictable state container for JavaScript apps.
+- [Eslint](http://eslint.org): A fully pluggable tool for identifying and reporting on patterns in JavaScript.  
+
+In addition, these libraries and technologies are used in the repo GitHub pages:
+- [Bootstrap](https://v4-alpha.getbootstrap.com): The most popular HTML, CSS, and JavaScript framework for developing responsive, mobile first projects on the web.
+- [Now UI kit](https://github.com/creativetimofficial/now-ui-kit): Now UI Kit Bootstrap 4 - Designed by Invision. Coded by Creative Tim.
+- [Font awesome](http://fontawesome.io): The iconic font and CSS toolkit.
+- [BrowserStack](https://browserstack.com): Live, web-based browser testing.
+- [dns.js.org](https://github.com/js-org/dns.js.org): Providing nice and free domains for GitHub Pages since 2015.
 
 Philosophy
 ----
