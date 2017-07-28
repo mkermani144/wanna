@@ -14,6 +14,7 @@ const defaultState = fetchInitialState() || {
   },
   appUI: {
     fabRaised: false,
+    currentTab: 'tasks',
   },
 };
 

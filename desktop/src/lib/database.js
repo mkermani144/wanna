@@ -20,6 +20,10 @@ const fetchInitialState = () => {
         history: [],
       },
       appProperties: data.appProperties,
+      appUI: {
+        fabRaised: false,
+        currentTab: 'tasks',
+      },
     };
   }
   return {};
