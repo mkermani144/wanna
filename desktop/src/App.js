@@ -38,7 +38,7 @@ class App extends PureComponent {
       showTasks: 'shift+t',
       showIdeas: 'shift+i',
       showSettings: 'shift+s',
-      showHelp: 'shift+a',
+      showHelp: 'shift+h',
     };
   }
   handleSidebarToggle = () => {
