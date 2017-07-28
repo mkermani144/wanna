@@ -59,7 +59,14 @@ Like the other apps and libraries, Wanna stands on the shoulders of giants. This
 - [Create-react-app](https://github.com/facebookincubator/create-react-app)
 - [React-Router](https://github.com/ReactTraining/react-router)
 - [Redux](http://redux.js.org)
-- [Eslint](http://eslint.org)
+- [Eslint](http://eslint.org)  
+
+In addition, these libraries and technologies are used in the repo GitHub pages:
+- [Bootstrap](https://v4-alpha.getbootstrap.com)
+- [Now UI kit](https://github.com/creativetimofficial/now-ui-kit)
+- [Font awesome](http://fontawesome.io)
+- [BrowserStack](https://browserstack.com)
+- [dns.js.org](https://github.com/js-org/dns.js.org)
 
 Philosophy
 ----
