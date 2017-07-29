@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Divider from 'material-ui/Divider';
 import Snackbar from 'material-ui/Snackbar';
 import shortid from 'shortid';
 
@@ -89,12 +90,14 @@ class IdeaList extends Component {
       snackbarOpen: true,
       snackbarMessage: message,
     });
+    this.props.raiseFab();
   }
   handleRequestSnackbarClose = () => {
     this.setState({
       snackbarOpen: false,
       snackbarMessage: '',
     });
+    this.props.lowerFab();
   }
   handleUndo = () => {
     this.props.undo();
@@ -103,10 +106,10 @@ class IdeaList extends Component {
   render() {
     const marginStyles = {
       expanded: {
-        marginLeft: 216,
+        marginLeft: 200,
       },
       mini: {
-        marginLeft: 72,
+        marginLeft: 56,
       },
     };
     const emptyStateMarginStyles = {
@@ -154,15 +157,17 @@ class IdeaList extends Component {
         }
       >
         {this.props.ideas.map((idea, index) => (
-          <Idea
-            text={idea.idea}
-            onRequestEditDialogOpen={this.handleRequestIdeaDialogOpen}
-            onRequestDelete={this.handleRequestIdeaDelete}
-            onRequestConvertDialogOpen={this.handleRequestConvertDialogOpen}
-            onRequestSnackbar={this.handleRequestSnackbarOpen}
-            index={index}
-            key={idea.id}
-          />
+          <div key={idea.id}>
+            <Idea
+              text={idea.idea}
+              index={index}
+              onRequestEditDialogOpen={this.handleRequestIdeaDialogOpen}
+              onRequestDelete={this.handleRequestIdeaDelete}
+              onRequestConvertDialogOpen={this.handleRequestConvertDialogOpen}
+              onRequestSnackbar={this.handleRequestSnackbarOpen}
+            />
+            <Divider />
+          </div>
         ))}
         <EditIdeaDialog
           onRequestClose={this.handleRequestIdeaDialogClose}

@@ -54,10 +54,10 @@ class Settings extends PureComponent {
     };
     const marginStyles = {
       expanded: {
-        marginLeft: 216,
+        marginLeft: 200,
       },
       mini: {
-        marginLeft: 72,
+        marginLeft: 56,
       },
     };
     return (
@@ -71,13 +71,15 @@ class Settings extends PureComponent {
       >
         <List>
           <ListItem
-            leftCheckbox={
-              <Checkbox
-                defaultChecked={this.props.showNotYetTasks}
-                onCheck={this.handleCheckShowNotYet}
-              />
-            }
-            primaryText="Show not-yet tasks"
+            primaryText="Calendar system"
+            secondaryText={this.props.calendarSystem}
+            onClick={this.handleRequestCalendarSystemDialogOpen}
+          />
+          <Divider />
+          <ListItem
+            primaryText="First day of the week"
+            secondaryText={weekDays[this.props.firstDayOfWeek]}
+            onClick={this.handleRequestFirstDayOfWeekDialogOpen}
           />
           <Divider />
           <ListItem
@@ -87,19 +89,19 @@ class Settings extends PureComponent {
                 onCheck={this.handleCheckFullscreen}
               />
             }
-            primaryText="Start app in fullscreen mode (Needs app restart)"
+            primaryText="Fullscreen mode"
+            secondaryText="Start the app in full width and height. Changes will apply after restarting the app"
           />
           <Divider />
           <ListItem
-            primaryText="Calendar system"
-            secondaryText={this.props.calendarSystem}
-            onClick={this.handleRequestCalendarSystemDialogOpen}
-          />
-          <Divider />
-          <ListItem
-            primaryText="First day of week"
-            secondaryText={weekDays[this.props.firstDayOfWeek]}
-            onClick={this.handleRequestFirstDayOfWeekDialogOpen}
+            leftCheckbox={
+              <Checkbox
+                defaultChecked={this.props.showNotYetTasks}
+                onCheck={this.handleCheckShowNotYet}
+              />
+            }
+            primaryText="Not-yet tasks"
+            secondaryText="Show the section in task list"
           />
           <Divider />
         </List>

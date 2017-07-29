@@ -12,6 +12,10 @@ const defaultState = fetchInitialState() || {
     calendarSystem: 'en-US',
     firstDayOfWeek: 1,
   },
+  appUI: {
+    fabRaised: false,
+    currentTab: 'tasks',
+  },
 };
 
 const store = createStore(rootReducer, defaultState);

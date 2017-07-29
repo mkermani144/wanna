@@ -13,6 +13,12 @@ const deleteTask = index => ({
   type: 'DELETE_TASK',
   index,
 });
+const raiseFab = () => ({
+  type: 'RAISE_FAB',
+});
+const lowerFab = () => ({
+  type: 'LOWER_FAB',
+});
 const { undo } = UndoActionCreators;
 
-export { doTask, editTask, deleteTask, undo };
+export { doTask, editTask, deleteTask, raiseFab, lowerFab, undo };

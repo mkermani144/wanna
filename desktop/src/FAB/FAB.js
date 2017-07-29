@@ -12,6 +12,7 @@ import { HotKeys } from 'react-hotkeys';
 
 import NewTaskDialog from './NewTaskDialog';
 import NewIdeaDialog from './NewIdeaDialog';
+import './FAB.css';
 
 
 class FAB extends PureComponent {
@@ -67,12 +68,14 @@ class FAB extends PureComponent {
     });
   }
   render() {
+    const width = document.body.clientWidth;
     const styles = {
       speedDial: {
         position: 'absolute',
-        right: '20px',
-        bottom: '20px',
+        right: 24,
+        bottom: this.props.fabRaised && width < 768 ? 72 : 24,
         zIndex: 1000,
+        transition: 'bottom 400ms cubic-bezier(0.23, 1, 0.32, 1) 0ms',
       },
       newTask: {
         color: green600,
@@ -96,6 +99,7 @@ class FAB extends PureComponent {
           className="SpeedDial"
           fabContentOpen={<Add />}
           fabContentClose={<Close />}
+          fabProps={{ className: 'SpeedDial' }}
           style={styles.speedDial}
         >
           <SpeedDialItem

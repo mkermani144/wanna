@@ -3,14 +3,37 @@
 const fs = window.require('fs');
 
 const fetchInitialState = () => {
-  const data = fs.readFileSync('.config/db', 'utf-8');
+  let data = fs.readFileSync('.config/db', 'utf-8');
   if (data) {
-    return JSON.parse(data);
+    data = JSON.parse(data);
+    return {
+      tasks: {
+        past: [],
+        present: data.tasks,
+        future: [],
+        history: [],
+      },
+      ideas: {
+        past: [],
+        present: data.ideas,
+        future: [],
+        history: [],
+      },
+      appProperties: data.appProperties,
+      appUI: {
+        fabRaised: false,
+        currentTab: 'tasks',
+      },
+    };
   }
   return {};
 };
 const update = (state) => {
-  fs.writeFileSync('.config/db', JSON.stringify(state), 'utf-8');
+  fs.writeFileSync('.config/db', JSON.stringify({
+    tasks: state.tasks.present,
+    ideas: state.ideas.present,
+    appProperties: state.appProperties,
+  }), 'utf-8');
 };
 
 

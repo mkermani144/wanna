@@ -11,12 +11,12 @@ import { blue500, green800, pink300 } from 'material-ui/styles/colors';
 import { HotKeys } from 'react-hotkeys';
 
 import store from './store';
-import Sidebar from './Sidebar/Sidebar';
+import SidebarContainer from './Sidebar/SidebarContainer';
 import FABContainer from './FAB/FABContainer';
 import TaskListContainer from './Task/TaskListContainer';
 import IdeaListContainer from './Idea/IdeaListContainer';
 import SettingsContainer from './Settings/SettingsContainer';
-import About from './About/About';
+import Help from './Help/Help';
 
 import { update } from './lib/database';
 
@@ -31,14 +31,14 @@ class App extends PureComponent {
       toTasks: false,
       toIdeas: false,
       toSettings: false,
-      toAbout: false,
+      toHelp: false,
       sidebarExpanded: false,
     };
     this.keyMap = {
       showTasks: 'shift+t',
       showIdeas: 'shift+i',
       showSettings: 'shift+s',
-      showAbout: 'shift+a',
+      showHelp: 'shift+h',
     };
   }
   handleSidebarToggle = () => {
@@ -51,6 +51,7 @@ class App extends PureComponent {
       },
       datePicker: {
         selectColor: green800,
+        headerColor: green800,
       },
       snackbar: {
         actionColor: pink300,
@@ -61,6 +62,7 @@ class App extends PureComponent {
     });
     const handlers = {
       showTasks: () => {
+        this.props.changeTab('tasks');
         this.setState({
           toTasks: true,
         }, () => {
@@ -70,6 +72,7 @@ class App extends PureComponent {
         });
       },
       showIdeas: () => {
+        this.props.changeTab('ideas');
         this.setState({
           toIdeas: true,
         }, () => {
@@ -79,6 +82,7 @@ class App extends PureComponent {
         });
       },
       showSettings: () => {
+        this.props.changeTab('settings');
         this.setState({
           toSettings: true,
         }, () => {
@@ -87,12 +91,13 @@ class App extends PureComponent {
           });
         });
       },
-      showAbout: () => {
+      showHelp: () => {
+        this.props.changeTab('help');
         this.setState({
-          toAbout: true,
+          toHelp: true,
         }, () => {
           this.setState({
-            toAbout: false,
+            toHelp: false,
           });
         });
       },
@@ -114,7 +119,7 @@ class App extends PureComponent {
                   onLeftIconButtonTouchTap={this.handleSidebarToggle}
                 />
                 <div className="main">
-                  <Sidebar expanded={this.state.sidebarExpanded} />
+                  <SidebarContainer expanded={this.state.sidebarExpanded} />
                   <FABContainer />
                   <Redirect from="/" to="tasks" />
                   {this.state.toTasks &&
@@ -126,8 +131,8 @@ class App extends PureComponent {
                   {this.state.toSettings &&
                     <Redirect to="/settings" />
                   }
-                  {this.state.toAbout &&
-                    <Redirect to="/about" />
+                  {this.state.toHelp &&
+                    <Redirect to="/help" />
                   }
                   <Route
                     path="/tasks"
@@ -148,9 +153,9 @@ class App extends PureComponent {
                     }
                   />
                   <Route
-                    path="/about"
+                    path="/help"
                     render={() =>
-                      (<About sidebarExpanded={this.state.sidebarExpanded} />)
+                      (<Help sidebarExpanded={this.state.sidebarExpanded} />)
                     }
                   />
                 </div>
