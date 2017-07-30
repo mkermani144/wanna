@@ -4,12 +4,14 @@
   "private": true,
   "main": "main.js",
   "devDependencies": {
+    "enzyme": "^2.9.1",
     "eslint": "^3.19.0",
     "eslint-config-airbnb": "^15.0.1",
     "eslint-plugin-import": "^2.6.0",
     "eslint-plugin-jsx-a11y": "^5.0.3",
     "eslint-plugin-react": "^7.1.0",
-    "react-scripts": "1.0.7"
+    "react-scripts": "1.0.7",
+    "react-test-renderer": "^15.6.1"
   },
   "dependencies": {
     "electron": "^1.6.10",
@@ -30,7 +32,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "eslint main.js src/",
+    "test": "react-scripts test",
+    "lint": "eslint main.js src/",
     "eject": "react-scripts eject",
     "electron": "electron . | BROWSER=none react-scripts start"
   }
