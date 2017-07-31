@@ -1,46 +1,43 @@
 /* eslint-env mocha, jest */
 
 import appUIReducer from '../appUI';
+import {
+  raiseFab as ideaRaiseFab,
+  lowerFab as ideaLowerFab,
+} from '../../Idea/actionCreators';
+import {
+  raiseFab as taskRaiseFab,
+  lowerFab as taskLowerFab,
+} from '../../Task/actionCreators';
+import changeTab from '../../Sidebar/actionCreators';
 
-const setup = ({ type, tab } = {}) => ({
-  appUI: {
-    fabRaised: false,
-    currentTab: 'tasks',
-  },
-  action: {
-    type,
-    tab,
-  },
-});
+const defaultState = {
+  fabRaised: false,
+  currentTab: 'tasks',
+};
 
-it('should return some state if no state is provided', () => {
+const getExpectedState = (props = {}) => Object.assign({}, defaultState, props);
+
+it('should return some state if no state and action is provided', () => {
   const actual = appUIReducer(undefined, {});
   const expected = {};
   expect(actual).toEqual(expected);
 });
 it('should make `fabRaised` true', () => {
-  const { appUI, action } = setup({
-    type: 'RAISE_FAB',
-  });
-  const actual = appUIReducer(appUI, action);
-  const expected = { ...appUI, fabRaised: true };
+  const action = ideaRaiseFab();
+  const actual = appUIReducer(defaultState, action);
+  const expected = getExpectedState({ fabRaised: true });
   expect(actual).toEqual(expected);
 });
 it('should make `fabRaised` false', () => {
-  const { appUI, action } = setup({
-    type: 'LOWER_FAB',
-  });
-  action.fabRaised = true;
-  const actual = appUIReducer(appUI, action);
-  const expected = { ...appUI, fabRaised: false };
+  const action = ideaLowerFab();
+  const actual = appUIReducer(defaultState, action);
+  const expected = getExpectedState({ fabRaised: false });
   expect(actual).toEqual(expected);
 });
 it('should update `currentTab`', () => {
-  const { appUI, action } = setup({
-    type: 'CHANGE_TAB',
-    tab: 'ideas',
-  });
-  const actual = appUIReducer(appUI, action);
-  const expected = { ...appUI, currentTab: 'ideas' };
+  const action = changeTab('ideas');
+  const actual = appUIReducer(defaultState, action);
+  const expected = getExpectedState({ currentTab: 'ideas' });
   expect(actual).toEqual(expected);
 });

@@ -1,6 +1,21 @@
 /* eslint-env mocha, jest */
 
 import appPropertiesReducer from '../appProperties';
+import {
+  toggleNotYet,
+  toggleFullscreen,
+  changeCalendarSystem,
+  changeFirstDayOfWeek,
+} from '../../Settings/actionCreators';
+
+const defaultState = {
+  showNotYetTasks: true,
+  fullscreen: false,
+  calendarSystem: 'en-US',
+  firstDayOfWeek: 1,
+};
+
+const getExpectedState = (props = {}) => Object.assign({}, defaultState, props);
 
 const setup = ({ type, flag, isFullscreen, calendarSystem, firstDayOfWeek } = {}) => ({
   appProperties: {
@@ -18,52 +33,32 @@ const setup = ({ type, flag, isFullscreen, calendarSystem, firstDayOfWeek } = {}
   },
 });
 
-it('should return some state if no state is provided', () => {
+it('should return some state if no state and action is provided', () => {
   const actual = appPropertiesReducer(undefined, {});
   const expected = {};
   expect(actual).toEqual(expected);
 });
-it('should return input state if action type is not related', () => {
-  const { appProperties, action } = setup({
-    type: 'SOME_UNRELATED_ACTION_TYPE',
-  });
-  const actual = appPropertiesReducer(appProperties, action);
-  const expected = appProperties;
-  expect(actual).toEqual(expected);
-});
 it('should update `showNotYetTasks` property of state', () => {
-  const { appProperties, action } = setup({
-    type: 'TOGGLE_NOT_YET',
-    flag: false,
-  });
-  const actual = appPropertiesReducer(appProperties, action);
-  const expected = { ...appProperties, showNotYetTasks: false };
+  const action = toggleNotYet(false);
+  const actual = appPropertiesReducer(defaultState, action);
+  const expected = getExpectedState({ showNotYetTasks: false });
   expect(actual).toEqual(expected);
 });
 it('should update `fullscreen` property of state', () => {
-  const { appProperties, action } = setup({
-    type: 'TOGGLE_FULLSCREEN',
-    isFullscreen: true,
-  });
-  const actual = appPropertiesReducer(appProperties, action);
-  const expected = { ...appProperties, fullscreen: true };
+  const action = toggleFullscreen(true);
+  const actual = appPropertiesReducer(defaultState, action);
+  const expected = getExpectedState({ fullscreen: true })
   expect(actual).toEqual(expected);
 });
 it('should update `calendarSystem` property of state', () => {
-  const { appProperties, action } = setup({
-    type: 'CHANGE_CALENDAR_SYSTEM',
-    calendarSystem: 'fa-IR',
-  });
-  const actual = appPropertiesReducer(appProperties, action);
-  const expected = { ...appProperties, calendarSystem: 'fa-IR' };
+  const action = changeCalendarSystem('fa-IR');
+  const actual = appPropertiesReducer(defaultState, action);
+  const expected = getExpectedState({ calendarSystem: 'fa-IR' });
   expect(actual).toEqual(expected);
 });
 it('should update `firstDayOfWeek` property of state', () => {
-  const { appProperties, action } = setup({
-    type: 'CHANGE_FIRST_DAY_OF_WEEK',
-    firstDayOfWeek: 7,
-  });
-  const actual = appPropertiesReducer(appProperties, action);
-  const expected = { ...appProperties, firstDayOfWeek: 7 };
+  const action = changeFirstDayOfWeek(6);
+  const actual = appPropertiesReducer(defaultState, action);
+  const expected = getExpectedState({ firstDayOfWeek: 6 });
   expect(actual).toEqual(expected);
 });
