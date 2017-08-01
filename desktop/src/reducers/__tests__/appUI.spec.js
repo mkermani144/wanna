@@ -23,14 +23,26 @@ it('should return some state if no state and action is provided', () => {
   const expected = {};
   expect(actual).toEqual(expected);
 });
-it('should make `fabRaised` true', () => {
+it('should make `fabRaised` true (idea)', () => {
   const action = ideaRaiseFab();
   const actual = appUIReducer(defaultState, action);
   const expected = getExpectedState({ fabRaised: true });
   expect(actual).toEqual(expected);
 });
-it('should make `fabRaised` false', () => {
+it('should make `fabRaised` false (idea)', () => {
   const action = ideaLowerFab();
+  const actual = appUIReducer(defaultState, action);
+  const expected = getExpectedState({ fabRaised: false });
+  expect(actual).toEqual(expected);
+});
+it('should make `fabRaised` true (task)', () => {
+  const action = taskRaiseFab();
+  const actual = appUIReducer(defaultState, action);
+  const expected = getExpectedState({ fabRaised: true });
+  expect(actual).toEqual(expected);
+});
+it('should make `fabRaised` false (task)', () => {
+  const action = taskLowerFab();
   const actual = appUIReducer(defaultState, action);
   const expected = getExpectedState({ fabRaised: false });
   expect(actual).toEqual(expected);
