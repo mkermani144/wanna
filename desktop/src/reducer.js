@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux';
+import undoable, { includeAction } from 'redux-undo';
 
 import taskReducer from './reducers/task';
 import ideaReducer from './reducers/idea';
@@ -7,7 +8,10 @@ import appUIReducer from './reducers/appUI';
 
 const rootReducer = combineReducers({
   tasks: taskReducer,
-  ideas: ideaReducer,
+  ideas: undoable(ideaReducer, {
+    limit: 1,
+    filter: includeAction('DELETE_IDEA'),
+  }),
   appProperties: appPropertiesReducer,
   appUI: appUIReducer,
 });
