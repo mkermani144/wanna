@@ -7,7 +7,10 @@ import appPropertiesReducer from './reducers/appProperties';
 import appUIReducer from './reducers/appUI';
 
 const rootReducer = combineReducers({
-  tasks: taskReducer,
+  tasks: undoable(taskReducer, {
+    limit: 1,
+    filter: includeAction(['DO_TASK', 'DELETE_TASK']),
+  }),
   ideas: undoable(ideaReducer, {
     limit: 1,
     filter: includeAction('DELETE_IDEA'),
