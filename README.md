@@ -44,11 +44,15 @@ Join [Wannachat](https://gitter.im/wannachat/Lobby) on Gitter!
 
 Contributing
 ----
-Wanna welcomes contributors! Please see [contribution guidelines](CONTRIBUTING.md) for more information.
+_Contributing guidelines will be added soon._
 
 Issues and bug reports
 ----
-See [contributing guidelines](CONTRIBUTING.md).
+_Issue and bug report guidelines will be addes soon._
+
+Road map
+----
+If you want to see a unofficial list of features which will be added in the next versions of Wanna, take a look at our [road map](ROADMAP.md).
 
 Technologies and libraries
 ----
