@@ -26,7 +26,7 @@ Wanna is an implementation of a 21st-century to-do list app. It introduces a [ne
 
 Installation
 ----
-Wanna is under active development. You can see a list of its releases [here](https://github.com/mkermani144/wanna/releases). At this time, the only release of the app is [Beta release for Linux](https://github.com/mkermani144/wanna/releases/tag/beta). However, you can easily download the repo's source code and build a version suitable for your own platform with just a bit of effort. In the near future, other platforms will be officially supported.  
+Wanna is under active development. You can see a list of its releases [here](https://github.com/mkermani144/wanna/releases). At this time, the latest release of the app is [Flex Alpha release](https://github.com/mkermani144/wanna/releases/tag/Flex-alpha) for Windows and Linux (`.deb` only). In addition, you can easily download the repo's source code and build a version suitable for your own platform with just a bit of effort. In the near future, other platforms will be officially supported.  
 You can also clone the repository to see development version of the app in action:
 ```sh
 git clone https://github.com/mkermani144/wanna.git
@@ -44,11 +44,15 @@ Join [Wannachat](https://gitter.im/wannachat/Lobby) on Gitter!
 
 Contributing
 ----
-Wanna welcomes contributors! Please see [contribution guidelines](CONTRIBUTING.md) for more information.
+_Contributing guidelines will be added soon._
 
 Issues and bug reports
 ----
-See [contributing guidelines](CONTRIBUTING.md).
+_Issue and bug report guidelines will be addes soon._
+
+Road map
+----
+If you want to see a unofficial list of features which will be added in the next versions of Wanna, take a look at our [road map](ROADMAP.md).
 
 Technologies and libraries
 ----
