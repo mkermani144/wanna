@@ -7,7 +7,7 @@ Wanna welcomes contributions of different types. There are a lot of work to do, 
 There are multiple kinds of contributions we seek for, ranging from effortless ones like feature suggestion, to harder ones like
 app development. Below comes the list of contribution types. Please make sure you have satisfied prerequisties of each contribution type before reading its guidelines, otherwise you may do redundant work.  
 
-### Feature requests :bulb:
+### Feature requests 💡
 #### Prerequisties: 
 * Install and use the app
 
@@ -18,3 +18,13 @@ To do so, follow these steps:
 3. Expalain exactly what you are looking for. Provide additional links, images, etc. if needed.
 
 We may label your issue as `Needs-check`, or we may directly add `idea` or `new-feature` label to your issue, indicating your issue is approved.
+
+### Bug reports 🐞
+#### Prerequisties: 
+* Install and use the app
+
+If you find a bug when you use the app, you can contribute to Wanna as a bug reporter. To do so, follow these steps which are almost the same as steps for feature requests:
+1. Search issues and see if somebody has reported the same bug.
+2. If the bug is not reported, open an issue and explain about the bug.
+
+If your issue is labeled as `bug`, we will fix it in the next versions of the app. It may also be labeled as `duplicate` if your issue is a duplicate.
