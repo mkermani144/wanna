@@ -12,10 +12,6 @@ it('should be a <div />', () => {
   const newIdeaDialog = shallow(<NewIdeaDialog open={false} />);
   expect(newIdeaDialog.is('div.NewIdeaDialog')).toEqual(true);
 });
-it('should be a <div />', () => {
-  const newIdeaDialog = shallow(<NewIdeaDialog open={false} />);
-  expect(newIdeaDialog.is('div.NewIdeaDialog')).toEqual(true);
-});
 it('should have a <Dialog />', () => {
   const newIdeaDialog = shallow(<NewIdeaDialog open={false} />);
   expect(newIdeaDialog.find('Dialog').length).toEqual(1);
