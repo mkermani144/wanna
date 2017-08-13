@@ -11,7 +11,7 @@ import persianUtils from 'material-ui-persian-date-picker-utils';
 
 import './ConvertIdeaDialog.css';
 
-class NewTaskDialog extends PureComponent {
+class ConvertIdeaDialog extends PureComponent {
   constructor() {
     super();
     const todayStart = new Date();
@@ -97,9 +97,9 @@ class NewTaskDialog extends PureComponent {
     });
   }
   handleRequestFinish = () => {
-    this.props.onRequestConvert(this.state);
-    this.props.onRequestDelete();
-    this.props.onRequestClose();
+    this.props.onRequestConvert && this.props.onRequestConvert(this.state);
+    this.props.onRequestDelete && this.props.onRequestDelete();
+    this.props.onRequestClose && this.props.onRequestClose();
     const todayStart = new Date();
     todayStart.setHours(0, 0, 0, 0);
     this.setState({
@@ -154,7 +154,7 @@ class NewTaskDialog extends PureComponent {
     };
     const DateTimeFormat = global.Intl.DateTimeFormat;
     return (
-      <div className="NewTaskDialog">
+      <div className="ConvertIdeaDialog">
         <Dialog
           title="Convert idea"
           actions={actions}
@@ -265,4 +265,4 @@ class NewTaskDialog extends PureComponent {
   }
 }
 
-export default NewTaskDialog;
+export default ConvertIdeaDialog;
