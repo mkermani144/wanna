@@ -9,7 +9,6 @@ import LightbulbOutline from 'material-ui/svg-icons/action/lightbulb-outline';
 import { green600, yellow800 } from 'material-ui/styles/colors';
 import shortid from 'shortid';
 import { HotKeys } from 'react-hotkeys';
-import { ipcRenderer } from 'electron';
 
 import NewTaskDialog from './NewTaskDialog';
 import NewIdeaDialog from './NewIdeaDialog';
