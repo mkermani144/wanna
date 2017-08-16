@@ -5,6 +5,8 @@ import { shallow } from 'enzyme';
 
 import Idea from '../Idea';
 
+jest.useFakeTimers();
+
 it('should render', () => {
   shallow(<Idea />);
 });
