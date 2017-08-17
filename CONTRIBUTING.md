@@ -28,3 +28,18 @@ If you find a bug when you use the app, you can contribute to Wanna as a bug rep
 2. If the bug is not reported, open an issue and explain about the bug.
 
 If your issue is labeled as `bug`, we will fix it in the next versions of the app. It may also be labeled as `duplicate` if your issue is a duplicate.
+
+### Beginner code contribution 👨‍💻 🍼
+#### Prerequisties:
+* Install and use the app
+* Know enough HTML, CSS and basic Javascript
+* Familiar with ReactJS and JSX
+* Know enough Git and GitHub
+
+If you want to get started with coding in Wanna, go to the [issues](https://github.com/mkermani144/wanna/issues) and look for the ones labeled `Help-Wanted`. These are usually minor bugfixes or enhancements and you don't need to know full structure of the app to fix them. Usually, they only need basic web development knowledge. To start code contribution, follow these steps:
+1. Look for the issues labeled `Help-Wanted` and choose one.
+2. Comment on the issue indicating you are working on it.
+3. Fork the repo and update your fork code.
+4. After fixing the issue, make a pull request.
+
+We will review your code. If everything is OK, your PR will be accepted.
