@@ -22,19 +22,19 @@ it('should render', () => {
 });
 it('should be a <Dialog />', () => {
   const calendarSystemDialog = getActual();
-  expect(calendarSystemDialog.is('Dialog')).toEqual(true);
+  expect(calendarSystemDialog.is('Dialog')).toBe(true);
 });
 it('should have 2 <RadioButton />', () => {
   const calendarSystemDialog = getActual();
-  expect(calendarSystemDialog.find('RadioButton').length).toEqual(2);
+  expect(calendarSystemDialog.find('RadioButton').length).toBe(2);
 });
 it('should set dialog open based on props', () => {
   const calendarSystemDialog = getActual({ open: true });
-  expect(calendarSystemDialog.find('Dialog').prop('open')).toEqual(true);
+  expect(calendarSystemDialog.find('Dialog').prop('open')).toBe(true);
 });
 it('should set radio button group defaultSelected based on props', () => {
   const calendarSystemDialog = getActual({ calendarSystem: 'fa-IR' });
-  expect(calendarSystemDialog.find('RadioButtonGroup').prop('defaultSelected')).toEqual('fa-IR');
+  expect(calendarSystemDialog.find('RadioButtonGroup').prop('defaultSelected')).toBe('fa-IR');
 });
 it('should call onRequestClose when handling close request in dialog', () => {
   let a = 0;
@@ -45,7 +45,7 @@ it('should call onRequestClose when handling close request in dialog', () => {
     },
   });
   calendarSystemDialog.find('Dialog').props().onRequestClose();
-  expect(a).toEqual('fa-IR');
+  expect(a).toBe('fa-IR');
 });
 it('should call onRequestClose when handling close request in flat button', () => {
   let a = 0;
@@ -56,7 +56,7 @@ it('should call onRequestClose when handling close request in flat button', () =
     },
   });
   calendarSystemDialog.find('Dialog').prop('actions')[0].props.onTouchTap();
-  expect(a).toEqual('fa-IR');
+  expect(a).toBe('fa-IR');
 });
 it('should call onRequestClose when handling close request in radio button group', () => {
   let a = 0;
@@ -68,6 +68,6 @@ it('should call onRequestClose when handling close request in radio button group
   });
   calendarSystemDialog.find('RadioButtonGroup').props().onChange('fa-IR');
   setTimeout(() => {
-    expect(a).toEqual('fa-IR');
+    expect(a).toBe('fa-IR');
   }, 300);
 });

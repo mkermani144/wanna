@@ -10,17 +10,17 @@ it('should render', () => {
 });
 it('should be a <div />', () => {
   const newIdeaDialog = shallow(<NewIdeaDialog open={false} />);
-  expect(newIdeaDialog.is('div.NewIdeaDialog')).toEqual(true);
+  expect(newIdeaDialog.is('div.NewIdeaDialog')).toBe(true);
 });
 it('should have a <Dialog />', () => {
   const newIdeaDialog = shallow(<NewIdeaDialog open={false} />);
-  expect(newIdeaDialog.find('Dialog').length).toEqual(1);
+  expect(newIdeaDialog.find('Dialog').length).toBe(1);
 });
 it('should react to close request', () => {
   const newIdeaDialog = shallow(<NewIdeaDialog open={false} onRequestClose={() => 'close requested'} />);
-  expect(newIdeaDialog.instance().props.onRequestClose()).toEqual('close requested');
+  expect(newIdeaDialog.instance().props.onRequestClose()).toBe('close requested');
 });
 it('should react to add request', () => {
   const newIdeaDialog = shallow(<NewIdeaDialog open={false} onRequestAdd={() => 'add requested'} />);
-  expect(newIdeaDialog.instance().props.onRequestAdd()).toEqual('add requested');
+  expect(newIdeaDialog.instance().props.onRequestAdd()).toBe('add requested');
 });

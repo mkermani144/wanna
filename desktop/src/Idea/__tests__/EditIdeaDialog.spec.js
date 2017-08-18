@@ -10,19 +10,19 @@ it('should render', () => {
 });
 it('should be a <div />', () => {
   const editIdeaDialog = shallow(<EditIdeaDialog open={false} />);
-  expect(editIdeaDialog.is('div.EditIdeaDialog')).toEqual(true);
+  expect(editIdeaDialog.is('div.EditIdeaDialog')).toBe(true);
 });
 it('should have a <Dialog />', () => {
   const editIdeaDialog = shallow(<EditIdeaDialog open={false} />);
-  expect(editIdeaDialog.find('Dialog').length).toEqual(1);
+  expect(editIdeaDialog.find('Dialog').length).toBe(1);
 });
 it('should show/hide <Dialog /> based on props', () => {
   const editIdeaDialog = shallow(<EditIdeaDialog open />);
-  expect(editIdeaDialog.find('Dialog').prop('open')).toEqual(true);
+  expect(editIdeaDialog.find('Dialog').prop('open')).toBe(true);
 });
 it('should set text field default value based on props', () => {
   const editIdeaDialog = shallow(<EditIdeaDialog open idea="A cool idea" />);
-  expect(editIdeaDialog.find('TextField').prop('defaultValue')).toEqual('A cool idea');
+  expect(editIdeaDialog.find('TextField').prop('defaultValue')).toBe('A cool idea');
 });
 it('should call onRequestClose in handling close request', () => {
   let a = 0;
@@ -30,7 +30,7 @@ it('should call onRequestClose in handling close request', () => {
     <EditIdeaDialog open={false} onRequestClose={() => { a = 2; }} />,
   );
   editIdeaDialog.instance().handleRequestClose();
-  expect(a).toEqual(2);
+  expect(a).toBe(2);
 });
 it('should call onRequestEdit in handling edit request', () => {
   let a = 0;
@@ -38,5 +38,5 @@ it('should call onRequestEdit in handling edit request', () => {
     <EditIdeaDialog open={false} onRequestEdit={() => { a = 2; }} />,
   );
   editIdeaDialog.instance().handleRequestEdit();
-  expect(a).toEqual(2);
+  expect(a).toBe(2);
 });

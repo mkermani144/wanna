@@ -10,5 +10,5 @@ it('should render', () => {
 });
 it('should have 3 <IconButton />', () => {
   const actions = shallow(<Actions />);
-  expect(actions.find('IconButton').length).toEqual(3);
+  expect(actions.find('IconButton').length).toBe(3);
 });

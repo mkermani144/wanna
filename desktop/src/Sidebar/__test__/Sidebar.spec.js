@@ -20,18 +20,18 @@ it('should render', () => {
 });
 it('should be a <Drawer />', () => {
   const sidebar = getActual();
-  expect(sidebar.is('Drawer')).toEqual(true);
+  expect(sidebar.is('Drawer')).toBe(true);
 });
 it('should have 4 <ListItem />', () => {
   const sidebar = getActual();
-  expect(sidebar.find('ListItem').length).toEqual(4);
+  expect(sidebar.find('ListItem').length).toBe(4);
 });
 
 it('should set drawer width based on props', () => {
   const sidebar = getActual({
     expanded: false,
   });
-  expect(sidebar.props().width).toEqual(56);
+  expect(sidebar.props().width).toBe(56);
 });
 it('should highlight ideas tab if current tab is ideas', () => {
   const sidebar = getActual({
@@ -60,7 +60,7 @@ it('should call changeTab when clicking on tasks tab', () => {
     },
   });
   sidebar.find('ListItem').at(0).simulate('click');
-  expect(a).toEqual('tasks');
+  expect(a).toBe('tasks');
 });
 it('should call changeTab when clicking on ideas tab', () => {
   let a = '';
@@ -70,7 +70,7 @@ it('should call changeTab when clicking on ideas tab', () => {
     },
   });
   sidebar.find('ListItem').at(1).simulate('click');
-  expect(a).toEqual('ideas');
+  expect(a).toBe('ideas');
 });
 it('should call changeTab when clicking on settings tab', () => {
   let a = '';
@@ -80,7 +80,7 @@ it('should call changeTab when clicking on settings tab', () => {
     },
   });
   sidebar.find('ListItem').at(2).simulate('click');
-  expect(a).toEqual('settings');
+  expect(a).toBe('settings');
 });
 it('should call changeTab when clicking on help tab', () => {
   let a = '';
@@ -90,5 +90,5 @@ it('should call changeTab when clicking on help tab', () => {
     },
   });
   sidebar.find('ListItem').at(3).simulate('click');
-  expect(a).toEqual('help');
+  expect(a).toBe('help');
 });

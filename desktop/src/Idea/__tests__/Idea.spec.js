@@ -12,39 +12,39 @@ it('should render', () => {
 });
 it('should be a <div />', () => {
   const idea = shallow(<Idea />);
-  expect(idea.is('div.Idea')).toEqual(true);
+  expect(idea.is('div.Idea')).toBe(true);
 });
 it('should have a <p />', () => {
   const idea = shallow(<Idea />);
-  expect(idea.find('p').length).toEqual(1);
+  expect(idea.find('p').length).toBe(1);
 });
 it('should have an <Actions />', () => {
   const idea = shallow(<Idea />);
-  expect(idea.find('Actions').length).toEqual(1);
+  expect(idea.find('Actions').length).toBe(1);
 });
 it('should set actions onRequestEditDialogOpen based on props', () => {
   const idea = shallow(
     <Idea onRequestEditDialogOpen={() => 3} />,
   );
-  expect(idea.find('Actions').prop('onRequestEditDialogOpen')()).toEqual(3);
+  expect(idea.find('Actions').prop('onRequestEditDialogOpen')()).toBe(3);
 });
 it('should set actions onRequestConvertDialogOpen based on props', () => {
   const idea = shallow(
     <Idea onRequestConvertDialogOpen={() => 3} />,
   );
-  expect(idea.find('Actions').prop('onRequestConvertDialogOpen')()).toEqual(3);
+  expect(idea.find('Actions').prop('onRequestConvertDialogOpen')()).toBe(3);
 });
 it('should pass props.index when editing idea', () => {
   const idea = shallow(
     <Idea index={5} onRequestEditDialogOpen={index => index} />,
   );
-  expect(idea.find('Actions').prop('onRequestEditDialogOpen')()).toEqual(5);
+  expect(idea.find('Actions').prop('onRequestEditDialogOpen')()).toBe(5);
 });
 it('should pass props.index when converting idea', () => {
   const idea = shallow(
     <Idea index={5} onRequestConvertDialogOpen={index => index} />,
   );
-  expect(idea.find('Actions').prop('onRequestConvertDialogOpen')()).toEqual(5);
+  expect(idea.find('Actions').prop('onRequestConvertDialogOpen')()).toBe(5);
 });
 it('should call onRequestDelete in handling delete request', () => {
   let a = 0;
@@ -53,6 +53,6 @@ it('should call onRequestDelete in handling delete request', () => {
   );
   idea.instance().handleRequestDelete();
   setTimeout(() => {
-    expect(a).toEqual(2);
+    expect(a).toBe(2);
   }, 1000);
 });

@@ -22,19 +22,19 @@ it('should render', () => {
 });
 it('should be a <Dialog />', () => {
   const firstDayofWeekDialog = getActual();
-  expect(firstDayofWeekDialog.is('Dialog')).toEqual(true);
+  expect(firstDayofWeekDialog.is('Dialog')).toBe(true);
 });
 it('should have 3 <RadioButton />', () => {
   const firstDayofWeekDialog = getActual();
-  expect(firstDayofWeekDialog.find('RadioButton').length).toEqual(3);
+  expect(firstDayofWeekDialog.find('RadioButton').length).toBe(3);
 });
 it('should set dialog open based on props', () => {
   const firstDayofWeekDialog = getActual({ open: true });
-  expect(firstDayofWeekDialog.find('Dialog').prop('open')).toEqual(true);
+  expect(firstDayofWeekDialog.find('Dialog').prop('open')).toBe(true);
 });
 it('should set radio button group defaultSelected based on props', () => {
   const firstDayofWeekDialog = getActual({ firstDayOfWeek: 6 });
-  expect(firstDayofWeekDialog.find('RadioButtonGroup').prop('defaultSelected')).toEqual('6');
+  expect(firstDayofWeekDialog.find('RadioButtonGroup').prop('defaultSelected')).toBe('6');
 });
 it('should call onRequestClose when handling close request in dialog', () => {
   let a = 0;
@@ -45,7 +45,7 @@ it('should call onRequestClose when handling close request in dialog', () => {
     },
   });
   firstDayofWeekDialog.find('Dialog').props().onRequestClose();
-  expect(a).toEqual(6);
+  expect(a).toBe(6);
 });
 it('should call onRequestClose when handling close request in flat button', () => {
   let a = 0;
@@ -56,7 +56,7 @@ it('should call onRequestClose when handling close request in flat button', () =
     },
   });
   firstDayofWeekDialog.find('Dialog').prop('actions')[0].props.onTouchTap();
-  expect(a).toEqual(6);
+  expect(a).toBe(6);
 });
 it('should call onRequestClose when handling close request in radio button group', () => {
   let a = 0;
@@ -68,6 +68,6 @@ it('should call onRequestClose when handling close request in radio button group
   });
   firstDayofWeekDialog.find('RadioButtonGroup').props().onChange(6);
   setTimeout(() => {
-    expect(a).toEqual(6);
+    expect(a).toBe(6);
   }, 300);
 });
