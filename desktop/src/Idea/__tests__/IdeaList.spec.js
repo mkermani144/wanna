@@ -78,7 +78,7 @@ it('should be a <div /> if props.ideas is empty', () => {
   });
   expect(ideaList.is('div.ideas-empty-state')).toBe(true);
 });
-it('should have no <Snackbar />\'s if props.ideas is empty', () => {
+it('should have 1 <Snackbar /> if props.ideas is empty', () => {
   const ideaList = getActual({
     ideas: [],
   });
