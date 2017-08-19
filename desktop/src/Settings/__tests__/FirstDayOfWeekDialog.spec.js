@@ -66,8 +66,9 @@ it('should call onRequestClose when handling close request in radio button group
       a = calendarSystem;
     },
   });
-  firstDayofWeekDialog.find('RadioButtonGroup').props().onChange(6);
+  firstDayofWeekDialog.find('RadioButtonGroup').props().onChange(null, 6);
   setTimeout(() => {
     expect(a).toBe(6);
   }, 300);
+  jest.runAllTimers();
 });

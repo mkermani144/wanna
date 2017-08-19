@@ -66,8 +66,9 @@ it('should call onRequestClose when handling close request in radio button group
       a = calendarSystem;
     },
   });
-  calendarSystemDialog.find('RadioButtonGroup').props().onChange('fa-IR');
+  calendarSystemDialog.find('RadioButtonGroup').props().onChange(null, 'fa-IR');
   setTimeout(() => {
     expect(a).toBe('fa-IR');
   }, 300);
+  jest.runAllTimers();
 });

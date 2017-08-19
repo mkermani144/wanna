@@ -55,4 +55,5 @@ it('should call onRequestDelete in handling delete request', () => {
   setTimeout(() => {
     expect(a).toBe(2);
   }, 1000);
+  jest.runAllTimers();
 });
