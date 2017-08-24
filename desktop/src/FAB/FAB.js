@@ -68,12 +68,11 @@ class FAB extends PureComponent {
     });
   }
   render() {
-    const width = document.body.clientWidth;
     const styles = {
       speedDial: {
         position: 'absolute',
         right: 24,
-        bottom: this.props.fabRaised && width < 768 ? 72 : 24,
+        bottom: this.props.fabRaised && this.props.width < 768 ? 72 : 24,
         zIndex: 1000,
         transition: 'bottom 400ms cubic-bezier(0.23, 1, 0.32, 1) 0ms',
       },
@@ -91,7 +90,7 @@ class FAB extends PureComponent {
     return (
       <HotKeys
         focused
-        attach={window}
+        attach={this.props.window}
         keyMap={this.keyMap}
         handlers={handlers}
       >
