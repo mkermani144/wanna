@@ -158,7 +158,12 @@ class App extends PureComponent {
                   <Route
                     path="/help"
                     render={() =>
-                      (<Help sidebarExpanded={this.state.sidebarExpanded} />)
+                      (
+                        <Help
+                          openExternal={window.require('electron').shell.openExternal}
+                          sidebarExpanded={this.state.sidebarExpanded}
+                        />
+                      )
                     }
                   />
                 </div>
