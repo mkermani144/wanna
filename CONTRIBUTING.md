@@ -7,7 +7,7 @@ Wanna welcomes contributions of different types. There are a lot of work to do, 
 There are multiple kinds of contributions we seek for, ranging from effortless ones like feature suggestion, to harder ones like
 app development. Below comes the list of contribution types. Please make sure you have satisfied prerequisties of each contribution type before reading its guidelines, otherwise you may do redundant work.  
 
-### Feature requests 💡
+### Feature requests :bulb:
 #### Prerequisties: 
 * Install and use the app
 
@@ -19,7 +19,7 @@ To do so, follow these steps:
 
 We may label your issue as `Needs-check`, or we may directly add `idea` or `new-feature` label to your issue, indicating your issue is approved.
 
-### Bug reports 🐞
+### Bug reports :beetle:
 #### Prerequisties: 
 * Install and use the app
 
@@ -29,7 +29,7 @@ If you find a bug when you use the app, you can contribute to Wanna as a bug rep
 
 If your issue is labeled as `bug`, we will fix it in the next versions of the app. It may also be labeled as `duplicate` if your issue is a duplicate.
 
-### Beginner code contribution 👨‍💻 🍼
+### Beginner code contribution :baby:
 #### Prerequisties:
 * Install and use the app
 * Know enough HTML, CSS and basic Javascript
@@ -43,3 +43,37 @@ If you want to get started with coding in Wanna, go to the [issues](https://gith
 4. After fixing the issue, make a pull request.
 
 We will review your code. If everything is OK, your PR will be accepted.
+
+## Styleguides
+Although we welcome contributors (and we highly need contributions, certainly), we have some style guides we are very strict about. If a PR does not meet these guidelines, its review will not be approved and we would send you some change requests. So be careful about these guides.
+
+### Git
+1. Write short commit messages. GitHub suggests maximum of 50 characters for them. There is some conditions, however, in which you need to write longer messages.
+2. Commit often. Don't put a lot of work in one commit. (If you are using "and" word in your message, you are probably putting a lot of work in your commit!)
+3. Write imperative commit messages (i.e. `Add a feature` instead of `Added a feature`, `Adding a feature`, etc.)
+4. If you are a collaborator, choose appropriate branch names. Use `enhancement/something` when you are adding a new feature, `bugfix/#xyz` when fixing issue `#xyz`, `wip/someLongWorkInProgress` for the works that take a lot of time to complete, etc.
+
+### Javascript
+1. Fulfill all of [Airbnb javascript styleguide](https://github.com/airbnb/javascript) (unless we overwrite a rule in `.eslintrc.json` file). We use `eslint-config-airbnb` package to do so. Ideally, config your editor/IDE to help you with this. From their style guides:
+    * Use semicolons.
+    * Use 2 spaces for indentation.
+    * Don't use `var`. Use `const` wherever possible.
+    * Use signle quotes for strings.
+2. Write functional, declarative code as much as possible. As an example, favor
+    ```js
+    const double = x => x * 2;
+    const data = [1, 2, 3];
+    const result = data.map(double);
+    ```
+    over
+    ```js
+    const data = [1,2,3];
+    const data = [];
+    for (let i = 0; i < data.length; i++) {
+      result.push(data[i] * 2);
+    }
+    ```
+    The first coding styles tells you (the reader of the code) _what_ those lines of code want to do. The second styles, in contrast, tells you _how_ to do that job. It's not the case how to double elements of an array here, however; We just want to do the doubling task.  
+3. Embrace ES6 (and the next versions, too). ES6 is the new JS standard. Wanna uses it everywhere.
+### Project directory structure
+We mostly use feature-based project structure in Wanna, meaning we group files based on the feature, not the job they do. For example, we group the files in `Task`, `Idea`, `Settings`, etc. directories instead of `ActionCreators`, `Components`, `Containers`.
