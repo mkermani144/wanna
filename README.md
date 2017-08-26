@@ -94,6 +94,13 @@ Wanna workflow is dead simple; in brief, an idea comes to your mind, you save it
 
 5. Having your tasks added to your list, Wanna shows each task with a colorful status circle. The more this color tends to become red, the closer the task due date is. Don't let those circles turn red!
 
+Known bugs
+----
+* The app does not show the tasks on startup, although tasks is the highlighted tab in the side bar. [(#221)](https://github.com/mkermani144/wanna/issues/221)  
+*How to fix it temporarily:* Just click on the tasks in the side bar (or press the related hotkeys, `shift+t`).
+* Recurrent tasks does not work properly. [(#220)](https://github.com/mkermani144/wanna/issues/220)  
+Although it is a crucial feature in the app, don't use them until the next version of Wanna.
+
 License
 ----
 MIT license, copyright (c) 2017 Mohammad Kermani
