@@ -7,4 +7,6 @@ const getActual = (Component, defaultProps, props) => shallow(
   <Component {...r.merge(defaultProps, props)} />,
 );
 
-export default r.curry(getActual);
+const getDefault = (...args) => r.partial(getActual, args);
+
+export default getDefault;
