@@ -1,6 +1,6 @@
 /* eslint-env mocha, jest */
 
-import getActual from '../../shared/testUtils';
+import getDefault from '../../shared/testUtils';
 import FAB from '../FAB';
 
 const defaultProps = {
@@ -12,29 +12,29 @@ const defaultProps = {
   addTask() {},
   addIdea() {},
 };
-const getActualFAB = getActual(FAB, defaultProps);
+const getActualFAB = getDefault(FAB, defaultProps);
 
 it('should render', () => {
-  getActualFAB({});
+  getActualFAB();
 });
 it('should be a <HotKeys />', () => {
-  const wrapper = getActualFAB({});
+  const wrapper = getActualFAB();
   expect(wrapper.is('HotKeys')).toBe(true);
 });
 it('should have a <SpeedDial />', () => {
-  const wrapper = getActualFAB({});
+  const wrapper = getActualFAB();
   expect(wrapper.find('SpeedDial').length).toBe(1);
 });
 it('should have 2 <SpeedDialItem />', () => {
-  const wrapper = getActualFAB({});
+  const wrapper = getActualFAB();
   expect(wrapper.find('SpeedDialItem').length).toBe(2);
 });
 it('should have a <NewTaskDialog />', () => {
-  const wrapper = getActualFAB({});
+  const wrapper = getActualFAB();
   expect(wrapper.find('NewTaskDialog').length).toBe(1);
 });
 it('should have a <NewIdeaDialog />', () => {
-  const wrapper = getActualFAB({});
+  const wrapper = getActualFAB();
   expect(wrapper.find('NewIdeaDialog').length).toBe(1);
 });
 
@@ -59,19 +59,16 @@ it('should set NewTaskDialog firstDayOfWeek based on props', () => {
 });
 
 it('should call props.addTask inside NewTaskDialog onRequestAdd', () => {
-  let a = {
-    task: '',
-    start: 0,
-    end: 0,
-    estimation: 0,
-    repetition: '',
-    done: true,
-    id: '',
-  };
   const wrapper = getActualFAB({
     addTask(task) {
-      a = task;
-      a.id = '123';
+      expect(task).toMatchObject({
+        task: 'a cool task',
+        start: 0,
+        end: 86400000,
+        estimation: 60,
+        repetition: 0,
+        done: false,
+      });
     },
   });
   wrapper.find('NewTaskDialog').props().onRequestAdd({
@@ -83,32 +80,16 @@ it('should call props.addTask inside NewTaskDialog onRequestAdd', () => {
     repetition: 0,
     repetitionValue: 1,
   });
-  expect(a).toEqual({
-    task: 'a cool task',
-    start: 0,
-    end: 86400000,
-    estimation: 60,
-    repetition: 0,
-    done: false,
-    id: '123',
-  });
 });
 it('should call props.addIdea inside NewIdeaDialog onRequestAdd', () => {
-  let a = {
-    idea: '',
-    id: '',
-  };
   const wrapper = getActualFAB({
     addIdea(idea) {
-      a = idea;
-      a.id = '123';
+      expect(idea).toMatchObject({
+        idea: 'a cool idea',
+      });
     },
   });
   wrapper.find('NewIdeaDialog').props().onRequestAdd({
     idea: 'a cool idea',
-  });
-  expect(a).toEqual({
-    idea: 'a cool idea',
-    id: '123',
   });
 });

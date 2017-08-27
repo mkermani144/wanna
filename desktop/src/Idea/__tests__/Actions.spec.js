@@ -1,14 +1,14 @@
 /* eslint-env mocha, jest */
 
-import React from 'react';
-import { shallow } from 'enzyme';
-
+import getDefault from '../../shared/testUtils';
 import Actions from '../Actions';
 
+const getActualActions = getDefault(Actions, {});
+
 it('should render', () => {
-  shallow(<Actions />);
+  getActualActions();
 });
 it('should have 3 <IconButton />', () => {
-  const actions = shallow(<Actions />);
-  expect(actions.find('IconButton').length).toBe(3);
+  const wrapper = getActualActions();
+  expect(wrapper.find('IconButton').length).toBe(3);
 });

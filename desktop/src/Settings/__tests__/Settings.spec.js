@@ -1,8 +1,6 @@
 /* eslint-env mocha, jest */
 
-import React from 'react';
-import { shallow } from 'enzyme';
-
+import getDefault from '../../shared/testUtils';
 import Settings from '../Settings';
 
 const defaultProps = {
@@ -16,117 +14,115 @@ const defaultProps = {
   changeCalendarSystem() {},
   changeFirstDayOfWeek() {},
 };
+const getActualSettings = getDefault(Settings, defaultProps);
 
-const getActual = props => shallow(
-  <Settings {...Object.assign({}, defaultProps, props)} />,
-);
 
 jest.useFakeTimers();
 
 it('should render', () => {
-  getActual();
+  getActualSettings();
 });
 it('should be a <div />', () => {
-  const settings = getActual();
-  expect(settings.is('div.Settings')).toBe(true);
+  const wrapper = getActualSettings();
+  expect(wrapper.is('div.Settings')).toBe(true);
 });
 it('should have 4 <ListItem />', () => {
-  const settings = getActual();
-  expect(settings.find('ListItem').length).toBe(4);
+  const wrapper = getActualSettings();
+  expect(wrapper.find('ListItem').length).toBe(4);
 });
 it('should have 4 <Divider />', () => {
-  const settings = getActual();
-  expect(settings.find('Divider').length).toBe(4);
+  const wrapper = getActualSettings();
+  expect(wrapper.find('Divider').length).toBe(4);
 });
 it('should have a <CalendarSystemDialog />', () => {
-  const settings = getActual();
-  expect(settings.find('CalendarSystemDialog').length).toBe(1);
+  const wrapper = getActualSettings();
+  expect(wrapper.find('CalendarSystemDialog').length).toBe(1);
 });
 it('should have a <FirstDayOfWeekDialog />', () => {
-  const settings = getActual();
-  expect(settings.find('FirstDayOfWeekDialog').length).toBe(1);
+  const wrapper = getActualSettings();
+  expect(wrapper.find('FirstDayOfWeekDialog').length).toBe(1);
 });
 
 it('should set left margin based on props', () => {
-  const settings = getActual({
+  const wrapper = getActualSettings({
     sidebarExpanded: false,
   });
-  expect(settings.prop('style').marginLeft).toBe(56);
+  expect(wrapper.prop('style').marginLeft).toBe(56);
 });
 it('should set calendar system list item secondaryText based on props', () => {
-  const settings = getActual({
+  const wrapper = getActualSettings({
     calendarSystem: 'fa-IR',
   });
-  expect(settings.find('ListItem').at(0).prop('secondaryText')).toBe('fa-IR');
+  expect(wrapper.find('ListItem').at(0).prop('secondaryText')).toBe('fa-IR');
 });
 it('should set first day of week list item secondaryText based on props', () => {
-  const settings = getActual({
+  const wrapper = getActualSettings({
     firstDayOfWeek: 6,
   });
-  expect(settings.find('ListItem').at(1).prop('secondaryText')).toBe('Saturday');
+  expect(wrapper.find('ListItem').at(1).prop('secondaryText')).toBe('Saturday');
 });
 it('should set fullscreen checkbox defaultChecked based on props', () => {
-  const settings = getActual({
+  const wrapper = getActualSettings({
     fullscreen: true,
   });
-  expect(settings.find('ListItem').at(2).prop('leftCheckbox').props.defaultChecked).toBe(true);
+  expect(wrapper.find('ListItem').at(2).prop('leftCheckbox').props.defaultChecked).toBe(true);
 });
 it('should set show not yet tasks checkbox defaultChecked based on props', () => {
-  const settings = getActual({
+  const wrapper = getActualSettings({
     showNotYetTasks: false,
   });
-  expect(settings.find('ListItem').at(3).prop('leftCheckbox').props.defaultChecked).toBe(false);
+  expect(wrapper.find('ListItem').at(3).prop('leftCheckbox').props.defaultChecked).toBe(false);
 });
 it('should set calendar system dialog calendarSystem based on props', () => {
-  const settings = getActual({
+  const wrapper = getActualSettings({
     calendarSystem: 'fa-IR',
   });
-  expect(settings.find('CalendarSystemDialog').prop('calendarSystem')).toBe('fa-IR');
+  expect(wrapper.find('CalendarSystemDialog').prop('calendarSystem')).toBe('fa-IR');
 });
 it('should set first day of week dialog firstDayOfWeek based on props', () => {
-  const settings = getActual({
+  const wrapper = getActualSettings({
     firstDayOfWeek: 6,
   });
-  expect(settings.find('FirstDayOfWeekDialog').prop('firstDayOfWeek')).toBe(6);
+  expect(wrapper.find('FirstDayOfWeekDialog').prop('firstDayOfWeek')).toBe(6);
 });
 
 it('should call toggleNotYet when handling show not yet check', () => {
   let a = 0;
-  const settings = getActual({
+  const wrapper = getActualSettings({
     toggleNotYet(checked) {
       a = checked;
     },
   });
-  settings.find('ListItem').at(3).prop('leftCheckbox').props.onCheck(null, true);
+  wrapper.find('ListItem').at(3).prop('leftCheckbox').props.onCheck(null, true);
   expect(a).toBe(true);
 });
 it('should call toggleFullscreen when handling fullscreen check', () => {
   let a = 0;
-  const settings = getActual({
+  const wrapper = getActualSettings({
     toggleFullscreen(checked) {
       a = checked;
     },
   });
-  settings.find('ListItem').at(2).prop('leftCheckbox').props.onCheck(null, true);
+  wrapper.find('ListItem').at(2).prop('leftCheckbox').props.onCheck(null, true);
   expect(a).toBe(true);
 });
 it('should call changeCalendarSystem when handling calendar system dialog close request', () => {
   let a = 0;
-  const settings = getActual({
+  const wrapper = getActualSettings({
     changeCalendarSystem(calendarSystem) {
       a = calendarSystem;
     },
   });
-  settings.find('CalendarSystemDialog').props().onRequestClose('fa-IR');
+  wrapper.find('CalendarSystemDialog').props().onRequestClose('fa-IR');
   expect(a).toBe('fa-IR');
 });
 it('should call changeCalendarSystem when handling first day of week dialog close request', () => {
   let a = 0;
-  const settings = getActual({
+  const wrapper = getActualSettings({
     changeFirstDayOfWeek(firstDayOfWeek) {
       a = firstDayOfWeek;
     },
   });
-  settings.find('FirstDayOfWeekDialog').props().onRequestClose(6);
+  wrapper.find('FirstDayOfWeekDialog').props().onRequestClose(6);
   expect(a).toBe(6);
 });

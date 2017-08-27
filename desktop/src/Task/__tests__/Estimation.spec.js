@@ -1,14 +1,14 @@
 /* eslint-env mocha, jest */
 
-import React from 'react';
-import { shallow } from 'enzyme';
-
+import getDefault from '../../shared/testUtils';
 import Estimation from '../Estimation';
 
+const getActualEstimation = getDefault(Estimation, {});
+
 it('should render', () => {
-  shallow(<Estimation />);
+  getActualEstimation();
 });
 it('should be a <small />', () => {
-  const estimation = shallow(<Estimation />);
-  expect(estimation.is('small.Estimation')).toEqual(true);
+  const wrapper = getActualEstimation();
+  expect(wrapper.is('small.Estimation')).toEqual(true);
 });

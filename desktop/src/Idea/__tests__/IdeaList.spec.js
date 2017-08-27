@@ -1,8 +1,6 @@
 /* eslint-env mocha, jest */
 
-import React from 'react';
-import { shallow } from 'enzyme';
-
+import getDefault from '../../shared/testUtils';
 import IdeaList from '../IdeaList';
 
 const defaultProps = {
@@ -17,138 +15,138 @@ const defaultProps = {
   lowerFab() {},
   undo() {},
 };
+const getActualIdeaList = getDefault(IdeaList, defaultProps);
 
-const getActual = props => shallow(<IdeaList {...Object.assign({}, defaultProps, props)} />);
 
 it('should render', () => {
-  getActual();
+  getActualIdeaList();
 });
 it('should be a <div />', () => {
-  const ideaList = getActual();
-  expect(ideaList.is('div.IdeaList')).toBe(true);
+  const wrapper = getActualIdeaList();
+  expect(wrapper.is('div.IdeaList')).toBe(true);
 });
 it('should have two <Idea />\'s', () => {
-  const ideaList = getActual();
-  expect(ideaList.find('Idea').length).toBe(2);
+  const wrapper = getActualIdeaList();
+  expect(wrapper.find('Idea').length).toBe(2);
 });
 it('should have two <Divider />\'s', () => {
-  const ideaList = getActual();
-  expect(ideaList.find('Divider').length).toBe(2);
+  const wrapper = getActualIdeaList();
+  expect(wrapper.find('Divider').length).toBe(2);
 });
 it('should have two <EditIdeaDialog />\'s', () => {
-  const ideaList = getActual();
-  expect(ideaList.find('EditIdeaDialog').length).toBe(1);
+  const wrapper = getActualIdeaList();
+  expect(wrapper.find('EditIdeaDialog').length).toBe(1);
 });
 it('should have two <ConvertIdeaDialog />\'s', () => {
-  const ideaList = getActual();
-  expect(ideaList.find('ConvertIdeaDialog').length).toBe(1);
+  const wrapper = getActualIdeaList();
+  expect(wrapper.find('ConvertIdeaDialog').length).toBe(1);
 });
 it('should have two <Snackbar />\'s', () => {
-  const ideaList = getActual();
-  expect(ideaList.find('Snackbar').length).toBe(1);
+  const wrapper = getActualIdeaList();
+  expect(wrapper.find('Snackbar').length).toBe(1);
 });
 
 it('should have no <Idea />\'s if props.ideas is empty', () => {
-  const ideaList = getActual({
+  const wrapper = getActualIdeaList({
     ideas: [],
   });
-  expect(ideaList.find('Idea').length).toBe(0);
+  expect(wrapper.find('Idea').length).toBe(0);
 });
 it('should have no <Divider />\'s if props.ideas is empty', () => {
-  const ideaList = getActual({
+  const wrapper = getActualIdeaList({
     ideas: [],
   });
-  expect(ideaList.find('Divider').length).toBe(0);
+  expect(wrapper.find('Divider').length).toBe(0);
 });
 it('should have no <EditIdeaDialog />\'s if props.ideas is empty', () => {
-  const ideaList = getActual({
+  const wrapper = getActualIdeaList({
     ideas: [],
   });
-  expect(ideaList.find('EditIdeaDialog').length).toBe(0);
+  expect(wrapper.find('EditIdeaDialog').length).toBe(0);
 });
 it('should have no <ConvertIdeaDialog />\'s if props.ideas is empty', () => {
-  const ideaList = getActual({
+  const wrapper = getActualIdeaList({
     ideas: [],
   });
-  expect(ideaList.find('ConvertIdeaDialog').length).toBe(0);
+  expect(wrapper.find('ConvertIdeaDialog').length).toBe(0);
 });
 it('should be a <div /> if props.ideas is empty', () => {
-  const ideaList = getActual({
+  const wrapper = getActualIdeaList({
     ideas: [],
   });
-  expect(ideaList.is('div.ideas-empty-state')).toBe(true);
+  expect(wrapper.is('div.ideas-empty-state')).toBe(true);
 });
 it('should have 1 <Snackbar /> if props.ideas is empty', () => {
-  const ideaList = getActual({
+  const wrapper = getActualIdeaList({
     ideas: [],
   });
-  expect(ideaList.find('Snackbar').length).toBe(1);
+  expect(wrapper.find('Snackbar').length).toBe(1);
 });
 
 it('should set left margin based on props', () => {
-  const ideaList = getActual({
+  const wrapper = getActualIdeaList({
     sidebarExpanded: false,
   });
-  expect(ideaList.prop('style').marginLeft).toBe(56);
+  expect(wrapper.prop('style').marginLeft).toBe(56);
 });
 it('should set ConvertIdeaDialog calendarSystem based on props', () => {
-  const ideaList = getActual({
+  const wrapper = getActualIdeaList({
     calendarSystem: 'fa-IR',
   });
-  expect(ideaList.find('ConvertIdeaDialog').prop('calendarSystem')).toBe('fa-IR');
+  expect(wrapper.find('ConvertIdeaDialog').prop('calendarSystem')).toBe('fa-IR');
 });
 it('should set ConvertIdeaDialog firstDayOfWeek based on props', () => {
-  const ideaList = getActual({
+  const wrapper = getActualIdeaList({
     firstDayOfWeek: 6,
   });
-  expect(ideaList.find('ConvertIdeaDialog').prop('firstDayOfWeek')).toBe(6);
+  expect(wrapper.find('ConvertIdeaDialog').prop('firstDayOfWeek')).toBe(6);
 });
 
 it('should call editIdea when handling edit idea request', () => {
   let a = 0;
   let b = '';
-  const ideaList = getActual({
+  const wrapper = getActualIdeaList({
     editIdea(index, ideaInfo) {
       a = index;
       b = ideaInfo.idea;
     },
   });
-  ideaList.instance().setState({ index: 2 }, () => {
-    ideaList.instance().handleRequestIdeaEdit({ idea: 'a cool idea' });
+  wrapper.instance().setState({ index: 2 }, () => {
+    wrapper.instance().handleRequestIdeaEdit({ idea: 'a cool idea' });
   });
   expect(a).toBe(2);
   expect(b).toBe('a cool idea');
 });
 it('should call deleteIdea when handling delete idea request', () => {
   let a = 0;
-  const ideaList = getActual({
+  const wrapper = getActualIdeaList({
     deleteIdea(index) {
       a = index;
     },
   });
-  ideaList.instance().handleRequestIdeaDelete(3);
+  wrapper.instance().handleRequestIdeaDelete(3);
   expect(a).toBe(3);
 });
 it('should call deleteIdea when handling convert dialog delete request', () => {
   let a = 0;
-  const ideaList = getActual({
+  const wrapper = getActualIdeaList({
     deleteIdea(index) {
       a = index;
     },
   });
-  ideaList.instance().setState({ index: 2 }, () => {
-    ideaList.instance().handleRequestIdeaDelete(3);
+  wrapper.instance().setState({ index: 2 }, () => {
+    wrapper.instance().handleRequestIdeaDelete(3);
   });
   expect(a).toBe(3);
 });
 it('should call addTask when handling convert idea request', () => {
   let a = 0;
-  const ideaList = getActual({
+  const wrapper = getActualIdeaList({
     addTask(taskInfo) {
       a = taskInfo;
     },
   });
-  ideaList.instance().handleRequestIdeaConvert({
+  wrapper.instance().handleRequestIdeaConvert({
     start: 0,
     end: 86400000,
     estimation: 2,
@@ -166,31 +164,31 @@ it('should call addTask when handling convert idea request', () => {
 });
 it('should call raiseFab when handling open snackbar request', () => {
   let a = 0;
-  const ideaList = getActual({
+  const wrapper = getActualIdeaList({
     raiseFab() {
       a = 3;
     },
   });
-  ideaList.instance().handleRequestSnackbarOpen();
+  wrapper.instance().handleRequestSnackbarOpen();
   expect(a).toBe(3);
 });
 it('should call lowerFab when handling close snackbar request', () => {
   let a = 0;
-  const ideaList = getActual({
+  const wrapper = getActualIdeaList({
     lowerFab() {
       a = 3;
     },
   });
-  ideaList.instance().handleRequestSnackbarClose();
+  wrapper.instance().handleRequestSnackbarClose();
   expect(a).toBe(3);
 });
 it('should call undo when handling undo request', () => {
   let a = 0;
-  const ideaList = getActual({
+  const wrapper = getActualIdeaList({
     undo() {
       a = 3;
     },
   });
-  ideaList.instance().handleUndo();
+  wrapper.instance().handleUndo();
   expect(a).toBe(3);
 });

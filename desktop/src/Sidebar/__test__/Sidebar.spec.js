@@ -1,8 +1,6 @@
 /* eslint-env mocha, jest */
 
-import React from 'react';
-import { shallow } from 'enzyme';
-
+import getDefault from '../../shared/testUtils';
 import Sidebar from '../Sidebar';
 
 const defaultProps = {
@@ -10,85 +8,82 @@ const defaultProps = {
   currentTab: 'tasks',
   changeTab() {},
 };
-
-const getActual = props => shallow(
-  <Sidebar {...Object.assign({}, defaultProps, props)} />,
-);
+const getActualSidebar = getDefault(Sidebar, defaultProps);
 
 it('should render', () => {
-  getActual();
+  getActualSidebar();
 });
 it('should be a <Drawer />', () => {
-  const sidebar = getActual();
-  expect(sidebar.is('Drawer')).toBe(true);
+  const wrapper = getActualSidebar();
+  expect(wrapper.is('Drawer')).toBe(true);
 });
 it('should have 4 <ListItem />', () => {
-  const sidebar = getActual();
-  expect(sidebar.find('ListItem').length).toBe(4);
+  const wrapper = getActualSidebar();
+  expect(wrapper.find('ListItem').length).toBe(4);
 });
 
 it('should set drawer width based on props', () => {
-  const sidebar = getActual({
+  const wrapper = getActualSidebar({
     expanded: false,
   });
-  expect(sidebar.props().width).toBe(56);
+  expect(wrapper.props().width).toBe(56);
 });
 it('should highlight ideas tab if current tab is ideas', () => {
-  const sidebar = getActual({
+  const wrapper = getActualSidebar({
     currentTab: 'ideas',
   });
-  expect(sidebar.find('ListItem').at(1).prop('style')).not.toBeNull();
+  expect(wrapper.find('ListItem').at(1).prop('style')).not.toBeNull();
 });
 it('should highlight settings tab if current tab is settings', () => {
-  const sidebar = getActual({
+  const wrapper = getActualSidebar({
     currentTab: 'settings',
   });
-  expect(sidebar.find('ListItem').at(2).prop('style')).not.toBeNull();
+  expect(wrapper.find('ListItem').at(2).prop('style')).not.toBeNull();
 });
 it('should highlight help tab if current tab is help', () => {
-  const sidebar = getActual({
+  const wrapper = getActualSidebar({
     currentTab: 'help',
   });
-  expect(sidebar.find('ListItem').at(3).prop('style')).not.toBeNull();
+  expect(wrapper.find('ListItem').at(3).prop('style')).not.toBeNull();
 });
 
 it('should call changeTab when clicking on tasks tab', () => {
   let a = '';
-  const sidebar = getActual({
+  const wrapper = getActualSidebar({
     changeTab(tab) {
       a = tab;
     },
   });
-  sidebar.find('ListItem').at(0).simulate('click');
+  wrapper.find('ListItem').at(0).simulate('click');
   expect(a).toBe('tasks');
 });
 it('should call changeTab when clicking on ideas tab', () => {
   let a = '';
-  const sidebar = getActual({
+  const wrapper = getActualSidebar({
     changeTab(tab) {
       a = tab;
     },
   });
-  sidebar.find('ListItem').at(1).simulate('click');
+  wrapper.find('ListItem').at(1).simulate('click');
   expect(a).toBe('ideas');
 });
 it('should call changeTab when clicking on settings tab', () => {
   let a = '';
-  const sidebar = getActual({
+  const wrapper = getActualSidebar({
     changeTab(tab) {
       a = tab;
     },
   });
-  sidebar.find('ListItem').at(2).simulate('click');
+  wrapper.find('ListItem').at(2).simulate('click');
   expect(a).toBe('settings');
 });
 it('should call changeTab when clicking on help tab', () => {
   let a = '';
-  const sidebar = getActual({
+  const wrapper = getActualSidebar({
     changeTab(tab) {
       a = tab;
     },
   });
-  sidebar.find('ListItem').at(3).simulate('click');
+  wrapper.find('ListItem').at(3).simulate('click');
   expect(a).toBe('help');
 });

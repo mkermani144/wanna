@@ -1,8 +1,6 @@
 /* eslint-env mocha, jest */
 
-import React from 'react';
-import { shallow } from 'enzyme';
-
+import getDefault from '../../shared/testUtils';
 import FirstDayOfWeekDialog from '../FirstDayOfWeekDialog';
 
 const defaultProps = {
@@ -10,63 +8,60 @@ const defaultProps = {
   firstDayOfWeek: 0,
   onRequestClose() {},
 };
-
-const getActual = props => shallow(
-  <FirstDayOfWeekDialog {...Object.assign({}, defaultProps, props)} />,
-);
+const getActualDialog = getDefault(FirstDayOfWeekDialog, defaultProps);
 
 jest.useFakeTimers();
 
 it('should render', () => {
-  getActual();
+  getActualDialog();
 });
 it('should be a <Dialog />', () => {
-  const firstDayofWeekDialog = getActual();
-  expect(firstDayofWeekDialog.is('Dialog')).toBe(true);
+  const wrapper = getActualDialog();
+  expect(wrapper.is('Dialog')).toBe(true);
 });
 it('should have 3 <RadioButton />', () => {
-  const firstDayofWeekDialog = getActual();
-  expect(firstDayofWeekDialog.find('RadioButton').length).toBe(3);
+  const wrapper = getActualDialog();
+  expect(wrapper.find('RadioButton').length).toBe(3);
 });
 it('should set dialog open based on props', () => {
-  const firstDayofWeekDialog = getActual({ open: true });
-  expect(firstDayofWeekDialog.find('Dialog').prop('open')).toBe(true);
+  const wrapper = getActualDialog({ open: true });
+  expect(wrapper.find('Dialog').prop('open')).toBe(true);
 });
 it('should set radio button group defaultSelected based on props', () => {
-  const firstDayofWeekDialog = getActual({ firstDayOfWeek: 6 });
-  expect(firstDayofWeekDialog.find('RadioButtonGroup').prop('defaultSelected')).toBe('6');
+  const wrapper = getActualDialog({ firstDayOfWeek: 6 });
+  expect(wrapper.find('RadioButtonGroup').prop('defaultSelected')).toBe('6');
 });
 it('should call onRequestClose when handling close request in dialog', () => {
   let a = 0;
-  const firstDayofWeekDialog = getActual({
+  const wrapper = getActualDialog({
     firstDayOfWeek: 6,
     onRequestClose(calendarSystem) {
       a = calendarSystem;
     },
   });
-  firstDayofWeekDialog.find('Dialog').props().onRequestClose();
+  wrapper.find('Dialog').props().onRequestClose();
   expect(a).toBe(6);
 });
 it('should call onRequestClose when handling close request in flat button', () => {
   let a = 0;
-  const firstDayofWeekDialog = getActual({
+  const wrapper = getActualDialog({
     firstDayOfWeek: 6,
     onRequestClose(calendarSystem) {
       a = calendarSystem;
     },
   });
-  firstDayofWeekDialog.find('Dialog').prop('actions')[0].props.onTouchTap();
+  wrapper.find('Dialog').prop('actions')[0].props.onTouchTap();
   expect(a).toBe(6);
 });
 it('should call onRequestClose when handling close request in radio button group', () => {
   let a = 0;
-  const firstDayofWeekDialog = getActual({
+  const wrapper = getActualDialog({
     firstDayOfWeek: 6,
     onRequestClose(calendarSystem) {
       a = calendarSystem;
     },
   });
-  firstDayofWeekDialog.find('RadioButtonGroup').props().onChange(null, 6);
+  wrapper.find('RadioButtonGroup').props().onChange(null, 6);
   setTimeout(() => {
     expect(a).toBe(6);
   }, 300);

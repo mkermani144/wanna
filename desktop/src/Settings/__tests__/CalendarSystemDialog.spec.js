@@ -1,8 +1,6 @@
 /* eslint-env mocha, jest */
 
-import React from 'react';
-import { shallow } from 'enzyme';
-
+import getDefault from '../../shared/testUtils';
 import CalendarSystemDialog from '../CalendarSystemDialog';
 
 const defaultProps = {
@@ -10,63 +8,60 @@ const defaultProps = {
   calendarSystem: 'en-US',
   onRequestClose() {},
 };
-
-const getActual = props => shallow(
-  <CalendarSystemDialog {...Object.assign({}, defaultProps, props)} />,
-);
+const getActualDialog = getDefault(CalendarSystemDialog, defaultProps);
 
 jest.useFakeTimers();
 
 it('should render', () => {
-  getActual();
+  getActualDialog();
 });
 it('should be a <Dialog />', () => {
-  const calendarSystemDialog = getActual();
-  expect(calendarSystemDialog.is('Dialog')).toBe(true);
+  const wrapper = getActualDialog();
+  expect(wrapper.is('Dialog')).toBe(true);
 });
 it('should have 2 <RadioButton />', () => {
-  const calendarSystemDialog = getActual();
-  expect(calendarSystemDialog.find('RadioButton').length).toBe(2);
+  const wrapper = getActualDialog();
+  expect(wrapper.find('RadioButton').length).toBe(2);
 });
 it('should set dialog open based on props', () => {
-  const calendarSystemDialog = getActual({ open: true });
-  expect(calendarSystemDialog.find('Dialog').prop('open')).toBe(true);
+  const wrapper = getActualDialog({ open: true });
+  expect(wrapper.find('Dialog').prop('open')).toBe(true);
 });
 it('should set radio button group defaultSelected based on props', () => {
-  const calendarSystemDialog = getActual({ calendarSystem: 'fa-IR' });
-  expect(calendarSystemDialog.find('RadioButtonGroup').prop('defaultSelected')).toBe('fa-IR');
+  const wrapper = getActualDialog({ calendarSystem: 'fa-IR' });
+  expect(wrapper.find('RadioButtonGroup').prop('defaultSelected')).toBe('fa-IR');
 });
 it('should call onRequestClose when handling close request in dialog', () => {
   let a = 0;
-  const calendarSystemDialog = getActual({
+  const wrapper = getActualDialog({
     calendarSystem: 'fa-IR',
     onRequestClose(calendarSystem) {
       a = calendarSystem;
     },
   });
-  calendarSystemDialog.find('Dialog').props().onRequestClose();
+  wrapper.find('Dialog').props().onRequestClose();
   expect(a).toBe('fa-IR');
 });
 it('should call onRequestClose when handling close request in flat button', () => {
   let a = 0;
-  const calendarSystemDialog = getActual({
+  const wrapper = getActualDialog({
     calendarSystem: 'fa-IR',
     onRequestClose(calendarSystem) {
       a = calendarSystem;
     },
   });
-  calendarSystemDialog.find('Dialog').prop('actions')[0].props.onTouchTap();
+  wrapper.find('Dialog').prop('actions')[0].props.onTouchTap();
   expect(a).toBe('fa-IR');
 });
 it('should call onRequestClose when handling close request in radio button group', () => {
   let a = 0;
-  const calendarSystemDialog = getActual({
+  const wrapper = getActualDialog({
     calendarSystem: 'fa-IR',
     onRequestClose(calendarSystem) {
       a = calendarSystem;
     },
   });
-  calendarSystemDialog.find('RadioButtonGroup').props().onChange(null, 'fa-IR');
+  wrapper.find('RadioButtonGroup').props().onChange(null, 'fa-IR');
   setTimeout(() => {
     expect(a).toBe('fa-IR');
   }, 300);

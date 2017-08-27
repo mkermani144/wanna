@@ -1,22 +1,25 @@
 /* eslint-env mocha, jest */
 
-import React from 'react';
-import { shallow } from 'enzyme';
-
+import getDefault from '../../shared/testUtils';
 import DueDate from '../DueDate';
 
+const defaultProps = {
+  due: '',
+};
+const getActualDueDate = getDefault(DueDate, defaultProps);
+
 it('should render', () => {
-  shallow(<DueDate />);
+  getActualDueDate();
 });
 it('should be a <span />', () => {
-  const dueDate = shallow(<DueDate />);
-  expect(dueDate.is('span.DueDate')).toEqual(true);
+  const wrapper = getActualDueDate();
+  expect(wrapper.is('span.DueDate')).toEqual(true);
 });
 it('should show icon if due date is tomorrow', () => {
-  const dueDate = shallow(<DueDate due="tomorrow" />);
-  expect(dueDate.find('small').length).toBeGreaterThan(0);
+  const wrapper = getActualDueDate({ due: 'tomorrow' });
+  expect(wrapper.find('small').length).toBeGreaterThan(0);
 });
 it('should show icon if due date is today', () => {
-  const dueDate = shallow(<DueDate due="today" />);
-  expect(dueDate.find('small').length).toBeGreaterThan(0);
+  const wrapper = getActualDueDate({ due: 'today' });
+  expect(wrapper.find('small').length).toBeGreaterThan(0);
 });

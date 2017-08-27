@@ -1,14 +1,14 @@
 /* eslint-env mocha, jest */
 
-import React from 'react';
-import { shallow } from 'enzyme';
-
+import getDefault from '../../shared/testUtils';
 import Fork from '../fork';
 
+const getActualFork = getDefault(Fork, {});
+
 it('should render', () => {
-  shallow(<Fork />);
+  getActualFork();
 });
 it('should contain an <svg />', () => {
-  const svg = shallow(<Fork />);
-  expect(svg.find('path').length).toBeGreaterThan(0);
+  const wrapper = getActualFork();
+  expect(wrapper.find('path').length).toBeGreaterThan(0);
 });

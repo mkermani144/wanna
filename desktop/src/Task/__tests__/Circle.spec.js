@@ -1,14 +1,14 @@
 /* eslint-env mocha, jest */
 
-import React from 'react';
-import { shallow } from 'enzyme';
-
+import getDefault from '../../shared/testUtils';
 import Circle from '../Circle';
 
+const getActualCircle = getDefault(Circle, {});
+
 it('should render', () => {
-  shallow(<Circle />);
+  getActualCircle();
 });
 it('should be a <p />', () => {
-  const circle = shallow(<Circle />);
-  expect(circle.is('p.Circle')).toEqual(true);
+  const wrapper = getActualCircle();
+  expect(wrapper.is('p.Circle')).toEqual(true);
 });
