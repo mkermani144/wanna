@@ -42,53 +42,43 @@ it('should set date picker first day of week based on props', () => {
   });
   expect(wrapper.find('DatePicker').at(0).prop('firstDayOfWeek')).toBe(6);
 });
-it('should call onRequestClose in handling close request', () => {
-  let a = 0;
+it('should call onRequestClose in handling close request', (done) => {
   const wrapper = getActualDialog({
     onRequestClose() {
-      a = 2;
+      done();
     },
   });
   wrapper.instance().handleRequestClose();
-  expect(a).toBe(2);
 });
-it('should call onRequestClose in handling finish request', () => {
-  let a = 0;
+it('should call onRequestClose in handling finish request', (done) => {
   const wrapper = getActualDialog({
     onRequestClose() {
-      a = 2;
+      done();
     },
   });
   wrapper.instance().handleRequestFinish();
-  expect(a).toBe(2);
 });
-it('should call onRequestConvert in handling convert request', () => {
-  let a = 0;
+it('should call onRequestConvert in handling convert request', (done) => {
   const wrapper = getActualDialog({
     onRequestConvert() {
-      a = 2;
+      done();
     },
   });
   wrapper.instance().handleRequestConvert();
-  expect(a).toBe(2);
 });
-it('should call onRequestConvert in handling finish request', () => {
-  let a = 0;
+it('should call onRequestConvert in handling finish request', (done) => {
   const wrapper = getActualDialog({
     onRequestConvert() {
-      a = 2;
+      done();
     },
   });
   wrapper.instance().handleRequestFinish();
-  expect(a).toBe(2);
 });
-it('should call onRequestDelete in handling convert request', () => {
-  let a = 0;
+it('should call onRequestDelete in handling convert request', (done) => {
   const wrapper = getActualDialog({
     onRequestDelete() {
-      a = 2;
+      done();
     },
   });
   wrapper.instance().handleRequestFinish();
-  expect(a).toBe(2);
 });

@@ -28,50 +28,46 @@ it('should have an <Actions />', () => {
   const wrapper = getActualIdea();
   expect(wrapper.find('Actions').length).toBe(1);
 });
-it('should set actions onRequestEditDialogOpen based on props', () => {
+it('should set actions onRequestEditDialogOpen based on props', (done) => {
   const wrapper = getActualIdea({
     onRequestEditDialogOpen() {
-      return 3;
+      done();
     },
   });
-  expect(wrapper.find('Actions').prop('onRequestEditDialogOpen')()).toBe(3);
+  wrapper.find('Actions').prop('onRequestEditDialogOpen')();
 });
-it('should set actions onRequestConvertDialogOpen based on props', () => {
+it('should set actions onRequestConvertDialogOpen based on props', (done) => {
   const wrapper = getActualIdea({
     onRequestConvertDialogOpen() {
-      return 3;
+      done();
     },
   });
-  expect(wrapper.find('Actions').prop('onRequestConvertDialogOpen')()).toBe(3);
+  wrapper.find('Actions').prop('onRequestConvertDialogOpen')();
 });
 it('should pass props.index when editing idea', () => {
   const wrapper = getActualIdea({
     index: 5,
     onRequestEditDialogOpen(index) {
-      return index;
+      expect(index).toBe(5);
     },
   });
-  expect(wrapper.find('Actions').prop('onRequestEditDialogOpen')()).toBe(5);
+  wrapper.find('Actions').prop('onRequestEditDialogOpen')();
 });
 it('should pass props.index when converting idea', () => {
   const wrapper = getActualIdea({
     index: 5,
     onRequestConvertDialogOpen(index) {
-      return index;
+      expect(index).toBe(5);
     },
   });
-  expect(wrapper.find('Actions').prop('onRequestConvertDialogOpen')()).toBe(5);
+  wrapper.find('Actions').prop('onRequestConvertDialogOpen')();
 });
-it('should call onRequestDelete in handling delete request', () => {
-  let a = 0;
+it('should call onRequestDelete in handling delete request', (done) => {
   const wrapper = getActualIdea({
     onRequestDelete() {
-      a = 2;
+      done();
     },
   });
   wrapper.instance().handleRequestDelete();
-  setTimeout(() => {
-    expect(a).toBe(2);
-  }, 1000);
   jest.runAllTimers();
 });

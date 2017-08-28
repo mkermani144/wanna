@@ -78,70 +78,50 @@ it('should set actions done based on props', () => {
 });
 
 it('should call onRequestDelete when handling delete request', () => {
-  let a = 0;
   const wrapper = getActualTask({
     index: 3,
     onRequestDelete(index) {
-      a = index;
+      expect(index).toBe(3);
     },
   });
   wrapper.find('Actions').props().onRequestDelete();
-  setTimeout(() => {
-    expect(a).toBe(3);
-  }, 1000);
   jest.runAllTimers();
 });
 it('should call onRequestSnackbar when handling delete request', () => {
-  let a = '';
   const wrapper = getActualTask({
     onRequestSnackbar(message) {
-      a = message;
+      expect(message).toBe('Task deleted');
     },
   });
   wrapper.find('Actions').props().onRequestDelete();
-  setTimeout(() => {
-    expect(a).toEqual('Task deleted');
-  }, 1000);
   jest.runAllTimers();
 });
 it('should call onRequestDo when handling do request', () => {
-  let a = 0;
   const wrapper = getActualTask({
     index: 3,
     onRequestDo(index) {
-      a = index;
+      expect(index).toBe(3);
     },
   });
   wrapper.find('Actions').props().onRequestDo();
-  setTimeout(() => {
-    expect(a).toBe(3);
-  }, 1000);
   jest.runAllTimers();
 });
 it('should call onRequestSnackbar when handling do request', () => {
-  let a = '';
   const wrapper = getActualTask({
     onRequestSnackbar(message) {
-      a = message;
+      expect(message).toBe('Task done');
     },
   });
   wrapper.find('Actions').props().onRequestDo();
-  setTimeout(() => {
-    expect(a).toEqual('Task done');
-  }, 1000);
   jest.runAllTimers();
 });
 it('should call onRequestEditTaskOpen when handling open edit dialog request', () => {
-  let a = 0;
   const wrapper = getActualTask({
     index: 3,
     onRequestEditTaskOpen(index) {
-      a = index;
+      expect(index).toBe(3);
     },
   });
   wrapper.find('Actions').props().onRequestEditDialogOpen();
-  setTimeout(() => {
-    expect(a).toEqual(3);
-  }, 1000);
   jest.runAllTimers();
 });

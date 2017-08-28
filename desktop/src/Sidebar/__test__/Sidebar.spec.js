@@ -48,42 +48,34 @@ it('should highlight help tab if current tab is help', () => {
 });
 
 it('should call changeTab when clicking on tasks tab', () => {
-  let a = '';
   const wrapper = getActualSidebar({
     changeTab(tab) {
-      a = tab;
+      expect(tab).toBe('tasks');
     },
   });
   wrapper.find('ListItem').at(0).simulate('click');
-  expect(a).toBe('tasks');
 });
 it('should call changeTab when clicking on ideas tab', () => {
-  let a = '';
   const wrapper = getActualSidebar({
     changeTab(tab) {
-      a = tab;
+      expect(tab).toBe('ideas');
     },
   });
   wrapper.find('ListItem').at(1).simulate('click');
-  expect(a).toBe('ideas');
 });
 it('should call changeTab when clicking on settings tab', () => {
-  let a = '';
   const wrapper = getActualSidebar({
     changeTab(tab) {
-      a = tab;
+      expect(tab).toBe('settings');
     },
   });
   wrapper.find('ListItem').at(2).simulate('click');
-  expect(a).toBe('settings');
 });
 it('should call changeTab when clicking on help tab', () => {
-  let a = '';
   const wrapper = getActualSidebar({
     changeTab(tab) {
-      a = tab;
+      expect(tab).toBe('help');
     },
   });
   wrapper.find('ListItem').at(3).simulate('click');
-  expect(a).toBe('help');
 });

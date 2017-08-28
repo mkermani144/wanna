@@ -87,42 +87,34 @@ it('should set first day of week dialog firstDayOfWeek based on props', () => {
 });
 
 it('should call toggleNotYet when handling show not yet check', () => {
-  let a = 0;
   const wrapper = getActualSettings({
     toggleNotYet(checked) {
-      a = checked;
+      expect(checked).toBe(true);
     },
   });
   wrapper.find('ListItem').at(3).prop('leftCheckbox').props.onCheck(null, true);
-  expect(a).toBe(true);
 });
 it('should call toggleFullscreen when handling fullscreen check', () => {
-  let a = 0;
   const wrapper = getActualSettings({
     toggleFullscreen(checked) {
-      a = checked;
+      expect(checked).toBe(true);
     },
   });
   wrapper.find('ListItem').at(2).prop('leftCheckbox').props.onCheck(null, true);
-  expect(a).toBe(true);
 });
 it('should call changeCalendarSystem when handling calendar system dialog close request', () => {
-  let a = 0;
   const wrapper = getActualSettings({
     changeCalendarSystem(calendarSystem) {
-      a = calendarSystem;
+      expect(calendarSystem).toBe('fa-IR');
     },
   });
   wrapper.find('CalendarSystemDialog').props().onRequestClose('fa-IR');
-  expect(a).toBe('fa-IR');
 });
 it('should call changeCalendarSystem when handling first day of week dialog close request', () => {
-  let a = 0;
   const wrapper = getActualSettings({
     changeFirstDayOfWeek(firstDayOfWeek) {
-      a = firstDayOfWeek;
+      expect(firstDayOfWeek).toBe(6);
     },
   });
   wrapper.find('FirstDayOfWeekDialog').props().onRequestClose(6);
-  expect(a).toBe(6);
 });

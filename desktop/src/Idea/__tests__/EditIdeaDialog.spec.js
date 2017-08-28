@@ -34,23 +34,19 @@ it('should set text field default value based on props', () => {
   });
   expect(wrapper.find('TextField').prop('defaultValue')).toBe('a cool idea');
 });
-it('should call onRequestClose in handling close request', () => {
-  let a = 0;
+it('should call onRequestClose in handling close request', (done) => {
   const wrapper = getActualDialog({
     onRequestClose() {
-      a = 2;
+      done();
     },
   });
   wrapper.instance().handleRequestClose();
-  expect(a).toBe(2);
 });
-it('should call onRequestEdit in handling edit request', () => {
-  let a = 0;
+it('should call onRequestEdit in handling edit request', (done) => {
   const wrapper = getActualDialog({
     onRequestEdit() {
-      a = 2;
+      done();
     },
   });
   wrapper.instance().handleRequestEdit();
-  expect(a).toBe(2);
 });

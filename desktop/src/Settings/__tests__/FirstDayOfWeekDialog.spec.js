@@ -32,38 +32,30 @@ it('should set radio button group defaultSelected based on props', () => {
   expect(wrapper.find('RadioButtonGroup').prop('defaultSelected')).toBe('6');
 });
 it('should call onRequestClose when handling close request in dialog', () => {
-  let a = 0;
   const wrapper = getActualDialog({
     firstDayOfWeek: 6,
-    onRequestClose(calendarSystem) {
-      a = calendarSystem;
+    onRequestClose(firstDayOfWeek) {
+      expect(firstDayOfWeek).toBe(6);
     },
   });
   wrapper.find('Dialog').props().onRequestClose();
-  expect(a).toBe(6);
 });
 it('should call onRequestClose when handling close request in flat button', () => {
-  let a = 0;
   const wrapper = getActualDialog({
     firstDayOfWeek: 6,
-    onRequestClose(calendarSystem) {
-      a = calendarSystem;
+    onRequestClose(firstDayOfWeek) {
+      expect(firstDayOfWeek).toBe(6);
     },
   });
   wrapper.find('Dialog').prop('actions')[0].props.onTouchTap();
-  expect(a).toBe(6);
 });
 it('should call onRequestClose when handling close request in radio button group', () => {
-  let a = 0;
   const wrapper = getActualDialog({
     firstDayOfWeek: 6,
-    onRequestClose(calendarSystem) {
-      a = calendarSystem;
+    onRequestClose(firstDayOfWeek) {
+      expect(firstDayOfWeek).toBe(6);
     },
   });
   wrapper.find('RadioButtonGroup').props().onChange(null, 6);
-  setTimeout(() => {
-    expect(a).toBe(6);
-  }, 300);
   jest.runAllTimers();
 });

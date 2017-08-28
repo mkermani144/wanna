@@ -103,47 +103,45 @@ it('should set ConvertIdeaDialog firstDayOfWeek based on props', () => {
 });
 
 it('should call editIdea when handling edit idea request', () => {
-  let a = 0;
-  let b = '';
+  // let a = 0;
+  // let b = '';
   const wrapper = getActualIdeaList({
     editIdea(index, ideaInfo) {
-      a = index;
-      b = ideaInfo.idea;
+      expect(index).toBe(2);
+      expect(ideaInfo.idea).toBe('a cool idea');
     },
   });
   wrapper.instance().setState({ index: 2 }, () => {
     wrapper.instance().handleRequestIdeaEdit({ idea: 'a cool idea' });
   });
-  expect(a).toBe(2);
-  expect(b).toBe('a cool idea');
 });
 it('should call deleteIdea when handling delete idea request', () => {
-  let a = 0;
   const wrapper = getActualIdeaList({
     deleteIdea(index) {
-      a = index;
+      expect(index).toBe(3);
     },
   });
   wrapper.instance().handleRequestIdeaDelete(3);
-  expect(a).toBe(3);
 });
 it('should call deleteIdea when handling convert dialog delete request', () => {
-  let a = 0;
   const wrapper = getActualIdeaList({
     deleteIdea(index) {
-      a = index;
+      expect(index).toBe(3);
     },
   });
   wrapper.instance().setState({ index: 2 }, () => {
     wrapper.instance().handleRequestIdeaDelete(3);
   });
-  expect(a).toBe(3);
 });
 it('should call addTask when handling convert idea request', () => {
-  let a = 0;
   const wrapper = getActualIdeaList({
     addTask(taskInfo) {
-      a = taskInfo;
+      expect(taskInfo.done).toBe(false);
+      expect(taskInfo.start).toBe(0);
+      expect(taskInfo.end).toBe(172800000);
+      expect(taskInfo.estimation).toBe(120);
+      expect(taskInfo.repetition).toBe(0);
+      expect(taskInfo.task).toBe('a cool task');
     },
   });
   wrapper.instance().handleRequestIdeaConvert({
@@ -155,40 +153,28 @@ it('should call addTask when handling convert idea request', () => {
     repetitionValue: 1,
     task: 'a cool task',
   });
-  expect(a.done).toBe(false);
-  expect(a.start).toBe(0);
-  expect(a.end).toBe(172800000);
-  expect(a.estimation).toBe(120);
-  expect(a.repetition).toBe(0);
-  expect(a.task).toBe('a cool task');
 });
-it('should call raiseFab when handling open snackbar request', () => {
-  let a = 0;
+it('should call raiseFab when handling open snackbar request', (done) => {
   const wrapper = getActualIdeaList({
     raiseFab() {
-      a = 3;
+      done();
     },
   });
   wrapper.instance().handleRequestSnackbarOpen();
-  expect(a).toBe(3);
 });
-it('should call lowerFab when handling close snackbar request', () => {
-  let a = 0;
+it('should call lowerFab when handling close snackbar request', (done) => {
   const wrapper = getActualIdeaList({
     lowerFab() {
-      a = 3;
+      done();
     },
   });
   wrapper.instance().handleRequestSnackbarClose();
-  expect(a).toBe(3);
 });
-it('should call undo when handling undo request', () => {
-  let a = 0;
+it('should call undo when handling undo request', (done) => {
   const wrapper = getActualIdeaList({
     undo() {
-      a = 3;
+      done();
     },
   });
   wrapper.instance().handleUndo();
-  expect(a).toBe(3);
 });

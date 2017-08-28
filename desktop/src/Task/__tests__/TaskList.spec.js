@@ -124,62 +124,50 @@ it('should not show not-yet tasks if props.showNotYetTasks is false', () => {
 // });
 
 it('should call props.editTask when calling EditTaskDialog onRequestEdit', () => {
-  let a = '';
   const wrapper = getActualTaskList({
     editTask(index, { task }) {
-      a = task;
+      expect(task).toBe('a cool edited task');
     },
   });
   wrapper.find('EditTaskDialog').props().onRequestEdit({ task: 'a cool edited task' });
-  expect(a).toBe('a cool edited task');
 });
 it('should call props.deleteTask when calling Task onRequestDelete', () => {
-  let a = 0;
   const wrapper = getActualTaskList({
     deleteTask(index) {
-      a = index;
+      expect(index).toBe(2);
     },
   });
   wrapper.find('Task').at(0).props().onRequestDelete(2);
-  expect(a).toBe(2);
 });
 it('should call props.doTask when calling Task onRequestDo', () => {
-  let a = 0;
   const wrapper = getActualTaskList({
     doTask(index) {
-      a = index;
+      expect(index).toBe(2);
     },
   });
   wrapper.find('Task').at(0).props().onRequestDo(2);
-  expect(a).toBe(2);
 });
-it('should call props.raiseFab when calling Task onRequestSnackbar', () => {
-  let a = 0;
+it('should call props.raiseFab when calling Task onRequestSnackbar', (done) => {
   const wrapper = getActualTaskList({
     raiseFab() {
-      a = 2;
+      done();
     },
   });
   wrapper.find('Task').at(0).props().onRequestSnackbar();
-  expect(a).toBe(2);
 });
-it('should call props.lowerFab when calling Snackbar onRequestClose', () => {
-  let a = 0;
+it('should call props.lowerFab when calling Snackbar onRequestClose', (done) => {
   const wrapper = getActualTaskList({
     lowerFab() {
-      a = 2;
+      done();
     },
   });
   wrapper.find('Snackbar').props().onRequestClose();
-  expect(a).toBe(2);
 });
-it('should call props.undo when calling Snackbar onActionTouchTap', () => {
-  let a = 0;
+it('should call props.undo when calling Snackbar onActionTouchTap', (done) => {
   const wrapper = getActualTaskList({
     undo() {
-      a = 2;
+      done();
     },
   });
   wrapper.find('Snackbar').props().onActionTouchTap();
-  expect(a).toBe(2);
 });

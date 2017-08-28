@@ -21,19 +21,19 @@ it('should have a <Dialog />', () => {
   const wrapper = getActualDialog();
   expect(wrapper.find('Dialog').length).toBe(1);
 });
-it('should react to close request', () => {
+it('should react to close request', (done) => {
   const wrapper = getActualDialog({
     onRequestClose() {
-      return 'close requested';
+      done();
     },
   });
-  expect(wrapper.instance().props.onRequestClose()).toBe('close requested');
+  wrapper.instance().props.onRequestClose();
 });
-it('should react to add request', () => {
+it('should react to add request', (done) => {
   const wrapper = getActualDialog({
     onRequestAdd() {
-      return 'add requested';
+      done();
     },
   });
-  expect(wrapper.instance().props.onRequestAdd()).toBe('add requested');
+  wrapper.instance().props.onRequestAdd();
 });

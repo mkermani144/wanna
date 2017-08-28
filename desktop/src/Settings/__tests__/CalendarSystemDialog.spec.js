@@ -32,38 +32,30 @@ it('should set radio button group defaultSelected based on props', () => {
   expect(wrapper.find('RadioButtonGroup').prop('defaultSelected')).toBe('fa-IR');
 });
 it('should call onRequestClose when handling close request in dialog', () => {
-  let a = 0;
   const wrapper = getActualDialog({
     calendarSystem: 'fa-IR',
     onRequestClose(calendarSystem) {
-      a = calendarSystem;
+      expect(calendarSystem).toBe('fa-IR');
     },
   });
   wrapper.find('Dialog').props().onRequestClose();
-  expect(a).toBe('fa-IR');
 });
 it('should call onRequestClose when handling close request in flat button', () => {
-  let a = 0;
   const wrapper = getActualDialog({
     calendarSystem: 'fa-IR',
     onRequestClose(calendarSystem) {
-      a = calendarSystem;
+      expect(calendarSystem).toBe('fa-IR');
     },
   });
   wrapper.find('Dialog').prop('actions')[0].props.onTouchTap();
-  expect(a).toBe('fa-IR');
 });
 it('should call onRequestClose when handling close request in radio button group', () => {
-  let a = 0;
   const wrapper = getActualDialog({
     calendarSystem: 'fa-IR',
     onRequestClose(calendarSystem) {
-      a = calendarSystem;
+      expect(calendarSystem).toBe('fa-IR');
     },
   });
   wrapper.find('RadioButtonGroup').props().onChange(null, 'fa-IR');
-  setTimeout(() => {
-    expect(a).toBe('fa-IR');
-  }, 300);
   jest.runAllTimers();
 });
