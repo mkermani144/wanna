@@ -37,3 +37,15 @@ it('should react to add request', (done) => {
   });
   wrapper.instance().props.onRequestAdd();
 });
+
+it('should set FlatButton disabled based on state', () => {
+  const wrapper = getActualDialog();
+  wrapper.find('TextField').props().onChange({ target: { value: 'a cool idea' } });
+  expect(wrapper.find('Dialog').prop('actions')[0].props.disabled).toBe(false);
+  expect(wrapper.find('Dialog').prop('actions')[1].props.disabled).toBe(false);
+});
+it('should set TextField value based on state', () => {
+  const wrapper = getActualDialog();
+  wrapper.find('TextField').props().onChange({ target: { value: 'a cool idea' } });
+  expect(wrapper.find('TextField').prop('value')).toBe('a cool idea');
+});
