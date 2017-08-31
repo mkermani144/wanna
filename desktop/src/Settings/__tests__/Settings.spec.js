@@ -118,3 +118,14 @@ it('should call changeCalendarSystem when handling first day of week dialog clos
   });
   wrapper.find('FirstDayOfWeekDialog').props().onRequestClose(6);
 });
+
+it('should set CalendarSystemDialog open based on state', () => {
+  const wrapper = getActualSettings();
+  wrapper.find('ListItem').at(0).props().onClick();
+  expect(wrapper.find('CalendarSystemDialog').prop('open')).toBe(true);
+});
+it('should set FirstDayOfWeekDialog open based on state', () => {
+  const wrapper = getActualSettings();
+  wrapper.find('ListItem').at(1).props().onClick();
+  expect(wrapper.find('FirstDayOfWeekDialog').prop('open')).toBe(true);
+});
