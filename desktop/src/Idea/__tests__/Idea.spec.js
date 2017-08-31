@@ -71,3 +71,9 @@ it('should call onRequestDelete in handling delete request', (done) => {
   wrapper.instance().handleRequestDelete();
   jest.runAllTimers();
 });
+
+it('should set its class based on state', () => {
+  const wrapper = getActualIdea();
+  wrapper.find('Actions').props().onRequestDelete();
+  expect(wrapper.props().className.includes('will-be-deleted')).toBe(true);
+});
