@@ -171,3 +171,24 @@ it('should call props.undo when calling Snackbar onActionTouchTap', (done) => {
   });
   wrapper.find('Snackbar').props().onActionTouchTap();
 });
+
+it('should set EditTaskDialog open based on state', () => {
+  const wrapper = getActualTaskList();
+  wrapper.find('Task').at(0).props().onRequestEditTaskOpen();
+  expect(wrapper.find('EditTaskDialog').prop('open')).toBe(true);
+});
+// it('should set ConvertIdeaDialog open based on state', () => {
+//   const wrapper = getActualIdeaList();
+//   wrapper.find('Idea').at(0).props().onRequestConvertDialogOpen();
+//   expect(wrapper.find('ConvertIdeaDialog').prop('open')).toBe(true);
+// });
+it('should set Snackbar open based on state', () => {
+  const wrapper = getActualTaskList();
+  wrapper.find('Task').at(0).props().onRequestSnackbar();
+  expect(wrapper.find('Snackbar').prop('open')).toBe(true);
+});
+it('should set Snackbar message based on state', () => {
+  const wrapper = getActualTaskList();
+  wrapper.find('Task').at(0).props().onRequestSnackbar('a cool message');
+  expect(wrapper.find('Snackbar').prop('message')).toBe('a cool message');
+});
