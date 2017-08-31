@@ -50,3 +50,9 @@ it('should call onRequestEdit in handling edit request', (done) => {
   });
   wrapper.instance().handleRequestEdit();
 });
+
+it('should set FlatButton disabled based on state', () => {
+  const wrapper = getActualDialog();
+  wrapper.find('TextField').props().onChange({ target: { value: 'a cool idea' } });
+  expect(wrapper.find('Dialog').prop('actions')[0].props.disabled).toBe(false);
+});
