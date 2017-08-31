@@ -103,17 +103,14 @@ it('should set ConvertIdeaDialog firstDayOfWeek based on props', () => {
 });
 
 it('should call editIdea when handling edit idea request', () => {
-  // let a = 0;
-  // let b = '';
   const wrapper = getActualIdeaList({
     editIdea(index, ideaInfo) {
       expect(index).toBe(2);
       expect(ideaInfo.idea).toBe('a cool idea');
     },
   });
-  wrapper.instance().setState({ index: 2 }, () => {
-    wrapper.instance().handleRequestIdeaEdit({ idea: 'a cool idea' });
-  });
+  wrapper.find('Idea').at(0).props().onRequestEditDialogOpen(2);
+  wrapper.find('EditIdeaDialog').props().onRequestEdit({ idea: 'a cool idea' });
 });
 it('should call deleteIdea when handling delete idea request', () => {
   const wrapper = getActualIdeaList({
@@ -129,9 +126,7 @@ it('should call deleteIdea when handling convert dialog delete request', () => {
       expect(index).toBe(3);
     },
   });
-  wrapper.instance().setState({ index: 2 }, () => {
-    wrapper.instance().handleRequestIdeaDelete(3);
-  });
+  wrapper.find('Idea').at(0).props().onRequestDelete(3);
 });
 it('should call addTask when handling convert idea request', () => {
   const wrapper = getActualIdeaList({
@@ -177,4 +172,25 @@ it('should call undo when handling undo request', (done) => {
     },
   });
   wrapper.instance().handleUndo();
+});
+
+it('should set EditIdeaDialog open based on state', () => {
+  const wrapper = getActualIdeaList();
+  wrapper.find('Idea').at(0).props().onRequestEditDialogOpen();
+  expect(wrapper.find('EditIdeaDialog').prop('open')).toBe(true);
+});
+it('should set ConvertIdeaDialog open based on state', () => {
+  const wrapper = getActualIdeaList();
+  wrapper.find('Idea').at(0).props().onRequestConvertDialogOpen();
+  expect(wrapper.find('ConvertIdeaDialog').prop('open')).toBe(true);
+});
+it('should set Snackbar open based on state', () => {
+  const wrapper = getActualIdeaList();
+  wrapper.find('Idea').at(0).props().onRequestSnackbar();
+  expect(wrapper.find('Snackbar').prop('open')).toBe(true);
+});
+it('should set Snackbar message based on state', () => {
+  const wrapper = getActualIdeaList();
+  wrapper.find('Idea').at(0).props().onRequestSnackbar('a cool message');
+  expect(wrapper.find('Snackbar').prop('message')).toBe('a cool message');
 });
