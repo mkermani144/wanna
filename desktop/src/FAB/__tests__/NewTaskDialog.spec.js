@@ -21,21 +21,22 @@ it('should have a <Dialog />', () => {
   const wrapper = getActualDialog();
   expect(wrapper.find('Dialog').length).toBe(1);
 });
-it('should react to close request', (done) => {
+
+it('should call onRequestClose when clicking close FlatButton', (done) => {
   const wrapper = getActualDialog({
     onRequestClose() {
       done();
     },
   });
-  wrapper.instance().props.onRequestClose();
+  wrapper.find('Dialog').prop('actions')[2].props.onTouchTap();
 });
-it('should react to add request', (done) => {
+it('should call onRequestAdd when clicking add FlatButton', (done) => {
   const wrapper = getActualDialog({
     onRequestAdd() {
       done();
     },
   });
-  wrapper.instance().props.onRequestAdd();
+  wrapper.find('Dialog').prop('actions')[1].props.onTouchTap();
 });
 
 it('should set FlatButton disabled based on state', () => {

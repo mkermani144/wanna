@@ -30,14 +30,6 @@ it('should call onRequestClose when clicking cancel FlatButton', (done) => {
   });
   wrapper.find('Dialog').prop('actions')[2].props.onTouchTap();
 });
-it('should call onRequestClose when clicking finish FlatButton', (done) => {
-  const wrapper = getActualDialog({
-    onRequestClose() {
-      done();
-    },
-  });
-  wrapper.find('Dialog').prop('actions')[0].props.onTouchTap();
-});
 it('should call onRequestAdd when clicking add FlatButton', (done) => {
   const wrapper = getActualDialog({
     onRequestAdd() {
