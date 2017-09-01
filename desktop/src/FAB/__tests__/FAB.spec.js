@@ -104,3 +104,13 @@ it('should set NewIdeaDialog open to true based on state', () => {
   wrapper.find('SpeedDialItem').at(1).props().onTouchTap();
   expect(wrapper.find('NewIdeaDialog').prop('open')).toBe(true);
 });
+it('should set NewTaskDialog open to false based on state', () => {
+  const wrapper = getActualFAB();
+  wrapper.find('NewTaskDialog').props().onRequestClose();
+  expect(wrapper.find('NewTaskDialog').prop('open')).toBe(false);
+});
+it('should set NewIdeaDialog open to false based on state', () => {
+  const wrapper = getActualFAB();
+  wrapper.find('NewIdeaDialog').props().onRequestClose();
+  expect(wrapper.find('NewIdeaDialog').prop('open')).toBe(false);
+});
