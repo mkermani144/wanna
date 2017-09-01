@@ -1,9 +1,11 @@
-# Contributing to Wanna
+Contributing to Wanna
+====
 
 Welcome, contributor. Let's make the world of open source a better place! :rocket: :rocket:  
 Wanna welcomes contributions of different types. There are a lot of work to do, and you can help us get them done.  
 
-## Types of contribution
+Types of contribution
+----
 There are multiple kinds of contributions we seek for, ranging from effortless ones like feature suggestion, to harder ones like
 app development. Below comes the list of contribution types. Please make sure you have satisfied prerequisties of each contribution type before reading its guidelines, otherwise you may do redundant work.  
 
@@ -44,7 +46,8 @@ If you want to get started with coding in Wanna, go to the [issues](https://gith
 
 We will review your code. If everything is OK, your PR will be accepted.
 
-## Styleguides
+Styleguides
+----
 Although we welcome contributors (and we highly need contributions, certainly), we have some style guides we are very strict about. If a PR does not meet these guidelines, its review will not be approved and we would send you some change requests. So be careful about these guides.
 
 ### Git
@@ -77,3 +80,34 @@ Although we welcome contributors (and we highly need contributions, certainly), 
 3. Embrace ES6 (and the next versions, too). ES6 is the new JS standard. Wanna uses it everywhere.
 ### Project directory structure
 We mostly use feature-based project structure in Wanna, meaning we group files based on the feature, not the job they do. For example, we group the files in `Task`, `Idea`, `Settings`, etc. directories instead of `ActionCreators`, `Components`, `Containers`.
+
+Testing
+----
+If you are code contributing in Wanna, do not forget about tests. Tests are vital for every non-trivial software, and Wanna is not an exception here. Next, comes some very brief guidelines about testing, based on our experience.
+
+### Unit testing
+The first type of testing you have to care about is unit testing. In unit tests, the most important thing to remember is to **test that unit as a black box**. That is, the only thing you have access to when testing a unit (in other words, its input) is its **public API**. (In other words, what you `export` from a javascript module.) You can do everything with that public API, and see if the results are the expected ones. But never, ever access the code inside that unit in your unit tests. The only thing you should use in your unit tests is the public API.  
+Some general guidelines:
+1. Embrace TDD. Write tests first, and let them drive your development.
+2. Test only one thing. Try to limit your assertions/expectations to one, if possible.
+3. Make the tests as simple as possible. Don't test complex scenarios in unit tests.
+4. Make the tests as small as possible. Use functions to hide details, and focus on actual and expected values in the tests.
+5. Write clear, short unit test messages.
+6. Watch the test fail. An initially-passed test is not so useful.
+
+#### Unit testing React components
+The most challenging units for testing are React components, based on our experience in Wanna development. So carefully read about how to test these units.  
+As we said earlier, the only thing you have access to when testing a unit is its public API. But what is the public API of a React component?  
+If you think about it, all of the following are part of a React component public API:
+* Its `props`. It is so clear.
+* The callable `props` of its children. Those `props` are not related to the component implementation details at all. They are accessible to the outside world of the component as a public API.
+* And... its `state`. Yes, the `state` is somehow a public API, **but totally indirectly**. The most important thing is that you never change state manually (i.e. using enzyme `setState()`). **You change state using the public API** (the two previous ones). So it's better to say `state` is not a public API itself, but it can be changed using the public API. (Pay close attention to this. If there are some `state` in the component that is changed *only inside the component itself*, it is an implementation detail and we do not care about it in our test.) But because a React component output is subject to `state` changes, this one is worth to be mentioned as the third way you can change a component input. (As we suggested as a general guideline, unit tests should be as simple as possible. Therefore don't implement multiple `state` transition in the unit tests. At most, you should have one `state` transition in your unit tests. Complicated `state` transitions shouldn't be unit tested.)
+
+So, when you want to unit test a React component, you set different `props`, call its children callable `props` or change its `state` using its `props` or calling its children `props`, and check if the result is as expected.   
+
+These are all anti-patterns:
+* Using enzyme `wrapper.instance()`
+* Calling the functions inside components that are not accessible from the outside (If you need to unit test these functions, put them in a separate module and test that module instead)
+* Using enzyme `setState()`
+* Having multiple `expect`s in a unit test
+
