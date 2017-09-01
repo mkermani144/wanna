@@ -1,10 +1,13 @@
 /* eslint-env mocha, jest */
 
+import persianUtils from 'material-ui-persian-date-picker-utils';
+
 import getDefault from '../../shared/testUtils';
 import NewTaskDialog from '../NewTaskDialog';
 
 const defaultProps = {
   open: false,
+  calendarSystem: 'en-US',
   onRequestClose() {},
   onRequestAdd() {},
 };
@@ -20,6 +23,13 @@ it('should be a <div />', () => {
 it('should have a <Dialog />', () => {
   const wrapper = getActualDialog();
   expect(wrapper.find('Dialog').length).toBe(1);
+});
+
+it('should set DatePicker utils based on props', () => {
+  const wrapper = getActualDialog({
+    calendarSystem: 'fa-IR',
+  });
+  expect(wrapper.find('DatePicker').at(0).prop('utils')).toBe(persianUtils);
 });
 
 it('should call onRequestClose when clicking cancel FlatButton', (done) => {
