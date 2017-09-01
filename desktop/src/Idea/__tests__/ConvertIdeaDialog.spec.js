@@ -42,45 +42,30 @@ it('should set date picker first day of week based on props', () => {
   });
   expect(wrapper.find('DatePicker').at(0).prop('firstDayOfWeek')).toBe(6);
 });
-it('should call onRequestClose in handling close request', (done) => {
+
+it('should call onRequestClose when clicking cancel FlatButton', (done) => {
   const wrapper = getActualDialog({
     onRequestClose() {
       done();
     },
   });
-  wrapper.instance().handleRequestClose();
+  wrapper.find('Dialog').prop('actions')[2].props.onTouchTap();
 });
-it('should call onRequestClose in handling finish request', (done) => {
-  const wrapper = getActualDialog({
-    onRequestClose() {
-      done();
-    },
-  });
-  wrapper.instance().handleRequestFinish();
-});
-it('should call onRequestConvert in handling convert request', (done) => {
+it('should call onRequestConvert when clicking convert FlatButton', (done) => {
   const wrapper = getActualDialog({
     onRequestConvert() {
       done();
     },
   });
-  wrapper.instance().handleRequestConvert();
+  wrapper.find('Dialog').prop('actions')[1].props.onTouchTap();
 });
-it('should call onRequestConvert in handling finish request', (done) => {
-  const wrapper = getActualDialog({
-    onRequestConvert() {
-      done();
-    },
-  });
-  wrapper.instance().handleRequestFinish();
-});
-it('should call onRequestDelete in handling convert request', (done) => {
+it('should call onRequestDelete when clicking finish FlatButton', (done) => {
   const wrapper = getActualDialog({
     onRequestDelete() {
       done();
     },
   });
-  wrapper.instance().handleRequestFinish();
+  wrapper.find('Dialog').prop('actions')[0].props.onTouchTap();
 });
 
 it('should set FlatButton disabled based on state', () => {

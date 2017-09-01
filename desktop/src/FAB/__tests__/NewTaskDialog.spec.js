@@ -22,7 +22,7 @@ it('should have a <Dialog />', () => {
   expect(wrapper.find('Dialog').length).toBe(1);
 });
 
-it('should call onRequestClose when clicking close FlatButton', (done) => {
+it('should call onRequestClose when clicking cancel FlatButton', (done) => {
   const wrapper = getActualDialog({
     onRequestClose() {
       done();
