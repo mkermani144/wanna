@@ -14,14 +14,14 @@ import './ConvertIdeaDialog.css';
 class ConvertIdeaDialog extends PureComponent {
   constructor() {
     super();
-    const todayStart = new Date();
-    todayStart.setHours(0, 0, 0, 0);
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
     this.state = {
       estimationValue: 1,
       repetitionValue: 1,
       task: '',
-      start: Date.parse(todayStart),
-      end: 0,
+      start: today,
+      end: null,
       estimation: '',
       repetition: '',
     };
@@ -50,12 +50,12 @@ class ConvertIdeaDialog extends PureComponent {
   }
   handleStartChange = (e, start) => {
     this.setState({
-      start: Date.parse(start),
+      start,
     });
   }
   handleEndChange = (e, end) => {
     this.setState({
-      end: Date.parse(end),
+      end,
     });
   }
   handleEstimationChange = (e) => {
@@ -69,14 +69,14 @@ class ConvertIdeaDialog extends PureComponent {
     });
   }
   handleRequestClose = () => {
-    const todayStart = new Date();
-    todayStart.setHours(0, 0, 0, 0);
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
     this.setState({
       estimationValue: 1,
       repetitionValue: 1,
       task: '',
-      start: Date.parse(todayStart),
-      end: 0,
+      start: today,
+      end: null,
       estimation: '',
       repetition: '',
     });
@@ -84,14 +84,14 @@ class ConvertIdeaDialog extends PureComponent {
   }
   handleRequestConvert = () => {
     this.props.onRequestConvert(this.state);
-    const todayStart = new Date();
-    todayStart.setHours(0, 0, 0, 0);
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
     this.setState({
       estimationValue: 1,
       repetitionValue: 1,
       task: '',
-      start: Date.parse(todayStart),
-      end: 0,
+      start: today,
+      end: null,
       estimation: '',
       repetition: '',
     });
@@ -100,21 +100,18 @@ class ConvertIdeaDialog extends PureComponent {
     this.props.onRequestConvert && this.props.onRequestConvert(this.state);
     this.props.onRequestDelete && this.props.onRequestDelete();
     this.props.onRequestClose && this.props.onRequestClose();
-    const todayStart = new Date();
-    todayStart.setHours(0, 0, 0, 0);
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
     this.setState({
       estimationValue: 1,
       repetitionValue: 1,
       task: '',
-      start: Date.parse(todayStart),
-      end: 0,
+      start: today,
+      end: null,
       estimation: '',
       repetition: '',
     });
   }
-  disablePassed = date => Date.parse(date) < Date.now() - 86400000;
-  disableEndBeforeStart = date => Date.parse(date) < this.state.start ||
-                                  Date.parse(date) < Date.now() - 86400000;
   render() {
     const actions = [
       <FlatButton
@@ -152,7 +149,7 @@ class ConvertIdeaDialog extends PureComponent {
         flex: 1,
       },
     };
-    const DateTimeFormat = global.Intl.DateTimeFormat;
+    // const DateTimeFormat = global.Intl.DateTimeFormat;
     return (
       <div className="ConvertIdeaDialog">
         <Dialog
@@ -178,9 +175,8 @@ class ConvertIdeaDialog extends PureComponent {
             <div className="datepicker">
               <DatePicker
                 hintText="Start"
-                defaultDate={new Date()}
                 autoOk
-                DateTimeFormat={DateTimeFormat}
+                // DateTimeFormat={DateTimeFormat}
                 locale={this.props.calendarSystem}
                 utils={
                   this.props.calendarSystem === 'fa-IR' ?
@@ -189,8 +185,8 @@ class ConvertIdeaDialog extends PureComponent {
                 }
                 firstDayOfWeek={this.props.firstDayOfWeek}
                 textFieldStyle={datePickerStyles.textFieldStyle}
-                value={new Date(this.state.start)}
-                shouldDisableDate={this.disablePassed}
+                minDate={new Date()}
+                value={this.state.start}
                 onChange={this.handleStartChange}
               />
             </div>
@@ -198,7 +194,7 @@ class ConvertIdeaDialog extends PureComponent {
               <DatePicker
                 hintText="End"
                 autoOk
-                DateTimeFormat={DateTimeFormat}
+                // DateTimeFormat={DateTimeFormat}
                 locale={this.props.calendarSystem}
                 utils={
                   this.props.calendarSystem === 'fa-IR' ?
@@ -207,12 +203,8 @@ class ConvertIdeaDialog extends PureComponent {
                 }
                 firstDayOfWeek={this.props.firstDayOfWeek}
                 textFieldStyle={datePickerStyles.textFieldStyle}
-                value={
-                  this.state.end ?
-                  new Date(this.state.end) :
-                  null
-                }
-                shouldDisableDate={this.disableEndBeforeStart}
+                value={this.state.end}
+                minDate={this.state.start}
                 onChange={this.handleEndChange}
               />
             </div>
