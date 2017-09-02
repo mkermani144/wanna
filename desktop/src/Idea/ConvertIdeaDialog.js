@@ -6,7 +6,6 @@ import DatePicker from 'material-ui/DatePicker';
 import DropDownMenu from 'material-ui/DropDownMenu';
 import MenuItem from 'material-ui/MenuItem';
 import { green600, grey50 } from 'material-ui/styles/colors';
-import defaultUtils from 'material-ui/DatePicker/dateUtils';
 import persianUtils from 'material-ui-persian-date-picker-utils';
 
 import './ConvertIdeaDialog.css';
@@ -49,13 +48,17 @@ class ConvertIdeaDialog extends PureComponent {
     });
   }
   handleStartChange = (e, start) => {
+    const startClone = new Date(start);
+    startClone.setHours(0, 0, 0, 0);
     this.setState({
-      start,
+      start: startClone,
     });
   }
   handleEndChange = (e, end) => {
+    const endClone = new Date(end);
+    endClone.setHours(0, 0, 0, 0);
     this.setState({
-      end,
+      end: endClone,
     });
   }
   handleEstimationChange = (e) => {
@@ -149,7 +152,10 @@ class ConvertIdeaDialog extends PureComponent {
         flex: 1,
       },
     };
-    // const DateTimeFormat = global.Intl.DateTimeFormat;
+    const DateTimeFormat = global.Intl.DateTimeFormat;
+    const localeProps = this.props.calendarSystem === 'fa-IR' ?
+    { utils: persianUtils, DateTimeFormat } :
+    {};
     return (
       <div className="ConvertIdeaDialog">
         <Dialog
@@ -174,19 +180,14 @@ class ConvertIdeaDialog extends PureComponent {
             />
             <div className="datepicker">
               <DatePicker
+                defaultDate={new Date()}
                 hintText="Start"
                 autoOk
-                // DateTimeFormat={DateTimeFormat}
                 locale={this.props.calendarSystem}
-                utils={
-                  this.props.calendarSystem === 'fa-IR' ?
-                  persianUtils :
-                  defaultUtils
-                }
+                {...localeProps}
                 firstDayOfWeek={this.props.firstDayOfWeek}
                 textFieldStyle={datePickerStyles.textFieldStyle}
                 minDate={new Date()}
-                value={this.state.start}
                 onChange={this.handleStartChange}
               />
             </div>
@@ -194,16 +195,10 @@ class ConvertIdeaDialog extends PureComponent {
               <DatePicker
                 hintText="End"
                 autoOk
-                // DateTimeFormat={DateTimeFormat}
                 locale={this.props.calendarSystem}
-                utils={
-                  this.props.calendarSystem === 'fa-IR' ?
-                  persianUtils :
-                  defaultUtils
-                }
+                {...localeProps}
                 firstDayOfWeek={this.props.firstDayOfWeek}
                 textFieldStyle={datePickerStyles.textFieldStyle}
-                value={this.state.end}
                 minDate={this.state.start}
                 onChange={this.handleEndChange}
               />
