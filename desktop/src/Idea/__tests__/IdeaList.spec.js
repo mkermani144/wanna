@@ -112,21 +112,22 @@ it('should call editIdea when handling edit idea request', () => {
   wrapper.find('Idea').at(0).props().onRequestEditDialogOpen(2);
   wrapper.find('EditIdeaDialog').props().onRequestEdit({ idea: 'a cool idea' });
 });
-it('should call deleteIdea when handling delete idea request', () => {
-  const wrapper = getActualIdeaList({
-    deleteIdea(index) {
-      expect(index).toBe(3);
-    },
-  });
-  wrapper.instance().handleRequestIdeaDelete(3);
-});
-it('should call deleteIdea when handling convert dialog delete request', () => {
+it('should call deleteIdea when calling Idea onRequestDelete', () => {
   const wrapper = getActualIdeaList({
     deleteIdea(index) {
       expect(index).toBe(3);
     },
   });
   wrapper.find('Idea').at(0).props().onRequestDelete(3);
+});
+it('should call deleteIdea when calling ConvertIdeaDialog onRequestDelete', () => {
+  const wrapper = getActualIdeaList({
+    deleteIdea(index) {
+      expect(index).toBe(3);
+    },
+  });
+  wrapper.find('Idea').at(0).props().onRequestConvertDialogOpen(3);
+  wrapper.find('ConvertIdeaDialog').props().onRequestDelete(3);
 });
 it('should call addTask when handling convert idea request', () => {
   const wrapper = getActualIdeaList({
@@ -139,7 +140,7 @@ it('should call addTask when handling convert idea request', () => {
       expect(taskInfo.task).toBe('a cool task');
     },
   });
-  wrapper.instance().handleRequestIdeaConvert({
+  wrapper.find('ConvertIdeaDialog').props().onRequestConvert({
     start: 0,
     end: 86400000,
     estimation: 2,
@@ -149,29 +150,29 @@ it('should call addTask when handling convert idea request', () => {
     task: 'a cool task',
   });
 });
-it('should call raiseFab when handling open snackbar request', (done) => {
+it('should call raiseFab when calling Idea onRequestClose', (done) => {
   const wrapper = getActualIdeaList({
     raiseFab() {
       done();
     },
   });
-  wrapper.instance().handleRequestSnackbarOpen();
+  wrapper.find('Idea').at(0).props().onRequestSnackbar();
 });
-it('should call lowerFab when handling close snackbar request', (done) => {
+it('should call lowerFab when calling Snackbar onRequestClose', (done) => {
   const wrapper = getActualIdeaList({
     lowerFab() {
       done();
     },
   });
-  wrapper.instance().handleRequestSnackbarClose();
+  wrapper.find('Snackbar').props().onRequestClose();
 });
-it('should call undo when handling undo request', (done) => {
+it('should call undo when calling Snackbar onActionTouchTap', (done) => {
   const wrapper = getActualIdeaList({
     undo() {
       done();
     },
   });
-  wrapper.instance().handleUndo();
+  wrapper.find('Snackbar').props().onActionTouchTap();
 });
 
 it('should set EditIdeaDialog open based on state', () => {
@@ -179,10 +180,15 @@ it('should set EditIdeaDialog open based on state', () => {
   wrapper.find('Idea').at(0).props().onRequestEditDialogOpen();
   expect(wrapper.find('EditIdeaDialog').prop('open')).toBe(true);
 });
-it('should set ConvertIdeaDialog open based on state', () => {
+it('should set ConvertIdeaDialog open to true based on state', () => {
   const wrapper = getActualIdeaList();
   wrapper.find('Idea').at(0).props().onRequestConvertDialogOpen();
   expect(wrapper.find('ConvertIdeaDialog').prop('open')).toBe(true);
+});
+it('should set ConvertIdeaDialog open to false based on state', () => {
+  const wrapper = getActualIdeaList();
+  wrapper.find('ConvertIdeaDialog').props().onRequestClose();
+  expect(wrapper.find('ConvertIdeaDialog').prop('open')).toBe(false);
 });
 it('should set Snackbar open based on state', () => {
   const wrapper = getActualIdeaList();
