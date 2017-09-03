@@ -32,21 +32,21 @@ it('should set text field default value based on props', () => {
   });
   expect(wrapper.find('TextField').prop('defaultValue')).toBe('a cool task');
 });
-it('should call onRequestClose in handling close request', (done) => {
+it('should call onRequestClose when clicking close button', (done) => {
   const wrapper = getActualDialog({
     onRequestClose() {
       done();
     },
   });
-  wrapper.instance().handleRequestClose();
+  wrapper.find('Dialog').prop('actions')[1].props.onTouchTap();
 });
-it('should call onRequestEdit in handling edit request', (done) => {
+it('should call onRequestEdit when clicking edit button', (done) => {
   const wrapper = getActualDialog({
     onRequestEdit() {
       done();
     },
   });
-  wrapper.instance().handleRequestEdit();
+  wrapper.find('Dialog').prop('actions')[0].props.onTouchTap();
 });
 
 it('should set FlatButton disabled based on state', () => {
