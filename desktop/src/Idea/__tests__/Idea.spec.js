@@ -62,13 +62,13 @@ it('should pass props.index when converting idea', () => {
   });
   wrapper.find('Actions').prop('onRequestConvertDialogOpen')();
 });
-it('should call onRequestDelete in handling delete request', (done) => {
+it('should call onRequestDelete when calling Actions onRequestDelete', (done) => {
   const wrapper = getActualIdea({
     onRequestDelete() {
       done();
     },
   });
-  wrapper.instance().handleRequestDelete();
+  wrapper.find('Actions').props().onRequestDelete();
   jest.runAllTimers();
 });
 
