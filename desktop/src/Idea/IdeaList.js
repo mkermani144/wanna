@@ -71,14 +71,10 @@ class IdeaList extends Component {
   handleRequestIdeaConvert = (taskInfo) => {
     const repetitionDays = taskInfo.repetition * taskInfo.repetitionValue;
     const id = shortid.generate();
-    let offset = 0;
-    if (this.props.calendarSystem === 'fa-IR') {
-      offset = 56429000;
-    }
     this.props.addTask({
       task: taskInfo.task,
-      start: taskInfo.start - offset,
-      end: (taskInfo.end + 86400000) - offset,
+      start: taskInfo.start,
+      end: taskInfo.end + 86400000,
       estimation: taskInfo.estimation * taskInfo.estimationValue,
       repetition: repetitionDays,
       done: false,
