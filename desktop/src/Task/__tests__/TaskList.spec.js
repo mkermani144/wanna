@@ -115,13 +115,6 @@ it('should not show not-yet tasks if props.showNotYetTasks is false', () => {
   expect(wrapper.find('Divider').length).toBe(3);
   expect(wrapper.find('Task').length).toBe(3);
 });
-// BUG: This test does not work, and its behaviour is totally unexpected.
-//
-// it('should set EditTaskDialog task based on props and state', () => {
-//   const wrapper = getActualTaskList();
-//   wrapper.instance().setState({ index: 1 });
-//   expect(wrapper.find('EditTaskDialog').prop('task')).toBe('an open task');
-// });
 
 it('should call props.editTask when calling EditTaskDialog onRequestEdit', () => {
   const wrapper = getActualTaskList({
@@ -176,6 +169,11 @@ it('should set EditTaskDialog open based on state', () => {
   const wrapper = getActualTaskList();
   wrapper.find('Task').at(0).props().onRequestEditTaskOpen();
   expect(wrapper.find('EditTaskDialog').prop('open')).toBe(true);
+});
+it('should set EditTaskDialog task based on state', () => {
+  const wrapper = getActualTaskList();
+  wrapper.find('Task').at(0).props().onRequestEditTaskOpen(1);
+  expect(wrapper.find('EditTaskDialog').prop('task')).toBe('an open task');
 });
 // it('should set ConvertIdeaDialog open based on state', () => {
 //   const wrapper = getActualIdeaList();
