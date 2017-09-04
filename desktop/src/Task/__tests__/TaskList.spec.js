@@ -107,6 +107,13 @@ it('should set left margin based on props', () => {
   });
   expect(wrapper.prop('style').marginLeft).toBe(56);
 });
+it('should set left margin based on props if no idea is provided', () => {
+  const wrapper = getActualTaskList({
+    sidebarExpanded: false,
+    tasks: [],
+  });
+  expect(wrapper.prop('style').marginLeft).toBe(56);
+});
 it('should not show not-yet tasks if props.showNotYetTasks is false', () => {
   const wrapper = getActualTaskList({
     showNotYetTasks: false,
