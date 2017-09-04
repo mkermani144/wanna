@@ -4,7 +4,14 @@ import getDefault from '../../shared/testUtils';
 import IdeaList from '../IdeaList';
 
 const defaultProps = {
-  ideas: ['a cool idea', 'another cool idea'],
+  ideas: [
+    {
+      idea: 'a cool idea',
+    },
+    {
+      idea: 'another cool idea',
+    },
+  ],
   sidebarExpanded: true,
   calendarSystem: 'en-US',
   firstDayOfWeek: 0,
@@ -86,6 +93,13 @@ it('should have 1 <Snackbar /> if props.ideas is empty', () => {
 it('should set left margin based on props', () => {
   const wrapper = getActualIdeaList({
     sidebarExpanded: false,
+  });
+  expect(wrapper.prop('style').marginLeft).toBe(56);
+});
+it('should set left margin based on props if no idea is provided', () => {
+  const wrapper = getActualIdeaList({
+    sidebarExpanded: false,
+    ideas: [],
   });
   expect(wrapper.prop('style').marginLeft).toBe(56);
 });
@@ -177,18 +191,28 @@ it('should call undo when calling Snackbar onActionTouchTap', (done) => {
 
 it('should set EditIdeaDialog open based on state', () => {
   const wrapper = getActualIdeaList();
-  wrapper.find('Idea').at(0).props().onRequestEditDialogOpen();
+  wrapper.find('Idea').at(0).props().onRequestEditDialogOpen(0);
   expect(wrapper.find('EditIdeaDialog').prop('open')).toBe(true);
+});
+it('should set EditIdeaDialog idea based on state', () => {
+  const wrapper = getActualIdeaList();
+  wrapper.find('Idea').at(0).props().onRequestEditDialogOpen(0);
+  expect(wrapper.find('EditIdeaDialog').prop('idea')).toBe('a cool idea');
 });
 it('should set ConvertIdeaDialog open to true based on state', () => {
   const wrapper = getActualIdeaList();
-  wrapper.find('Idea').at(0).props().onRequestConvertDialogOpen();
+  wrapper.find('Idea').at(0).props().onRequestConvertDialogOpen(0);
   expect(wrapper.find('ConvertIdeaDialog').prop('open')).toBe(true);
 });
 it('should set ConvertIdeaDialog open to false based on state', () => {
   const wrapper = getActualIdeaList();
   wrapper.find('ConvertIdeaDialog').props().onRequestClose();
   expect(wrapper.find('ConvertIdeaDialog').prop('open')).toBe(false);
+});
+it('should set ConvertIdeaDialog idea based on state', () => {
+  const wrapper = getActualIdeaList();
+  wrapper.find('Idea').at(0).props().onRequestEditDialogOpen(0);
+  expect(wrapper.find('ConvertIdeaDialog').prop('idea')).toBe('a cool idea');
 });
 it('should set Snackbar open based on state', () => {
   const wrapper = getActualIdeaList();
