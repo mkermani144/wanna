@@ -126,8 +126,21 @@ it('should call onRequestEditTaskOpen when handling open edit dialog request', (
   jest.runAllTimers();
 });
 
-it('should set its class based on state', () => {
+it('should set its class to will-be-deleted based on state', () => {
   const wrapper = getActualTask();
   wrapper.find('Actions').props().onRequestDelete();
   expect(wrapper.props().className.includes('will-be-deleted')).toBe(true);
+});
+it('should set its class to done based on state', () => {
+  const wrapper = getActualTask();
+  wrapper.find('Actions').props().onRequestDo();
+  expect(wrapper.props().className.includes('done')).toBe(true);
+});
+it('should set remove its done class based on state', () => {
+  const wrapper = getActualTask({
+    repeat: '5',
+  });
+  wrapper.find('Actions').props().onRequestDo();
+  jest.runAllTimers();
+  expect(wrapper.props().className.includes('done')).toBe(false);
 });
