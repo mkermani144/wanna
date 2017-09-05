@@ -2,7 +2,7 @@
 
 import persianUtils from 'material-ui-persian-date-picker-utils';
 
-import getDefault from '../../shared/testUtils';
+import getDefault from '../../lib/testUtils';
 import NewTaskDialog from '../NewTaskDialog';
 
 const defaultProps = {

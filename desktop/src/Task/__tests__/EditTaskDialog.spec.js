@@ -1,6 +1,6 @@
 /* eslint-env mocha, jest */
 
-import getDefault from '../../shared/testUtils';
+import getDefault from '../../lib/testUtils';
 import EditTaskDialog from '../EditTaskDialog';
 
 const defaultProps = {

@@ -2,7 +2,7 @@
 
 import RepeatIcon from 'material-ui/svg-icons/av/repeat';
 
-import getDefault from '../../shared/testUtils';
+import getDefault from '../../lib/testUtils';
 import Repeat from '../Repeat';
 
 const defaultProps = {

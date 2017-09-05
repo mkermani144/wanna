@@ -12,7 +12,7 @@ import {
 import Task from './Task';
 import EditTaskDialog from './EditTaskDialog';
 import './TaskList.css';
-import classify from '../lib/classify';
+import classify from './lib/classify';
 
 class TaskList extends Component {
   constructor() {
