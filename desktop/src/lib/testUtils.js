@@ -4,14 +4,11 @@ import { shallow } from 'enzyme';
 import R from 'ramda';
 
 const componentory = (Component, props) => shallow(<Component {...props} />);
-const getActual = (...props) => R.mergeAll(props);
+const merge = (defaultProps, props) => R.mergeAll([defaultProps, props]);
 
 const getActualComponentFactory = (Component, defaultProps) => R.compose(
   R.partial(componentory, [Component]),
-  R.partial(getActual, [defaultProps]),
+  R.partial(merge, [defaultProps]),
 );
 
-export {
-  getActualComponentFactory as default,
-  getActual,
-};
+export default getActualComponentFactory;
