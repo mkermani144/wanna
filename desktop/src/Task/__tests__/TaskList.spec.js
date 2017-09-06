@@ -1,6 +1,6 @@
 /* eslint-env mocha, jest */
 
-import getDefault from '../../lib/testUtils';
+import getActualComponentFactory from '../../lib/testUtils';
 import TaskList from '../TaskList';
 
 const now = Date.now();
@@ -40,7 +40,7 @@ const defaultProps = {
   lowerFab() {},
   undo() {},
 };
-const getActualTaskList = getDefault(TaskList, defaultProps);
+const getActualTaskList = getActualComponentFactory(TaskList, defaultProps);
 
 it('should render', () => {
   getActualTaskList();

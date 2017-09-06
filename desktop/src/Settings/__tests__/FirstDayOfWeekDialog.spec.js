@@ -1,6 +1,6 @@
 /* eslint-env mocha, jest */
 
-import getDefault from '../../lib/testUtils';
+import getActualComponentFactory from '../../lib/testUtils';
 import FirstDayOfWeekDialog from '../FirstDayOfWeekDialog';
 
 const defaultProps = {
@@ -8,7 +8,7 @@ const defaultProps = {
   firstDayOfWeek: 0,
   onRequestClose() {},
 };
-const getActualDialog = getDefault(FirstDayOfWeekDialog, defaultProps);
+const getActualDialog = getActualComponentFactory(FirstDayOfWeekDialog, defaultProps);
 
 jest.useFakeTimers();
 

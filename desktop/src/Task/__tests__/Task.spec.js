@@ -1,6 +1,6 @@
 /* eslint-env mocha, jest */
 
-import getDefault from '../../lib/testUtils';
+import getActualComponentFactory from '../../lib/testUtils';
 import Task from '../Task';
 
 const defaultProps = {
@@ -16,7 +16,7 @@ const defaultProps = {
   onRequestSnackbar() {},
   onRequestEditTaskOpen() {},
 };
-const getActualTask = getDefault(Task, defaultProps);
+const getActualTask = getActualComponentFactory(Task, defaultProps);
 
 jest.useFakeTimers();
 

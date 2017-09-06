@@ -1,13 +1,13 @@
 /* eslint-env mocha, jest */
 
-import getDefault from '../../lib/testUtils';
+import getActualComponentFactory from '../../lib/testUtils';
 import Help from '../Help';
 
 const defaultProps = {
   sidebarExpanded: true,
   openExternal() {},
 };
-const getActualHelp = getDefault(Help, defaultProps);
+const getActualHelp = getActualComponentFactory(Help, defaultProps);
 
 it('should render', () => {
   getActualHelp();

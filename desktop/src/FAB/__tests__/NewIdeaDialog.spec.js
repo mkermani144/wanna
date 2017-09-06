@@ -1,6 +1,6 @@
 /* eslint-env mocha, jest */
 
-import getDefault from '../../lib/testUtils';
+import getActualComponentFactory from '../../lib/testUtils';
 import NewIdeaDialog from '../NewIdeaDialog';
 
 const defaultProps = {
@@ -8,7 +8,7 @@ const defaultProps = {
   onRequestClose() {},
   onRequestAdd() {},
 };
-const getActualDialog = getDefault(NewIdeaDialog, defaultProps);
+const getActualDialog = getActualComponentFactory(NewIdeaDialog, defaultProps);
 
 it('should render', () => {
   getActualDialog();

@@ -1,6 +1,6 @@
 /* eslint-env mocha, jest */
 
-import getDefault from '../../lib/testUtils';
+import getActualComponentFactory from '../../lib/testUtils';
 import Settings from '../Settings';
 
 const defaultProps = {
@@ -14,7 +14,7 @@ const defaultProps = {
   changeCalendarSystem() {},
   changeFirstDayOfWeek() {},
 };
-const getActualSettings = getDefault(Settings, defaultProps);
+const getActualSettings = getActualComponentFactory(Settings, defaultProps);
 
 
 jest.useFakeTimers();

@@ -2,7 +2,7 @@
 
 import persianUtils from 'material-ui-persian-date-picker-utils';
 
-import getDefault from '../../lib/testUtils';
+import getActualComponentFactory from '../../lib/testUtils';
 import NewTaskDialog from '../NewTaskDialog';
 
 const defaultProps = {
@@ -11,7 +11,7 @@ const defaultProps = {
   onRequestClose() {},
   onRequestAdd() {},
 };
-const getActualDialog = getDefault(NewTaskDialog, defaultProps);
+const getActualDialog = getActualComponentFactory(NewTaskDialog, defaultProps);
 
 it('should render', () => {
   getActualDialog();

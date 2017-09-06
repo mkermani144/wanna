@@ -1,12 +1,12 @@
 /* eslint-env mocha, jest */
 
-import getDefault from '../../lib/testUtils';
+import getActualComponentFactory from '../../lib/testUtils';
 import DueDate from '../DueDate';
 
 const defaultProps = {
   due: '',
 };
-const getActualDueDate = getDefault(DueDate, defaultProps);
+const getActualDueDate = getActualComponentFactory(DueDate, defaultProps);
 
 it('should render', () => {
   getActualDueDate();

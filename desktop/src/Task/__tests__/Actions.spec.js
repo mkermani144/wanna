@@ -1,12 +1,12 @@
 /* eslint-env mocha, jest */
 
-import getDefault from '../../lib/testUtils';
+import getActualComponentFactory from '../../lib/testUtils';
 import Actions from '../Actions';
 
 const defaultProps = {
   done: false,
 };
-const getActualActions = getDefault(Actions, defaultProps);
+const getActualActions = getActualComponentFactory(Actions, defaultProps);
 
 it('should render', () => {
   getActualActions();

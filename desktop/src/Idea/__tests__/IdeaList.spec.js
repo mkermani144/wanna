@@ -1,6 +1,6 @@
 /* eslint-env mocha, jest */
 
-import getDefault from '../../lib/testUtils';
+import getActualComponentFactory from '../../lib/testUtils';
 import IdeaList from '../IdeaList';
 
 const defaultProps = {
@@ -22,7 +22,7 @@ const defaultProps = {
   lowerFab() {},
   undo() {},
 };
-const getActualIdeaList = getDefault(IdeaList, defaultProps);
+const getActualIdeaList = getActualComponentFactory(IdeaList, defaultProps);
 
 
 it('should render', () => {

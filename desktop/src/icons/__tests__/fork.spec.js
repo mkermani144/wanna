@@ -1,9 +1,9 @@
 /* eslint-env mocha, jest */
 
-import getDefault from '../../lib/testUtils';
+import getActualComponentFactory from '../../lib/testUtils';
 import Fork from '../fork';
 
-const getActualFork = getDefault(Fork, {});
+const getActualFork = getActualComponentFactory(Fork, {});
 
 it('should render', () => {
   getActualFork();

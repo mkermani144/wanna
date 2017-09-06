@@ -1,6 +1,6 @@
 /* eslint-env mocha, jest */
 
-import getDefault from '../../lib/testUtils';
+import getActualComponentFactory from '../../lib/testUtils';
 import EditTaskDialog from '../EditTaskDialog';
 
 const defaultProps = {
@@ -9,7 +9,7 @@ const defaultProps = {
   onRequestClose() {},
   onRequestEdit() {},
 };
-const getActualDialog = getDefault(EditTaskDialog, defaultProps);
+const getActualDialog = getActualComponentFactory(EditTaskDialog, defaultProps);
 
 it('should render', () => {
   getActualDialog();

@@ -1,6 +1,6 @@
 /* eslint-env mocha, jest */
 
-import getDefault from '../../lib/testUtils';
+import getActualComponentFactory from '../../lib/testUtils';
 import CalendarSystemDialog from '../CalendarSystemDialog';
 
 const defaultProps = {
@@ -8,7 +8,7 @@ const defaultProps = {
   calendarSystem: 'en-US',
   onRequestClose() {},
 };
-const getActualDialog = getDefault(CalendarSystemDialog, defaultProps);
+const getActualDialog = getActualComponentFactory(CalendarSystemDialog, defaultProps);
 
 jest.useFakeTimers();
 

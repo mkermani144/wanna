@@ -2,13 +2,13 @@
 
 import RepeatIcon from 'material-ui/svg-icons/av/repeat';
 
-import getDefault from '../../lib/testUtils';
+import getActualComponentFactory from '../../lib/testUtils';
 import Repeat from '../Repeat';
 
 const defaultProps = {
   repeat: 0,
 };
-const getActualRepeat = getDefault(Repeat, defaultProps);
+const getActualRepeat = getActualComponentFactory(Repeat, defaultProps);
 
 
 it('should render', () => {

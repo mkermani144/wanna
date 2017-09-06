@@ -1,6 +1,6 @@
 /* eslint-env mocha, jest */
 
-import getDefault from '../../lib/testUtils';
+import getActualComponentFactory from '../../lib/testUtils';
 import Sidebar from '../Sidebar';
 
 const defaultProps = {
@@ -8,7 +8,7 @@ const defaultProps = {
   currentTab: 'tasks',
   changeTab() {},
 };
-const getActualSidebar = getDefault(Sidebar, defaultProps);
+const getActualSidebar = getActualComponentFactory(Sidebar, defaultProps);
 
 it('should render', () => {
   getActualSidebar();

@@ -1,9 +1,9 @@
 /* eslint-env mocha, jest */
 
-import getDefault from '../../lib/testUtils';
+import getActualComponentFactory from '../../lib/testUtils';
 import Circle from '../Circle';
 
-const getActualCircle = getDefault(Circle, {});
+const getActualCircle = getActualComponentFactory(Circle, {});
 
 it('should render', () => {
   getActualCircle();

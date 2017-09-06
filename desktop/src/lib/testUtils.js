@@ -1,12 +1,17 @@
 import React from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { shallow } from 'enzyme';
-import r from 'ramda';
+import R from 'ramda';
 
-const getActual = (Component, defaultProps, props) => shallow(
-  <Component {...r.merge(defaultProps, props)} />,
+const componentory = (Component, props) => shallow(<Component {...props} />);
+const getActual = (...props) => R.mergeAll(props);
+
+const getActualComponentFactory = (Component, defaultProps) => R.compose(
+  R.partial(componentory, [Component]),
+  R.partial(getActual, [defaultProps]),
 );
 
-const getDefault = (...args) => r.partial(getActual, args);
-
-export default getDefault;
+export {
+  getActualComponentFactory as default,
+  getActual,
+};

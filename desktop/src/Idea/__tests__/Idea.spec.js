@@ -1,6 +1,6 @@
 /* eslint-env mocha, jest */
 
-import getDefault from '../../lib/testUtils';
+import getActualComponentFactory from '../../lib/testUtils';
 import Idea from '../Idea';
 
 const defaultProps = {
@@ -9,7 +9,7 @@ const defaultProps = {
   onRequestConvertDialogOpen() {},
   onRequestDelete() {},
 };
-const getActualIdea = getDefault(Idea, defaultProps);
+const getActualIdea = getActualComponentFactory(Idea, defaultProps);
 
 jest.useFakeTimers();
 

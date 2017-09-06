@@ -1,6 +1,6 @@
 /* eslint-env mocha, jest */
 
-import getDefault from '../../lib/testUtils';
+import getActualComponentFactory from '../../lib/testUtils';
 import FAB from '../FAB';
 
 const defaultProps = {
@@ -12,7 +12,7 @@ const defaultProps = {
   addTask() {},
   addIdea() {},
 };
-const getActualFAB = getDefault(FAB, defaultProps);
+const getActualFAB = getActualComponentFactory(FAB, defaultProps);
 
 it('should render', () => {
   getActualFAB();

@@ -1,9 +1,9 @@
 /* eslint-env mocha, jest */
 
-import getDefault from '../../lib/testUtils';
+import getActualComponentFactory from '../../lib/testUtils';
 import Estimation from '../Estimation';
 
-const getActualEstimation = getDefault(Estimation, {});
+const getActualEstimation = getActualComponentFactory(Estimation, {});
 
 it('should render', () => {
   getActualEstimation();
