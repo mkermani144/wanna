@@ -12,19 +12,19 @@ const getActualHelp = getActualComponentFactory(Help, defaultProps);
 it('should render', () => {
   getActualHelp();
 });
-it('should be a <div />', () => {
+it('should be a div', () => {
   const wrapper = getActualHelp();
   expect(wrapper.is('div.Help')).toBe(true);
 });
-it('should have 1 <List />', () => {
+it('should have 1 List', () => {
   const wrapper = getActualHelp();
   expect(wrapper.find('List').length).toBe(1);
 });
-it('should have 3 <ListItem />', () => {
+it('should have 3 ListItem', () => {
   const wrapper = getActualHelp();
   expect(wrapper.find('ListItem').length).toBe(3);
 });
-it('should have 3 <Divider />', () => {
+it('should have 3 Divider', () => {
   const wrapper = getActualHelp();
   expect(wrapper.find('Divider').length).toBe(3);
 });

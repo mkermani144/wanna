@@ -13,16 +13,16 @@ const getActualSidebar = getActualComponentFactory(Sidebar, defaultProps);
 it('should render', () => {
   getActualSidebar();
 });
-it('should be a <Drawer />', () => {
+it('should be a Drawer', () => {
   const wrapper = getActualSidebar();
   expect(wrapper.is('Drawer')).toBe(true);
 });
-it('should have 4 <ListItem />', () => {
+it('should have 4 ListItem', () => {
   const wrapper = getActualSidebar();
   expect(wrapper.find('ListItem').length).toBe(4);
 });
 
-it('should set drawer width based on props', () => {
+it('should set its width based on props', () => {
   const wrapper = getActualSidebar({
     expanded: false,
   });
@@ -47,35 +47,35 @@ it('should highlight help tab if current tab is help', () => {
   expect(wrapper.find('ListItem').at(3).prop('style')).not.toBeNull();
 });
 
-it('should call changeTab when clicking on tasks tab', () => {
+it('should call changeTab inside tasks ListItem onClick', () => {
   const wrapper = getActualSidebar({
     changeTab(tab) {
       expect(tab).toBe('tasks');
     },
   });
-  wrapper.find('ListItem').at(0).simulate('click');
+  wrapper.find('ListItem').at(0).props().onClick();
 });
-it('should call changeTab when clicking on ideas tab', () => {
+it('should call changeTab inside ideas ListItem onClick', () => {
   const wrapper = getActualSidebar({
     changeTab(tab) {
       expect(tab).toBe('ideas');
     },
   });
-  wrapper.find('ListItem').at(1).simulate('click');
+  wrapper.find('ListItem').at(1).props().onClick();
 });
-it('should call changeTab when clicking on settings tab', () => {
+it('should call changeTab inside settings ListItem onClick', () => {
   const wrapper = getActualSidebar({
     changeTab(tab) {
       expect(tab).toBe('settings');
     },
   });
-  wrapper.find('ListItem').at(2).simulate('click');
+  wrapper.find('ListItem').at(2).props().onClick();
 });
-it('should call changeTab when clicking on help tab', () => {
+it('should call changeTab inside help ListItem onClick', () => {
   const wrapper = getActualSidebar({
     changeTab(tab) {
       expect(tab).toBe('help');
     },
   });
-  wrapper.find('ListItem').at(3).simulate('click');
+  wrapper.find('ListItem').at(3).props().onClick();
 });

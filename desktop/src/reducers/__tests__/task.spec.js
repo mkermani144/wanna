@@ -42,11 +42,22 @@ const defaultState = [
 const getExpectedState = (props = {}) => Object.assign([], defaultState, props);
 
 it('should return some state if no state and action is provided', () => {
-  const actual = taskReducer(undefined, {});
   const expected = [];
+  const actual = taskReducer(undefined, {});
   expect(actual).toEqual(expected);
 });
 it('should add new task (via FAB)', () => {
+  const expected = getExpectedState({
+    [defaultState.length]: {
+      task: 'A nice task',
+      start: 0,
+      end: 86400000,
+      estimation: 30,
+      repetition: '',
+      done: false,
+      id: 'd',
+    },
+  });
   const action = FABAddTask({
     task: 'A nice task',
     start: 0,
@@ -57,6 +68,9 @@ it('should add new task (via FAB)', () => {
     id: 'd',
   });
   const actual = taskReducer(defaultState, action);
+  expect(actual).toEqual(expected);
+});
+it('should add new task (via Idea)', () => {
   const expected = getExpectedState({
     [defaultState.length]: {
       task: 'A nice task',
@@ -68,9 +82,6 @@ it('should add new task (via FAB)', () => {
       id: 'd',
     },
   });
-  expect(actual).toEqual(expected);
-});
-it('should add new task (via idea)', () => {
   const action = ideaAddTask({
     task: 'A nice task',
     start: 0,
@@ -81,22 +92,9 @@ it('should add new task (via idea)', () => {
     id: 'd',
   });
   const actual = taskReducer(defaultState, action);
-  const expected = getExpectedState({
-    [defaultState.length]: {
-      task: 'A nice task',
-      start: 0,
-      end: 86400000,
-      estimation: 30,
-      repetition: '',
-      done: false,
-      id: 'd',
-    },
-  });
   expect(actual).toEqual(expected);
 });
 it('should do non-repeating task', () => {
-  const action = doTask(0);
-  const actual = taskReducer(defaultState, action);
   const expected = getExpectedState({
     0: {
       task: 'A cool task',
@@ -108,11 +106,11 @@ it('should do non-repeating task', () => {
       id: 'a',
     },
   });
+  const action = doTask(0);
+  const actual = taskReducer(defaultState, action);
   expect(actual).toEqual(expected);
 });
 it('should do repeating task', () => {
-  const action = doTask(1);
-  const actual = taskReducer(defaultState, action);
   const expected = getExpectedState({
     1: {
       task: 'Another cool task',
@@ -124,11 +122,11 @@ it('should do repeating task', () => {
       id: 'b',
     },
   });
+  const action = doTask(1);
+  const actual = taskReducer(defaultState, action);
   expect(actual).toEqual(expected);
 });
 it('should edit task', () => {
-  const action = editTask(1, { task: 'A nice task' });
-  const actual = taskReducer(defaultState, action);
   const expected = getExpectedState({
     1: {
       task: 'A nice task',
@@ -140,13 +138,15 @@ it('should edit task', () => {
       id: 'b',
     },
   });
+  const action = editTask(1, { task: 'A nice task' });
+  const actual = taskReducer(defaultState, action);
   expect(actual).toEqual(expected);
 });
 it('should delete task', () => {
-  const action = deleteTask(1);
-  const actual = taskReducer(defaultState, action);
   const expected = getExpectedState({
     1: undefined,
   }).filter(state => state);
+  const action = deleteTask(1);
+  const actual = taskReducer(defaultState, action);
   expect(actual).toEqual(expected);
 });

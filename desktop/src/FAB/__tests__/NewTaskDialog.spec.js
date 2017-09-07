@@ -16,11 +16,11 @@ const getActualDialog = getActualComponentFactory(NewTaskDialog, defaultProps);
 it('should render', () => {
   getActualDialog();
 });
-it('should be a <div />', () => {
+it('should be a div', () => {
   const wrapper = getActualDialog();
   expect(wrapper.is('div.NewTaskDialog')).toBe(true);
 });
-it('should have a <Dialog />', () => {
+it('should have 1 Dialog', () => {
   const wrapper = getActualDialog();
   expect(wrapper.find('Dialog').length).toBe(1);
 });
@@ -32,7 +32,7 @@ it('should set DatePicker utils based on props', () => {
   expect(wrapper.find('DatePicker').at(0).prop('utils')).toBe(persianUtils);
 });
 
-it('should call onRequestClose when clicking cancel FlatButton', (done) => {
+it('should call onRequestClose inside cancel FlatButton onTouchTap', (done) => {
   const wrapper = getActualDialog({
     onRequestClose() {
       done();
@@ -40,7 +40,7 @@ it('should call onRequestClose when clicking cancel FlatButton', (done) => {
   });
   wrapper.find('Dialog').prop('actions')[2].props.onTouchTap();
 });
-it('should call onRequestClose when clicking finish FlatButton', (done) => {
+it('should call onRequestClose inside finish FlatButton onTouchTap', (done) => {
   const wrapper = getActualDialog({
     onRequestClose() {
       done();
@@ -48,7 +48,7 @@ it('should call onRequestClose when clicking finish FlatButton', (done) => {
   });
   wrapper.find('Dialog').prop('actions')[0].props.onTouchTap();
 });
-it('should call onRequestAdd when clicking add FlatButton', (done) => {
+it('should call onRequestAdd inside add FlatButton onTouchTap', (done) => {
   const wrapper = getActualDialog({
     onRequestAdd() {
       done();
@@ -56,7 +56,7 @@ it('should call onRequestAdd when clicking add FlatButton', (done) => {
   });
   wrapper.find('Dialog').prop('actions')[1].props.onTouchTap();
 });
-it('should call onRequestAdd when clicking finish FlatButton', (done) => {
+it('should call onRequestAdd inside finish FlatButton onTouchTap', (done) => {
   const wrapper = getActualDialog({
     onRequestAdd() {
       done();

@@ -8,7 +8,7 @@ const getActualEstimation = getActualComponentFactory(Estimation, {});
 it('should render', () => {
   getActualEstimation();
 });
-it('should be a <small />', () => {
+it('should be a small', () => {
   const wrapper = getActualEstimation();
   expect(wrapper.is('small.Estimation')).toEqual(true);
 });

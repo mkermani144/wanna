@@ -19,37 +19,37 @@ const defaultState = {
 const getExpectedState = (props = {}) => Object.assign({}, defaultState, props);
 
 it('should return some state if no state and action is provided', () => {
-  const actual = appUIReducer(undefined, {});
   const expected = {};
+  const actual = appUIReducer(undefined, {});
   expect(actual).toEqual(expected);
 });
-it('should make `fabRaised` true (idea)', () => {
+it('should make fabRaised true (idea)', () => {
+  const expected = getExpectedState({ fabRaised: true });
   const action = ideaRaiseFab();
   const actual = appUIReducer(defaultState, action);
-  const expected = getExpectedState({ fabRaised: true });
   expect(actual).toEqual(expected);
 });
-it('should make `fabRaised` false (idea)', () => {
+it('should make fabRaised false (idea)', () => {
+  const expected = getExpectedState({ fabRaised: false });
   const action = ideaLowerFab();
   const actual = appUIReducer(defaultState, action);
-  const expected = getExpectedState({ fabRaised: false });
   expect(actual).toEqual(expected);
 });
-it('should make `fabRaised` true (task)', () => {
+it('should make fabRaised true (task)', () => {
+  const expected = getExpectedState({ fabRaised: true });
   const action = taskRaiseFab();
   const actual = appUIReducer(defaultState, action);
-  const expected = getExpectedState({ fabRaised: true });
   expect(actual).toEqual(expected);
 });
-it('should make `fabRaised` false (task)', () => {
+it('should make fabRaised false (task)', () => {
+  const expected = getExpectedState({ fabRaised: false });
   const action = taskLowerFab();
   const actual = appUIReducer(defaultState, action);
-  const expected = getExpectedState({ fabRaised: false });
   expect(actual).toEqual(expected);
 });
-it('should update `currentTab`', () => {
+it('should update currentTab', () => {
+  const expected = getExpectedState({ currentTab: 'ideas' });
   const action = changeTab('ideas');
   const actual = appUIReducer(defaultState, action);
-  const expected = getExpectedState({ currentTab: 'ideas' });
   expect(actual).toEqual(expected);
 });

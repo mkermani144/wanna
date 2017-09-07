@@ -2,42 +2,43 @@
 
 import classify from '../classify';
 
-const now = Date.now();
+const todayStart = (new Date()).setHours(0, 0, 0, 0);
+
 const tasks = [
   {
     task: 'an overdue task',
-    start: now - (2 * 86400000),
-    end: now - 86400000,
+    start: new Date(todayStart - (2 * 86400000)),
+    end: new Date(todayStart - (86400000 - 1)),
     done: false,
   },
   {
     task: 'an open task with due tomorrow',
-    start: now - 86400000,
-    end: now + (2 * 86400000),
+    start: new Date(todayStart - 86400000),
+    end: new Date(todayStart + ((2 * 86400000) - 1)),
     done: false,
   },
   {
     task: 'an open task with due tomorrow',
-    start: now - 86400000,
-    end: now + (3 * 86400000),
+    start: new Date(todayStart - 86400000),
+    end: new Date(todayStart + ((3 * 86400000) - 1)),
     done: false,
   },
   {
     task: 'an open task with due today',
-    start: now - 86400000,
-    end: now + 86400000,
+    start: new Date(todayStart - 86400000),
+    end: new Date(todayStart + (86400000 - 1)),
     done: false,
   },
   {
     task: 'a not-yet task',
-    start: now + 86400000,
-    end: now + (2 * 86400000),
+    start: new Date(todayStart + 86400000),
+    end: new Date(todayStart + ((2 * 86400000) - 1)),
     done: false,
   },
   {
     task: 'a done task',
-    start: now - 86400000,
-    end: now,
+    start: new Date(todayStart - 86400000),
+    end: new Date(todayStart - 1),
     done: true,
   },
 ];

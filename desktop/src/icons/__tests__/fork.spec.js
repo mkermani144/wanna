@@ -8,7 +8,7 @@ const getActualFork = getActualComponentFactory(Fork, {});
 it('should render', () => {
   getActualFork();
 });
-it('should contain an <svg />', () => {
+it('should have 1 path', () => {
   const wrapper = getActualFork();
   expect(wrapper.find('path').length).toBeGreaterThan(0);
 });

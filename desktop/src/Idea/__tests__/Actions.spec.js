@@ -8,7 +8,7 @@ const getActualActions = getActualComponentFactory(Actions, {});
 it('should render', () => {
   getActualActions();
 });
-it('should have 3 <IconButton />', () => {
+it('should have 3 IconButton', () => {
   const wrapper = getActualActions();
   expect(wrapper.find('IconButton').length).toBe(3);
 });

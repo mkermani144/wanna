@@ -11,15 +11,15 @@ const getActualDueDate = getActualComponentFactory(DueDate, defaultProps);
 it('should render', () => {
   getActualDueDate();
 });
-it('should be a <span />', () => {
+it('should be a span', () => {
   const wrapper = getActualDueDate();
   expect(wrapper.is('span.DueDate')).toEqual(true);
 });
-it('should show icon if due date is tomorrow', () => {
+it('should have a small if due is tomorrow', () => {
   const wrapper = getActualDueDate({ due: 'tomorrow' });
   expect(wrapper.find('small').length).toBeGreaterThan(0);
 });
-it('should show icon if due date is today', () => {
+it('should have a small if due is today', () => {
   const wrapper = getActualDueDate({ due: 'today' });
   expect(wrapper.find('small').length).toBeGreaterThan(0);
 });

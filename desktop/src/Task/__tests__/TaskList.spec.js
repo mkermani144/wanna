@@ -8,26 +8,26 @@ const defaultProps = {
   tasks: [
     {
       task: 'an overdue task',
-      start: now - (2 * 86400000),
-      end: now - 86400000,
+      start: new Date(now - (2 * 86400000)),
+      end: new Date(now - 86400000),
       done: false,
     },
     {
       task: 'an open task',
-      start: now - 86400000,
-      end: now + 86400000,
+      start: new Date(now - 86400000),
+      end: new Date(now + 86400000),
       done: false,
     },
     {
       task: 'a not-yet task',
-      start: now + 86400000,
-      end: now + (2 * 86400000),
+      start: new Date(now + 86400000),
+      end: new Date(now + (2 * 86400000)),
       done: false,
     },
     {
       task: 'a done task',
-      start: now - 86400000,
-      end: now,
+      start: new Date(now - 86400000),
+      end: new Date(now),
       done: true,
     },
   ],
@@ -49,72 +49,72 @@ it('should be a div', () => {
   const wrapper = getActualTaskList();
   expect(wrapper.is('div.TaskList')).toBe(true);
 });
-it('should have 2 <Task />\'s', () => {
+it('should have 2 Task', () => {
   const wrapper = getActualTaskList();
   expect(wrapper.find('Task').length).toBe(4);
 });
-it('should have 4 <Subheader />\'s', () => {
+it('should have 4 Subheader', () => {
   const wrapper = getActualTaskList();
   expect(wrapper.find('Subheader').length).toBe(4);
 });
-it('should have 4 <Divider />\'s', () => {
+it('should have 4 Divider', () => {
   const wrapper = getActualTaskList();
   expect(wrapper.find('Divider').length).toBe(4);
 });
-it('should have two <EditTaskDialog />\'s', () => {
+it('should have 2 EditTaskDialog', () => {
   const wrapper = getActualTaskList();
   expect(wrapper.find('EditTaskDialog').length).toBe(1);
 });
-it('should have two <Snackbar />\'s', () => {
+it('should have 2 Snackbar', () => {
   const wrapper = getActualTaskList();
   expect(wrapper.find('Snackbar').length).toBe(1);
 });
 
-it('should have no <Task />\'s if props.tasks is empty', () => {
+it('should have 0 Task if tasks is empty', () => {
   const wrapper = getActualTaskList({
     tasks: [],
   });
   expect(wrapper.find('Task').length).toBe(0);
 });
-it('should have no <Divider />\'s if props.tasks is empty', () => {
+it('should have 0 Divider if tasks is empty', () => {
   const wrapper = getActualTaskList({
     tasks: [],
   });
   expect(wrapper.find('Divider').length).toBe(0);
 });
-it('should have no <EditTaskDialog />\'s if props.tasks is empty', () => {
+it('should have 0 EditTaskDialog if tasks is empty', () => {
   const wrapper = getActualTaskList({
     tasks: [],
   });
   expect(wrapper.find('EditTaskDialog').length).toBe(0);
 });
-it('should be a <div /> if props.tasks is empty', () => {
+it('should be a div if tasks is empty', () => {
   const wrapper = getActualTaskList({
     tasks: [],
   });
   expect(wrapper.is('div.tasks-empty-state')).toBe(true);
 });
-it('should have 1 <Snackbar /> if props.tasks is empty', () => {
+it('should have 1 Snackbar if tasks is empty', () => {
   const wrapper = getActualTaskList({
     tasks: [],
   });
   expect(wrapper.find('Snackbar').length).toBe(1);
 });
 
-it('should set left margin based on props', () => {
+it('should set left margin style based on props', () => {
   const wrapper = getActualTaskList({
     sidebarExpanded: false,
   });
   expect(wrapper.prop('style').marginLeft).toBe(56);
 });
-it('should set left margin based on props if no idea is provided', () => {
+it('should set left margin style based on props if tasks is empty', () => {
   const wrapper = getActualTaskList({
     sidebarExpanded: false,
     tasks: [],
   });
   expect(wrapper.prop('style').marginLeft).toBe(56);
 });
-it('should not show not-yet tasks if props.showNotYetTasks is false', () => {
+it('should not show not-yet tasks if showNotYetTasks is false', () => {
   const wrapper = getActualTaskList({
     showNotYetTasks: false,
   });
@@ -123,7 +123,7 @@ it('should not show not-yet tasks if props.showNotYetTasks is false', () => {
   expect(wrapper.find('Task').length).toBe(3);
 });
 
-it('should call props.editTask when calling EditTaskDialog onRequestEdit', () => {
+it('should call editTask inside EditTaskDialog onRequestEdit', () => {
   const wrapper = getActualTaskList({
     editTask(index, { task }) {
       expect(task).toBe('a cool edited task');
@@ -131,7 +131,7 @@ it('should call props.editTask when calling EditTaskDialog onRequestEdit', () =>
   });
   wrapper.find('EditTaskDialog').props().onRequestEdit({ task: 'a cool edited task' });
 });
-it('should call props.deleteTask when calling Task onRequestDelete', () => {
+it('should call deleteTask inside Task onRequestDelete', () => {
   const wrapper = getActualTaskList({
     deleteTask(index) {
       expect(index).toBe(2);
@@ -139,7 +139,7 @@ it('should call props.deleteTask when calling Task onRequestDelete', () => {
   });
   wrapper.find('Task').at(0).props().onRequestDelete(2);
 });
-it('should call props.doTask when calling Task onRequestDo', () => {
+it('should call doTask inside Task onRequestDo', () => {
   const wrapper = getActualTaskList({
     doTask(index) {
       expect(index).toBe(2);
@@ -147,7 +147,7 @@ it('should call props.doTask when calling Task onRequestDo', () => {
   });
   wrapper.find('Task').at(0).props().onRequestDo(2);
 });
-it('should call props.raiseFab when calling Task onRequestSnackbar', (done) => {
+it('should call raiseFab inside Task onRequestSnackbar', (done) => {
   const wrapper = getActualTaskList({
     raiseFab() {
       done();
@@ -155,7 +155,7 @@ it('should call props.raiseFab when calling Task onRequestSnackbar', (done) => {
   });
   wrapper.find('Task').at(0).props().onRequestSnackbar();
 });
-it('should call props.lowerFab when calling Snackbar onRequestClose', (done) => {
+it('should call lowerFab inside Snackbar onRequestClose', (done) => {
   const wrapper = getActualTaskList({
     lowerFab() {
       done();
@@ -163,7 +163,7 @@ it('should call props.lowerFab when calling Snackbar onRequestClose', (done) => 
   });
   wrapper.find('Snackbar').props().onRequestClose();
 });
-it('should call props.undo when calling Snackbar onActionTouchTap', (done) => {
+it('should call undo inside Snackbar onActionTouchTap', (done) => {
   const wrapper = getActualTaskList({
     undo() {
       done();
@@ -182,11 +182,6 @@ it('should set EditTaskDialog task based on state', () => {
   wrapper.find('Task').at(0).props().onRequestEditTaskOpen(1);
   expect(wrapper.find('EditTaskDialog').prop('task')).toBe('an open task');
 });
-// it('should set ConvertIdeaDialog open based on state', () => {
-//   const wrapper = getActualIdeaList();
-//   wrapper.find('Idea').at(0).props().onRequestConvertDialogOpen();
-//   expect(wrapper.find('ConvertIdeaDialog').prop('open')).toBe(true);
-// });
 it('should set Snackbar open based on state', () => {
   const wrapper = getActualTaskList();
   wrapper.find('Task').at(0).props().onRequestSnackbar();

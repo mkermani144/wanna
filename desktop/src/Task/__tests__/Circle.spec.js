@@ -8,7 +8,7 @@ const getActualCircle = getActualComponentFactory(Circle, {});
 it('should render', () => {
   getActualCircle();
 });
-it('should be a <p />', () => {
+it('should be 1 p', () => {
   const wrapper = getActualCircle();
   expect(wrapper.is('p.Circle')).toEqual(true);
 });

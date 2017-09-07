@@ -16,15 +16,15 @@ jest.useFakeTimers();
 it('should render', () => {
   getActualIdea();
 });
-it('should be a <div />', () => {
+it('should be a div', () => {
   const wrapper = getActualIdea();
   expect(wrapper.is('div.Idea')).toBe(true);
 });
-it('should have a <p />', () => {
+it('should have 1 p', () => {
   const wrapper = getActualIdea();
   expect(wrapper.find('p').length).toBe(1);
 });
-it('should have an <Actions />', () => {
+it('should have 1 Actions', () => {
   const wrapper = getActualIdea();
   expect(wrapper.find('Actions').length).toBe(1);
 });
@@ -34,7 +34,7 @@ it('should set actions onRequestEditDialogOpen based on props', (done) => {
       done();
     },
   });
-  wrapper.find('Actions').prop('onRequestEditDialogOpen')();
+  wrapper.find('Actions').props().onRequestEditDialogOpen();
 });
 it('should set actions onRequestConvertDialogOpen based on props', (done) => {
   const wrapper = getActualIdea({
@@ -42,27 +42,27 @@ it('should set actions onRequestConvertDialogOpen based on props', (done) => {
       done();
     },
   });
-  wrapper.find('Actions').prop('onRequestConvertDialogOpen')();
+  wrapper.find('Actions').props().onRequestConvertDialogOpen();
 });
-it('should pass props.index when editing idea', () => {
+it('should call onRequestEditDialogOpen inside Actions onRequestEditDialogOpen', () => {
   const wrapper = getActualIdea({
     index: 5,
     onRequestEditDialogOpen(index) {
       expect(index).toBe(5);
     },
   });
-  wrapper.find('Actions').prop('onRequestEditDialogOpen')();
+  wrapper.find('Actions').props().onRequestEditDialogOpen();
 });
-it('should pass props.index when converting idea', () => {
+it('should call onRequestConvertDialogOpen inside Actions onRequestConvertDialogOpen', () => {
   const wrapper = getActualIdea({
     index: 5,
     onRequestConvertDialogOpen(index) {
       expect(index).toBe(5);
     },
   });
-  wrapper.find('Actions').prop('onRequestConvertDialogOpen')();
+  wrapper.find('Actions').props().onRequestConvertDialogOpen();
 });
-it('should call onRequestDelete when calling Actions onRequestDelete', (done) => {
+it('should call onRequestDelete inside Actions onRequestDelete', (done) => {
   const wrapper = getActualIdea({
     onRequestDelete() {
       done();

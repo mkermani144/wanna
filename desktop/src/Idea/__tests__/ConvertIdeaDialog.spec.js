@@ -16,34 +16,34 @@ const getActualDialog = getActualComponentFactory(ConvertIdeaDialog, defaultProp
 it('should render', () => {
   getActualDialog();
 });
-it('should be a <div />', () => {
+it('should be a div', () => {
   const wrapper = getActualDialog();
   expect(wrapper.is('div.ConvertIdeaDialog')).toBe(true);
 });
-it('should have a <Dialog />', () => {
+it('should have 1 Dialog', () => {
   const wrapper = getActualDialog();
   expect(wrapper.find('Dialog').length).toBe(1);
 });
-it('should show/hide <Dialog /> based on props', () => {
+it('should set Dialog open based on props', () => {
   const wrapper = getActualDialog({
     open: true,
   });
   expect(wrapper.find('Dialog').prop('open')).toBe(true);
 });
-it('should set date picker calendar system based on props', () => {
+it('should set DatePicker locale based on props', () => {
   const wrapper = getActualDialog({
     calendarSystem: 'fa-IR',
   });
   expect(wrapper.find('DatePicker').at(0).prop('locale')).toBe('fa-IR');
 });
-it('should set date picker first day of week based on props', () => {
+it('should set DatePicker firstDayOfWeek based on props', () => {
   const wrapper = getActualDialog({
     firstDayOfWeek: 6,
   });
   expect(wrapper.find('DatePicker').at(0).prop('firstDayOfWeek')).toBe(6);
 });
 
-it('should call onRequestClose when clicking cancel FlatButton', (done) => {
+it('should call onRequestClose inside cancel FlatButton onTouchTap', (done) => {
   const wrapper = getActualDialog({
     onRequestClose() {
       done();
@@ -51,7 +51,7 @@ it('should call onRequestClose when clicking cancel FlatButton', (done) => {
   });
   wrapper.find('Dialog').prop('actions')[2].props.onTouchTap();
 });
-it('should call onRequestConvert when clicking convert FlatButton', (done) => {
+it('should call onRequestConvert inside convert FlatButton onTouchTap', (done) => {
   const wrapper = getActualDialog({
     onRequestConvert() {
       done();
@@ -59,7 +59,7 @@ it('should call onRequestConvert when clicking convert FlatButton', (done) => {
   });
   wrapper.find('Dialog').prop('actions')[1].props.onTouchTap();
 });
-it('should call onRequestDelete when clicking finish FlatButton', (done) => {
+it('should call onRequestDelete inside finish FlatButton onTouchTap', (done) => {
   const wrapper = getActualDialog({
     onRequestDelete() {
       done();

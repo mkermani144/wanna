@@ -28,75 +28,75 @@ const getActualIdeaList = getActualComponentFactory(IdeaList, defaultProps);
 it('should render', () => {
   getActualIdeaList();
 });
-it('should be a <div />', () => {
+it('should be a div', () => {
   const wrapper = getActualIdeaList();
   expect(wrapper.is('div.IdeaList')).toBe(true);
 });
-it('should have two <Idea />\'s', () => {
+it('should have 2 Idea', () => {
   const wrapper = getActualIdeaList();
   expect(wrapper.find('Idea').length).toBe(2);
 });
-it('should have two <Divider />\'s', () => {
+it('should have 2 Divider', () => {
   const wrapper = getActualIdeaList();
   expect(wrapper.find('Divider').length).toBe(2);
 });
-it('should have two <EditIdeaDialog />\'s', () => {
+it('should have 2 EditIdeaDialog', () => {
   const wrapper = getActualIdeaList();
   expect(wrapper.find('EditIdeaDialog').length).toBe(1);
 });
-it('should have two <ConvertIdeaDialog />\'s', () => {
+it('should have 2 ConvertIdeaDialog', () => {
   const wrapper = getActualIdeaList();
   expect(wrapper.find('ConvertIdeaDialog').length).toBe(1);
 });
-it('should have two <Snackbar />\'s', () => {
+it('should have 2 Snackbar', () => {
   const wrapper = getActualIdeaList();
   expect(wrapper.find('Snackbar').length).toBe(1);
 });
 
-it('should have no <Idea />\'s if props.ideas is empty', () => {
+it('should have 0 Idea if ideas is empty', () => {
   const wrapper = getActualIdeaList({
     ideas: [],
   });
   expect(wrapper.find('Idea').length).toBe(0);
 });
-it('should have no <Divider />\'s if props.ideas is empty', () => {
+it('should have 0 Divider if ideas is empty', () => {
   const wrapper = getActualIdeaList({
     ideas: [],
   });
   expect(wrapper.find('Divider').length).toBe(0);
 });
-it('should have no <EditIdeaDialog />\'s if props.ideas is empty', () => {
+it('should have 0 EditIdeaDialog if ideas is empty', () => {
   const wrapper = getActualIdeaList({
     ideas: [],
   });
   expect(wrapper.find('EditIdeaDialog').length).toBe(0);
 });
-it('should have no <ConvertIdeaDialog />\'s if props.ideas is empty', () => {
+it('should have 0 ConvertIdeaDialog if ideas is empty', () => {
   const wrapper = getActualIdeaList({
     ideas: [],
   });
   expect(wrapper.find('ConvertIdeaDialog').length).toBe(0);
 });
-it('should be a <div /> if props.ideas is empty', () => {
+it('should be a div if ideas is empty', () => {
   const wrapper = getActualIdeaList({
     ideas: [],
   });
   expect(wrapper.is('div.ideas-empty-state')).toBe(true);
 });
-it('should have 1 <Snackbar /> if props.ideas is empty', () => {
+it('should have 1 Snackbar if ideas is empty', () => {
   const wrapper = getActualIdeaList({
     ideas: [],
   });
   expect(wrapper.find('Snackbar').length).toBe(1);
 });
 
-it('should set left margin based on props', () => {
+it('should set left margin style based on props', () => {
   const wrapper = getActualIdeaList({
     sidebarExpanded: false,
   });
   expect(wrapper.prop('style').marginLeft).toBe(56);
 });
-it('should set left margin based on props if no idea is provided', () => {
+it('should set left margin style based on props if idea is empty', () => {
   const wrapper = getActualIdeaList({
     sidebarExpanded: false,
     ideas: [],
@@ -116,7 +116,7 @@ it('should set ConvertIdeaDialog firstDayOfWeek based on props', () => {
   expect(wrapper.find('ConvertIdeaDialog').prop('firstDayOfWeek')).toBe(6);
 });
 
-it('should call editIdea when handling edit idea request', () => {
+it('should call editIdea inside EditIdeaDialog onRequestEdit', () => {
   const wrapper = getActualIdeaList({
     editIdea(index, ideaInfo) {
       expect(index).toBe(2);
@@ -126,7 +126,7 @@ it('should call editIdea when handling edit idea request', () => {
   wrapper.find('Idea').at(0).props().onRequestEditDialogOpen(2);
   wrapper.find('EditIdeaDialog').props().onRequestEdit({ idea: 'a cool idea' });
 });
-it('should call deleteIdea when calling Idea onRequestDelete', () => {
+it('should call deleteIdea inside Idea onRequestDelete', () => {
   const wrapper = getActualIdeaList({
     deleteIdea(index) {
       expect(index).toBe(3);
@@ -134,7 +134,7 @@ it('should call deleteIdea when calling Idea onRequestDelete', () => {
   });
   wrapper.find('Idea').at(0).props().onRequestDelete(3);
 });
-it('should call deleteIdea when calling ConvertIdeaDialog onRequestDelete', () => {
+it('should call deleteIdea inside ConvertIdeaDialog onRequestDelete', () => {
   const wrapper = getActualIdeaList({
     deleteIdea(index) {
       expect(index).toBe(3);
@@ -143,7 +143,7 @@ it('should call deleteIdea when calling ConvertIdeaDialog onRequestDelete', () =
   wrapper.find('Idea').at(0).props().onRequestConvertDialogOpen(3);
   wrapper.find('ConvertIdeaDialog').props().onRequestDelete(3);
 });
-it('should call addTask when handling convert idea request', () => {
+it('should call addTask inside ConvertIdeaDialog onRequestConvert', () => {
   const wrapper = getActualIdeaList({
     addTask(taskInfo) {
       expect(taskInfo.done).toBe(false);
@@ -164,7 +164,7 @@ it('should call addTask when handling convert idea request', () => {
     task: 'a cool task',
   });
 });
-it('should call raiseFab when calling Idea onRequestClose', (done) => {
+it('should call raiseFab inside Idea onRequestSnackbar', (done) => {
   const wrapper = getActualIdeaList({
     raiseFab() {
       done();
@@ -172,7 +172,7 @@ it('should call raiseFab when calling Idea onRequestClose', (done) => {
   });
   wrapper.find('Idea').at(0).props().onRequestSnackbar();
 });
-it('should call lowerFab when calling Snackbar onRequestClose', (done) => {
+it('should call lowerFab inside Snackbar onRequestClose', (done) => {
   const wrapper = getActualIdeaList({
     lowerFab() {
       done();
@@ -180,7 +180,7 @@ it('should call lowerFab when calling Snackbar onRequestClose', (done) => {
   });
   wrapper.find('Snackbar').props().onRequestClose();
 });
-it('should call undo when calling Snackbar onActionTouchTap', (done) => {
+it('should call undo inside Snackbar onActionTouchTap', (done) => {
   const wrapper = getActualIdeaList({
     undo() {
       done();

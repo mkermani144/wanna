@@ -17,23 +17,23 @@ const getActualFAB = getActualComponentFactory(FAB, defaultProps);
 it('should render', () => {
   getActualFAB();
 });
-it('should be a <HotKeys />', () => {
+it('should be a HotKeys', () => {
   const wrapper = getActualFAB();
   expect(wrapper.is('HotKeys')).toBe(true);
 });
-it('should have a <SpeedDial />', () => {
+it('should have 1 SpeedDial', () => {
   const wrapper = getActualFAB();
   expect(wrapper.find('SpeedDial').length).toBe(1);
 });
-it('should have 2 <SpeedDialItem />', () => {
+it('should have 2 SpeedDialItem', () => {
   const wrapper = getActualFAB();
   expect(wrapper.find('SpeedDialItem').length).toBe(2);
 });
-it('should have a <NewTaskDialog />', () => {
+it('should have 1 NewTaskDialog', () => {
   const wrapper = getActualFAB();
   expect(wrapper.find('NewTaskDialog').length).toBe(1);
 });
-it('should have a <NewIdeaDialog />', () => {
+it('should have 1 NewIdeaDialog', () => {
   const wrapper = getActualFAB();
   expect(wrapper.find('NewIdeaDialog').length).toBe(1);
 });
@@ -58,7 +58,7 @@ it('should set NewTaskDialog firstDayOfWeek based on props', () => {
   expect(wrapper.find('NewTaskDialog').prop('firstDayOfWeek')).toBe(6);
 });
 
-it('should call props.addTask inside NewTaskDialog onRequestAdd', () => {
+it('should call addTask inside NewTaskDialog onRequestAdd', () => {
   const wrapper = getActualFAB({
     addTask(task) {
       expect(task).toMatchObject({
@@ -81,7 +81,7 @@ it('should call props.addTask inside NewTaskDialog onRequestAdd', () => {
     repetitionValue: 1,
   });
 });
-it('should call props.addIdea inside NewIdeaDialog onRequestAdd', () => {
+it('should call addIdea inside NewIdeaDialog onRequestAdd', () => {
   const wrapper = getActualFAB({
     addIdea(idea) {
       expect(idea).toMatchObject({

@@ -3,7 +3,6 @@
 import rootReducer from '../reducer';
 
 it('should return some state if no state and action is provided', () => {
-  const actual = rootReducer(undefined, {});
   const expected = {
     tasks: {
       history: {
@@ -20,5 +19,6 @@ it('should return some state if no state and action is provided', () => {
     appProperties: {},
     appUI: {},
   };
+  const actual = rootReducer(undefined, {});
   expect(actual).toEqual(expected);
 });
