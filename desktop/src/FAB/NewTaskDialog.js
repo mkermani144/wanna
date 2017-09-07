@@ -56,7 +56,7 @@ class NewTaskDialog extends PureComponent {
   }
   handleEndChange = (e, end) => {
     const endClone = new Date(end);
-    endClone.setHours(0, 0, 0, 0);
+    endClone.setHours(23, 59, 59, 999);
     this.setState({
       end: endClone,
     });

@@ -1,7 +1,7 @@
 const setDue = (remaining) => {
-  if (remaining <= 86400000) {
+  if (remaining < 86400000) {
     return 'today';
-  } else if (remaining <= 172800000) {
+  } else if (remaining < 172800000) {
     return 'tomorrow';
   }
   return '';
@@ -19,7 +19,9 @@ const classify = (tasks) => {
   };
   const now = Date.now();
   tasks.forEach((task, index) => {
-    const { start, end } = task;
+    let { start, end } = task;
+    start = Date.parse(start);
+    end = Date.parse(end) + 999;
     if (task.done) {
       classifiedTasks.done.push({
         ...task,
