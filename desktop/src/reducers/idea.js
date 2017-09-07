@@ -1,5 +1,3 @@
-import undoable, { includeAction } from 'redux-undo';
-
 const ideaReducer = (state = [], action) => {
   switch (action.type) {
     case 'ADD_IDEA':
@@ -26,7 +24,4 @@ const ideaReducer = (state = [], action) => {
   }
 };
 
-export default undoable(ideaReducer, {
-  limit: 1,
-  filter: includeAction('DELETE_IDEA'),
-});
+export default ideaReducer;

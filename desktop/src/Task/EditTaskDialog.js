@@ -20,12 +20,6 @@ class EditTaskDialog extends PureComponent {
   handleRequestEdit = () => {
     this.props.onRequestEdit(this.state);
   }
-  handleRequestTaskEdit = (taskInfo) => {
-    this.props.editTask(this.state.index, {
-      task: taskInfo.task,
-    });
-    this.handleRequestTaskDialogClose();
-  }
   render() {
     const actions = [
       <FlatButton

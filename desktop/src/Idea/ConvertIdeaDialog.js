@@ -6,22 +6,21 @@ import DatePicker from 'material-ui/DatePicker';
 import DropDownMenu from 'material-ui/DropDownMenu';
 import MenuItem from 'material-ui/MenuItem';
 import { green600, grey50 } from 'material-ui/styles/colors';
-import defaultUtils from 'material-ui/DatePicker/dateUtils';
 import persianUtils from 'material-ui-persian-date-picker-utils';
 
 import './ConvertIdeaDialog.css';
 
-class NewTaskDialog extends PureComponent {
+class ConvertIdeaDialog extends PureComponent {
   constructor() {
     super();
-    const todayStart = new Date();
-    todayStart.setHours(0, 0, 0, 0);
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
     this.state = {
       estimationValue: 1,
       repetitionValue: 1,
       task: '',
-      start: Date.parse(todayStart),
-      end: 0,
+      start: today,
+      end: null,
       estimation: '',
       repetition: '',
     };
@@ -49,13 +48,17 @@ class NewTaskDialog extends PureComponent {
     });
   }
   handleStartChange = (e, start) => {
+    const startClone = new Date(start);
+    startClone.setHours(0, 0, 0, 0);
     this.setState({
-      start: Date.parse(start),
+      start: startClone,
     });
   }
   handleEndChange = (e, end) => {
+    const endClone = new Date(end);
+    endClone.setHours(23, 59, 59, 999);
     this.setState({
-      end: Date.parse(end),
+      end: endClone,
     });
   }
   handleEstimationChange = (e) => {
@@ -69,14 +72,14 @@ class NewTaskDialog extends PureComponent {
     });
   }
   handleRequestClose = () => {
-    const todayStart = new Date();
-    todayStart.setHours(0, 0, 0, 0);
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
     this.setState({
       estimationValue: 1,
       repetitionValue: 1,
       task: '',
-      start: Date.parse(todayStart),
-      end: 0,
+      start: today,
+      end: null,
       estimation: '',
       repetition: '',
     });
@@ -84,37 +87,34 @@ class NewTaskDialog extends PureComponent {
   }
   handleRequestConvert = () => {
     this.props.onRequestConvert(this.state);
-    const todayStart = new Date();
-    todayStart.setHours(0, 0, 0, 0);
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
     this.setState({
       estimationValue: 1,
       repetitionValue: 1,
       task: '',
-      start: Date.parse(todayStart),
-      end: 0,
+      start: today,
+      end: null,
       estimation: '',
       repetition: '',
     });
   }
   handleRequestFinish = () => {
-    this.props.onRequestConvert(this.state);
-    this.props.onRequestDelete();
-    this.props.onRequestClose();
-    const todayStart = new Date();
-    todayStart.setHours(0, 0, 0, 0);
+    this.props.onRequestConvert && this.props.onRequestConvert(this.state);
+    this.props.onRequestDelete && this.props.onRequestDelete();
+    this.props.onRequestClose && this.props.onRequestClose();
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
     this.setState({
       estimationValue: 1,
       repetitionValue: 1,
       task: '',
-      start: Date.parse(todayStart),
-      end: 0,
+      start: today,
+      end: null,
       estimation: '',
       repetition: '',
     });
   }
-  disablePassed = date => Date.parse(date) < Date.now() - 86400000;
-  disableEndBeforeStart = date => Date.parse(date) < this.state.start ||
-                                  Date.parse(date) < Date.now() - 86400000;
   render() {
     const actions = [
       <FlatButton
@@ -153,8 +153,11 @@ class NewTaskDialog extends PureComponent {
       },
     };
     const DateTimeFormat = global.Intl.DateTimeFormat;
+    const localeProps = this.props.calendarSystem === 'fa-IR' ?
+    { utils: persianUtils, DateTimeFormat } :
+    {};
     return (
-      <div className="NewTaskDialog">
+      <div className="ConvertIdeaDialog">
         <Dialog
           title="Convert idea"
           actions={actions}
@@ -177,20 +180,14 @@ class NewTaskDialog extends PureComponent {
             />
             <div className="datepicker">
               <DatePicker
-                hintText="Start"
                 defaultDate={new Date()}
+                hintText="Start"
                 autoOk
-                DateTimeFormat={DateTimeFormat}
                 locale={this.props.calendarSystem}
-                utils={
-                  this.props.calendarSystem === 'fa-IR' ?
-                  persianUtils :
-                  defaultUtils
-                }
+                {...localeProps}
                 firstDayOfWeek={this.props.firstDayOfWeek}
                 textFieldStyle={datePickerStyles.textFieldStyle}
-                value={new Date(this.state.start)}
-                shouldDisableDate={this.disablePassed}
+                minDate={new Date()}
                 onChange={this.handleStartChange}
               />
             </div>
@@ -198,21 +195,11 @@ class NewTaskDialog extends PureComponent {
               <DatePicker
                 hintText="End"
                 autoOk
-                DateTimeFormat={DateTimeFormat}
                 locale={this.props.calendarSystem}
-                utils={
-                  this.props.calendarSystem === 'fa-IR' ?
-                  persianUtils :
-                  defaultUtils
-                }
+                {...localeProps}
                 firstDayOfWeek={this.props.firstDayOfWeek}
                 textFieldStyle={datePickerStyles.textFieldStyle}
-                value={
-                  this.state.end ?
-                  new Date(this.state.end) :
-                  null
-                }
-                shouldDisableDate={this.disableEndBeforeStart}
+                minDate={this.state.start}
                 onChange={this.handleEndChange}
               />
             </div>
@@ -265,4 +252,4 @@ class NewTaskDialog extends PureComponent {
   }
 }
 
-export default NewTaskDialog;
+export default ConvertIdeaDialog;

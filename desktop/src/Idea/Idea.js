@@ -18,8 +18,8 @@ class Idea extends PureComponent {
         this.setState({
           class: '',
         }, () => {
-          this.props.onRequestDelete(this.props.index);
-          this.props.onRequestSnackbar('Idea deleted');
+          this.props.onRequestDelete && this.props.onRequestDelete(this.props.index);
+          this.props.onRequestSnackbar && this.props.onRequestSnackbar('Idea deleted');
         });
       }, 1000);
     });

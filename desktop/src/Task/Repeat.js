@@ -15,13 +15,13 @@ const Repeat = ({ repeat }) => {
   return (
     <small className="Repeat" style={styles.text}>
       {
-        repeat.indexOf('0') !== 0 ?
+        repeat && repeat.indexOf('0') !== 0 ?
           <RepeatIcon style={styles.icon} color={grey500} />
         :
         null
       }
       {
-        repeat.indexOf('0') ?
+        repeat && repeat.indexOf('0') ?
         repeat :
         null
       }
