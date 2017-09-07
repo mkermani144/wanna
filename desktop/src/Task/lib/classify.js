@@ -29,8 +29,10 @@ const classify = (tasks) => {
         index,
       });
     } else if (now < start) {
+      const remaining = end - now;
       classifiedTasks.notYet.push({
         ...task,
+        due: setDue(remaining),
         color: 'hsl(180, 100%, 50%)',
         index,
       });

@@ -213,6 +213,7 @@ class TaskList extends Component {
               color={task.color}
               text={task.task}
               estimation={task.estimation}
+              due={task.due}
               repeat={`${task.repetition} days`}
               key={task.id}
               index={task.index}
