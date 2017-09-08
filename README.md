@@ -26,7 +26,7 @@ Wanna is an implementation of a 21st-century to-do list app. It introduces a [ne
 
 Installation
 ----
-Wanna is under active development. You can see a list of its releases [here](https://github.com/mkermani144/wanna/releases). At this time, the only release of the app is [Beta release for Linux](https://github.com/mkermani144/wanna/releases/tag/beta). However, you can easily download the repo's source code and build a version suitable for your own platform with just a bit of effort. In the near future, other platforms will be officially supported.  
+Wanna is under active development. You can see a list of its releases [here](https://github.com/mkermani144/wanna/releases). At this time, the latest release of the app is [Flex Alpha release](https://github.com/mkermani144/wanna/releases/tag/Flex-alpha) for Windows and Linux (`.deb` only). In addition, you can easily download the repo's source code and build a version suitable for your own platform with just a bit of effort. In the near future, other platforms will be officially supported.  
 You can also clone the repository to see development version of the app in action:
 ```sh
 git clone https://github.com/mkermani144/wanna.git
@@ -44,11 +44,15 @@ Join [Wannachat](https://gitter.im/wannachat/Lobby) on Gitter!
 
 Contributing
 ----
-Wanna welcomes contributors! Please see [contribution guidelines](CONTRIBUTING.md) for more information.
+_Contributing guidelines will be added soon._
 
 Issues and bug reports
 ----
-See [contributing guidelines](CONTRIBUTING.md).
+_Issue and bug report guidelines will be addes soon._
+
+Road map
+----
+If you want to see a unofficial list of features which will be added in the next versions of Wanna, take a look at our [road map](ROADMAP.md).
 
 Technologies and libraries
 ----
@@ -89,6 +93,13 @@ Wanna workflow is dead simple; in brief, an idea comes to your mind, you save it
 4. Once you selected the idea, it's time to convert it to some tasks. You have to set a period of time in which each task should be done. Moreover, you have to estimate the time that task will take. (Note that you can skip the previous three sections and directly add a task.)
 
 5. Having your tasks added to your list, Wanna shows each task with a colorful status circle. The more this color tends to become red, the closer the task due date is. Don't let those circles turn red!
+
+Known bugs
+----
+* The app does not show the tasks on startup, although tasks is the highlighted tab in the side bar. [(#221)](https://github.com/mkermani144/wanna/issues/221)  
+*How to fix it temporarily:* Just click on the tasks in the side bar (or press the related hotkeys, `shift+t`).
+* Recurrent tasks does not work properly. [(#220)](https://github.com/mkermani144/wanna/issues/220)  
+Although it is a crucial feature in the app, don't use them until the next version of Wanna.
 
 License
 ----

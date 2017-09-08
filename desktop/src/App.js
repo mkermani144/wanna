@@ -120,7 +120,10 @@ class App extends PureComponent {
                 />
                 <div className="main">
                   <SidebarContainer expanded={this.state.sidebarExpanded} />
-                  <FABContainer />
+                  <FABContainer
+                    window={window}
+                    width={document.body.clientWidth}
+                  />
                   <Redirect from="/" to="tasks" />
                   {this.state.toTasks &&
                     <Redirect to="/tasks" />
@@ -155,7 +158,12 @@ class App extends PureComponent {
                   <Route
                     path="/help"
                     render={() =>
-                      (<Help sidebarExpanded={this.state.sidebarExpanded} />)
+                      (
+                        <Help
+                          openExternal={window.require('electron').shell.openExternal}
+                          sidebarExpanded={this.state.sidebarExpanded}
+                        />
+                      )
                     }
                   />
                 </div>

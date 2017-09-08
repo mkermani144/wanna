@@ -21,9 +21,6 @@ class Settings extends PureComponent {
   handleCheckFullscreen = (e, checked) => {
     this.props.toggleFullscreen(checked);
   }
-  handleChangeCalendarSystem = (calendarSystem) => {
-    this.props.toggleFullscreen(calendarSystem);
-  }
   handleRequestCalendarSystemDialogOpen = () => {
     this.setState({
       calendarSystemDialogOpen: true,

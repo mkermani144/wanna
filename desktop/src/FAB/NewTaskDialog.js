@@ -1,5 +1,4 @@
 import React, { PureComponent } from 'react';
-
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import DatePicker from 'material-ui/DatePicker';
@@ -7,7 +6,6 @@ import TextField from 'material-ui/TextField';
 import DropDownMenu from 'material-ui/DropDownMenu';
 import MenuItem from 'material-ui/MenuItem';
 import { green600, grey50 } from 'material-ui/styles/colors';
-import defaultUtils from 'material-ui/DatePicker/dateUtils';
 import persianUtils from 'material-ui-persian-date-picker-utils';
 
 import './NewTaskDialog.css';
@@ -15,14 +13,14 @@ import './NewTaskDialog.css';
 class NewTaskDialog extends PureComponent {
   constructor() {
     super();
-    const todayStart = new Date();
-    todayStart.setHours(0, 0, 0, 0);
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
     this.state = {
       estimationValue: 1,
       repetitionValue: 1,
       task: '',
-      start: Date.parse(todayStart),
-      end: 0,
+      start: today,
+      end: null,
       estimation: '',
       repetition: '',
     };
@@ -50,13 +48,17 @@ class NewTaskDialog extends PureComponent {
     });
   }
   handleStartChange = (e, start) => {
+    const startClone = new Date(start);
+    startClone.setHours(0, 0, 0, 0);
     this.setState({
-      start: Date.parse(start),
+      start: startClone,
     });
   }
   handleEndChange = (e, end) => {
+    const endClone = new Date(end);
+    endClone.setHours(23, 59, 59, 999);
     this.setState({
-      end: Date.parse(end),
+      end: endClone,
     });
   }
   handleEstimationChange = (e) => {
@@ -70,14 +72,14 @@ class NewTaskDialog extends PureComponent {
     });
   }
   handleRequestClose = () => {
-    const todayStart = new Date();
-    todayStart.setHours(0, 0, 0, 0);
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
     this.setState({
       estimationValue: 1,
       repetitionValue: 1,
       task: '',
-      start: Date.parse(todayStart),
-      end: 0,
+      start: today,
+      end: null,
       estimation: '',
       repetition: '',
     });
@@ -85,14 +87,14 @@ class NewTaskDialog extends PureComponent {
   }
   handleRequestAdd = () => {
     this.props.onRequestAdd(this.state);
-    const todayStart = new Date();
-    todayStart.setHours(0, 0, 0, 0);
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
     this.setState({
       estimationValue: 1,
       repetitionValue: 1,
       task: '',
-      start: Date.parse(todayStart),
-      end: 0,
+      start: today,
+      end: null,
       estimation: '',
       repetition: '',
     });
@@ -101,9 +103,6 @@ class NewTaskDialog extends PureComponent {
     this.handleRequestAdd();
     this.handleRequestClose();
   }
-  disablePassed = date => Date.parse(date) < Date.now() - 86400000;
-  disableEndBeforeStart = date => Date.parse(date) < this.state.start ||
-                                  Date.parse(date) < Date.now() - 86400000;
   render() {
     const actions = [
       <FlatButton
@@ -142,6 +141,9 @@ class NewTaskDialog extends PureComponent {
       },
     };
     const DateTimeFormat = global.Intl.DateTimeFormat;
+    const localeProps = this.props.calendarSystem === 'fa-IR' ?
+    { utils: persianUtils, DateTimeFormat } :
+    {};
     return (
       <div className="NewTaskDialog">
         <Dialog
@@ -166,20 +168,14 @@ class NewTaskDialog extends PureComponent {
             />
             <div className="datepicker">
               <DatePicker
-                hintText="Start"
                 defaultDate={new Date()}
+                hintText="Start"
                 autoOk
-                DateTimeFormat={DateTimeFormat}
                 locale={this.props.calendarSystem}
-                utils={
-                  this.props.calendarSystem === 'fa-IR' ?
-                  persianUtils :
-                  defaultUtils
-                }
+                {...localeProps}
                 firstDayOfWeek={this.props.firstDayOfWeek}
                 textFieldStyle={datePickerStyles.textFieldStyle}
-                shouldDisableDate={this.disablePassed}
-                value={new Date(this.state.start)}
+                minDate={new Date()}
                 onChange={this.handleStartChange}
               />
             </div>
@@ -187,21 +183,11 @@ class NewTaskDialog extends PureComponent {
               <DatePicker
                 hintText="End"
                 autoOk
-                DateTimeFormat={DateTimeFormat}
                 locale={this.props.calendarSystem}
-                utils={
-                  this.props.calendarSystem === 'fa-IR' ?
-                  persianUtils :
-                  defaultUtils
-                }
+                {...localeProps}
                 firstDayOfWeek={this.props.firstDayOfWeek}
                 textFieldStyle={datePickerStyles.textFieldStyle}
-                shouldDisableDate={this.disableEndBeforeStart}
-                value={
-                  this.state.end ?
-                  new Date(this.state.end) :
-                  null
-                }
+                minDate={this.state.start}
                 onChange={this.handleEndChange}
               />
             </div>

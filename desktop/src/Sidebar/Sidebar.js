@@ -20,12 +20,6 @@ import {
 import './Sidebar.css';
 
 class Sidebar extends PureComponent {
-  constructor() {
-    super();
-    this.state = {
-      expanded: false,
-    };
-  }
   render() {
     const styles = {
       tasks: {

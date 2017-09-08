@@ -4,7 +4,7 @@ import { RadioButton, RadioButtonGroup } from 'material-ui/RadioButton';
 import FlatButton from 'material-ui/FlatButton';
 import { blue500, grey50 } from 'material-ui/styles/colors';
 
-class CalendarSystemDialog extends PureComponent {
+class FirstDayOfWeekDialog extends PureComponent {
   handleRequestClose = (e, target) => {
     setTimeout(() => {
       this.props.onRequestClose(target);
@@ -63,4 +63,4 @@ class CalendarSystemDialog extends PureComponent {
   }
 }
 
-export default CalendarSystemDialog;
+export default FirstDayOfWeekDialog;
