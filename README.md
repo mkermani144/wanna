@@ -44,11 +44,11 @@ Join [Wannachat](https://gitter.im/wannachat/Lobby) on Gitter!
 
 Contributing
 ----
-_Contributing guidelines will be added soon._
+Please see [contributing guidelines](/CONTRIBUTING.md) for a comprehensive description of how to contribute to Wanna.
 
 Issues and bug reports
 ----
-_Issue and bug report guidelines will be addes soon._
+Please see [contribution types](CONTRIBUTING.md#types-of-contribution) that we are looking for in Wanna, including feature requests and bug reports.
 
 Road map
 ----
