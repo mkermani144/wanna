@@ -1,9 +1,9 @@
 import { createStore } from 'redux';
 import rootReducer from './reducer';
 
-import { fetchInitialState } from './lib/database';
+import { fetchDatabaseState } from './lib/database';
 
-const defaultState = fetchInitialState() || {
+const initialStateFactory = () => ({
   tasks: [],
   ideas: [],
   appProperties: {
@@ -16,7 +16,11 @@ const defaultState = fetchInitialState() || {
     fabRaised: false,
     currentTab: 'tasks',
   },
-};
+});
+
+const fetchState = () => fetchDatabaseState() || initialStateFactory();
+
+const defaultState = fetchState();
 
 const store = createStore(rootReducer, defaultState);
 
