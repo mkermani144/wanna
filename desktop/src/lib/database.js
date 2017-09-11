@@ -1,8 +1,16 @@
 /* eslint-env browser */
 
-const fs = window.require('fs');
+let fs;
+if (process.env.REACT_APP_E2E) {
+  fs = {
+    readFileSync() {},
+    writeFileSync() {},
+  };
+} else {
+  fs = window.require('fs');
+}
 
-const fetchInitialState = () => {
+const fetchDatabaseState = () => {
   let data = fs.readFileSync('.config/db', 'utf-8');
   if (data) {
     data = JSON.parse(data);
@@ -37,4 +45,4 @@ const update = (state) => {
 };
 
 
-export { fetchInitialState, update };
+export { fetchDatabaseState, update };
