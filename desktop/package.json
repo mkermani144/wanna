@@ -33,10 +33,12 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "start-nodeless": "cross-env REACT_APP_E2E=true BROWSER=none react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "e2e": "react-scripts test *.e2e.js",
     "lint": "eslint main.js src/",
     "eject": "react-scripts eject",
-    "electron": "electron . | BROWSER=none react-scripts start"
+    "electron": "electron . | cross-env BROWSER=none react-scripts start"
   }
 }
