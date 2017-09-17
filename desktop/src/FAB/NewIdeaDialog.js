@@ -30,6 +30,7 @@ class NewIdeaDialog extends PureComponent {
   render() {
     const actions = [
       <FlatButton
+        id="add-and-finish"
         label="Add and finish"
         primary
         disabled={!(this.state.idea)}
@@ -60,28 +61,27 @@ class NewIdeaDialog extends PureComponent {
       },
     };
     return (
-      <div className="NewIdeaDialog">
-        <Dialog
-          title="Add new idea"
-          actions={actions}
-          titleStyle={dialogTitleStyle}
-          open={this.props.open}
-          onRequestClose={this.props.onRequestClose}
-        >
-          <br />
-          Do you have an idea?
-          <br />
-          <TextField
-            floatingLabelText="Idea title"
-            fullWidth
-            underlineFocusStyle={textFieldStyles.underlineFocusStyle}
-            floatingLabelFocusStyle={textFieldStyles.floatingLabelFocusStyle}
-            value={this.state.idea}
-            onChange={this.handleIdeaChange}
-            autoFocus
-          />
-        </Dialog>
-      </div>
+      <Dialog
+        className="NewIdeaDialog"
+        title="Add new idea"
+        actions={actions}
+        titleStyle={dialogTitleStyle}
+        open={this.props.open}
+        onRequestClose={this.props.onRequestClose}
+      >
+        <br />
+        Do you have an idea?
+        <br />
+        <TextField
+          floatingLabelText="Idea title"
+          fullWidth
+          underlineFocusStyle={textFieldStyles.underlineFocusStyle}
+          floatingLabelFocusStyle={textFieldStyles.floatingLabelFocusStyle}
+          value={this.state.idea}
+          onChange={this.handleIdeaChange}
+          autoFocus
+        />
+      </Dialog>
     );
   }
 }

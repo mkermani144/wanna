@@ -47,28 +47,27 @@ class EditIdeaDialog extends PureComponent {
       },
     };
     return (
-      <div className="EditIdeaDialog">
-        <Dialog
-          title="Edit idea"
-          actions={actions}
-          titleStyle={dialogTitleStyle}
-          open={this.props.open}
-          onRequestClose={this.props.onRequestClose}
-        >
-          <br />
-          Edit you idea
-          <br />
-          <TextField
-            floatingLabelText="Idea title"
-            fullWidth
-            underlineFocusStyle={textFieldStyles.underlineFocusStyle}
-            floatingLabelFocusStyle={textFieldStyles.floatingLabelFocusStyle}
-            defaultValue={this.props.idea}
-            onChange={this.handleIdeaChange}
-            autoFocus
-          />
-        </Dialog>
-      </div>
+      <Dialog
+        className="EditIdeaDialog"
+        title="Edit idea"
+        actions={actions}
+        titleStyle={dialogTitleStyle}
+        open={this.props.open}
+        onRequestClose={this.props.onRequestClose}
+      >
+        <br />
+        Edit you idea
+        <br />
+        <TextField
+          floatingLabelText="Idea title"
+          fullWidth
+          underlineFocusStyle={textFieldStyles.underlineFocusStyle}
+          floatingLabelFocusStyle={textFieldStyles.floatingLabelFocusStyle}
+          defaultValue={this.props.idea}
+          onChange={this.handleIdeaChange}
+          autoFocus
+        />
+      </Dialog>
     );
   }
 }

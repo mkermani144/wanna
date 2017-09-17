@@ -16,9 +16,9 @@ const getActualDialog = getActualComponentFactory(ConvertIdeaDialog, defaultProp
 it('should render', () => {
   getActualDialog();
 });
-it('should be a div', () => {
+it('should be a Dialog', () => {
   const wrapper = getActualDialog();
-  expect(wrapper.is('div.ConvertIdeaDialog')).toBe(true);
+  expect(wrapper.is('Dialog')).toBe(true);
 });
 it('should have 1 Dialog', () => {
   const wrapper = getActualDialog();
