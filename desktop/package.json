@@ -29,14 +29,14 @@
     "react-tap-event-plugin": "^2.0.1",
     "redux": "^3.6.0",
     "redux-undo": "^0.6.1",
+    "selenium-webdriver": "^3.5.0",
     "shortid": "^2.2.8"
   },
   "scripts": {
     "start": "react-scripts start",
-    "start-nodeless": "cross-env REACT_APP_E2E=true BROWSER=none react-scripts start",
+    "start:nodeless": "cross-env REACT_APP_E2E=true BROWSER=none react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "e2e": "react-scripts test *.e2e.js",
     "lint": "eslint main.js src/",
     "eject": "react-scripts eject",
     "electron": "electron . | cross-env BROWSER=none react-scripts start"
