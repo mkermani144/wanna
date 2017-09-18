@@ -34,7 +34,7 @@ const fetchDatabaseState = () => {
       },
     };
   }
-  return {};
+  return null;
 };
 const update = (state) => {
   fs.writeFileSync('.config/db', JSON.stringify({
