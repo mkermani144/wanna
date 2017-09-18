@@ -19,7 +19,7 @@ const {
 
 jasmine.DEFAULT_TIMEOUT_INTERVAL = 50000;
 
-it('should do something', async (done) => {
+it('should test ideas functionality', async (done) => {
   // Open
   await init();
 
