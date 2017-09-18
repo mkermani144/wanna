@@ -23,6 +23,7 @@ class EditIdeaDialog extends PureComponent {
   render() {
     const actions = [
       <FlatButton
+        id="edit"
         label="Edit"
         primary
         disabled={!(this.state.idea)}

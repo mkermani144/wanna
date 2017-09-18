@@ -118,12 +118,14 @@ class ConvertIdeaDialog extends PureComponent {
   render() {
     const actions = [
       <FlatButton
+        id="add-and-finish"
         label="Add and finish"
         primary
         disabled={this.buttonDisabled()}
         onTouchTap={this.handleRequestFinish}
       />,
       <FlatButton
+        id="add-and-continue"
         label="Add and continue"
         primary
         disabled={this.buttonDisabled()}
@@ -178,7 +180,7 @@ class ConvertIdeaDialog extends PureComponent {
             autoFocus
             value={this.state.task}
           />
-          <div className="datepicker">
+          <div className="datepicker" id="start">
             <DatePicker
               defaultDate={new Date()}
               hintText="Start"
@@ -191,7 +193,7 @@ class ConvertIdeaDialog extends PureComponent {
               onChange={this.handleStartChange}
             />
           </div>
-          <div className="datepicker">
+          <div className="datepicker" id="end">
             <DatePicker
               hintText="End"
               autoOk
@@ -205,6 +207,7 @@ class ConvertIdeaDialog extends PureComponent {
           </div>
           <div className="row">
             <TextField
+              id="estimated-time"
               floatingLabelText="Estimated time"
               underlineFocusStyle={textFieldStyles.underlineFocusStyle}
               floatingLabelFocusStyle={textFieldStyles.floatingLabelFocusStyle}

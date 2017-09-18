@@ -37,6 +37,7 @@ class NewIdeaDialog extends PureComponent {
         onTouchTap={this.handleRequestFinish}
       />,
       <FlatButton
+        id="add-and-continue"
         label="Add and continue"
         primary
         disabled={!(this.state.idea)}
