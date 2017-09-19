@@ -24,7 +24,6 @@ it('should test ideas functionality', async (done) => {
   await init();
 
   // Add ideas
-  await wait(1000);
   await click('#ideas');
   await click('.SpeedDial');
   await click('.SpeedDial + div + div');

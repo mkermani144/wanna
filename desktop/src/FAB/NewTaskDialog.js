@@ -106,12 +106,14 @@ class NewTaskDialog extends PureComponent {
   render() {
     const actions = [
       <FlatButton
+        id="add-and-finish"
         label="Add and finish"
         primary
         disabled={this.buttonDisabled()}
         onTouchTap={this.handleRequestFinish}
       />,
       <FlatButton
+        id="add-and-continue"
         label="Add and continue"
         primary
         disabled={this.buttonDisabled()}
@@ -166,7 +168,7 @@ class NewTaskDialog extends PureComponent {
             onChange={this.handleTaskChange}
             autoFocus
           />
-          <div className="datepicker">
+          <div className="datepicker" id="start">
             <DatePicker
               defaultDate={new Date()}
               hintText="Start"
@@ -179,8 +181,9 @@ class NewTaskDialog extends PureComponent {
               onChange={this.handleStartChange}
             />
           </div>
-          <div className="datepicker">
+          <div className="datepicker" id="end">
             <DatePicker
+              id="end"
               hintText="End"
               autoOk
               locale={this.props.calendarSystem}
@@ -193,6 +196,7 @@ class NewTaskDialog extends PureComponent {
           </div>
           <div className="row">
             <TextField
+              id="estimated-time"
               floatingLabelText="Estimated time"
               underlineFocusStyle={textFieldStyles.underlineFocusStyle}
               floatingLabelFocusStyle={textFieldStyles.floatingLabelFocusStyle}
