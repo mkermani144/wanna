@@ -15,6 +15,7 @@
     "react-test-renderer": "^15.6.1"
   },
   "dependencies": {
+    "cross-env": "^5.0.5",
     "electron": "^1.6.10",
     "material-ui": "^0.18.1",
     "material-ui-persian-date-picker-utils": "^0.1.2",
@@ -29,14 +30,16 @@
     "react-tap-event-plugin": "^2.0.1",
     "redux": "^3.6.0",
     "redux-undo": "^0.6.1",
+    "selenium-webdriver": "^3.5.0",
     "shortid": "^2.2.8"
   },
   "scripts": {
     "start": "react-scripts start",
+    "start:nodeless": "cross-env REACT_APP_E2E=true BROWSER=none react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "lint": "eslint main.js src/",
     "eject": "react-scripts eject",
-    "electron": "electron . | BROWSER=none react-scripts start"
+    "electron": "electron . | cross-env BROWSER=none react-scripts start"
   }
 }
