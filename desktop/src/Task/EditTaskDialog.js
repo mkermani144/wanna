@@ -23,6 +23,7 @@ class EditTaskDialog extends PureComponent {
   render() {
     const actions = [
       <FlatButton
+        id="edit"
         label="Edit"
         primary
         disabled={!(this.state.task)}
