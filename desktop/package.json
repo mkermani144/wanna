@@ -11,7 +11,8 @@
     "eslint-plugin-jsx-a11y": "^5.0.3",
     "eslint-plugin-react": "^7.1.0",
     "react-scripts": "1.0.7",
-    "react-test-renderer": "^15.6.1"
+    "react-test-renderer": "^15.6.1",
+    "selenium-webdriver": "^3.5.0"
   },
   "dependencies": {
     "cross-env": "^5.0.5",
@@ -29,7 +30,6 @@
     "react-tap-event-plugin": "^2.0.1",
     "redux": "^3.6.0",
     "redux-undo": "^0.6.1",
-    "selenium-webdriver": "^3.5.0",
     "shortid": "^2.2.8"
   },
   "scripts": {
