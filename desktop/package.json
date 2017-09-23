@@ -40,5 +40,15 @@
     "lint": "eslint main.js src/",
     "eject": "react-scripts eject",
     "electron": "electron . | cross-env BROWSER=none react-scripts start"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx}",
+      "!<rootDir>/node_modules/",
+      "!src/**/*Container.js",
+      "!src/index.js",
+      "!src/store.js",
+      "!src/lib/database.js"
+    ]
   }
 }
