@@ -11,6 +11,7 @@
     "eslint-plugin-jsx-a11y": "^5.0.3",
     "eslint-plugin-react": "^7.1.0",
     "husky": "^0.14.3",
+    "npm-run-all": "^4.1.1",
     "react-scripts": "1.0.7",
     "react-test-renderer": "^15.6.1",
     "selenium-webdriver": "^3.5.0"
@@ -38,13 +39,13 @@
     "start:nodeless": "cross-env REACT_APP_E2E=true BROWSER=none react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --testPathPattern='(.*/)?.+\\.spec\\.js'",
-    "test:e2e": "react-scripts test --testPathPattern='(.*/)?.+\\.e2e\\.js'",
+    "test:e2e": "react-scripts test --onlyChanged --testPathPattern='(.*/)?.+\\.e2e\\.js'",
     "test:cov": "yarn test && codecov",
     "lint": "eslint main.js src/",
     "eject": "react-scripts eject",
     "electron": "electron . | cross-env BROWSER=none react-scripts start",
-    "precommit": "yarn test && yarn lint",
-    "prepush": "yarn test:e2e",
+    "precommit": "yarn lint && cross-env CI=true yarn test -- --onlyChanged",
+    "prepush": "cross-env CI=true npm-run-all -r -p test:e2e start:nodeless"
   },
   "jest": {
     "collectCoverageFrom": [
