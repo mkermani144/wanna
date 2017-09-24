@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "cross-env": "^5.0.5",
-    "electron": "^1.6.10",
+    "electron": "1.7.6",
     "material-ui": "^0.18.1",
     "material-ui-persian-date-picker-utils": "^0.1.2",
     "ramda": "^0.24.1",
