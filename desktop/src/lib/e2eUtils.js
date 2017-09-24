@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
 import webdriver from 'selenium-webdriver';
 
 const { By, Key } = webdriver;

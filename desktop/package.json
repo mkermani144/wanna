@@ -10,6 +10,7 @@
     "eslint-plugin-import": "^2.6.0",
     "eslint-plugin-jsx-a11y": "^5.0.3",
     "eslint-plugin-react": "^7.1.0",
+    "husky": "^0.14.3",
     "react-scripts": "1.0.7",
     "react-test-renderer": "^15.6.1",
     "selenium-webdriver": "^3.5.0"
@@ -41,7 +42,9 @@
     "test:cov": "yarn test && codecov",
     "lint": "eslint main.js src/",
     "eject": "react-scripts eject",
-    "electron": "electron . | cross-env BROWSER=none react-scripts start"
+    "electron": "electron . | cross-env BROWSER=none react-scripts start",
+    "precommit": "yarn test && yarn lint",
+    "prepush": "yarn test:e2e",
   },
   "jest": {
     "collectCoverageFrom": [
