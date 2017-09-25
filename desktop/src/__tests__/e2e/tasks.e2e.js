@@ -17,7 +17,7 @@ const {
   close,
 } = utilsFactory(driver);
 
-jasmine.DEFAULT_TIMEOUT_INTERVAL = 50000;
+jasmine.DEFAULT_TIMEOUT_INTERVAL = 300000;
 
 it('should test tasks functionality', async (done) => {
   // Open
