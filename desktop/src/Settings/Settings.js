@@ -91,6 +91,7 @@ class Settings extends PureComponent {
           />
           <Divider />
           <ListItem
+            id="not-yet-tasks"
             leftCheckbox={
               <Checkbox
                 defaultChecked={this.props.showNotYetTasks}

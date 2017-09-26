@@ -23,6 +23,7 @@ class EditTaskDialog extends PureComponent {
   render() {
     const actions = [
       <FlatButton
+        id="edit"
         label="Edit"
         primary
         disabled={!(this.state.task)}
@@ -47,28 +48,27 @@ class EditTaskDialog extends PureComponent {
       },
     };
     return (
-      <div className="EditTaskDialog">
-        <Dialog
-          title="Edit task"
-          actions={actions}
-          titleStyle={dialogTitleStyle}
-          open={this.props.open}
-          onRequestClose={this.props.onRequestClose}
-        >
-          <br />
-          Edit your task
-          <br />
-          <TextField
-            floatingLabelText="Task title"
-            fullWidth
-            underlineFocusStyle={textFieldStyles.underlineFocusStyle}
-            floatingLabelFocusStyle={textFieldStyles.floatingLabelFocusStyle}
-            defaultValue={this.props.task}
-            onChange={this.handleTaskChange}
-            autoFocus
-          />
-        </Dialog>
-      </div>
+      <Dialog
+        className="EditTaskDialog"
+        title="Edit task"
+        actions={actions}
+        titleStyle={dialogTitleStyle}
+        open={this.props.open}
+        onRequestClose={this.props.onRequestClose}
+      >
+        <br />
+        Edit your task
+        <br />
+        <TextField
+          floatingLabelText="Task title"
+          fullWidth
+          underlineFocusStyle={textFieldStyles.underlineFocusStyle}
+          floatingLabelFocusStyle={textFieldStyles.floatingLabelFocusStyle}
+          defaultValue={this.props.task}
+          onChange={this.handleTaskChange}
+          autoFocus
+        />
+      </Dialog>
     );
   }
 }

@@ -10,11 +10,15 @@
     "eslint-plugin-import": "^2.6.0",
     "eslint-plugin-jsx-a11y": "^5.0.3",
     "eslint-plugin-react": "^7.1.0",
+    "husky": "^0.14.3",
+    "npm-run-all": "^4.1.1",
     "react-scripts": "1.0.7",
-    "react-test-renderer": "^15.6.1"
+    "react-test-renderer": "^15.6.1",
+    "selenium-webdriver": "^3.5.0"
   },
   "dependencies": {
-    "electron": "^1.6.10",
+    "cross-env": "^5.0.5",
+    "electron": "1.7.6",
     "material-ui": "^0.18.1",
     "material-ui-persian-date-picker-utils": "^0.1.2",
     "ramda": "^0.24.1",
@@ -32,10 +36,25 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "start:nodeless": "cross-env REACT_APP_E2E=true BROWSER=none react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --testPathPattern='(.*/)?.+\\.spec\\.js'",
+    "test:e2e": "react-scripts test --onlyChanged --testPathPattern='(.*/)?.+\\.e2e\\.js'",
+    "test:cov": "yarn test && codecov",
     "lint": "eslint main.js src/",
     "eject": "react-scripts eject",
-    "electron": "electron . | BROWSER=none react-scripts start"
+    "electron": "electron . | cross-env BROWSER=none react-scripts start",
+    "precommit": "yarn lint && cross-env CI=true yarn test -- --onlyChanged",
+    "start-and-e2e": "cross-env CI=true npm-run-all -r -p test:e2e start:nodeless"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx}",
+      "!<rootDir>/node_modules/",
+      "!src/**/*Container.js",
+      "!src/index.js",
+      "!src/store.js",
+      "!src/lib/database.js"
+    ]
   }
 }

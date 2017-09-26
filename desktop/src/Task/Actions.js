@@ -14,7 +14,7 @@ const Actions = (props) => {
   return (
     <div className="Actions">
       <IconButton
-        className="IconButton"
+        className="IconButton delete"
         tooltip="Delete"
         onTouchTap={props.onRequestDelete}
       >
@@ -22,7 +22,7 @@ const Actions = (props) => {
       </IconButton>
       {!props.done &&
         <IconButton
-          className="IconButton"
+          className="IconButton edit"
           tooltip="Edit"
           onTouchTap={props.onRequestEditDialogOpen}
         >
@@ -31,7 +31,7 @@ const Actions = (props) => {
       }
       {!props.done &&
         <IconButton
-          className="IconButton"
+          className="IconButton mark-as-done"
           tooltip="Mark as done"
           onTouchTap={props.onRequestDo}
         >

@@ -111,3 +111,14 @@ These are all anti-patterns:
 * Using enzyme `setState()`
 * Having multiple `expect`s in a unit test
 
+### e2e testing
+The second type of tests we use in Wanna are e2e tests. As we said earlier, complex scenarios should not be tested using unit tests; instead, e2e tests are the tool to do that job. An e2e test simulates interaction of the user with the app (e.g. mouse clicks, keyboard inputs, etc.). We use `selenium-webdriver` (without any wrapper library) in our e2e tests.  
+
+Some general guidelines:
+1. Test only one scenario (e.g. only test app settings functionality in an individual e2e test).
+2. Divide the test into multiple sub-scenarios, and check if the result in the end of each sub-scenario is as expected.
+3. Don't repeat yourself. There are some tasks (like mouse clicks, keyboard inputs, etc.) that are used again and again in your tests. Separate these kinds of tasks in another module and make the test more readable.
+4. Run the test yourself, and watch it in action.
+5. Use large timeouts in the tests. Don't assume the tests are run as fast as your computer. Some e2e tests may take several minutes to complete, while the same ones may run in half a minute in your computer.
+6. Wait often. If the test fails and your code is correct (and you don't know why, as the famous meme suggests :joy:), you may need to wait between two lines of your e2e test.
+7. Use appropriate `class`es and `id`s in your React components to simplify CSS selectors in your e2e tests.

@@ -1,14 +1,14 @@
 import { createStore } from 'redux';
 import rootReducer from './reducer';
 
-import { fetchInitialState } from './lib/database';
+import { fetchDatabaseState } from './lib/database';
 
-const defaultState = fetchInitialState() || {
+const initialStateFactory = () => ({
   tasks: [],
   ideas: [],
   appProperties: {
     showNotYetTasks: true,
-    fullscreen: true,
+    fullscreen: false,
     calendarSystem: 'en-US',
     firstDayOfWeek: 1,
   },
@@ -16,7 +16,11 @@ const defaultState = fetchInitialState() || {
     fabRaised: false,
     currentTab: 'tasks',
   },
-};
+});
+
+const fetchState = () => fetchDatabaseState() || initialStateFactory();
+
+const defaultState = fetchState();
 
 const store = createStore(rootReducer, defaultState);
 

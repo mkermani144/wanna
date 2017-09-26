@@ -15,21 +15,21 @@ const Actions = (props) => {
   return (
     <div className="Actions">
       <IconButton
-        className="IconButton"
+        className="IconButton delete"
         tooltip="Delete"
         onTouchTap={props.onRequestDelete}
       >
         <Delete color={colors.delete} />
       </IconButton>
       <IconButton
-        className="IconButton"
+        className="IconButton edit"
         tooltip="Edit"
         onTouchTap={props.onRequestEditDialogOpen}
       >
         <Edit color={colors.edit} />
       </IconButton>
       <IconButton
-        className="IconButton"
+        className="IconButton convert"
         tooltip="Convert"
         onTouchTap={props.onRequestConvertDialogOpen}
       >

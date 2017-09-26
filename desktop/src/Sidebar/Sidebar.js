@@ -44,6 +44,7 @@ class Sidebar extends PureComponent {
       >
         <List>
           <ListItem
+            id="tasks"
             primaryText="Tasks"
             leftIcon={
               <DoneAll
@@ -63,6 +64,7 @@ class Sidebar extends PureComponent {
             onClick={() => this.props.changeTab('tasks')}
           />
           <ListItem
+            id="ideas"
             primaryText="Ideas"
             leftIcon={
               <LightbulbOutline
@@ -82,6 +84,7 @@ class Sidebar extends PureComponent {
             onClick={() => this.props.changeTab('ideas')}
           />
           <ListItem
+            id="settings"
             primaryText="Settings"
             leftIcon={
               <Settings
@@ -101,6 +104,7 @@ class Sidebar extends PureComponent {
             onClick={() => this.props.changeTab('settings')}
           />
           <ListItem
+            id="help"
             primaryText="Help"
             leftIcon={
               <Help

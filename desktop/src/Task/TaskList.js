@@ -121,7 +121,7 @@ class TaskList extends Component {
       marginTop: 12,
     };
     const numOfTasks = classifiedTasks.overdue.length + classifiedTasks.open.length
-                        + classifiedTasks.notYet.length;
+                        + classifiedTasks.notYet.length + classifiedTasks.done.length;
 
     if (numOfTasks === 0) {
       return (

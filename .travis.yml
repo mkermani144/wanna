@@ -1,7 +1,18 @@
 language: node_js
 node_js:
-  - "6"
+- '8'
 before_install:
-  - npm install -g npm@latest
+- npm i -g yarn
+install:
+- npm i -g codecov
 script:
-  - cd desktop && npm i && npm test
+- cd desktop && yarn && yarn test:cov && yarn start-and-e2e
+addons:
+  browserstack:
+    username: mohammad222
+    access_key:
+      secure: Fg0Ravo7z290/clYXsrTmUawsq9oHO4iihWhvq6UhLL50P9KUnrcN46dsOk2turSk4rhzCs1OJpqIDmD1iDeVtUPnazopffiCe2I51wvhStiWF0JJwSSJJyG8Oh7HMa2mVXVnTMsGnjoUaqG09uKEAMG7+Ra7zkB9JvcocCN30LAQK1Zj+iT0Sr8MiTkMz72PT6i9TU7j5Le+k4zQvdPPWlRh6poO/n0+QivB6VkeBLTdY/xictqzwVP+/WKhvp7wSnhOsX/M/udZWVx6C5Ag/zAs8AYNlLQ2IeAY84eiH9rfokZ97YZxslzrnu37cJw37ICPqZV4Trw5bOk5I491b2GrLblA4o3OxDQmT85tdHyxomO2s5FTVPS2AwQ+aQ4GW8/tEX+MkYgkdOvUqzOF9wVvjpv2RNb//EMCa4IF5DOsLcGIfqkJ0zZXHca9fxY835TTZwPprCXct94M/JvUkyx+mFDUGjQFcLJIdqPI34+tbgmita9Pk3inLAmwHeuBm4JI1L7FbEowtRoHuCgWIPbyD73SKZ8lua/N/mVBbJAy9nQafC+YuQ/YM3RtTI6Gnovy1b/TTqlT5D5qLtFMT/Z5lCPArvf9xsvAlCvEI3uIbSPJEJ9eWNWBoXJR/sU2GP6+HhSe/m+cNk8Zg3/CsgvmxFKy+vMpkqVVTgFlXo=
+env:
+  global:
+  - BROWSERSTACK_USER: mohammad222
+  - secure: I3oK8V9capDN8PxCBQrdHHNVtrad1ucd5wnDOK0kOIHUOEnX0lXCCGLwBXJnsubWUWYi0JbIpVAUqX/H9jUrTtcOdj1eVTFjhoz/Xfs4DRVFMFAu3lm8FoTV6CSVK57kNGasXrm6gQBDMA/8dnajCQNM326JEOPVgBsHSTTFo4eOgdldFseRDX8u85VX7bQPz0RdBVprBGD5AYffs15e/SZsvvucPYDULZaofpch85K5vEWBLeJIbJangPwgAQyDnN1BMkXMyoQp1mrMVCBT3LJJv/Bu3gM4E6efR34av9ZI3D3LU8YBvT+fv6yw2pPw/1wujcCHmWYRCxkDheCLrOIT78L7EpmagIoGr9u3gji5g2JcvNdOvfTM+lixuSd5q1AAIsxlzqyTAQvAUaI4KqggvqReNVuwlE9HH4cNhrapO1ehVcfz6RpwAxsChQGbZsQlCKELsaundz0jDegwFwqMw83lGhzG5i22bitwgjNB6zUezAWmwzFku0gUxo1Z5k7EHrRO0Z91Y7fAB/OLc55i17AE8N061Npu71kCDng+Kgw0Db1jCLSMhuOOUVN+MOYiqqvb1/Se8kKzw8VwLUyihFa2E5NKwASA6fUEH96JOXqE4rsquPnj6BDyRyGFTsDZXDkWRVFyowHN6Oa9lzFaEM9LROKC50Im0KQZj90=
