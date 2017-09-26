@@ -3,7 +3,18 @@ import webdriver from 'selenium-webdriver';
 
 const { By, Key } = webdriver;
 
-const createDriver = () => new webdriver.Builder().forBrowser('chrome').build();
+const capabilities = {
+  browserName: 'chrome',
+  'browserstack.local': 'true',
+  'browserstack.localIdentifier': process.env.BROWSERSTACK_LOCAL_IDENTIFIER,
+  'browserstack.user': process.env.BROWSERSTACK_USER,
+  'browserstack.key': process.env.BROWSERSTACK_KEY,
+};
+
+const createDriver = () => new webdriver.Builder()
+  .usingServer('http://hub-cloud.browserstack.com/wd/hub')
+  .forBrowser('chrome').withCapabilities(capabilities)
+  .build();
 const utilsFactory = driver => ({
   init() {
     return driver.navigate().to('http://localhost:3000');
