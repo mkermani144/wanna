@@ -114,8 +114,8 @@ it('should do repeating task', () => {
   const expected = getExpectedState({
     1: {
       task: 'Another cool task',
-      start: 86400000 * 4,
-      end: 86400000 * 5,
+      start: 86400000 * 3,
+      end: 86400000 * 4,
       estimation: 60,
       repetition: 3,
       done: false,

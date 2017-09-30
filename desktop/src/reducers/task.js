@@ -8,13 +8,12 @@ const taskReducer = (state = [], action) => {
     case 'DO_TASK':
       if (state[action.index].repetition) {
         const task = state[action.index];
-        const period = task.end - task.start;
         return [
           ...state.slice(0, action.index),
           {
             ...state[action.index],
-            start: task.end + (task.repetition * 86400000),
-            end: task.end + (task.repetition * 86400000) + period,
+            start: task.start + (task.repetition * 86400000),
+            end: task.end + (task.repetition * 86400000),
           },
           ...state.slice(action.index + 1),
         ];
