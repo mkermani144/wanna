@@ -17,7 +17,12 @@ class IdeaList extends Component {
       snackbarOpen: false,
       snackbarMessage: '',
       index: -1,
+      current: 5,
     };
+    this.interval = null;
+  }
+  componentDidMount = () => {
+    this.interval = setInterval(() => this.renderMore(), 0);
   }
   shouldComponentUpdate(nextProps, nextState) {
     if (this.state.ideaDialogOpen !== nextState.ideaDialogOpen) {
@@ -29,10 +34,16 @@ class IdeaList extends Component {
     if (this.state.snackbarOpen !== nextState.snackbarOpen) {
       return true;
     }
+    if (this.state.current !== nextState.current) {
+      return true;
+    }
     if (JSON.stringify(this.props) !== JSON.stringify(nextProps)) {
       return true;
     }
     return false;
+  }
+  componentWillUnmount = () => {
+    clearInterval(this.interval);
   }
   handleRequestIdeaDialogClose = () => {
     this.setState({
@@ -99,6 +110,13 @@ class IdeaList extends Component {
     this.props.undo();
     this.handleRequestSnackbarClose();
   }
+  renderMore = () => {
+    if (this.state.current === this.props.ideas.length - 1) {
+      clearInterval(this.interval);
+    } else {
+      this.setState(prev => ({ current: prev.current + 1 }));
+    }
+  }
   render() {
     const marginStyles = {
       expanded: {
@@ -151,20 +169,24 @@ class IdeaList extends Component {
           marginStyles.expanded :
           marginStyles.mini
         }
+        onScroll={this.handleScroll}
       >
-        {this.props.ideas.map((idea, index) => (
-          <div key={idea.id}>
-            <Idea
-              text={idea.idea}
-              index={index}
-              onRequestEditDialogOpen={this.handleRequestIdeaDialogOpen}
-              onRequestDelete={this.handleRequestIdeaDelete}
-              onRequestConvertDialogOpen={this.handleRequestConvertDialogOpen}
-              onRequestSnackbar={this.handleRequestSnackbarOpen}
-            />
-            <Divider />
-          </div>
-        ))}
+        {this.props.ideas.map((idea, index) => (index > this.state.current ?
+          <div key={idea.id} className="Idea" /> :
+          (
+            <div key={idea.id}>
+              <Idea
+                text={idea.idea}
+                index={index}
+                onRequestEditDialogOpen={this.handleRequestIdeaDialogOpen}
+                onRequestDelete={this.handleRequestIdeaDelete}
+                onRequestConvertDialogOpen={this.handleRequestConvertDialogOpen}
+                onRequestSnackbar={this.handleRequestSnackbarOpen}
+              />
+              <Divider />
+            </div>
+          )),
+        )}
         <EditIdeaDialog
           onRequestClose={this.handleRequestIdeaDialogClose}
           onRequestEdit={this.handleRequestIdeaEdit}
