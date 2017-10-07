@@ -8,10 +8,9 @@ const cumulate = (tasks) => {
   if (!tasks) {
     return cumulativeFrequencies;
   }
-  cumulativeFrequencies.overdue = tasks.overdue.length;
-  cumulativeFrequencies.open = tasks.open.length + cumulativeFrequencies.overdue;
-  cumulativeFrequencies.notYet = tasks.notYet.length + cumulativeFrequencies.open;
-  cumulativeFrequencies.done = tasks.done.length + cumulativeFrequencies.notYet;
+  cumulativeFrequencies.open = tasks.overdue.length;
+  cumulativeFrequencies.notYet = tasks.open.length + cumulativeFrequencies.open;
+  cumulativeFrequencies.done = tasks.notYet.length + cumulativeFrequencies.notYet;
   return cumulativeFrequencies;
 };
 

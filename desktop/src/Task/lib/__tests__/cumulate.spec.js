@@ -52,22 +52,19 @@ const tasks = {
 };
 
 it('should count cumulative frequencies of task groups', () => {
-  const { overdue, open, notYet, done } = cumulate(tasks);
-  expect(overdue).toBe(1);
-  expect(open).toBe(4);
-  expect(notYet).toBe(5);
-  expect(done).toBe(6);
+  const { open, notYet, done } = cumulate(tasks);
+  expect(open).toBe(1);
+  expect(notYet).toBe(4);
+  expect(done).toBe(5);
 });
 it('should set all cumulative frequencies to zero if input is null', () => {
-  const { overdue, open, notYet, done } = cumulate(null);
-  expect(overdue).toBe(0);
+  const { open, notYet, done } = cumulate(null);
   expect(open).toBe(0);
   expect(notYet).toBe(0);
   expect(done).toBe(0);
 });
 it('should set all cumulative frequencies to zero if input is undefined', () => {
-  const { overdue, open, notYet, done } = cumulate();
-  expect(overdue).toBe(0);
+  const { open, notYet, done } = cumulate();
   expect(open).toBe(0);
   expect(notYet).toBe(0);
   expect(done).toBe(0);
