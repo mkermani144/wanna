@@ -1,6 +1,6 @@
 /* eslint-env browser */
 
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 import { Provider } from 'react-redux';
 import { Redirect, Route, BrowserRouter as Router } from 'react-router-dom';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
@@ -24,7 +24,7 @@ import './App.css';
 
 injectTapEventPlugin();
 
-class App extends PureComponent {
+class App extends Component {
   constructor() {
     super();
     this.state = {

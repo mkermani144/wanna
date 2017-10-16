@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { List, ListItem } from 'material-ui/List';
 import Drawer from 'material-ui/Drawer';
@@ -19,7 +19,7 @@ import {
 
 import './Sidebar.css';
 
-class Sidebar extends PureComponent {
+class Sidebar extends Component {
   render() {
     const styles = {
       tasks: {

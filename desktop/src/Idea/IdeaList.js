@@ -24,24 +24,6 @@ class IdeaList extends Component {
   componentDidMount = () => {
     this.interval = setInterval(() => this.renderMore(), 0);
   }
-  shouldComponentUpdate(nextProps, nextState) {
-    if (this.state.ideaDialogOpen !== nextState.ideaDialogOpen) {
-      return true;
-    }
-    if (this.state.convertDialogOpen !== nextState.convertDialogOpen) {
-      return true;
-    }
-    if (this.state.snackbarOpen !== nextState.snackbarOpen) {
-      return true;
-    }
-    if (this.state.current !== nextState.current) {
-      return true;
-    }
-    if (JSON.stringify(this.props) !== JSON.stringify(nextProps)) {
-      return true;
-    }
-    return false;
-  }
   componentWillUnmount = () => {
     clearInterval(this.interval);
   }

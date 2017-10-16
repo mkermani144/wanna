@@ -1,10 +1,10 @@
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 import Dialog from 'material-ui/Dialog';
 import { RadioButton, RadioButtonGroup } from 'material-ui/RadioButton';
 import FlatButton from 'material-ui/FlatButton';
 import { blue500, grey50 } from 'material-ui/styles/colors';
 
-class CalendarSystemDialog extends PureComponent {
+class CalendarSystemDialog extends Component {
   handleRequestClose = (e, target) => {
     setTimeout(() => {
       this.props.onRequestClose(target);

@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import DatePicker from 'material-ui/DatePicker';
@@ -10,7 +10,7 @@ import persianUtils from 'material-ui-persian-date-picker-utils';
 
 import './NewTaskDialog.css';
 
-class NewTaskDialog extends PureComponent {
+class NewTaskDialog extends Component {
   constructor() {
     super();
     const today = new Date();

@@ -1,9 +1,10 @@
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
+import { pure } from 'recompose';
 
 import Actions from './Actions';
 import './Idea.css';
 
-class Idea extends PureComponent {
+class Idea extends Component {
   constructor() {
     super();
     this.state = {
@@ -38,4 +39,4 @@ class Idea extends PureComponent {
   }
 }
 
-export default Idea;
+export default pure(Idea);
