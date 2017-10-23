@@ -49,7 +49,7 @@ it('should be a div', () => {
   const wrapper = getActualTaskList();
   expect(wrapper.is('div.TaskList')).toBe(true);
 });
-it('should have 2 Task', () => {
+it('should have 4 Task', () => {
   const wrapper = getActualTaskList();
   expect(wrapper.find('Task').length).toBe(4);
 });

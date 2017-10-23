@@ -1,5 +1,4 @@
-import React, { Component } from 'react';
-import { pure } from 'recompose';
+import React, { PureComponent } from 'react';
 
 import Circle from './Circle';
 import Estimation from './Estimation';
@@ -8,7 +7,7 @@ import Repeat from './Repeat';
 import Actions from './Actions';
 import './Task.css';
 
-class Task extends Component {
+class Task extends PureComponent {
   constructor() {
     super();
     this.state = {
@@ -71,4 +70,4 @@ class Task extends Component {
   }
 }
 
-export default pure(Task);
+export default Task;

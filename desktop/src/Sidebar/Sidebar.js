@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { List, ListItem } from 'material-ui/List';
 import Drawer from 'material-ui/Drawer';
@@ -19,114 +19,112 @@ import {
 
 import './Sidebar.css';
 
-class Sidebar extends Component {
-  render() {
-    const styles = {
-      tasks: {
-        color: green800,
-      },
-      ideas: {
-        color: yellow900,
-      },
-      settings: {
-        color: indigo900,
-      },
-      help: {
-        color: cyan700,
-      },
-    };
-    return (
-      <Drawer
-        className="Sidebar"
-        width={this.props.expanded === false ? 56 : 200}
-        zDepth={1}
-        open
-      >
-        <List>
-          <ListItem
-            id="tasks"
-            primaryText="Tasks"
-            leftIcon={
-              <DoneAll
-                color={
-                  this.props.currentTab === 'tasks' ?
-                  green600 :
-                  null
-                }
-              />
-            }
-            style={
-              this.props.currentTab === 'tasks' ?
-              styles.tasks :
-              null
-            }
-            containerElement={<Link to="/tasks" />}
-            onClick={() => this.props.changeTab('tasks')}
-          />
-          <ListItem
-            id="ideas"
-            primaryText="Ideas"
-            leftIcon={
-              <LightbulbOutline
-                color={
-                  this.props.currentTab === 'ideas' ?
-                  yellow800 :
-                  null
-                }
-              />
-            }
-            style={
-              this.props.currentTab === 'ideas' ?
-              styles.ideas :
-              null
-            }
-            containerElement={<Link to="/ideas" />}
-            onClick={() => this.props.changeTab('ideas')}
-          />
-          <ListItem
-            id="settings"
-            primaryText="Settings"
-            leftIcon={
-              <Settings
-                color={
-                  this.props.currentTab === 'settings' ?
-                  indigo600 :
-                  null
-                }
-              />
-            }
-            style={
-              this.props.currentTab === 'settings' ?
-              styles.settings :
-              null
-            }
-            containerElement={<Link to="/settings" />}
-            onClick={() => this.props.changeTab('settings')}
-          />
-          <ListItem
-            id="help"
-            primaryText="Help"
-            leftIcon={
-              <Help
-                color={
-                  this.props.currentTab === 'help' ?
-                  cyan600 :
-                  null
-                }
-              />
-            }
-            style={
-              this.props.currentTab === 'help' ?
-              styles.help :
-              null
-            }
-            containerElement={<Link to="/help" />}
-            onClick={() => this.props.changeTab('help')}
-          />
-        </List>
-      </Drawer>
-    );
-  }
-}
+const Sidebar = (props) => {
+  const styles = {
+    tasks: {
+      color: green800,
+    },
+    ideas: {
+      color: yellow900,
+    },
+    settings: {
+      color: indigo900,
+    },
+    help: {
+      color: cyan700,
+    },
+  };
+  return (
+    <Drawer
+      className="Sidebar"
+      width={props.expanded === false ? 56 : 200}
+      zDepth={1}
+      open
+    >
+      <List>
+        <ListItem
+          id="tasks"
+          primaryText="Tasks"
+          leftIcon={
+            <DoneAll
+              color={
+                props.currentTab === 'tasks' ?
+                green600 :
+                null
+              }
+            />
+          }
+          style={
+            props.currentTab === 'tasks' ?
+            styles.tasks :
+            null
+          }
+          containerElement={<Link to="/tasks" />}
+          onClick={() => props.changeTab('tasks')}
+        />
+        <ListItem
+          id="ideas"
+          primaryText="Ideas"
+          leftIcon={
+            <LightbulbOutline
+              color={
+                props.currentTab === 'ideas' ?
+                yellow800 :
+                null
+              }
+            />
+          }
+          style={
+            props.currentTab === 'ideas' ?
+            styles.ideas :
+            null
+          }
+          containerElement={<Link to="/ideas" />}
+          onClick={() => props.changeTab('ideas')}
+        />
+        <ListItem
+          id="settings"
+          primaryText="Settings"
+          leftIcon={
+            <Settings
+              color={
+                props.currentTab === 'settings' ?
+                indigo600 :
+                null
+              }
+            />
+          }
+          style={
+            props.currentTab === 'settings' ?
+            styles.settings :
+            null
+          }
+          containerElement={<Link to="/settings" />}
+          onClick={() => props.changeTab('settings')}
+        />
+        <ListItem
+          id="help"
+          primaryText="Help"
+          leftIcon={
+            <Help
+              color={
+                props.currentTab === 'help' ?
+                cyan600 :
+                null
+              }
+            />
+          }
+          style={
+            props.currentTab === 'help' ?
+            styles.help :
+            null
+          }
+          containerElement={<Link to="/help" />}
+          onClick={() => props.changeTab('help')}
+        />
+      </List>
+    </Drawer>
+  );
+};
 
 export default Sidebar;
