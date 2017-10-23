@@ -44,7 +44,7 @@
     "lint": "eslint main.js src/",
     "eject": "react-scripts eject",
     "electron": "electron . | cross-env BROWSER=none react-scripts start",
-    "precommit": "yarn lint && cross-env CI=true yarn test -- --onlyChanged",
+    "precommit": "yarn lint && cross-env CI=true yarn test --onlyChanged",
     "start-and-e2e": "cross-env CI=true npm-run-all -r -p test:e2e start:nodeless"
   },
   "jest": {
