@@ -22,7 +22,7 @@
   margin-bottom: 12px;
   overflow: hidden;
   white-space: nowrap;
-  text-overflow:ellipsis;
+  text-overflow: ellipsis;
 }
 .Idea .Actions {
   flex-grow: 2;
