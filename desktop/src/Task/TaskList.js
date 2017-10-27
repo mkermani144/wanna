@@ -13,6 +13,7 @@ import Task from './Task';
 import EditTaskDialog from './EditTaskDialog';
 import './TaskList.css';
 import classify from './lib/classify';
+import cumulate from './lib/cumulate';
 
 class TaskList extends Component {
   constructor() {
@@ -22,19 +23,14 @@ class TaskList extends Component {
       snackbarOpen: false,
       snackbarMessage: '',
       index: -1,
+      current: 5,
     };
   }
-  shouldComponentUpdate(nextProps, nextState) {
-    if (this.state.taskDialogOpen !== nextState.taskDialogOpen) {
-      return true;
-    }
-    if (this.state.snackbarOpen !== nextState.snackbarOpen) {
-      return true;
-    }
-    if (JSON.stringify(this.props) !== JSON.stringify(nextProps)) {
-      return true;
-    }
-    return false;
+  componentDidMount = () => {
+    this.interval = setInterval(() => this.renderMore(), 0);
+  }
+  componentWillUnmount = () => {
+    clearInterval(this.interval);
   }
   handleRequestTaskDialogClose = () => {
     this.setState({
@@ -76,6 +72,13 @@ class TaskList extends Component {
   handleUndo = () => {
     this.props.undo();
     this.handleRequestSnackbarClose();
+  }
+  renderMore = () => {
+    if (this.state.current === this.props.tasks.length - 1) {
+      clearInterval(this.interval);
+    } else {
+      this.setState(prev => ({ current: prev.current + 1 }));
+    }
   }
   render() {
     const styles = {
@@ -150,6 +153,7 @@ class TaskList extends Component {
         </div>
       );
     }
+    const cumulativeFrequencies = cumulate(classifiedTasks);
     return (
       <div
         className="TaskList"
@@ -163,7 +167,8 @@ class TaskList extends Component {
           <Subheader style={styles.overdue}>Overdue</Subheader>
         }
         {
-          classifiedTasks.overdue.map(task => (
+          classifiedTasks.overdue.map((task, index) => (index > this.state.current ?
+            <div key={task.id} className="Task" /> :
             <Task
               color={task.color}
               text={task.task}
@@ -185,20 +190,22 @@ class TaskList extends Component {
           <Subheader style={styles.open}>Open</Subheader>
         }
         {
-          classifiedTasks.open.map(task => (
-            <Task
-              color={task.color}
-              text={task.task}
-              estimation={task.estimation}
-              due={task.due}
-              repeat={`${task.repetition} days`}
-              key={task.id}
-              index={task.index}
-              onRequestEditTaskOpen={this.handleRequestTaskDialogOpen}
-              onRequestDelete={this.handleRequestTaskDelete}
-              onRequestDo={this.handleRequestTaskDo}
-              onRequestSnackbar={this.handleRequestSnackbarOpen}
-            />
+          classifiedTasks.open.map(
+            (task, index) => (index > this.state.current + cumulativeFrequencies.open ?
+              <div key={task.id} className="Task" /> :
+              <Task
+                color={task.color}
+                text={task.task}
+                estimation={task.estimation}
+                due={task.due}
+                repeat={`${task.repetition} days`}
+                key={task.id}
+                index={task.index}
+                onRequestEditTaskOpen={this.handleRequestTaskDialogOpen}
+                onRequestDelete={this.handleRequestTaskDelete}
+                onRequestDo={this.handleRequestTaskDo}
+                onRequestSnackbar={this.handleRequestSnackbarOpen}
+              />
           ))
         }
         {classifiedTasks.open.length > 0 &&
@@ -208,20 +215,22 @@ class TaskList extends Component {
           <Subheader style={styles.notYet}>Not Yet</Subheader>
         }
         {this.props.showNotYetTasks &&
-          classifiedTasks.notYet.map(task => (
-            <Task
-              color={task.color}
-              text={task.task}
-              estimation={task.estimation}
-              due={task.due}
-              repeat={`${task.repetition} days`}
-              key={task.id}
-              index={task.index}
-              onRequestEditTaskOpen={this.handleRequestTaskDialogOpen}
-              onRequestDelete={this.handleRequestTaskDelete}
-              onRequestDo={this.handleRequestTaskDo}
-              onRequestSnackbar={this.handleRequestSnackbarOpen}
-            />
+          classifiedTasks.notYet.map(
+            (task, index) => (index > this.state.current + cumulativeFrequencies.notYet ?
+              <div key={task.id} className="Task" /> :
+              <Task
+                color={task.color}
+                text={task.task}
+                estimation={task.estimation}
+                due={task.due}
+                repeat={`${task.repetition} days`}
+                key={task.id}
+                index={task.index}
+                onRequestEditTaskOpen={this.handleRequestTaskDialogOpen}
+                onRequestDelete={this.handleRequestTaskDelete}
+                onRequestDo={this.handleRequestTaskDo}
+                onRequestSnackbar={this.handleRequestSnackbarOpen}
+              />
           ))
         }
         {classifiedTasks.notYet.length > 0 && this.props.showNotYetTasks &&
@@ -231,21 +240,22 @@ class TaskList extends Component {
           <Subheader style={styles.done}>Done</Subheader>
         }
         {
-          classifiedTasks.done.map(task => (
-            <Task
-              color={task.color}
-              text={task.task}
-              estimation={task.estimation}
-              repeat={`${task.repetition} days`}
-              key={task.id}
-              index={task.index}
-              onRequestDelete={this.handleRequestTaskDelete}
-              onRequestSnackbar={this.handleRequestSnackbarOpen}
-              done
-            />
+          classifiedTasks.done.map(
+            (task, index) => (index > this.state.current + cumulativeFrequencies.done ?
+              <div key={task.id} className="Task" /> :
+              <Task
+                color={task.color}
+                text={task.task}
+                estimation={task.estimation}
+                repeat={`${task.repetition} days`}
+                key={task.id}
+                index={task.index}
+                onRequestDelete={this.handleRequestTaskDelete}
+                onRequestSnackbar={this.handleRequestSnackbarOpen}
+                done
+              />
           ))
         }
-
         {classifiedTasks.done.length > 0 &&
           <Divider style={dividerStyle} />
         }

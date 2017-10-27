@@ -1,6 +1,6 @@
 /* eslint-env browser */
 
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 import { SpeedDial, SpeedDialItem } from 'react-mui-speeddial';
 import Add from 'material-ui/svg-icons/content/add';
 import Close from 'material-ui/svg-icons/navigation/close';
@@ -15,7 +15,7 @@ import NewIdeaDialog from './NewIdeaDialog';
 import './FAB.css';
 
 
-class FAB extends PureComponent {
+class FAB extends Component {
   constructor() {
     super();
     this.state = {

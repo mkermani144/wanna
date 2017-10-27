@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 import { List, ListItem } from 'material-ui/List';
 import Checkbox from 'material-ui/Checkbox';
 import Divider from 'material-ui/Divider';
@@ -7,7 +7,7 @@ import CalendarSystemDialog from './CalendarSystemDialog';
 import FirstDayOfWeekDialog from './FirstDayOfWeekDialog';
 import './Settings.css';
 
-class Settings extends PureComponent {
+class Settings extends Component {
   constructor() {
     super();
     this.state = {

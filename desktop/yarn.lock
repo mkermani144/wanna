@@ -4255,9 +4255,9 @@ material-ui-persian-date-picker-utils@^0.1.2:
   dependencies:
     moment-jalaali "^0.7.0"
 
-material-ui@^0.18.1:
-  version "0.18.7"
-  resolved "https://registry.yarnpkg.com/material-ui/-/material-ui-0.18.7.tgz#b87af16357e6966b36c23d489eb2ed70746d25f8"
+material-ui@0.19.3:
+  version "0.19.3"
+  resolved "https://registry.yarnpkg.com/material-ui/-/material-ui-0.19.3.tgz#34b96401499773bc0b1ebf923b293bbf1632d375"
   dependencies:
     babel-runtime "^6.23.0"
     inline-style-prefixer "^3.0.2"

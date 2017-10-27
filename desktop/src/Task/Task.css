@@ -43,6 +43,9 @@
 .Task .text {
   flex-grow: 5;
   position: relative;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 .Task .text p {
   display: inline-block;
