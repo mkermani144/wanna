@@ -40,7 +40,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test --testPathPattern='(.*/)?.+\\.spec\\.js'",
     "test:e2e": "react-scripts test --onlyChanged --testPathPattern='(.*/)?.+\\.e2e\\.js'",
-    "test:cov": "yarn test && codecov",
+    "test:cov": "yarn test --coverage && codecov",
     "lint": "eslint main.js src/",
     "eject": "react-scripts eject",
     "electron": "electron . | cross-env BROWSER=none react-scripts start",
