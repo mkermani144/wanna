@@ -6,7 +6,7 @@ before_install:
 install:
 - npm i -g codecov
 script:
-- cd desktop && yarn && yarn test:cov && yarn start-and-e2e
+- yarn && yarn test:cov && yarn start-and-e2e
 addons:
   browserstack:
     username: mohammad222
