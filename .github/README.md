@@ -1,3 +1,5 @@
+<img src="../wanna.png" alt="asdf" width="96" />
+
 Wanna
 ====
 [![Build Status](https://img.shields.io/travis/mkermani144/wanna.svg)](https://travis-ci.org/mkermani144/wanna)
@@ -6,6 +8,10 @@ Wanna
 [![Issues](https://img.shields.io/github/issues-raw/mkermani144/wanna.svg)]()
 [![Pull requests](https://img.shields.io/github/issues-pr-raw/mkermani144/wanna.svg)]()
 [![Wannachat](https://badges.gitter.im/wannachat/Lobby.svg)](https://gitter.im/wannachat/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
+Screenshot
+----
+![screenshot](../screenshots/s1.png)
 
 Table of contents
 ----
@@ -44,7 +50,7 @@ Join [Wannachat](https://gitter.im/wannachat/Lobby) on Gitter!
 
 Contributing
 ----
-Please see [contributing guidelines](/CONTRIBUTING.md) for a comprehensive description of how to contribute to Wanna.
+Please see [contributing guidelines](CONTRIBUTING.md) for a comprehensive description of how to contribute to Wanna.
 
 Issues and bug reports
 ----
