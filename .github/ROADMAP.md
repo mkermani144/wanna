@@ -9,7 +9,7 @@ Wanna Flex Beta
 ----
 The next version of the app, Flex Beta, will be focused on testing, performance, animations (and flexibility, for sure!):
 - [X] **Testing:** Wanna Flex Alpha was completed without writing any line of tests. A software without tests is not a good software. So the first concern in Flex Beta version will be adding tests.
-- [ ] **Performance:** Although React is developed with performance considerations in the head, Wanna is still a bit slow. So performance improvement becomes an important case.
+- [X] **Performance:** Although React is developed with performance considerations in the head, Wanna is still a bit slow. So performance improvement becomes an important case.
 - [ ] **Animations:** Let's be reckless. No matter how beautiful Wanna becomes and implement Google Material Design better, it is still ugly without animations. Just adding very basic animations will fulfill the user need for animations.
 - [ ] **Flexibility:** Wait! There is more. This version of Wanna is named **Flex**, as it aims at giving the user *flexibility* in getting his/her tasks done. This is the most important feature to be implemented (but the last one, too, as previous features are vital for the app, and should not be postponed).
 
