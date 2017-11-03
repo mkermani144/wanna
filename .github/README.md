@@ -44,7 +44,7 @@ Join [Wannachat](https://gitter.im/wannachat/Lobby) on Gitter!
 
 Contributing
 ----
-Please see [contributing guidelines](/CONTRIBUTING.md) for a comprehensive description of how to contribute to Wanna.
+Please see [contributing guidelines](CONTRIBUTING.md) for a comprehensive description of how to contribute to Wanna.
 
 Issues and bug reports
 ----
