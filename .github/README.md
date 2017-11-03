@@ -1,3 +1,5 @@
+<img src="../wanna.png" alt="asdf" width="96" />
+
 Wanna
 ====
 [![Build Status](https://img.shields.io/travis/mkermani144/wanna.svg)](https://travis-ci.org/mkermani144/wanna)
