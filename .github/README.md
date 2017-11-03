@@ -1,4 +1,4 @@
-<img src="../wanna.png" alt="asdf" width="96"></img>
+<img src="../wanna.png" alt="asdf" width="96" />
 
 Wanna
 ====
