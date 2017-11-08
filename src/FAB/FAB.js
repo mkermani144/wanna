@@ -49,7 +49,7 @@ class FAB extends Component {
     this.props.addTask({
       task: taskInfo.task,
       start: taskInfo.start,
-      end: taskInfo.end + 86400000,
+      end: taskInfo.end,
       estimation: taskInfo.estimation * taskInfo.estimationValue,
       repetition: repetitionDays,
       done: false,
