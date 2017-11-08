@@ -9,11 +9,14 @@ import {
   deleteTask,
 } from '../../Task/actionCreators';
 
+const now = new Date();
+const later = new Date(Date.now() + 86399999);
+
 const defaultState = [
   {
     task: 'A cool task',
-    start: 0,
-    end: 86400000,
+    start: now,
+    end: later,
     estimation: 5,
     repetition: '',
     done: false,
@@ -21,8 +24,8 @@ const defaultState = [
   },
   {
     task: 'Another cool task',
-    start: 0,
-    end: 86400000,
+    start: now,
+    end: later,
     estimation: 60,
     repetition: 3,
     done: false,
@@ -30,8 +33,8 @@ const defaultState = [
   },
   {
     task: 'Even another cool task',
-    start: 0,
-    end: 86400000,
+    start: now,
+    end: later,
     estimation: 120,
     repetition: '',
     done: true,
@@ -50,8 +53,8 @@ it('should add new task (via FAB)', () => {
   const expected = getExpectedState({
     [defaultState.length]: {
       task: 'A nice task',
-      start: 0,
-      end: 86400000,
+      start: now,
+      end: later,
       estimation: 30,
       repetition: '',
       done: false,
@@ -60,8 +63,8 @@ it('should add new task (via FAB)', () => {
   });
   const action = FABAddTask({
     task: 'A nice task',
-    start: 0,
-    end: 86400000,
+    start: now,
+    end: later,
     estimation: 30,
     repetition: '',
     done: false,
@@ -74,8 +77,8 @@ it('should add new task (via Idea)', () => {
   const expected = getExpectedState({
     [defaultState.length]: {
       task: 'A nice task',
-      start: 0,
-      end: 86400000,
+      start: now,
+      end: later,
       estimation: 30,
       repetition: '',
       done: false,
@@ -84,8 +87,8 @@ it('should add new task (via Idea)', () => {
   });
   const action = ideaAddTask({
     task: 'A nice task',
-    start: 0,
-    end: 86400000,
+    start: now,
+    end: later,
     estimation: 30,
     repetition: '',
     done: false,
@@ -98,8 +101,8 @@ it('should do non-repeating task', () => {
   const expected = getExpectedState({
     0: {
       task: 'A cool task',
-      start: 0,
-      end: 86400000,
+      start: now,
+      end: later,
       estimation: 5,
       repetition: '',
       done: true,
@@ -114,8 +117,8 @@ it('should do repeating task', () => {
   const expected = getExpectedState({
     1: {
       task: 'Another cool task',
-      start: 86400000 * 3,
-      end: 86400000 * 4,
+      start: new Date(Date.parse(now) + (3 * 86400000)),
+      end: new Date(Date.parse(later) + (3 * 86400000)),
       estimation: 60,
       repetition: 3,
       done: false,
@@ -130,8 +133,8 @@ it('should edit task', () => {
   const expected = getExpectedState({
     1: {
       task: 'A nice task',
-      start: 0,
-      end: 86400000,
+      start: now,
+      end: later,
       estimation: 60,
       repetition: 3,
       done: false,

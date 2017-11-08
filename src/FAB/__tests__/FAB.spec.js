@@ -64,7 +64,7 @@ it('should call addTask inside NewTaskDialog onRequestAdd', () => {
       expect(task).toMatchObject({
         task: 'a cool task',
         start: 0,
-        end: 86400000,
+        end: 86399999,
         estimation: 60,
         repetition: 0,
         done: false,
@@ -74,7 +74,7 @@ it('should call addTask inside NewTaskDialog onRequestAdd', () => {
   wrapper.find('NewTaskDialog').props().onRequestAdd({
     task: 'a cool task',
     start: 0,
-    end: 0,
+    end: 86399999,
     estimation: 1,
     estimationValue: 60,
     repetition: 0,
