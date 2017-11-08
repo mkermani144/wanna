@@ -148,7 +148,7 @@ it('should call addTask inside ConvertIdeaDialog onRequestConvert', () => {
     addTask(taskInfo) {
       expect(taskInfo.done).toBe(false);
       expect(taskInfo.start).toBe(0);
-      expect(taskInfo.end).toBe(172800000);
+      expect(taskInfo.end).toBe(86399999);
       expect(taskInfo.estimation).toBe(120);
       expect(taskInfo.repetition).toBe(0);
       expect(taskInfo.task).toBe('a cool task');
@@ -156,7 +156,7 @@ it('should call addTask inside ConvertIdeaDialog onRequestConvert', () => {
   });
   wrapper.find('ConvertIdeaDialog').props().onRequestConvert({
     start: 0,
-    end: 86400000,
+    end: 86399999,
     estimation: 2,
     estimationValue: 60,
     repetition: 0,
