@@ -124,7 +124,7 @@ class App extends Component {
                     window={window}
                     width={document.body.clientWidth}
                   />
-                  <Redirect from="/" to="tasks" />
+                  <Redirect from="/" to="/tasks" />
                   {this.state.toTasks &&
                     <Redirect to="/tasks" />
                   }
