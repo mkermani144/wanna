@@ -1,3 +1,5 @@
+import { addDays } from '../lib/date';
+
 const taskReducer = (state = [], action) => {
   switch (action.type) {
     case 'ADD_TASK':
@@ -12,8 +14,8 @@ const taskReducer = (state = [], action) => {
           ...state.slice(0, action.index),
           {
             ...state[action.index],
-            start: new Date(Date.parse(task.start) + (task.repetition * 86400000)),
-            end: new Date(Date.parse(task.end) + (task.repetition * 86400000)),
+            start: addDays(task.repetition, task.start),
+            end: addDays(task.repetition, task.end),
           },
           ...state.slice(action.index + 1),
         ];
