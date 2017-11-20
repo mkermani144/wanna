@@ -19,9 +19,9 @@ const classify = (tasks) => {
   };
   const now = Date.now();
   tasks.forEach((task, index) => {
-    let { start, end } = task;
-    start = Date.parse(start);
-    end = Date.parse(end) + 999;
+    const { start } = task;
+    let { end } = task;
+    end += 999;
     if (task.done) {
       classifiedTasks.done.push({
         ...task,

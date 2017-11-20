@@ -1,4 +1,4 @@
-/* eslint-env  jest */
+/* eslint-env jest */
 
 import classify from '../classify';
 
@@ -7,38 +7,38 @@ const todayStart = (new Date()).setHours(0, 0, 0, 0);
 const tasks = [
   {
     task: 'an overdue task',
-    start: new Date(todayStart - (2 * 86400000)),
-    end: new Date(todayStart - (86400000 - 1)),
+    start: todayStart - (2 * 86400000),
+    end: todayStart - (86400000 - 1),
     done: false,
   },
   {
     task: 'an open task with due tomorrow',
-    start: new Date(todayStart - 86400000),
-    end: new Date(todayStart + ((2 * 86400000) - 1)),
+    start: todayStart - 86400000,
+    end: todayStart + ((2 * 86400000) - 1),
     done: false,
   },
   {
     task: 'an open task with due tomorrow',
-    start: new Date(todayStart - 86400000),
-    end: new Date(todayStart + ((3 * 86400000) - 1)),
+    start: todayStart - 86400000,
+    end: todayStart + ((3 * 86400000) - 1),
     done: false,
   },
   {
     task: 'an open task with due today',
-    start: new Date(todayStart - 86400000),
-    end: new Date(todayStart + (86400000 - 1)),
+    start: todayStart - 86400000,
+    end: todayStart + (86400000 - 1),
     done: false,
   },
   {
     task: 'a not-yet task',
-    start: new Date(todayStart + 86400000),
-    end: new Date(todayStart + ((2 * 86400000) - 1)),
+    start: todayStart + 86400000,
+    end: todayStart + ((2 * 86400000) - 1),
     done: false,
   },
   {
     task: 'a done task',
-    start: new Date(todayStart - 86400000),
-    end: new Date(todayStart - 1),
+    start: todayStart - 86400000,
+    end: todayStart - 1,
     done: true,
   },
 ];
