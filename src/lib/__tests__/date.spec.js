@@ -15,12 +15,12 @@ it('should parse date correctly', () => {
   expect(actual).toBe(expected);
 });
 it('should return day start correctly', () => {
-  const expected = 1511037000000;
+  const expected = (new Date(sampleUnixDate)).setHours(0, 0, 0, 0);
   const actual = dayStart(sampleUnixDate);
   expect(actual).toBe(expected);
 });
 it('should return day end correctly', () => {
-  const expected = 1511123399999;
+  const expected = (new Date(sampleUnixDate)).setHours(23, 59, 59, 999);
   const actual = dayEnd(sampleUnixDate);
   expect(actual).toBe(expected);
 });
