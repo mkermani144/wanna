@@ -56,6 +56,10 @@ it('should set Circle color based on props', () => {
   const wrapper = getActualTask({ color: 'blue' });
   expect(wrapper.find('Circle').prop('color')).toBe('blue');
 });
+it('should set Circle signal based on props', () => {
+  const wrapper = getActualTask({ signal: true });
+  expect(wrapper.find('Circle').prop('signal')).toBe(true);
+});
 it('should set text div text based on props', () => {
   const wrapper = getActualTask({ text: 'a cooler idea' });
   expect(wrapper.find('div.text').text()).toBe('a cooler idea');

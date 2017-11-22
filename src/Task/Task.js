@@ -51,10 +51,11 @@ class Task extends PureComponent {
       due,
       repeat,
       done,
+      signal,
     } = this.props;
     return (
       <div className={`Task ${this.state.class} ${done ? 'done' : ''}`}>
-        <Circle color={color} />
+        <Circle color={color} signal={signal} />
         <div className={'text'}><p>{text}</p></div>
         <Estimation estimation={estimation} />
         <DueDate due={due} />

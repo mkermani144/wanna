@@ -171,6 +171,7 @@ class TaskList extends Component {
             <div key={task.id} className="Task" /> :
             <Task
               color={task.color}
+              signal={task.signal}
               text={task.task}
               estimation={task.estimation}
               repeat={`${task.repetition} days`}
@@ -195,6 +196,7 @@ class TaskList extends Component {
               <div key={task.id} className="Task" /> :
               <Task
                 color={task.color}
+                signal={task.signal}
                 text={task.task}
                 estimation={task.estimation}
                 due={task.due}
@@ -220,6 +222,7 @@ class TaskList extends Component {
               <div key={task.id} className="Task" /> :
               <Task
                 color={task.color}
+                signal={task.signal}
                 text={task.task}
                 estimation={task.estimation}
                 due={task.due}
@@ -245,6 +248,7 @@ class TaskList extends Component {
               <div key={task.id} className="Task" /> :
               <Task
                 color={task.color}
+                signal={task.signal}
                 text={task.task}
                 estimation={task.estimation}
                 repeat={`${task.repetition} days`}
