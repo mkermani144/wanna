@@ -6,9 +6,9 @@ import R from 'ramda';
 const componentory = (Component, props) => shallow(<Component {...props} />);
 const merge = (defaultProps, props) => R.mergeAll([defaultProps, props]);
 
-const getActualComponentFactory = (Component, defaultProps) => R.compose(
-  R.partial(componentory, [Component]),
+const getActualComponentFactory = (Component, defaultProps) => R.pipe(
   R.partial(merge, [defaultProps]),
+  R.partial(componentory, [Component]),
 );
 
 export default getActualComponentFactory;

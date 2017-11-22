@@ -10,7 +10,7 @@ There are multiple kinds of contributions we seek for, ranging from effortless o
 app development. Below comes the list of contribution types. Please make sure you have satisfied prerequisties of each contribution type before reading its guidelines, otherwise you may do redundant work.  
 
 ### Feature requests :bulb:
-#### Prerequisties: 
+#### Prerequisties:
 * Install and use the app
 
 Feature requests are the easiest type of contribution in Wanna. If you think a feature will make Wanna better, inform us!  
@@ -22,7 +22,7 @@ To do so, follow these steps:
 We may label your issue as `Needs-check`, or we may directly add `idea` or `new-feature` label to your issue, indicating your issue is approved.
 
 ### Bug reports :beetle:
-#### Prerequisties: 
+#### Prerequisties:
 * Install and use the app
 
 If you find a bug when you use the app, you can contribute to Wanna as a bug reporter. To do so, follow these steps which are almost the same as steps for feature requests:
@@ -122,3 +122,10 @@ Some general guidelines:
 5. Use large timeouts in the tests. Don't assume the tests are run as fast as your computer. Some e2e tests may take several minutes to complete, while the same ones may run in half a minute in your computer.
 6. Wait often. If the test fails and your code is correct (and you don't know why, as the famous meme suggests :joy:), you may need to wait between two lines of your e2e test.
 7. Use appropriate `class`es and `id`s in your React components to simplify CSS selectors in your e2e tests.
+
+Misc
+---
+
+### Dates
+We have our own tiny module for manipulating dates. This module is located in `src/lib/date.js`. Try to use its apis for all kinds of date and time manipulations.  
+Except `parse` function, which exactly does the same thing as `Date.parse`, all other exported functions in this module use unix times as input (if any) and return unix times as output, too. Javascript date objects are neither provided as inputs to these functions nor returned as their output.

@@ -8,18 +8,23 @@ import MenuItem from 'material-ui/MenuItem';
 import { green600, grey50 } from 'material-ui/styles/colors';
 import persianUtils from 'material-ui-persian-date-picker-utils';
 
+import {
+  parse,
+  dayStart,
+  todayStart,
+  dayEnd,
+} from '../lib/date';
+
 import './NewTaskDialog.css';
 
 class NewTaskDialog extends Component {
   constructor() {
     super();
-    const today = new Date();
-    today.setHours(0, 0, 0, 0);
     this.state = {
       estimationValue: 1,
       repetitionValue: 1,
       task: '',
-      start: today,
+      start: todayStart(),
       end: null,
       estimation: '',
       repetition: '',
@@ -48,17 +53,13 @@ class NewTaskDialog extends Component {
     });
   }
   handleStartChange = (e, start) => {
-    const startClone = new Date(start);
-    startClone.setHours(0, 0, 0, 0);
     this.setState({
-      start: startClone,
+      start: dayStart(parse(start)),
     });
   }
   handleEndChange = (e, end) => {
-    const endClone = new Date(end);
-    endClone.setHours(23, 59, 59, 999);
     this.setState({
-      end: endClone,
+      end: dayEnd(parse(end)),
     });
   }
   handleEstimationChange = (e) => {
@@ -72,13 +73,11 @@ class NewTaskDialog extends Component {
     });
   }
   handleRequestClose = () => {
-    const today = new Date();
-    today.setHours(0, 0, 0, 0);
     this.setState({
       estimationValue: 1,
       repetitionValue: 1,
       task: '',
-      start: today,
+      start: todayStart(),
       end: null,
       estimation: '',
       repetition: '',
@@ -87,13 +86,11 @@ class NewTaskDialog extends Component {
   }
   handleRequestAdd = () => {
     this.props.onRequestAdd(this.state);
-    const today = new Date();
-    today.setHours(0, 0, 0, 0);
     this.setState({
       estimationValue: 1,
       repetitionValue: 1,
       task: '',
-      start: today,
+      start: todayStart(),
       end: null,
       estimation: '',
       repetition: '',
@@ -190,7 +187,7 @@ class NewTaskDialog extends Component {
               {...localeProps}
               firstDayOfWeek={this.props.firstDayOfWeek}
               textFieldStyle={datePickerStyles.textFieldStyle}
-              minDate={this.state.start}
+              minDate={new Date(this.state.start)}
               onChange={this.handleEndChange}
             />
           </div>

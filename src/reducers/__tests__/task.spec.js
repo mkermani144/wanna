@@ -9,8 +9,8 @@ import {
   deleteTask,
 } from '../../Task/actionCreators';
 
-const now = new Date();
-const later = new Date(Date.now() + 86399999);
+const now = Date.now();
+const later = Date.now() + 86399999;
 
 const defaultState = [
   {
@@ -117,8 +117,8 @@ it('should do repeating task', () => {
   const expected = getExpectedState({
     1: {
       task: 'Another cool task',
-      start: new Date(Date.parse(now) + (3 * 86400000)),
-      end: new Date(Date.parse(later) + (3 * 86400000)),
+      start: now + (3 * 86400000),
+      end: later + (3 * 86400000),
       estimation: 60,
       repetition: 3,
       done: false,
