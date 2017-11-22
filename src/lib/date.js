@@ -7,11 +7,11 @@ const dateObjectUnixDayEnd = dateObject => dateObject.setHours(23, 59, 59, 999);
 const multiply86400000 = R.multiply(86400000);
 
 const parse = Date.parse;
-const dayStart = R.compose(dateObjectUnixDayStart, unixToDateObject);
-const dayEnd = R.compose(dateObjectUnixDayEnd, unixToDateObject);
-const todayStart = R.compose(dayStart, unixNow);
+const dayStart = R.pipe(unixToDateObject, dateObjectUnixDayStart);
+const dayEnd = R.pipe(unixToDateObject, dateObjectUnixDayEnd);
+const todayStart = R.pipe(unixNow, dayStart);
 
-const addDays = R.compose(R.add, multiply86400000);
+const addDays = R.pipe(multiply86400000, R.add);
 const uncurriedAddDays = R.uncurryN(2, addDays);
 
 export {
