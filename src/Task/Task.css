@@ -1,3 +1,12 @@
+@keyframes signal {
+  to {
+    width: 16px;
+    height: 16px;
+    opacity: 0;
+    border-width: 2px;
+  }
+}
+
 .Task {
   display: flex;
   flex-direction: row;
@@ -39,6 +48,24 @@
 .Task .Circle {
   flex-grow: 0;
   margin-right: 10px;
+  position: relative;
+  width: 8px;
+  height: 8px;
+  flex-basis: auto;
+  border-radius: 50%;
+}
+.Task .Circle .Signal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 8px;
+  height: 8px;
+  opacity: .8;
+  border-radius: 50%;
+  border: 1px solid;
+  content: "";
+  animation: signal 1.2s infinite ease-in-out;
 }
 .Task .text {
   flex-grow: 5;

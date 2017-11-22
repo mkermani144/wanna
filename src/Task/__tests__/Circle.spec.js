@@ -8,7 +8,11 @@ const getActualCircle = getActualComponentFactory(Circle, {});
 it('should render', () => {
   getActualCircle();
 });
-it('should be 1 p', () => {
+it('should be a div', () => {
   const wrapper = getActualCircle();
-  expect(wrapper.is('p.Circle')).toEqual(true);
+  expect(wrapper.is('div.Circle')).toEqual(true);
+});
+it('should have a div.Signal if signal prop is true', () => {
+  const wrapper = getActualCircle({ signal: true });
+  expect(wrapper.find('div.Signal').length).toEqual(1);
 });
