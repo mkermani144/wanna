@@ -2,11 +2,13 @@ import React, { Component } from 'react';
 import Divider from 'material-ui/Divider';
 import Snackbar from 'material-ui/Snackbar';
 import shortid from 'shortid';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 import Idea from './Idea';
 import EditIdeaDialog from './EditIdeaDialog';
 import ConvertIdeaDialog from './ConvertIdeaDialog';
 import './IdeaList.css';
+import './Animations.css';
 
 class IdeaList extends Component {
   constructor() {
@@ -153,22 +155,28 @@ class IdeaList extends Component {
         }
         onScroll={this.handleScroll}
       >
-        {this.props.ideas.map((idea, index) => (index > this.state.current ?
-          <div key={idea.id} className="Idea" /> :
-          (
-            <div key={idea.id}>
-              <Idea
-                text={idea.idea}
-                index={index}
-                onRequestEditDialogOpen={this.handleRequestIdeaDialogOpen}
-                onRequestDelete={this.handleRequestIdeaDelete}
-                onRequestConvertDialogOpen={this.handleRequestConvertDialogOpen}
-                onRequestSnackbar={this.handleRequestSnackbarOpen}
-              />
-              <Divider />
-            </div>
-          )),
-        )}
+        <ReactCSSTransitionGroup
+          transitionName="idea"
+          transitionEnterTimeout={500}
+          transitionLeaveTimeout={500}
+        >
+          {this.props.ideas.map((idea, index) => (index > this.state.current ?
+            <div key={idea.id} className="Idea" /> :
+            (
+              <div key={idea.id}>
+                <Idea
+                  text={idea.idea}
+                  index={index}
+                  onRequestEditDialogOpen={this.handleRequestIdeaDialogOpen}
+                  onRequestDelete={this.handleRequestIdeaDelete}
+                  onRequestConvertDialogOpen={this.handleRequestConvertDialogOpen}
+                  onRequestSnackbar={this.handleRequestSnackbarOpen}
+                />
+                <Divider />
+              </div>
+            )),
+          )}
+        </ReactCSSTransitionGroup>
         <EditIdeaDialog
           onRequestClose={this.handleRequestIdeaDialogClose}
           onRequestEdit={this.handleRequestIdeaEdit}
