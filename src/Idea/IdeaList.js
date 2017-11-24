@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Divider from 'material-ui/Divider';
 import Snackbar from 'material-ui/Snackbar';
 import shortid from 'shortid';
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import CSSTransitionGroup from 'react-addons-css-transition-group';
 
 import Idea from './Idea';
 import EditIdeaDialog from './EditIdeaDialog';
@@ -155,7 +155,7 @@ class IdeaList extends Component {
         }
         onScroll={this.handleScroll}
       >
-        <ReactCSSTransitionGroup
+        <CSSTransitionGroup
           transitionName="idea"
           transitionEnterTimeout={500}
           transitionLeaveTimeout={500}
@@ -176,7 +176,7 @@ class IdeaList extends Component {
               </div>
             )),
           )}
-        </ReactCSSTransitionGroup>
+        </CSSTransitionGroup>
         <EditIdeaDialog
           onRequestClose={this.handleRequestIdeaDialogClose}
           onRequestEdit={this.handleRequestIdeaEdit}

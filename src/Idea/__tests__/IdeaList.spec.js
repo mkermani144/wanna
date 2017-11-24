@@ -32,6 +32,10 @@ it('should be a div', () => {
   const wrapper = getActualIdeaList();
   expect(wrapper.is('div.IdeaList')).toBe(true);
 });
+it('should have 1 CSSTransitionGroup', () => {
+  const wrapper = getActualIdeaList();
+  expect(wrapper.find('CSSTransitionGroup').length).toBe(1);
+});
 it('should have 2 Idea', () => {
   const wrapper = getActualIdeaList();
   expect(wrapper.find('Idea').length).toBe(2);
