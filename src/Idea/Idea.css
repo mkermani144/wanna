@@ -7,11 +7,6 @@
   padding-left: 16px;
   padding-right: 16px;
 }
-.Idea.will-be-deleted {
-  transform: translate3d(105%, 0, 0);
-  background-color: #B71C1C;
-  transition-duration: 1s;
-}
 .Idea > * {
   flex-basis: 0;
 }
