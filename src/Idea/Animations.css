@@ -1,12 +1,12 @@
 .idea-enter {
   opacity: 0;
   height: 0;
-  transform: scale(0.9);
+  transform: translateX(-50px);
 }
 .idea-enter.idea-enter-active {
   opacity: 1;
   height: 48px;
-  transform: scale(1);
+  transform: translateX(0);
   transition: opacity 100ms ease-in 150ms,
               height 150ms ease-in,
               transform 100ms ease-in 150ms;
@@ -14,12 +14,12 @@
 .idea-leave {
   opacity: 1;
   height: 48px;
-  transform: scale(1);
+  transform: translateX(0);
 }
 .idea-leave.idea-leave-active {
   opacity: 0;
   height: 0px;
-  transform: scale(0.9);
+  transform: translateX(150px);
   transition: opacity 100ms ease-out,
               height 150ms ease-out 100ms,
               transform 100ms ease-out;
