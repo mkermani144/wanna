@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Subheader from 'material-ui/Subheader';
 import Divider from 'material-ui/Divider';
 import Snackbar from 'material-ui/Snackbar';
+import CSSTransitionGroup from 'react-addons-css-transition-group';
 import {
   red500,
   green500,
@@ -11,9 +12,10 @@ import {
 
 import Task from './Task';
 import EditTaskDialog from './EditTaskDialog';
-import './TaskList.css';
 import classify from './lib/classify';
 import cumulate from './lib/cumulate';
+import './TaskList.css';
+import './Animations.css';
 
 class TaskList extends Component {
   constructor() {
@@ -163,43 +165,28 @@ class TaskList extends Component {
           marginStyles.mini
         }
       >
-        {classifiedTasks.overdue.length > 0 &&
-          <Subheader style={styles.overdue}>Overdue</Subheader>
-        }
-        {
-          classifiedTasks.overdue.map((task, index) => (index > this.state.current ?
-            <div key={task.id} className="Task" /> :
-            <Task
-              color={task.color}
-              signal={task.signal}
-              text={task.task}
-              estimation={task.estimation}
-              repeat={`${task.repetition} days`}
-              key={task.id}
-              index={task.index}
-              onRequestEditTaskOpen={this.handleRequestTaskDialogOpen}
-              onRequestDelete={this.handleRequestTaskDelete}
-              onRequestDo={this.handleRequestTaskDo}
-              onRequestSnackbar={this.handleRequestSnackbarOpen}
-            />
-          ))
-        }
-        {classifiedTasks.overdue.length > 0 &&
-          <Divider style={dividerStyle} />
-        }
-        {classifiedTasks.open.length > 0 &&
-          <Subheader style={styles.open}>Open</Subheader>
-        }
-        {
-          classifiedTasks.open.map(
-            (task, index) => (index > this.state.current + cumulativeFrequencies.open ?
+        <CSSTransitionGroup
+          transitionName="task-header"
+          transitionEnterTimeout={550}
+          transitionLeaveTimeout={550}
+        >
+          {classifiedTasks.overdue.length > 0 &&
+            <Subheader style={styles.overdue}>Overdue</Subheader>
+          }
+        </CSSTransitionGroup>
+        <CSSTransitionGroup
+          transitionName="task"
+          transitionEnterTimeout={250}
+          transitionLeaveTimeout={250}
+        >
+          {
+            classifiedTasks.overdue.map((task, index) => (index > this.state.current ?
               <div key={task.id} className="Task" /> :
               <Task
                 color={task.color}
                 signal={task.signal}
                 text={task.task}
                 estimation={task.estimation}
-                due={task.due}
                 repeat={`${task.repetition} days`}
                 key={task.id}
                 index={task.index}
@@ -208,58 +195,121 @@ class TaskList extends Component {
                 onRequestDo={this.handleRequestTaskDo}
                 onRequestSnackbar={this.handleRequestSnackbarOpen}
               />
-          ))
+            ))
+          }
+        </CSSTransitionGroup>
+        {classifiedTasks.overdue.length > 0 &&
+          <Divider style={dividerStyle} />
         }
+        <CSSTransitionGroup
+          transitionName="task-header"
+          transitionEnterTimeout={550}
+          transitionLeaveTimeout={550}
+        >
+          {classifiedTasks.open.length > 0 &&
+            <Subheader style={styles.open}>Open</Subheader>
+          }
+        </CSSTransitionGroup>
+        <CSSTransitionGroup
+          transitionName="task"
+          transitionEnterTimeout={250}
+          transitionLeaveTimeout={250}
+        >
+          {
+            classifiedTasks.open.map(
+              (task, index) => (index > this.state.current + cumulativeFrequencies.open ?
+                <div key={task.id} className="Task" /> :
+                <Task
+                  color={task.color}
+                  signal={task.signal}
+                  text={task.task}
+                  estimation={task.estimation}
+                  due={task.due}
+                  repeat={`${task.repetition} days`}
+                  key={task.id}
+                  index={task.index}
+                  onRequestEditTaskOpen={this.handleRequestTaskDialogOpen}
+                  onRequestDelete={this.handleRequestTaskDelete}
+                  onRequestDo={this.handleRequestTaskDo}
+                  onRequestSnackbar={this.handleRequestSnackbarOpen}
+                />
+            ))
+          }
+        </CSSTransitionGroup>
         {classifiedTasks.open.length > 0 &&
           <Divider style={dividerStyle} />
         }
-        {classifiedTasks.notYet.length > 0 && this.props.showNotYetTasks &&
-          <Subheader style={styles.notYet}>Not Yet</Subheader>
-        }
-        {this.props.showNotYetTasks &&
-          classifiedTasks.notYet.map(
-            (task, index) => (index > this.state.current + cumulativeFrequencies.notYet ?
-              <div key={task.id} className="Task" /> :
-              <Task
-                color={task.color}
-                signal={task.signal}
-                text={task.task}
-                estimation={task.estimation}
-                due={task.due}
-                repeat={`${task.repetition} days`}
-                key={task.id}
-                index={task.index}
-                onRequestEditTaskOpen={this.handleRequestTaskDialogOpen}
-                onRequestDelete={this.handleRequestTaskDelete}
-                onRequestDo={this.handleRequestTaskDo}
-                onRequestSnackbar={this.handleRequestSnackbarOpen}
-              />
-          ))
-        }
+        <CSSTransitionGroup
+          transitionName="task-header"
+          transitionEnterTimeout={550}
+          transitionLeaveTimeout={550}
+        >
+          {classifiedTasks.notYet.length > 0 && this.props.showNotYetTasks &&
+            <Subheader style={styles.notYet}>Not Yet</Subheader>
+          }
+        </CSSTransitionGroup>
+        <CSSTransitionGroup
+          transitionName="task"
+          transitionEnterTimeout={250}
+          transitionLeaveTimeout={250}
+        >
+          {this.props.showNotYetTasks &&
+            classifiedTasks.notYet.map(
+              (task, index) => (index > this.state.current + cumulativeFrequencies.notYet ?
+                <div key={task.id} className="Task" /> :
+                <Task
+                  color={task.color}
+                  signal={task.signal}
+                  text={task.task}
+                  estimation={task.estimation}
+                  due={task.due}
+                  repeat={`${task.repetition} days`}
+                  key={task.id}
+                  index={task.index}
+                  onRequestEditTaskOpen={this.handleRequestTaskDialogOpen}
+                  onRequestDelete={this.handleRequestTaskDelete}
+                  onRequestDo={this.handleRequestTaskDo}
+                  onRequestSnackbar={this.handleRequestSnackbarOpen}
+                />
+            ))
+          }
+        </CSSTransitionGroup>
         {classifiedTasks.notYet.length > 0 && this.props.showNotYetTasks &&
           <Divider style={dividerStyle} />
         }
-        {classifiedTasks.done.length > 0 &&
-          <Subheader style={styles.done}>Done</Subheader>
-        }
-        {
-          classifiedTasks.done.map(
-            (task, index) => (index > this.state.current + cumulativeFrequencies.done ?
-              <div key={task.id} className="Task" /> :
-              <Task
-                color={task.color}
-                signal={task.signal}
-                text={task.task}
-                estimation={task.estimation}
-                repeat={`${task.repetition} days`}
-                key={task.id}
-                index={task.index}
-                onRequestDelete={this.handleRequestTaskDelete}
-                onRequestSnackbar={this.handleRequestSnackbarOpen}
-                done
-              />
-          ))
-        }
+        <CSSTransitionGroup
+          transitionName="task-header"
+          transitionEnterTimeout={550}
+          transitionLeaveTimeout={550}
+        >
+          {classifiedTasks.done.length > 0 &&
+            <Subheader style={styles.done}>Done</Subheader>
+          }
+        </CSSTransitionGroup>
+        <CSSTransitionGroup
+          transitionName="task"
+          transitionEnterTimeout={250}
+          transitionLeaveTimeout={250}
+        >
+          {
+            classifiedTasks.done.map(
+              (task, index) => (index > this.state.current + cumulativeFrequencies.done ?
+                <div key={task.id} className="Task" /> :
+                <Task
+                  color={task.color}
+                  signal={task.signal}
+                  text={task.task}
+                  estimation={task.estimation}
+                  repeat={`${task.repetition} days`}
+                  key={task.id}
+                  index={task.index}
+                  onRequestDelete={this.handleRequestTaskDelete}
+                  onRequestSnackbar={this.handleRequestSnackbarOpen}
+                  done
+                />
+            ))
+          }
+        </CSSTransitionGroup>
         {classifiedTasks.done.length > 0 &&
           <Divider style={dividerStyle} />
         }

@@ -12,7 +12,7 @@
   flex-direction: row;
   align-items: center;
   transition: transform cubic-bezier(0.19, 1, 0.22, 1);
-  min-height: 48px;
+  height: 48px;
   padding-left: 16px;
   padding-right: 16px;
 }

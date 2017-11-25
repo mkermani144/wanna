@@ -15,33 +15,12 @@ class Task extends PureComponent {
     };
   }
   handleRequestDelete = () => {
-    this.setState({
-      class: 'will-be-deleted',
-    }, () => {
-      setTimeout(() => {
-        this.setState({
-          class: '',
-        }, () => {
-          this.props.onRequestDelete(this.props.index);
-          this.props.onRequestSnackbar('Task deleted');
-        });
-      }, 1000);
-    });
+    this.props.onRequestDelete(this.props.index);
+    this.props.onRequestSnackbar('Task deleted');
   }
   handleRequestDo = () => {
-    this.setState({
-      class: 'done',
-    }, () => {
-      setTimeout(() => {
-        this.props.onRequestDo(this.props.index);
-        this.props.onRequestSnackbar('Task done');
-        if (this.props.repeat) {
-          this.setState({
-            class: '',
-          });
-        }
-      }, 1000);
-    });
+    this.props.onRequestDo(this.props.index);
+    this.props.onRequestSnackbar('Task done');
   }
   render() {
     const {

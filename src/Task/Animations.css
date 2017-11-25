@@ -1,0 +1,59 @@
+.task-enter {
+  opacity: 0;
+  height: 0;
+  transform: translateX(-50px);
+}
+.task-enter.task-enter-active {
+  opacity: 1;
+  height: 48px;
+  transform: translateX(0);
+  transition: opacity 100ms ease-in 150ms,
+              height 150ms ease-in,
+              transform 100ms ease-in 150ms;
+}
+.task-leave {
+  opacity: 1;
+  height: 48px;
+  transform: translateX(0);
+}
+.task-leave.task-leave-active {
+  opacity: 0;
+  height: 0px;
+  transform: translateX(150px);
+  transition: opacity 100ms ease-out,
+              height 150ms ease-out 100ms,
+              transform 100ms ease-out;
+}
+
+.task-header-enter {
+  opacity: 0;
+  height: 0;
+  margin-top: 0;
+  transform: translateX(-50px);
+}
+.task-header-enter.task-header-enter-active {
+  opacity: 1;
+  height: 48px;
+  margin-top: 20px;
+  transform: translateX(0);
+  transition: opacity 100ms ease-in 150ms,
+              height 150ms ease-in,
+              margin-top 150ms ease-in,
+              transform 100ms ease-in 150ms;
+}
+.task-header-leave {
+  opacity: 1;
+  height: 48px;
+  margin-top: 20px;
+  transform: translateX(0);
+}
+.task-header-leave.task-header-leave-active {
+  opacity: 0;
+  height: 0px;
+  margin-top: 0px;
+  transform: translateX(-50px);
+  transition: opacity 100ms ease-out 300ms,
+              height 150ms ease-out 400ms,
+              margin-top 150ms ease-out 400ms,
+              transform 100ms ease-out 300ms;
+}
