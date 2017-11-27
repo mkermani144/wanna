@@ -49,9 +49,9 @@ it('should be a div', () => {
   const wrapper = getActualTaskList();
   expect(wrapper.is('div.TaskList')).toBe(true);
 });
-it('should have 4 CSSTransitionGroup', () => {
+it('should have 13 CSSTransitionGroup', () => {
   const wrapper = getActualTaskList();
-  expect(wrapper.find('CSSTransitionGroup').length).toBe(4);
+  expect(wrapper.find('CSSTransitionGroup').length).toBe(13);
 });
 it('should have 4 Task', () => {
   const wrapper = getActualTaskList();
@@ -65,44 +65,27 @@ it('should have 4 Divider', () => {
   const wrapper = getActualTaskList();
   expect(wrapper.find('Divider').length).toBe(4);
 });
-it('should have 2 EditTaskDialog', () => {
+it('should have 1 EditTaskDialog', () => {
   const wrapper = getActualTaskList();
   expect(wrapper.find('EditTaskDialog').length).toBe(1);
 });
-it('should have 2 Snackbar', () => {
+it('should have 1 Snackbar', () => {
   const wrapper = getActualTaskList();
   expect(wrapper.find('Snackbar').length).toBe(1);
 });
 
+
+it('should have 1 tasks-empty-state if tasks is empty', () => {
+  const wrapper = getActualTaskList({
+    tasks: [],
+  });
+  expect(wrapper.find('.tasks-empty-state').length).toBe(1);
+});
 it('should have 0 Task if tasks is empty', () => {
   const wrapper = getActualTaskList({
     tasks: [],
   });
   expect(wrapper.find('Task').length).toBe(0);
-});
-it('should have 0 Divider if tasks is empty', () => {
-  const wrapper = getActualTaskList({
-    tasks: [],
-  });
-  expect(wrapper.find('Divider').length).toBe(0);
-});
-it('should have 0 EditTaskDialog if tasks is empty', () => {
-  const wrapper = getActualTaskList({
-    tasks: [],
-  });
-  expect(wrapper.find('EditTaskDialog').length).toBe(0);
-});
-it('should be a div if tasks is empty', () => {
-  const wrapper = getActualTaskList({
-    tasks: [],
-  });
-  expect(wrapper.is('div.tasks-empty-state')).toBe(true);
-});
-it('should have 1 Snackbar if tasks is empty', () => {
-  const wrapper = getActualTaskList({
-    tasks: [],
-  });
-  expect(wrapper.find('Snackbar').length).toBe(1);
 });
 
 it('should set left margin style based on props', () => {

@@ -114,47 +114,10 @@ class TaskList extends Component {
         marginLeft: 56,
       },
     };
-    const emptyStateMarginStyles = {
-      expanded: {
-        marginLeft: 200,
-      },
-      mini: {
-        marginLeft: 56,
-      },
-    };
     const dividerStyle = {
       marginTop: 12,
     };
-    const numOfTasks = classifiedTasks.overdue.length + classifiedTasks.open.length
-                        + classifiedTasks.notYet.length + classifiedTasks.done.length;
 
-    if (numOfTasks === 0) {
-      return (
-        <div
-          className="tasks-empty-state"
-          style={
-            this.props.sidebarExpanded ?
-            emptyStateMarginStyles.expanded :
-            emptyStateMarginStyles.mini
-          }
-        >
-          <h1>
-            All done
-          </h1>
-          <h4>
-            You have no tasks
-          </h4>
-          <Snackbar
-            open={this.state.snackbarOpen}
-            message={this.state.snackbarMessage}
-            autoHideDuration={3000}
-            action="undo"
-            onActionTouchTap={this.handleUndo}
-            onRequestClose={this.handleRequestSnackbarClose}
-          />
-        </div>
-      );
-    }
     const cumulativeFrequencies = cumulate(classifiedTasks);
     return (
       <div
@@ -165,7 +128,34 @@ class TaskList extends Component {
           marginStyles.mini
         }
       >
-        <Subheader style={styles.overdue}>Overdue ({classifiedTasks.overdue.length})</Subheader>
+        <CSSTransitionGroup
+          className="transition-container"
+          transitionName="tasks-empty-state"
+          transitionEnterTimeout={170}
+          transitionLeaveTimeout={150}
+        >
+          {!this.props.tasks.length &&
+            <div
+              className="tasks-empty-state"
+            >
+              <h1>
+                All done
+              </h1>
+              <h4>
+                You have no tasks
+              </h4>
+            </div>
+          }
+        </CSSTransitionGroup>
+        <CSSTransitionGroup
+          transitionName="task-header"
+          transitionEnterTimeout={170}
+          transitionLeaveTimeout={150}
+        >
+          {this.props.tasks.length &&
+            <Subheader style={styles.overdue}>Overdue ({classifiedTasks.overdue.length})</Subheader>
+          }
+        </CSSTransitionGroup>
         <CSSTransitionGroup
           transitionName="task"
           transitionEnterTimeout={170}
@@ -190,8 +180,24 @@ class TaskList extends Component {
             ))
           }
         </CSSTransitionGroup>
-        <Divider style={dividerStyle} />
-        <Subheader style={styles.open}>Open ({classifiedTasks.open.length})</Subheader>
+        <CSSTransitionGroup
+          transitionName="task-divider"
+          transitionEnterTimeout={170}
+          transitionLeaveTimeout={150}
+        >
+          {this.props.tasks.length &&
+            <Divider style={dividerStyle} />
+          }
+        </CSSTransitionGroup>
+        <CSSTransitionGroup
+          transitionName="task-header"
+          transitionEnterTimeout={170}
+          transitionLeaveTimeout={150}
+        >
+          {this.props.tasks.length &&
+            <Subheader style={styles.open}>Open ({classifiedTasks.open.length})</Subheader>
+          }
+        </CSSTransitionGroup>
         <CSSTransitionGroup
           transitionName="task"
           transitionEnterTimeout={170}
@@ -218,10 +224,24 @@ class TaskList extends Component {
             ))
           }
         </CSSTransitionGroup>
-        <Divider style={dividerStyle} />
-        {this.props.showNotYetTasks &&
-          <Subheader style={styles.notYet}>Not Yet ({classifiedTasks.notYet.length})</Subheader>
-        }
+        <CSSTransitionGroup
+          transitionName="task-divider"
+          transitionEnterTimeout={170}
+          transitionLeaveTimeout={150}
+        >
+          {this.props.tasks.length &&
+            <Divider style={dividerStyle} />
+          }
+        </CSSTransitionGroup>
+        <CSSTransitionGroup
+          transitionName="task-header"
+          transitionEnterTimeout={170}
+          transitionLeaveTimeout={150}
+        >
+          {this.props.tasks.length && this.props.showNotYetTasks &&
+            <Subheader style={styles.notYet}>Not Yet ({classifiedTasks.notYet.length})</Subheader>
+          }
+        </CSSTransitionGroup>
         <CSSTransitionGroup
           transitionName="task"
           transitionEnterTimeout={170}
@@ -248,10 +268,24 @@ class TaskList extends Component {
             ))
           }
         </CSSTransitionGroup>
-        {this.props.showNotYetTasks &&
-          <Divider style={dividerStyle} />
-        }
-        <Subheader style={styles.done}>Done ({classifiedTasks.done.length})</Subheader>
+        <CSSTransitionGroup
+          transitionName="task-divider"
+          transitionEnterTimeout={170}
+          transitionLeaveTimeout={150}
+        >
+          {this.props.tasks.length && this.props.showNotYetTasks &&
+            <Divider style={dividerStyle} />
+          }
+        </CSSTransitionGroup>
+        <CSSTransitionGroup
+          transitionName="task-header"
+          transitionEnterTimeout={170}
+          transitionLeaveTimeout={150}
+        >
+          {this.props.tasks.length &&
+            <Subheader style={styles.done}>Done ({classifiedTasks.done.length})</Subheader>
+          }
+        </CSSTransitionGroup>
         <CSSTransitionGroup
           transitionName="task"
           transitionEnterTimeout={170}
@@ -276,7 +310,15 @@ class TaskList extends Component {
             ))
           }
         </CSSTransitionGroup>
-        <Divider style={dividerStyle} />
+        <CSSTransitionGroup
+          transitionName="task-divider"
+          transitionEnterTimeout={170}
+          transitionLeaveTimeout={150}
+        >
+          {this.props.tasks.length &&
+            <Divider style={dividerStyle} />
+          }
+        </CSSTransitionGroup>
         <EditTaskDialog
           onRequestClose={this.handleRequestTaskDialogClose}
           onRequestEdit={this.handleRequestTaskEdit}
