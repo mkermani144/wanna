@@ -7,6 +7,7 @@
   background-color: #FAFAFA;
 }
 .App .main {
+  flex: 1;
   display: flex;
   flex-direction: row;
 }
