@@ -165,19 +165,11 @@ class TaskList extends Component {
           marginStyles.mini
         }
       >
-        <CSSTransitionGroup
-          transitionName="task-header"
-          transitionEnterTimeout={550}
-          transitionLeaveTimeout={550}
-        >
-          {classifiedTasks.overdue.length > 0 &&
-            <Subheader style={styles.overdue}>Overdue</Subheader>
-          }
-        </CSSTransitionGroup>
+        <Subheader style={styles.overdue}>Overdue ({classifiedTasks.overdue.length})</Subheader>
         <CSSTransitionGroup
           transitionName="task"
-          transitionEnterTimeout={250}
-          transitionLeaveTimeout={250}
+          transitionEnterTimeout={170}
+          transitionLeaveTimeout={150}
         >
           {
             classifiedTasks.overdue.map((task, index) => (index > this.state.current ?
@@ -198,22 +190,12 @@ class TaskList extends Component {
             ))
           }
         </CSSTransitionGroup>
-        {classifiedTasks.overdue.length > 0 &&
-          <Divider style={dividerStyle} />
-        }
-        <CSSTransitionGroup
-          transitionName="task-header"
-          transitionEnterTimeout={550}
-          transitionLeaveTimeout={550}
-        >
-          {classifiedTasks.open.length > 0 &&
-            <Subheader style={styles.open}>Open</Subheader>
-          }
-        </CSSTransitionGroup>
+        <Divider style={dividerStyle} />
+        <Subheader style={styles.open}>Open ({classifiedTasks.open.length})</Subheader>
         <CSSTransitionGroup
           transitionName="task"
-          transitionEnterTimeout={250}
-          transitionLeaveTimeout={250}
+          transitionEnterTimeout={170}
+          transitionLeaveTimeout={150}
         >
           {
             classifiedTasks.open.map(
@@ -236,22 +218,14 @@ class TaskList extends Component {
             ))
           }
         </CSSTransitionGroup>
-        {classifiedTasks.open.length > 0 &&
-          <Divider style={dividerStyle} />
+        <Divider style={dividerStyle} />
+        {this.props.showNotYetTasks &&
+          <Subheader style={styles.notYet}>Not Yet ({classifiedTasks.notYet.length})</Subheader>
         }
         <CSSTransitionGroup
-          transitionName="task-header"
-          transitionEnterTimeout={550}
-          transitionLeaveTimeout={550}
-        >
-          {classifiedTasks.notYet.length > 0 && this.props.showNotYetTasks &&
-            <Subheader style={styles.notYet}>Not Yet</Subheader>
-          }
-        </CSSTransitionGroup>
-        <CSSTransitionGroup
           transitionName="task"
-          transitionEnterTimeout={250}
-          transitionLeaveTimeout={250}
+          transitionEnterTimeout={170}
+          transitionLeaveTimeout={150}
         >
           {this.props.showNotYetTasks &&
             classifiedTasks.notYet.map(
@@ -274,22 +248,14 @@ class TaskList extends Component {
             ))
           }
         </CSSTransitionGroup>
-        {classifiedTasks.notYet.length > 0 && this.props.showNotYetTasks &&
+        {this.props.showNotYetTasks &&
           <Divider style={dividerStyle} />
         }
-        <CSSTransitionGroup
-          transitionName="task-header"
-          transitionEnterTimeout={550}
-          transitionLeaveTimeout={550}
-        >
-          {classifiedTasks.done.length > 0 &&
-            <Subheader style={styles.done}>Done</Subheader>
-          }
-        </CSSTransitionGroup>
+        <Subheader style={styles.done}>Done ({classifiedTasks.done.length})</Subheader>
         <CSSTransitionGroup
           transitionName="task"
-          transitionEnterTimeout={250}
-          transitionLeaveTimeout={250}
+          transitionEnterTimeout={170}
+          transitionLeaveTimeout={150}
         >
           {
             classifiedTasks.done.map(
@@ -310,9 +276,7 @@ class TaskList extends Component {
             ))
           }
         </CSSTransitionGroup>
-        {classifiedTasks.done.length > 0 &&
-          <Divider style={dividerStyle} />
-        }
+        <Divider style={dividerStyle} />
         <EditTaskDialog
           onRequestClose={this.handleRequestTaskDialogClose}
           onRequestEdit={this.handleRequestTaskEdit}

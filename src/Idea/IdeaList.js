@@ -157,8 +157,8 @@ class IdeaList extends Component {
       >
         <CSSTransitionGroup
           transitionName="idea"
-          transitionEnterTimeout={250}
-          transitionLeaveTimeout={250}
+          transitionEnterTimeout={170}
+          transitionLeaveTimeout={150}
         >
           {this.props.ideas.map((idea, index) => (index > this.state.current ?
             <div key={idea.id} className="Idea" /> :

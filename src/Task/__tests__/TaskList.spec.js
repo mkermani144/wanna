@@ -49,9 +49,9 @@ it('should be a div', () => {
   const wrapper = getActualTaskList();
   expect(wrapper.is('div.TaskList')).toBe(true);
 });
-it('should have 8 CSSTransitionGroup', () => {
+it('should have 4 CSSTransitionGroup', () => {
   const wrapper = getActualTaskList();
-  expect(wrapper.find('CSSTransitionGroup').length).toBe(8);
+  expect(wrapper.find('CSSTransitionGroup').length).toBe(4);
 });
 it('should have 4 Task', () => {
   const wrapper = getActualTaskList();
