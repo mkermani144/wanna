@@ -71,9 +71,3 @@ it('should call onRequestDelete inside Actions onRequestDelete', (done) => {
   wrapper.find('Actions').props().onRequestDelete();
   jest.runAllTimers();
 });
-
-it('should set its class based on state', () => {
-  const wrapper = getActualIdea();
-  wrapper.find('Actions').props().onRequestDelete();
-  expect(wrapper.props().className.includes('will-be-deleted')).toBe(true);
-});

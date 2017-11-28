@@ -1,0 +1,35 @@
+.idea-enter {
+  opacity: 0;
+  height: 0;
+}
+.idea-enter.idea-enter-active {
+  opacity: 1;
+  height: 48px;
+  transition: opacity 110ms cubic-bezier(0.4, 0.0, 0.2, 1) 60ms,
+              height 170ms cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+.idea-leave {
+  opacity: 1;
+  height: 48px;
+}
+.idea-leave.idea-leave-active {
+  opacity: 0;
+  height: 0px;
+  transition: opacity 100ms cubic-bezier(0.4, 0.0, 0.2, 1),
+              height 150ms cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
+.ideas-empty-state-enter {
+  opacity: 0;
+}
+.ideas-empty-state-enter.ideas-empty-state-enter-active {
+  opacity: 1;
+  transition: opacity 170ms cubic-bezier(0.0, 0.0, 0.2, 1);
+}
+.ideas-empty-state-leave {
+  opacity: 1;
+}
+.ideas-empty-state-leave.ideas-empty-state-leave-active {
+  opacity: 0;
+  transition: opacity 150ms cubic-bezier(0.4, 0.0, 1, 1);
+}

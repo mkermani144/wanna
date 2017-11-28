@@ -48,10 +48,6 @@ it('should have 1 Actions', () => {
   expect(wrapper.find('Actions').length).toBe(1);
 });
 
-it('should set its class based on props', () => {
-  const wrapper = getActualTask({ done: true });
-  expect(wrapper.prop('className').includes('done')).toBe(true);
-});
 it('should set Circle color based on props', () => {
   const wrapper = getActualTask({ color: 'blue' });
   expect(wrapper.find('Circle').prop('color')).toBe('blue');
@@ -130,16 +126,6 @@ it('should call onRequestEditTaskOpen inside Actions onRequestEditDialogOpen', (
   jest.runAllTimers();
 });
 
-it('should set its class to will-be-deleted based on state', () => {
-  const wrapper = getActualTask();
-  wrapper.find('Actions').props().onRequestDelete();
-  expect(wrapper.props().className.includes('will-be-deleted')).toBe(true);
-});
-it('should set its class to done based on state', () => {
-  const wrapper = getActualTask();
-  wrapper.find('Actions').props().onRequestDo();
-  expect(wrapper.props().className.includes('done')).toBe(true);
-});
 it('should remove its done class based on state', () => {
   const wrapper = getActualTask({
     repeat: '5',

@@ -2,11 +2,13 @@ import React, { Component } from 'react';
 import Divider from 'material-ui/Divider';
 import Snackbar from 'material-ui/Snackbar';
 import shortid from 'shortid';
+import CSSTransitionGroup from 'react-addons-css-transition-group';
 
 import Idea from './Idea';
 import EditIdeaDialog from './EditIdeaDialog';
 import ConvertIdeaDialog from './ConvertIdeaDialog';
 import './IdeaList.css';
+import './Animations.css';
 
 class IdeaList extends Component {
   constructor() {
@@ -108,41 +110,6 @@ class IdeaList extends Component {
         marginLeft: 56,
       },
     };
-    const emptyStateMarginStyles = {
-      expanded: {
-        marginLeft: 200,
-      },
-      mini: {
-        marginLeft: 56,
-      },
-    };
-    if (this.props.ideas.length === 0) {
-      return (
-        <div
-          className="ideas-empty-state"
-          style={
-            this.props.sidebarExpanded ?
-            emptyStateMarginStyles.expanded :
-            emptyStateMarginStyles.mini
-          }
-        >
-          <h1>
-            Ideas gone
-          </h1>
-          <h4>
-            Your ideas list is empty
-          </h4>
-          <Snackbar
-            open={this.state.snackbarOpen}
-            message={this.state.snackbarMessage}
-            autoHideDuration={3000}
-            action="undo"
-            onActionTouchTap={this.handleUndo}
-            onRequestClose={this.handleRequestSnackbarClose}
-          />
-        </div>
-      );
-    }
     return (
       <div
         className="IdeaList"
@@ -153,22 +120,47 @@ class IdeaList extends Component {
         }
         onScroll={this.handleScroll}
       >
-        {this.props.ideas.map((idea, index) => (index > this.state.current ?
-          <div key={idea.id} className="Idea" /> :
-          (
-            <div key={idea.id}>
-              <Idea
-                text={idea.idea}
-                index={index}
-                onRequestEditDialogOpen={this.handleRequestIdeaDialogOpen}
-                onRequestDelete={this.handleRequestIdeaDelete}
-                onRequestConvertDialogOpen={this.handleRequestConvertDialogOpen}
-                onRequestSnackbar={this.handleRequestSnackbarOpen}
-              />
-              <Divider />
+        <CSSTransitionGroup
+          className="transition-container"
+          transitionName="ideas-empty-state"
+          transitionEnterTimeout={170}
+          transitionLeaveTimeout={150}
+        >
+          {!this.props.ideas.length &&
+            <div
+              className="ideas-empty-state"
+            >
+              <h1>
+                Ideas gone
+              </h1>
+              <h4>
+                Your ideas list is empty
+              </h4>
             </div>
-          )),
-        )}
+          }
+        </CSSTransitionGroup>
+        <CSSTransitionGroup
+          transitionName="idea"
+          transitionEnterTimeout={170}
+          transitionLeaveTimeout={150}
+        >
+          {this.props.ideas.map((idea, index) => (index > this.state.current ?
+            <div key={idea.id} className="Idea" /> :
+            (
+              <div key={idea.id}>
+                <Idea
+                  text={idea.idea}
+                  index={index}
+                  onRequestEditDialogOpen={this.handleRequestIdeaDialogOpen}
+                  onRequestDelete={this.handleRequestIdeaDelete}
+                  onRequestConvertDialogOpen={this.handleRequestConvertDialogOpen}
+                  onRequestSnackbar={this.handleRequestSnackbarOpen}
+                />
+                <Divider />
+              </div>
+            )),
+          )}
+        </CSSTransitionGroup>
         <EditIdeaDialog
           onRequestClose={this.handleRequestIdeaDialogClose}
           onRequestEdit={this.handleRequestIdeaEdit}

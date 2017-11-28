@@ -11,18 +11,8 @@ class Idea extends PureComponent {
     };
   }
   handleRequestDelete = () => {
-    this.setState({
-      class: 'will-be-deleted',
-    }, () => {
-      setTimeout(() => {
-        this.setState({
-          class: '',
-        }, () => {
-          this.props.onRequestDelete && this.props.onRequestDelete(this.props.index);
-          this.props.onRequestSnackbar && this.props.onRequestSnackbar('Idea deleted');
-        });
-      }, 1000);
-    });
+    this.props.onRequestDelete && this.props.onRequestDelete(this.props.index);
+    this.props.onRequestSnackbar && this.props.onRequestSnackbar('Idea deleted');
   }
   render() {
     return (

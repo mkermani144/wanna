@@ -32,6 +32,10 @@ it('should be a div', () => {
   const wrapper = getActualIdeaList();
   expect(wrapper.is('div.IdeaList')).toBe(true);
 });
+it('should have 2 CSSTransitionGroup', () => {
+  const wrapper = getActualIdeaList();
+  expect(wrapper.find('CSSTransitionGroup').length).toBe(2);
+});
 it('should have 2 Idea', () => {
   const wrapper = getActualIdeaList();
   expect(wrapper.find('Idea').length).toBe(2);
@@ -48,11 +52,17 @@ it('should have 2 ConvertIdeaDialog', () => {
   const wrapper = getActualIdeaList();
   expect(wrapper.find('ConvertIdeaDialog').length).toBe(1);
 });
-it('should have 2 Snackbar', () => {
+it('should have 1 Snackbar', () => {
   const wrapper = getActualIdeaList();
   expect(wrapper.find('Snackbar').length).toBe(1);
 });
 
+it('should have 1 ideas-empty-state if ideas is empty', () => {
+  const wrapper = getActualIdeaList({
+    ideas: [],
+  });
+  expect(wrapper.find('.ideas-empty-state').length).toBe(1);
+});
 it('should have 0 Idea if ideas is empty', () => {
   const wrapper = getActualIdeaList({
     ideas: [],
@@ -64,30 +74,6 @@ it('should have 0 Divider if ideas is empty', () => {
     ideas: [],
   });
   expect(wrapper.find('Divider').length).toBe(0);
-});
-it('should have 0 EditIdeaDialog if ideas is empty', () => {
-  const wrapper = getActualIdeaList({
-    ideas: [],
-  });
-  expect(wrapper.find('EditIdeaDialog').length).toBe(0);
-});
-it('should have 0 ConvertIdeaDialog if ideas is empty', () => {
-  const wrapper = getActualIdeaList({
-    ideas: [],
-  });
-  expect(wrapper.find('ConvertIdeaDialog').length).toBe(0);
-});
-it('should be a div if ideas is empty', () => {
-  const wrapper = getActualIdeaList({
-    ideas: [],
-  });
-  expect(wrapper.is('div.ideas-empty-state')).toBe(true);
-});
-it('should have 1 Snackbar if ideas is empty', () => {
-  const wrapper = getActualIdeaList({
-    ideas: [],
-  });
-  expect(wrapper.find('Snackbar').length).toBe(1);
 });
 
 it('should set left margin style based on props', () => {

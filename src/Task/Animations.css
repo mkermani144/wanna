@@ -1,0 +1,43 @@
+.task-enter {
+  opacity: 0;
+  height: 0;
+}
+.task-enter.task-enter-active {
+  opacity: 1;
+  height: 48px;
+  transition: opacity 110ms cubic-bezier(0.4, 0.0, 0.2, 1) 60ms,
+              height 170ms cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+.task-leave {
+  opacity: 1;
+  height: 48px;
+}
+.task-leave.task-leave-active {
+  opacity: 0;
+  height: 0px;
+  transition: opacity 100ms cubic-bezier(0.4, 0.0, 0.2, 1),
+              height 150ms cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
+.tasks-empty-state-enter,
+.task-header-enter,
+.task-divider-enter {
+  opacity: 0;
+}
+.tasks-empty-state-enter.tasks-empty-state-enter-active,
+.task-header-enter.task-header-enter-active,
+.task-divider-enter.task-divider-enter-active {
+  opacity: 1;
+  transition: opacity 170ms cubic-bezier(0.0, 0.0, 0.2, 1);
+}
+.tasks-empty-state-leave,
+.task-header-leave,
+.task-divider-leave {
+  opacity: 1;
+}
+.tasks-empty-state-leave.tasks-empty-state-leave-active,
+.task-header-leave.task-header-leave-active,
+.task-divider-leave.task-divider-leave-active {
+  opacity: 0;
+  transition: opacity 150ms cubic-bezier(0.4, 0.0, 1, 1);
+}
