@@ -44,8 +44,8 @@ function createWindow() {
     ({ width, height } = electron.screen.getPrimaryDisplay().size);
   }
   win = new BrowserWindow({
-    minWidth: 1024,
-    minHeight: 768,
+    minWidth: 800,
+    minHeight: 600,
     width,
     height,
     icon: `${__dirname}/wanna.png`,
