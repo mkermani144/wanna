@@ -6,7 +6,7 @@ import Divider from 'material-ui/Divider';
 
 import './Help.css';
 
-const versionURL = 'https://github.com/mkermani144/wanna/releases/tag/flex-alpha';
+const versionURL = 'https://github.com/mkermani144/wanna/releases/tag/Flex-alpha';
 const repoURL = 'https://github.com/mkermani144/wanna';
 const licenseURL = 'https://github.com/mkermani144/wanna/blob/master/LICENSE.md';
 
