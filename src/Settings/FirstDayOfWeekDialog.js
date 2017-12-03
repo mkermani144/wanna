@@ -20,6 +20,11 @@ class FirstDayOfWeekDialog extends Component {
     ];
     const dialogContentStyle = {
       maxWidth: 256,
+      MozUserSelect: 'none', /* Firefox */
+      MsUserSelect: 'none', /* Internet Explorer */
+      KhtmlUserSelect: 'none', /* KHTML browsers (e.g. Konqueror) */
+      WebkitUserSelect: 'none', /* Chrome, Safari, and Opera */
+      WebkitTouchCallout: 'none', /* Disable Android and iOS callouts */
     };
     const radioButtonStyle = {
       marginTop: 16,

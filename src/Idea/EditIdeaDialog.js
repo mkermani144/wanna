@@ -4,6 +4,8 @@ import FlatButton from 'material-ui/FlatButton';
 import TextField from 'material-ui/TextField';
 import { yellow800, grey50 } from 'material-ui/styles/colors';
 
+import disableSelectTextStyle from '../globalStyle';
+
 class EditIdeaDialog extends Component {
   constructor(props) {
     super(props);
@@ -60,6 +62,7 @@ class EditIdeaDialog extends Component {
         Edit you idea
         <br />
         <TextField
+          inputStyle={disableSelectTextStyle}
           floatingLabelText="Idea title"
           fullWidth
           underlineFocusStyle={textFieldStyles.underlineFocusStyle}

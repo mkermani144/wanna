@@ -1,101 +1,106 @@
 @keyframes signal {
-  to {
-    width: 16px;
-    height: 16px;
-    opacity: 0;
-    border-width: 2px;
-  }
+	to {
+		width: 16px;
+		height: 16px;
+		opacity: 0;
+		border-width: 2px;
+	}
 }
 
 .Task {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  height: 48px;
-  padding-left: 16px;
-  padding-right: 16px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	height: 48px;
+	padding-left: 16px;
+	padding-right: 16px;
 }
 .Task.done .text p {
-  color: #9E9E9E;
-  transition-duration: 1s;
+	color: #9e9e9e;
+	transition-duration: 1s;
 }
 .Task .text p:before {
-  content: '';
-  position: absolute;
-  width: 0%;
-  height: 1px;
-  top: 55%;
-  margin-top: -0.5px;
-  background: #424242;
+	content: '';
+	position: absolute;
+	width: 0%;
+	height: 1px;
+	top: 55%;
+	margin-top: -0.5px;
+	background: #424242;
 }
 .Task.done .text p:before {
-  width: 100%;
+	width: 100%;
 }
 .Task > * {
-  flex-basis: 0;
+	flex-basis: 0;
 }
 .Task p {
-  margin-top: 12px;
-  margin-bottom: 12px;
+	margin-top: 12px;
+	margin-bottom: 12px;
 }
 .Task .Circle {
-  flex-grow: 0;
-  margin-right: 10px;
-  position: relative;
-  width: 8px;
-  height: 8px;
-  flex-basis: auto;
-  border-radius: 50%;
+	flex-grow: 0;
+	margin-right: 10px;
+	position: relative;
+	width: 8px;
+	height: 8px;
+	flex-basis: auto;
+	border-radius: 50%;
 }
 .Task .Circle .Signal {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 8px;
-  height: 8px;
-  opacity: .8;
-  border-radius: 50%;
-  border: 1px solid;
-  content: "";
-  animation: signal 1.2s infinite ease-in-out;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 8px;
+	height: 8px;
+	opacity: 0.8;
+	border-radius: 50%;
+	border: 1px solid;
+	content: '';
+	animation: signal 1.2s infinite ease-in-out;
 }
 .Task .text {
-  flex-grow: 5;
-  position: relative;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
+	flex-grow: 5;
+	position: relative;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	-moz-user-select: none; /* Firefox */
+	-ms-user-select: none; /* Internet Explorer */
+	-khtml-user-select: none; /* KHTML browsers (e.g. Konqueror) */
+	-webkit-user-select: none; /* Chrome, Safari, and Opera */
+	-webkit-touch-callout: none; /* Disable Android and iOS callouts */
 }
 .Task .text p {
-  display: inline-block;
-  position: relative;
+	display: inline-block;
+	position: relative;
 }
 .Task .Estimation {
-  flex-grow: 1;
+	flex-grow: 1;
 }
 .Task .DueDate {
-  flex-grow: 1;
-  flex-basis: 20px;
+	flex-grow: 1;
+	flex-basis: 20px;
 }
-.Task .DueDate > span{
-  display: flex;
-  flex-direction: row;
-  align-items: center;
+.Task .DueDate > span {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
 }
 .Task .Repeat {
-  flex-grow: 1;
-  display: flex;
-  align-items: center;
+	flex-grow: 1;
+	display: flex;
+	align-items: center;
 }
 .Task .Actions {
-  flex-grow: 2;
-  display: flex;
-  flex-direction: row-reverse;
+	flex-grow: 2;
+	display: flex;
+	flex-direction: row-reverse;
 }
 .Task .Actions .IconButton {
-  opacity: 0;
+	opacity: 0;
 }
 .Task:hover .Actions .IconButton {
-  opacity: 1;
+	opacity: 1;
 }

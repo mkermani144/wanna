@@ -88,21 +88,41 @@ class TaskList extends Component {
         color: red500,
         marginTop: 20,
         cursor: 'default',
+        MozUserSelect: 'none', /* Firefox */
+        MsUserSelect: 'none', /* Internet Explorer */
+        KhtmlUserSelect: 'none', /* KHTML browsers (e.g. Konqueror) */
+        WebkitUserSelect: 'none', /* Chrome, Safari, and Opera */
+        WebkitTouchCallout: 'none', /* Disable Android and iOS callouts */
       },
       open: {
         color: green500,
         marginTop: 20,
         cursor: 'default',
+        MozUserSelect: 'none', /* Firefox */
+        MsUserSelect: 'none', /* Internet Explorer */
+        KhtmlUserSelect: 'none', /* KHTML browsers (e.g. Konqueror) */
+        WebkitUserSelect: 'none', /* Chrome, Safari, and Opera */
+        WebkitTouchCallout: 'none', /* Disable Android and iOS callouts */
       },
       notYet: {
         color: blue500,
         marginTop: 20,
         cursor: 'default',
+        MozUserSelect: 'none', /* Firefox */
+        MsUserSelect: 'none', /* Internet Explorer */
+        KhtmlUserSelect: 'none', /* KHTML browsers (e.g. Konqueror) */
+        WebkitUserSelect: 'none', /* Chrome, Safari, and Opera */
+        WebkitTouchCallout: 'none', /* Disable Android and iOS callouts */
       },
       done: {
         color: purple500,
         marginTop: 20,
         cursor: 'default',
+        MozUserSelect: 'none', /* Firefox */
+        MsUserSelect: 'none', /* Internet Explorer */
+        KhtmlUserSelect: 'none', /* KHTML browsers (e.g. Konqueror) */
+        WebkitUserSelect: 'none', /* Chrome, Safari, and Opera */
+        WebkitTouchCallout: 'none', /* Disable Android and iOS callouts */
       },
     };
     const classifiedTasks = classify(this.props.tasks);
@@ -167,8 +187,8 @@ class TaskList extends Component {
               <Task
                 color={task.color}
                 signal={task.signal}
-                text={task.task}
                 estimation={task.estimation}
+                text={task.task}
                 repeat={`${task.repetition} days`}
                 key={task.id}
                 index={task.index}

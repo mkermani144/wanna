@@ -4,6 +4,8 @@ import FlatButton from 'material-ui/FlatButton';
 import TextField from 'material-ui/TextField';
 import { green600, grey50 } from 'material-ui/styles/colors';
 
+import disableSelectTextStyle from '../globalStyle';
+
 class EditTaskDialog extends Component {
   constructor(props) {
     super(props);
@@ -60,6 +62,7 @@ class EditTaskDialog extends Component {
         Edit your task
         <br />
         <TextField
+          inputStyle={disableSelectTextStyle}
           floatingLabelText="Task title"
           fullWidth
           underlineFocusStyle={textFieldStyles.underlineFocusStyle}

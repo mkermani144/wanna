@@ -5,6 +5,8 @@ import FlatButton from 'material-ui/FlatButton';
 import TextField from 'material-ui/TextField';
 import { yellow800, grey50 } from 'material-ui/styles/colors';
 
+import disableSelectTextStyle from '../globalStyle';
+
 class NewIdeaDialog extends Component {
   constructor() {
     super();
@@ -52,6 +54,11 @@ class NewIdeaDialog extends Component {
     const dialogTitleStyle = {
       backgroundColor: yellow800,
       color: grey50,
+      MozUserSelect: 'none', /* Firefox */
+      MsUserSelect: 'none', /* Internet Explorer */
+      KhtmlUserSelect: 'none', /* KHTML browsers (e.g. Konqueror) */
+      WebkitUserSelect: 'none', /* Chrome, Safari, and Opera */
+      WebkitTouchCallout: 'none', /* Disable Android and iOS callouts */
     };
     const textFieldStyles = {
       underlineFocusStyle: {
@@ -71,9 +78,10 @@ class NewIdeaDialog extends Component {
         onRequestClose={this.props.onRequestClose}
       >
         <br />
-        Do you have an idea?
+        <span style={disableSelectTextStyle}>Do you have an idea?</span>
         <br />
         <TextField
+          inputStyle={disableSelectTextStyle}
           floatingLabelText="Idea title"
           fullWidth
           underlineFocusStyle={textFieldStyles.underlineFocusStyle}

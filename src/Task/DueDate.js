@@ -10,9 +10,19 @@ const DueDate = ({ due }) => {
   const styles = {
     tomorrow: {
       color: amber800,
+      MozUserSelect: 'none', /* Firefox */
+      MsUserSelect: 'none', /* Internet Explorer */
+      KhtmlUserSelect: 'none', /* KHTML browsers (e.g. Konqueror) */
+      WebkitUserSelect: 'none', /* Chrome, Safari, and Opera */
+      WebkitTouchCallout: 'none', /* Disable Android and iOS callouts */
     },
     today: {
       color: red500,
+      MozUserSelect: 'none', /* Firefox */
+      MsUserSelect: 'none', /* Internet Explorer */
+      KhtmlUserSelect: 'none', /* KHTML browsers (e.g. Konqueror) */
+      WebkitUserSelect: 'none', /* Chrome, Safari, and Opera */
+      WebkitTouchCallout: 'none', /* Disable Android and iOS callouts */
     },
     icon: {
       width: 16,
