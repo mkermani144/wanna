@@ -39,7 +39,7 @@ it('should set its style based on props', () => {
 it('should call openExternal when handling first ListItem onClick', () => {
   const wrapper = getActualHelp({
     openExternal(link) {
-      expect(link).toBe('https://github.com/mkermani144/wanna/releases/tag/flex-alpha');
+      expect(link).toBe('https://github.com/mkermani144/wanna/releases/tag/Flex-alpha');
     },
   });
   wrapper.find('ListItem').at(0).props().onClick();
