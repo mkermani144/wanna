@@ -44,13 +44,14 @@ it('should test tasks functionality', async (done) => {
   await type('#estimated-time', 20);
   await wait(500);
   await click('#add-and-finish');
+  await wait(500);
   let numberOfTasks = await count('.Task');
   expect(numberOfTasks).toBe(2);
   await wait(500);
 
   // Delete task
   await click('.Task .delete');
-  await wait(1100);
+  await wait(500);
   numberOfTasks = await count('.Task');
   expect(numberOfTasks).toBe(1);
   await wait(500);
@@ -66,7 +67,7 @@ it('should test tasks functionality', async (done) => {
 
   // Mark task as done
   await click('.Task .mark-as-done');
-  await wait(1100);
+  await wait(500);
   numberOfTasks = await count('.Task');
   expect(numberOfTasks).toBe(1);
   await wait(500);
