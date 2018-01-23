@@ -16,6 +16,7 @@ import {
 } from '../lib/date';
 
 import './ConvertIdeaDialog.css';
+import disableSelectTextStyle from '../globalStyle';
 
 class ConvertIdeaDialog extends Component {
   constructor() {
@@ -135,6 +136,11 @@ class ConvertIdeaDialog extends Component {
     const dialogTitleStyle = {
       backgroundColor: green600,
       color: grey50,
+      MozUserSelect: 'none', /* Firefox */
+      MsUserSelect: 'none', /* Internet Explorer */
+      KhtmlUserSelect: 'none', /* KHTML browsers (e.g. Konqueror) */
+      WebkitUserSelect: 'none', /* Chrome, Safari, and Opera */
+      WebkitTouchCallout: 'none', /* Disable Android and iOS callouts */
     };
     const textFieldStyles = {
       underlineFocusStyle: {
@@ -163,10 +169,11 @@ class ConvertIdeaDialog extends Component {
         onRequestClose={this.props.onRequestClose}
       >
         <br />
-        Converting idea: {this.props.idea}
+        <span style={disableSelectTextStyle}>Converting idea: {this.props.idea}</span>
         <br />
         <div className="textfields">
           <TextField
+            inputStyle={disableSelectTextStyle}
             floatingLabelText="Task title"
             fullWidth
             underlineFocusStyle={textFieldStyles.underlineFocusStyle}
@@ -202,6 +209,7 @@ class ConvertIdeaDialog extends Component {
           </div>
           <div className="row">
             <TextField
+              inputStyle={disableSelectTextStyle}
               id="estimated-time"
               floatingLabelText="Estimated time"
               underlineFocusStyle={textFieldStyles.underlineFocusStyle}
@@ -213,8 +221,10 @@ class ConvertIdeaDialog extends Component {
                 '' :
                 'Estimated time should be a number'
               }
+              errorStyle={disableSelectTextStyle}
             />
             <DropDownMenu
+              labelStyle={disableSelectTextStyle}
               value={this.state.estimationValue}
               onChange={this.handleEstimationMenuChange}
             >
@@ -224,6 +234,7 @@ class ConvertIdeaDialog extends Component {
           </div>
           <div className="row">
             <TextField
+              inputStyle={disableSelectTextStyle}
               floatingLabelText="Repetition period"
               underlineFocusStyle={textFieldStyles.underlineFocusStyle}
               floatingLabelFocusStyle={textFieldStyles.floatingLabelFocusStyle}
@@ -234,8 +245,10 @@ class ConvertIdeaDialog extends Component {
                 '' :
                 'Repetition period should be a number'
               }
+              errorStyle={disableSelectTextStyle}
             />
             <DropDownMenu
+              labelStyle={disableSelectTextStyle}
               value={this.state.repetitionValue}
               onChange={this.handleRepetitionMenuChange}
             >

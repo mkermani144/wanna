@@ -16,6 +16,7 @@ import {
 } from '../lib/date';
 
 import './NewTaskDialog.css';
+import disableSelectTextStyle from '../globalStyle';
 
 class NewTaskDialog extends Component {
   constructor() {
@@ -125,6 +126,11 @@ class NewTaskDialog extends Component {
     const dialogTitleStyle = {
       backgroundColor: green600,
       color: grey50,
+      MozUserSelect: 'none', /* Firefox */
+      MsUserSelect: 'none', /* Internet Explorer */
+      KhtmlUserSelect: 'none', /* KHTML browsers (e.g. Konqueror) */
+      WebkitUserSelect: 'none', /* Chrome, Safari, and Opera */
+      WebkitTouchCallout: 'none', /* Disable Android and iOS callouts */
     };
     const textFieldStyles = {
       underlineFocusStyle: {
@@ -153,10 +159,11 @@ class NewTaskDialog extends Component {
         onRequestClose={this.props.onRequestClose}
       >
         <br />
-        What do you wanna do?
+        <span style={disableSelectTextStyle}>What do you wanna do?</span>
         <br />
         <div className="textfields">
           <TextField
+            inputStyle={disableSelectTextStyle}
             floatingLabelText="Task title"
             fullWidth
             underlineFocusStyle={textFieldStyles.underlineFocusStyle}
@@ -193,6 +200,7 @@ class NewTaskDialog extends Component {
           </div>
           <div className="row">
             <TextField
+              inputStyle={disableSelectTextStyle}
               id="estimated-time"
               floatingLabelText="Estimated time"
               underlineFocusStyle={textFieldStyles.underlineFocusStyle}
@@ -204,8 +212,10 @@ class NewTaskDialog extends Component {
                 '' :
                 'Estimated time should be a number'
               }
+              errorStyle={disableSelectTextStyle}
             />
             <DropDownMenu
+              labelStyle={disableSelectTextStyle}
               value={this.state.estimationValue}
               onChange={this.handleEstimationMenuChange}
             >
@@ -215,6 +225,7 @@ class NewTaskDialog extends Component {
           </div>
           <div className="row">
             <TextField
+              inputStyle={disableSelectTextStyle}
               floatingLabelText="Repetition period"
               underlineFocusStyle={textFieldStyles.underlineFocusStyle}
               floatingLabelFocusStyle={textFieldStyles.floatingLabelFocusStyle}
@@ -225,6 +236,7 @@ class NewTaskDialog extends Component {
                 '' :
                 'Repetition period should be a number'
               }
+              errorStyle={disableSelectTextStyle}
             />
             <DropDownMenu
               value={this.state.repetitionValue}

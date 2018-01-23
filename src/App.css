@@ -1,33 +1,35 @@
 .App {
-  display: flex;
-  flex-direction: column;
-  width: 100vw;
-  height: 100vh;
-  overflow-x: hidden;
-  background-color: #FAFAFA;
+	display: flex;
+	flex-direction: column;
+	width: 100vw;
+	height: 100vh;
+	overflow-x: hidden;
+	background-color: #fafafa;
 }
 .App .main {
-  flex: 1;
-  display: flex;
-  flex-direction: row;
+	flex: 1;
+	display: flex;
+	flex-direction: row;
 }
 .AppBar {
-  position: fixed !important;
+	position: fixed !important;
+	-moz-user-select: none; /* Firefox */
+	-ms-user-select: none; /* Internet Explorer */
+	-khtml-user-select: none; /* KHTML browsers (e.g. Konqueror) */
+	-webkit-user-select: none; /* Chrome, Safari, and Opera */
+	-webkit-touch-callout: none; /* Disable Android and iOS callouts */
 }
 
-*::-webkit-scrollbar-track
-{
-	-webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
-	background-color: #E3F2FD;
+*::-webkit-scrollbar-track {
+	-webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+	background-color: #e3f2fd;
 }
-*::-webkit-scrollbar
-{
+*::-webkit-scrollbar {
 	width: 5px;
-	background-color: #E3F2FD;
+	background-color: #e3f2fd;
 }
-*::-webkit-scrollbar-thumb
-{
-	background-color: #64B5F6;
-  border-radius: 3px;
-  margin-right: 3px;
+*::-webkit-scrollbar-thumb {
+	background-color: #64b5f6;
+	border-radius: 3px;
+	margin-right: 3px;
 }

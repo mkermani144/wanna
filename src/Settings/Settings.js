@@ -6,6 +6,7 @@ import Divider from 'material-ui/Divider';
 import CalendarSystemDialog from './CalendarSystemDialog';
 import FirstDayOfWeekDialog from './FirstDayOfWeekDialog';
 import './Settings.css';
+import disableSelectTextStyle from '../globalStyle';
 
 class Settings extends Component {
   constructor() {
@@ -69,12 +70,14 @@ class Settings extends Component {
         <List>
           <ListItem
             primaryText="Calendar system"
+            innerDivStyle={disableSelectTextStyle}
             secondaryText={this.props.calendarSystem}
             onClick={this.handleRequestCalendarSystemDialogOpen}
           />
           <Divider />
           <ListItem
             primaryText="First day of the week"
+            innerDivStyle={disableSelectTextStyle}
             secondaryText={weekDays[this.props.firstDayOfWeek]}
             onClick={this.handleRequestFirstDayOfWeekDialogOpen}
           />
@@ -88,6 +91,7 @@ class Settings extends Component {
             }
             primaryText="Fullscreen mode"
             secondaryText="Start the app in full width and height. Changes will apply after restarting the app"
+            innerDivStyle={disableSelectTextStyle}
           />
           <Divider />
           <ListItem
@@ -100,6 +104,7 @@ class Settings extends Component {
             }
             primaryText="Not-yet tasks"
             secondaryText="Show the section in task list"
+            innerDivStyle={disableSelectTextStyle}
           />
           <Divider />
         </List>

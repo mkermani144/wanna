@@ -5,6 +5,7 @@ import { List, ListItem } from 'material-ui/List';
 import Divider from 'material-ui/Divider';
 
 import './Help.css';
+import disableSelectTextStyle from '../globalStyle';
 
 const versionURL = 'https://github.com/mkermani144/wanna/releases/tag/Flex-alpha';
 const repoURL = 'https://github.com/mkermani144/wanna';
@@ -31,18 +32,21 @@ const Help = ({ sidebarExpanded, openExternal }) => {
     >
       <List>
         <ListItem
+          innerDivStyle={disableSelectTextStyle}
           primaryText="Version"
           secondaryText="Flex alpha"
           onClick={() => openExternal(versionURL)}
         />
         <Divider />
         <ListItem
+          innerDivStyle={disableSelectTextStyle}
           primaryText="Github repository"
           secondaryText="https://github.com/mkermani144/wanna"
           onClick={() => openExternal(repoURL)}
         />
         <Divider />
         <ListItem
+          innerDivStyle={disableSelectTextStyle}
           primaryText="License"
           secondaryText="MIT"
           onClick={() => openExternal(licenseURL)}
