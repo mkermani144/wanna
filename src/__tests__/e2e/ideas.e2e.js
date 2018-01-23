@@ -33,13 +33,14 @@ it('should test ideas functionality', async (done) => {
   await click('#add-and-continue');
   await type('.NewIdeaDialog input', 'even another cool idea');
   await click('#add-and-finish');
+  await wait(500);
   let numberOfIdeas = await count('.Idea');
   expect(numberOfIdeas).toBe(3);
   await wait(500);
 
   // Delete idea
   await click('.Idea:first-of-type .delete');
-  await wait(1100);
+  await wait(500);
   numberOfIdeas = await count('.Idea');
   expect(numberOfIdeas).toBe(2);
   await wait(500);
@@ -73,6 +74,7 @@ it('should test ideas functionality', async (done) => {
   await type('#estimated-time', 20);
   await wait(500);
   await click('#add-and-finish');
+  await wait(500);
   numberOfIdeas = await count('.Idea');
   expect(numberOfIdeas).toBe(1);
   await wait(500);
