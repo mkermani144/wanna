@@ -7,6 +7,7 @@ import DropDownMenu from 'material-ui/DropDownMenu';
 import MenuItem from 'material-ui/MenuItem';
 import { green600, grey50 } from 'material-ui/styles/colors';
 import persianUtils from 'material-ui-persian-date-picker-utils';
+import { HotKeys } from 'react-hotkeys';
 
 import {
   parse,
@@ -28,6 +29,10 @@ class NewTaskDialog extends Component {
       end: null,
       estimation: '',
       repetition: '',
+    };
+    this.keyMap = {
+      confirmAddNewTaskAndFinish: 'shift+enter',
+      confirmAddNewTaskAndContinue: 'enter',
     };
   }
   buttonDisabled = () => !(
@@ -143,6 +148,14 @@ class NewTaskDialog extends Component {
     const localeProps = this.props.calendarSystem === 'fa-IR' ?
     { utils: persianUtils, DateTimeFormat } :
     {};
+    const handlers = {
+      confirmAddNewTaskAndFinish: () => {
+        !this.buttonDisabled() && this.handleRequestFinish();
+      },
+      confirmAddNewTaskAndContinue: () => {
+        !this.buttonDisabled() && this.handleRequestAdd();
+      },
+    };
     return (
       <Dialog
         className="NewTaskDialog"
@@ -156,84 +169,89 @@ class NewTaskDialog extends Component {
         What do you wanna do?
         <br />
         <div className="textfields">
-          <TextField
-            floatingLabelText="Task title"
-            fullWidth
-            underlineFocusStyle={textFieldStyles.underlineFocusStyle}
-            floatingLabelFocusStyle={textFieldStyles.floatingLabelFocusStyle}
-            value={this.state.task}
-            onChange={this.handleTaskChange}
-            autoFocus
-          />
-          <div className="datepicker" id="start">
-            <DatePicker
-              defaultDate={new Date()}
-              hintText="Start"
-              autoOk
-              locale={this.props.calendarSystem}
-              {...localeProps}
-              firstDayOfWeek={this.props.firstDayOfWeek}
-              textFieldStyle={datePickerStyles.textFieldStyle}
-              minDate={new Date()}
-              onChange={this.handleStartChange}
-            />
-          </div>
-          <div className="datepicker" id="end">
-            <DatePicker
-              id="end"
-              hintText="End"
-              autoOk
-              locale={this.props.calendarSystem}
-              {...localeProps}
-              firstDayOfWeek={this.props.firstDayOfWeek}
-              textFieldStyle={datePickerStyles.textFieldStyle}
-              minDate={new Date(this.state.start)}
-              onChange={this.handleEndChange}
-            />
-          </div>
-          <div className="row">
+          <HotKeys
+            keyMap={this.keyMap}
+            handlers={handlers}
+          >
             <TextField
-              id="estimated-time"
-              floatingLabelText="Estimated time"
+              floatingLabelText="Task title"
+              fullWidth
               underlineFocusStyle={textFieldStyles.underlineFocusStyle}
               floatingLabelFocusStyle={textFieldStyles.floatingLabelFocusStyle}
-              value={this.state.estimation}
-              onChange={this.handleEstimationChange}
-              errorText={
-                /^[0-9]*$/.test(this.state.estimation) ?
-                '' :
-                'Estimated time should be a number'
-              }
+              value={this.state.task}
+              onChange={this.handleTaskChange}
+              autoFocus
             />
-            <DropDownMenu
-              value={this.state.estimationValue}
-              onChange={this.handleEstimationMenuChange}
-            >
-              <MenuItem value={1} primaryText="Minutes" />
-              <MenuItem value={60} primaryText="Hours" />
-            </DropDownMenu>
-          </div>
-          <div className="row">
-            <TextField
-              floatingLabelText="Repetition period"
-              underlineFocusStyle={textFieldStyles.underlineFocusStyle}
-              floatingLabelFocusStyle={textFieldStyles.floatingLabelFocusStyle}
-              value={this.state.repetition}
-              onChange={this.handleRepetitionChange}
-              errorText={
-                /^[0-9]*$/.test(this.state.repetition) ?
-                '' :
-                'Repetition period should be a number'
-              }
-            />
-            <DropDownMenu
-              value={this.state.repetitionValue}
-              onChange={this.handleRepetitionMenuChange}
-            >
-              <MenuItem value={1} primaryText="Days" />
-              <MenuItem value={7} primaryText="Weeks" />
-            </DropDownMenu>
-          </div>
+            <div className="datepicker" id="start">
+              <DatePicker
+                defaultDate={new Date()}
+                hintText="Start"
+                autoOk
+                locale={this.props.calendarSystem}
+                {...localeProps}
+                firstDayOfWeek={this.props.firstDayOfWeek}
+                textFieldStyle={datePickerStyles.textFieldStyle}
+                minDate={new Date()}
+                onChange={this.handleStartChange}
+              />
+            </div>
+            <div className="datepicker" id="end">
+              <DatePicker
+                id="end"
+                hintText="End"
+                autoOk
+                locale={this.props.calendarSystem}
+                {...localeProps}
+                firstDayOfWeek={this.props.firstDayOfWeek}
+                textFieldStyle={datePickerStyles.textFieldStyle}
+                minDate={new Date(this.state.start)}
+                onChange={this.handleEndChange}
+              />
+            </div>
+            <div className="row">
+              <TextField
+                id="estimated-time"
+                floatingLabelText="Estimated time"
+                underlineFocusStyle={textFieldStyles.underlineFocusStyle}
+                floatingLabelFocusStyle={textFieldStyles.floatingLabelFocusStyle}
+                value={this.state.estimation}
+                onChange={this.handleEstimationChange}
+                errorText={
+                  /^[0-9]*$/.test(this.state.estimation) ?
+                  '' :
+                  'Estimated time should be a number'
+                }
+              />
+              <DropDownMenu
+                value={this.state.estimationValue}
+                onChange={this.handleEstimationMenuChange}
+              >
+                <MenuItem value={1} primaryText="Minutes" />
+                <MenuItem value={60} primaryText="Hours" />
+              </DropDownMenu>
+            </div>
+            <div className="row">
+              <TextField
+                floatingLabelText="Repetition period"
+                underlineFocusStyle={textFieldStyles.underlineFocusStyle}
+                floatingLabelFocusStyle={textFieldStyles.floatingLabelFocusStyle}
+                value={this.state.repetition}
+                onChange={this.handleRepetitionChange}
+                errorText={
+                  /^[0-9]*$/.test(this.state.repetition) ?
+                  '' :
+                  'Repetition period should be a number'
+                }
+              />
+              <DropDownMenu
+                value={this.state.repetitionValue}
+                onChange={this.handleRepetitionMenuChange}
+              >
+                <MenuItem value={1} primaryText="Days" />
+                <MenuItem value={7} primaryText="Weeks" />
+              </DropDownMenu>
+            </div>
+          </HotKeys>
         </div>
       </Dialog>
     );
