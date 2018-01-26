@@ -4,11 +4,16 @@ import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import TextField from 'material-ui/TextField';
 import { yellow800, grey50 } from 'material-ui/styles/colors';
+import { HotKeys } from 'react-hotkeys';
 
 class NewIdeaDialog extends Component {
   constructor() {
     super();
     this.state = { idea: '' };
+    this.keyMap = {
+      confirmAddNewIdeaAndFinish: 'shift+enter',
+      confirmAddNewIdeaAndContinue: 'enter',
+    };
   }
   handleIdeaChange = (e) => {
     this.setState({
@@ -61,6 +66,14 @@ class NewIdeaDialog extends Component {
         color: yellow800,
       },
     };
+    const handlers = {
+      confirmAddNewIdeaAndFinish: () => {
+        this.state.idea && this.handleRequestFinish();
+      },
+      confirmAddNewIdeaAndContinue: () => {
+        this.state.idea && this.handleRequestAdd();
+      },
+    };
     return (
       <Dialog
         className="NewIdeaDialog"
@@ -73,15 +86,20 @@ class NewIdeaDialog extends Component {
         <br />
         Do you have an idea?
         <br />
-        <TextField
-          floatingLabelText="Idea title"
-          fullWidth
-          underlineFocusStyle={textFieldStyles.underlineFocusStyle}
-          floatingLabelFocusStyle={textFieldStyles.floatingLabelFocusStyle}
-          value={this.state.idea}
-          onChange={this.handleIdeaChange}
-          autoFocus
-        />
+        <HotKeys
+          keyMap={this.keyMap}
+          handlers={handlers}
+        >
+          <TextField
+            floatingLabelText="Idea title"
+            fullWidth
+            underlineFocusStyle={textFieldStyles.underlineFocusStyle}
+            floatingLabelFocusStyle={textFieldStyles.floatingLabelFocusStyle}
+            value={this.state.idea}
+            onChange={this.handleIdeaChange}
+            autoFocus
+          />
+        </HotKeys>
       </Dialog>
     );
   }
