@@ -122,19 +122,19 @@ class ConvertIdeaDialog extends Component {
         label="Add and finish"
         primary
         disabled={this.buttonDisabled()}
-        onTouchTap={this.handleRequestFinish}
+        onClick={this.handleRequestFinish}
       />,
       <FlatButton
         id="add-and-continue"
         label="Add and continue"
         primary
         disabled={this.buttonDisabled()}
-        onTouchTap={this.handleRequestConvert}
+        onClick={this.handleRequestConvert}
       />,
       <FlatButton
         label="Cancel"
         primary
-        onTouchTap={this.handleRequestClose}
+        onClick={this.handleRequestClose}
       />,
     ];
     const dialogTitleStyle = {
@@ -154,10 +154,10 @@ class ConvertIdeaDialog extends Component {
         flex: 1,
       },
     };
-    const DateTimeFormat = global.Intl.DateTimeFormat;
+    const { DateTimeFormat } = global.Intl;
     const localeProps = this.props.calendarSystem === 'fa-IR' ?
-    { utils: persianUtils, DateTimeFormat } :
-    {};
+      { utils: persianUtils, DateTimeFormat } :
+      {};
     const handlers = {
       confirmConvertIdeaAndFinish: () => {
         !this.buttonDisabled() && this.handleRequestFinish();

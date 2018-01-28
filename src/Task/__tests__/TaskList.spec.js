@@ -150,32 +150,36 @@ it('should call lowerFab inside Snackbar onRequestClose', (done) => {
   });
   wrapper.find('Snackbar').props().onRequestClose();
 });
-it('should call undo inside Snackbar onActionTouchTap', (done) => {
+it('should call undo inside Snackbar onActionClick', (done) => {
   const wrapper = getActualTaskList({
     undo() {
       done();
     },
   });
-  wrapper.find('Snackbar').props().onActionTouchTap();
+  wrapper.find('Snackbar').props().onActionClick();
 });
 
 it('should set EditTaskDialog open based on state', () => {
   const wrapper = getActualTaskList();
   wrapper.find('Task').at(0).props().onRequestEditTaskOpen();
+  wrapper.update();
   expect(wrapper.find('EditTaskDialog').prop('open')).toBe(true);
 });
 it('should set EditTaskDialog task based on state', () => {
   const wrapper = getActualTaskList();
   wrapper.find('Task').at(0).props().onRequestEditTaskOpen(1);
+  wrapper.update();
   expect(wrapper.find('EditTaskDialog').prop('task')).toBe('an open task');
 });
 it('should set Snackbar open based on state', () => {
   const wrapper = getActualTaskList();
   wrapper.find('Task').at(0).props().onRequestSnackbar();
+  wrapper.update();
   expect(wrapper.find('Snackbar').prop('open')).toBe(true);
 });
 it('should set Snackbar message based on state', () => {
   const wrapper = getActualTaskList();
   wrapper.find('Task').at(0).props().onRequestSnackbar('a cool message');
+  wrapper.update();
   expect(wrapper.find('Snackbar').prop('message')).toBe('a cool message');
 });

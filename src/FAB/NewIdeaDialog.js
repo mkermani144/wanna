@@ -39,19 +39,19 @@ class NewIdeaDialog extends Component {
         label="Add and finish"
         primary
         disabled={!(this.state.idea)}
-        onTouchTap={this.handleRequestFinish}
+        onClick={this.handleRequestFinish}
       />,
       <FlatButton
         id="add-and-continue"
         label="Add and continue"
         primary
         disabled={!(this.state.idea)}
-        onTouchTap={this.handleRequestAdd}
+        onClick={this.handleRequestAdd}
       />,
       <FlatButton
         label="Cancel"
         primary
-        onTouchTap={this.handleRequestClose}
+        onClick={this.handleRequestClose}
       />,
     ];
     const dialogTitleStyle = {

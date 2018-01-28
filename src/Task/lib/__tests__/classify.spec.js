@@ -44,7 +44,12 @@ const tasks = [
 ];
 
 it('should classify into groups', () => {
-  const { overdue, open, notYet, done } = classify(tasks);
+  const {
+    overdue,
+    open,
+    notYet,
+    done,
+  } = classify(tasks);
   expect(overdue.length).toBe(1);
   expect(open.length).toBe(3);
   expect(notYet.length).toBe(1);

@@ -166,47 +166,54 @@ it('should call lowerFab inside Snackbar onRequestClose', (done) => {
   });
   wrapper.find('Snackbar').props().onRequestClose();
 });
-it('should call undo inside Snackbar onActionTouchTap', (done) => {
+it('should call undo inside Snackbar onActionClick', (done) => {
   const wrapper = getActualIdeaList({
     undo() {
       done();
     },
   });
-  wrapper.find('Snackbar').props().onActionTouchTap();
+  wrapper.find('Snackbar').props().onActionClick();
 });
 
 it('should set EditIdeaDialog open based on state', () => {
   const wrapper = getActualIdeaList();
   wrapper.find('Idea').at(0).props().onRequestEditDialogOpen(0);
+  wrapper.update();
   expect(wrapper.find('EditIdeaDialog').prop('open')).toBe(true);
 });
 it('should set EditIdeaDialog idea based on state', () => {
   const wrapper = getActualIdeaList();
   wrapper.find('Idea').at(0).props().onRequestEditDialogOpen(0);
+  wrapper.update();
   expect(wrapper.find('EditIdeaDialog').prop('idea')).toBe('a cool idea');
 });
 it('should set ConvertIdeaDialog open to true based on state', () => {
   const wrapper = getActualIdeaList();
   wrapper.find('Idea').at(0).props().onRequestConvertDialogOpen(0);
+  wrapper.update();
   expect(wrapper.find('ConvertIdeaDialog').prop('open')).toBe(true);
 });
 it('should set ConvertIdeaDialog open to false based on state', () => {
   const wrapper = getActualIdeaList();
   wrapper.find('ConvertIdeaDialog').props().onRequestClose();
+  wrapper.update();
   expect(wrapper.find('ConvertIdeaDialog').prop('open')).toBe(false);
 });
 it('should set ConvertIdeaDialog idea based on state', () => {
   const wrapper = getActualIdeaList();
   wrapper.find('Idea').at(0).props().onRequestEditDialogOpen(0);
+  wrapper.update();
   expect(wrapper.find('ConvertIdeaDialog').prop('idea')).toBe('a cool idea');
 });
 it('should set Snackbar open based on state', () => {
   const wrapper = getActualIdeaList();
   wrapper.find('Idea').at(0).props().onRequestSnackbar();
+  wrapper.update();
   expect(wrapper.find('Snackbar').prop('open')).toBe(true);
 });
 it('should set Snackbar message based on state', () => {
   const wrapper = getActualIdeaList();
   wrapper.find('Idea').at(0).props().onRequestSnackbar('a cool message');
+  wrapper.update();
   expect(wrapper.find('Snackbar').prop('message')).toBe('a cool message');
 });

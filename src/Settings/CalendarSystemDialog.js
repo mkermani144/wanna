@@ -15,7 +15,7 @@ class CalendarSystemDialog extends Component {
       <FlatButton
         label="Cancel"
         primary
-        onTouchTap={() => this.props.onRequestClose(this.props.calendarSystem)}
+        onClick={() => this.props.onRequestClose(this.props.calendarSystem)}
       />,
     ];
     const dialogContentStyle = {

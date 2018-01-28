@@ -100,12 +100,12 @@ class FAB extends Component {
           <SpeedDialItem
             fabContent={<Done />}
             label="Task"
-            onTouchTap={this.handleRequestTaskDialogOpen}
+            onClick={this.handleRequestTaskDialogOpen}
           />
           <SpeedDialItem
             fabContent={<LightbulbOutline />}
             label="Idea"
-            onTouchTap={this.handleRequestIdeaDialogOpen}
+            onClick={this.handleRequestIdeaDialogOpen}
           />
           <NewTaskDialog
             open={this.state.taskDialogOpen}

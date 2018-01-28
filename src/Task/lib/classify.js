@@ -63,8 +63,7 @@ const classify = (tasks) => {
       const aRatio = (now - a.start) / (a.end - a.start);
       const bRatio = (now - b.start) / (b.end - b.start);
       return bRatio - aRatio;
-    }),
-  );
+    }));
   return classifiedTasks;
 };
 

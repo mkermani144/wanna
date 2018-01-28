@@ -204,8 +204,8 @@ class TaskList extends Component {
           transitionLeaveTimeout={150}
         >
           {
-            classifiedTasks.open.map(
-              (task, index) => (index > this.state.current + cumulativeFrequencies.open ?
+            classifiedTasks.open.map((task, index) =>
+              (index > this.state.current + cumulativeFrequencies.open ?
                 <div key={task.id} className="Task" /> :
                 <Task
                   color={task.color}
@@ -248,8 +248,8 @@ class TaskList extends Component {
           transitionLeaveTimeout={150}
         >
           {this.props.showNotYetTasks &&
-            classifiedTasks.notYet.map(
-              (task, index) => (index > this.state.current + cumulativeFrequencies.notYet ?
+            classifiedTasks.notYet.map((task, index) =>
+              (index > this.state.current + cumulativeFrequencies.notYet ?
                 <div key={task.id} className="Task" /> :
                 <Task
                   color={task.color}
@@ -292,8 +292,8 @@ class TaskList extends Component {
           transitionLeaveTimeout={150}
         >
           {
-            classifiedTasks.done.map(
-              (task, index) => (index > this.state.current + cumulativeFrequencies.done ?
+            classifiedTasks.done.map((task, index) =>
+              (index > this.state.current + cumulativeFrequencies.done ?
                 <div key={task.id} className="Task" /> :
                 <Task
                   color={task.color}
@@ -333,7 +333,7 @@ class TaskList extends Component {
           message={this.state.snackbarMessage}
           autoHideDuration={3000}
           action="undo"
-          onActionTouchTap={this.handleUndo}
+          onActionClick={this.handleUndo}
           onRequestClose={this.handleRequestSnackbarClose}
         />
       </div>

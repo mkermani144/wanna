@@ -131,6 +131,7 @@ it('should remove its done class based on state', () => {
     repeat: '5',
   });
   wrapper.find('Actions').props().onRequestDo();
+  wrapper.update();
   jest.runAllTimers();
   expect(wrapper.props().className.includes('done')).toBe(false);
 });

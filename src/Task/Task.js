@@ -35,7 +35,7 @@ class Task extends PureComponent {
     return (
       <div className={`Task ${this.state.class} ${done ? 'done' : ''}`}>
         <Circle color={color} signal={signal} />
-        <div className={'text'}><p>{text}</p></div>
+        <div className="text"><p>{text}</p></div>
         <Estimation estimation={estimation} />
         <DueDate due={due} />
         <Repeat repeat={repeat} />
