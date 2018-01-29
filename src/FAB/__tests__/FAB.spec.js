@@ -21,13 +21,9 @@ it('should be a HotKeys', () => {
   const wrapper = getActualFAB();
   expect(wrapper.is('HotKeys')).toBe(true);
 });
-it('should have 1 SpeedDial', () => {
+it('should have 3 FloatingActionButton', () => {
   const wrapper = getActualFAB();
-  expect(wrapper.find('SpeedDial').length).toBe(1);
-});
-it('should have 2 SpeedDialItem', () => {
-  const wrapper = getActualFAB();
-  expect(wrapper.find('SpeedDialItem').length).toBe(2);
+  expect(wrapper.find('FloatingActionButton').length).toBe(3);
 });
 it('should have 1 NewTaskDialog', () => {
   const wrapper = getActualFAB();
@@ -38,12 +34,19 @@ it('should have 1 NewIdeaDialog', () => {
   expect(wrapper.find('NewIdeaDialog').length).toBe(1);
 });
 
-it('should set SpeedDial bottom style based on props', () => {
+it('should set plusFAB bottom style based on props', () => {
   const wrapper = getActualFAB({
-    fabRaised: true,
+    FABRaised: true,
     width: 767,
   });
-  expect(wrapper.find('SpeedDial').props().style.bottom).toBe(72);
+  expect(wrapper.find('FloatingActionButton').at(0).props().style.bottom).toBe(72);
+});
+it('should set doneFAb bottom style based on props', () => {
+  const wrapper = getActualFAB({
+    FABRaised: true,
+    width: 767,
+  });
+  expect(wrapper.find('FloatingActionButton').at(1).props().style.bottom).toBe(80);
 });
 it('should set NewTaskDialog calendarSystem based on props', () => {
   const wrapper = getActualFAB({
@@ -94,15 +97,39 @@ it('should call addIdea inside NewIdeaDialog onRequestAdd', () => {
   });
 });
 
+it('should set doneFAB bottom based on state', () => {
+  const wrapper = getActualFAB();
+  wrapper.find('FloatingActionButton').at(0).props().onClick();
+  wrapper.update();
+  expect(wrapper.find('FloatingActionButton').at(1).props().style.bottom).toBe(92);
+});
+it('should set lightbulbFAB bottom based on state', () => {
+  const wrapper = getActualFAB();
+  wrapper.find('FloatingActionButton').at(0).props().onClick();
+  wrapper.update();
+  expect(wrapper.find('FloatingActionButton').at(2).props().style.bottom).toBe(142);
+});
+it('should set doneFAB opacity based on state', () => {
+  const wrapper = getActualFAB();
+  wrapper.find('FloatingActionButton').at(0).props().onClick();
+  wrapper.update();
+  expect(wrapper.find('FloatingActionButton').at(1).props().style.opacity).toBe(1);
+});
+it('should set lightbulbFAB bottom based on state', () => {
+  const wrapper = getActualFAB();
+  wrapper.find('FloatingActionButton').at(0).props().onClick();
+  wrapper.update();
+  expect(wrapper.find('FloatingActionButton').at(2).props().style.opacity).toBe(1);
+});
 it('should set NewTaskDialog open to true based on state', () => {
   const wrapper = getActualFAB();
-  wrapper.find('SpeedDialItem').at(0).props().onClick();
+  wrapper.find('FloatingActionButton').at(1).props().onClick();
   wrapper.update();
   expect(wrapper.find('NewTaskDialog').prop('open')).toBe(true);
 });
 it('should set NewIdeaDialog open to true based on state', () => {
   const wrapper = getActualFAB();
-  wrapper.find('SpeedDialItem').at(1).props().onClick();
+  wrapper.find('FloatingActionButton').at(2).props().onClick();
   wrapper.update();
   expect(wrapper.find('NewIdeaDialog').prop('open')).toBe(true);
 });
