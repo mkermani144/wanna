@@ -39,14 +39,14 @@ it('should set plusFAB bottom style based on props', () => {
     FABRaised: true,
     width: 767,
   });
-  expect(wrapper.find('FloatingActionButton').at(0).props().style.bottom).toBe(72);
+  expect(wrapper.find('#plus-fab').props().style.bottom).toBe(72);
 });
 it('should set doneFAb bottom style based on props', () => {
   const wrapper = getActualFAB({
     FABRaised: true,
     width: 767,
   });
-  expect(wrapper.find('FloatingActionButton').at(1).props().style.bottom).toBe(80);
+  expect(wrapper.find('#done-fab').props().style.bottom).toBe(80);
 });
 it('should set NewTaskDialog calendarSystem based on props', () => {
   const wrapper = getActualFAB({
@@ -99,37 +99,37 @@ it('should call addIdea inside NewIdeaDialog onRequestAdd', () => {
 
 it('should set doneFAB bottom based on state', () => {
   const wrapper = getActualFAB();
-  wrapper.find('FloatingActionButton').at(0).props().onClick();
+  wrapper.find('#plus-fab').props().onClick();
   wrapper.update();
-  expect(wrapper.find('FloatingActionButton').at(1).props().style.bottom).toBe(92);
+  expect(wrapper.find('#done-fab').props().style.bottom).toBe(92);
 });
 it('should set lightbulbFAB bottom based on state', () => {
   const wrapper = getActualFAB();
-  wrapper.find('FloatingActionButton').at(0).props().onClick();
+  wrapper.find('#plus-fab').props().onClick();
   wrapper.update();
-  expect(wrapper.find('FloatingActionButton').at(2).props().style.bottom).toBe(142);
+  expect(wrapper.find('#lightbulb-fab').props().style.bottom).toBe(142);
 });
 it('should set doneFAB opacity based on state', () => {
   const wrapper = getActualFAB();
-  wrapper.find('FloatingActionButton').at(0).props().onClick();
+  wrapper.find('#plus-fab').props().onClick();
   wrapper.update();
-  expect(wrapper.find('FloatingActionButton').at(1).props().style.opacity).toBe(1);
+  expect(wrapper.find('#done-fab').props().style.opacity).toBe(1);
 });
 it('should set lightbulbFAB bottom based on state', () => {
   const wrapper = getActualFAB();
-  wrapper.find('FloatingActionButton').at(0).props().onClick();
+  wrapper.find('#plus-fab').props().onClick();
   wrapper.update();
-  expect(wrapper.find('FloatingActionButton').at(2).props().style.opacity).toBe(1);
+  expect(wrapper.find('#lightbulb-fab').props().style.opacity).toBe(1);
 });
 it('should set NewTaskDialog open to true based on state', () => {
   const wrapper = getActualFAB();
-  wrapper.find('FloatingActionButton').at(1).props().onClick();
+  wrapper.find('#done-fab').props().onClick();
   wrapper.update();
   expect(wrapper.find('NewTaskDialog').prop('open')).toBe(true);
 });
 it('should set NewIdeaDialog open to true based on state', () => {
   const wrapper = getActualFAB();
-  wrapper.find('FloatingActionButton').at(2).props().onClick();
+  wrapper.find('#lightbulb-fab').props().onClick();
   wrapper.update();
   expect(wrapper.find('NewIdeaDialog').prop('open')).toBe(true);
 });

@@ -15,7 +15,7 @@
     "npm-run-all": "^4.1.1",
     "react-scripts": "1.1.0",
     "react-test-renderer": "^16.2.0",
-    "selenium-webdriver": "^4.0.0-alpha.1"
+    "selenium-webdriver": "^3.6.0"
   },
   "dependencies": {
     "cross-env": "^5.0.5",

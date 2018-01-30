@@ -120,12 +120,14 @@ class FAB extends Component {
         handlers={handlers}
       >
         <FloatingActionButton
+          id="plus-fab"
           style={styles.plusFAB}
           onClick={this.handleToggleFAB}
         >
           <Add />
         </FloatingActionButton>
         <FloatingActionButton
+          id="done-fab"
           style={styles.doneFAB}
           backgroundColor={green600}
           mini
@@ -134,6 +136,7 @@ class FAB extends Component {
           <Done />
         </FloatingActionButton>
         <FloatingActionButton
+          id="lightbulb-fab"
           style={styles.lightbulbFAB}
           backgroundColor={yellow800}
           mini

@@ -24,11 +24,12 @@ it('should test tasks functionality', async (done) => {
   await init();
 
   // Add tasks
-  await click('.SpeedDial');
-  await click('.SpeedDial + div');
+  await click('#plus-fab');
+  await click('#done-fab');
   await type('.NewTaskDialog input', 'a cool task');
   await click('#end input');
-  await pressRightArrow(5);
+  // await pressRightArrow(5);
+
   await pressEnter();
   await type('#estimated-time', 10);
   await wait(500);
