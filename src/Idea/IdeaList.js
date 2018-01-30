@@ -158,8 +158,8 @@ class IdeaList extends Component {
                 />
                 <Divider />
               </div>
-            )),
-          )}
+            )))
+          }
         </CSSTransitionGroup>
         <EditIdeaDialog
           onRequestClose={this.handleRequestIdeaDialogClose}
@@ -187,7 +187,7 @@ class IdeaList extends Component {
           message={this.state.snackbarMessage}
           autoHideDuration={3000}
           action="undo"
-          onActionTouchTap={this.handleUndo}
+          onActionClick={this.handleUndo}
           onRequestClose={this.handleRequestSnackbarClose}
         />
       </div>

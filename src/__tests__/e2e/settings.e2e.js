@@ -24,8 +24,8 @@ it('should test settings functionality', async (done) => {
   await init();
 
   // Add tasks
-  await click('.SpeedDial');
-  await click('.SpeedDial + div');
+  await click('#plus-fab');
+  await click('#done-fab');
   await type('.NewTaskDialog input', 'a cool task');
   await click('#end input');
   await pressRightArrow(5);

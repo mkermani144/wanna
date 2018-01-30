@@ -3,7 +3,8 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import R from 'ramda';
 
-const componentory = (Component, props) => shallow(<Component {...props} />);
+const componentory = (Component, props) =>
+  shallow(<Component {...props} />, { disableLifecycleMethods: true });
 const merge = (defaultProps, props) => R.mergeAll([defaultProps, props]);
 
 const getActualComponentFactory = (Component, defaultProps) => R.pipe(

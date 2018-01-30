@@ -25,8 +25,8 @@ it('should test ideas functionality', async (done) => {
 
   // Add ideas
   await click('#ideas');
-  await click('.SpeedDial');
-  await click('.SpeedDial + div + div');
+  await click('#plus-fab');
+  await click('#lightbulb-fab');
   await type('.NewIdeaDialog input', 'a cool idea');
   await click('#add-and-continue');
   await type('.NewIdeaDialog input', 'another cool idea');

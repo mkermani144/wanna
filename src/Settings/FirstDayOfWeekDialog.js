@@ -15,7 +15,7 @@ class FirstDayOfWeekDialog extends Component {
       <FlatButton
         label="Cancel"
         primary
-        onTouchTap={() => this.props.onRequestClose(this.props.firstDayOfWeek)}
+        onClick={() => this.props.onRequestClose(this.props.firstDayOfWeek)}
       />,
     ];
     const dialogContentStyle = {

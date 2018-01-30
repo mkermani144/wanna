@@ -27,12 +27,12 @@ class EditIdeaDialog extends Component {
         label="Edit"
         primary
         disabled={!(this.state.idea)}
-        onTouchTap={this.handleRequestEdit}
+        onClick={this.handleRequestEdit}
       />,
       <FlatButton
         label="Cancel"
         primary
-        onTouchTap={this.handleRequestClose}
+        onClick={this.handleRequestClose}
       />,
     ];
     const dialogTitleStyle = {

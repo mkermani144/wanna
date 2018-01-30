@@ -40,14 +40,14 @@ it('should call onRequestClose inside Dialog onRequestClose', () => {
   });
   wrapper.find('Dialog').props().onRequestClose();
 });
-it('should call onRequestClose inside FlatButton onTouchTap', () => {
+it('should call onRequestClose inside FlatButton onClick', () => {
   const wrapper = getActualDialog({
     firstDayOfWeek: 6,
     onRequestClose(firstDayOfWeek) {
       expect(firstDayOfWeek).toBe(6);
     },
   });
-  wrapper.find('Dialog').prop('actions')[0].props.onTouchTap();
+  wrapper.find('Dialog').prop('actions')[0].props.onClick();
 });
 it('should call onRequestClose inside RadioButtonGroup onChange', () => {
   const wrapper = getActualDialog({

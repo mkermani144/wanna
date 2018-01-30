@@ -16,7 +16,7 @@ const Actions = (props) => {
       <IconButton
         className="IconButton delete"
         tooltip="Delete"
-        onTouchTap={props.onRequestDelete}
+        onClick={props.onRequestDelete}
       >
         <Delete color={colors.delete} />
       </IconButton>
@@ -24,7 +24,7 @@ const Actions = (props) => {
         <IconButton
           className="IconButton edit"
           tooltip="Edit"
-          onTouchTap={props.onRequestEditDialogOpen}
+          onClick={props.onRequestEditDialogOpen}
         >
           <Edit color={colors.edit} />
         </IconButton>
@@ -33,7 +33,7 @@ const Actions = (props) => {
         <IconButton
           className="IconButton mark-as-done"
           tooltip="Mark as done"
-          onTouchTap={props.onRequestDo}
+          onClick={props.onRequestDo}
         >
           <Done color={colors.done} />
         </IconButton>

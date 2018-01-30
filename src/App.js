@@ -116,7 +116,7 @@ class App extends Component {
                 <AppBar
                   className="AppBar"
                   title="Wanna"
-                  onLeftIconButtonTouchTap={this.handleSidebarToggle}
+                  onLeftIconButtonClick={this.handleSidebarToggle}
                 />
                 <div className="main">
                   <SidebarContainer expanded={this.state.sidebarExpanded} />

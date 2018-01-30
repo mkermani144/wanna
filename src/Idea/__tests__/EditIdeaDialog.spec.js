@@ -34,25 +34,26 @@ it('should set TextField defaultValue based on props', () => {
   });
   expect(wrapper.find('TextField').prop('defaultValue')).toBe('a cool idea');
 });
-it('should call onRequestClose inside cancel FlatButton onTouchTap', (done) => {
+it('should call onRequestClose inside cancel FlatButton onClick', (done) => {
   const wrapper = getActualDialog({
     onRequestClose() {
       done();
     },
   });
-  wrapper.find('Dialog').prop('actions')[1].props.onTouchTap();
+  wrapper.find('Dialog').prop('actions')[1].props.onClick();
 });
-it('should call onRequestEdit inside edit FlatButton onTouchTap', (done) => {
+it('should call onRequestEdit inside edit FlatButton onClick', (done) => {
   const wrapper = getActualDialog({
     onRequestEdit() {
       done();
     },
   });
-  wrapper.find('Dialog').prop('actions')[0].props.onTouchTap();
+  wrapper.find('Dialog').prop('actions')[0].props.onClick();
 });
 
 it('should set FlatButton disabled based on state', () => {
   const wrapper = getActualDialog();
   wrapper.find('TextField').props().onChange({ target: { value: 'a cool idea' } });
+  wrapper.update();
   expect(wrapper.find('Dialog').prop('actions')[0].props.disabled).toBe(false);
 });

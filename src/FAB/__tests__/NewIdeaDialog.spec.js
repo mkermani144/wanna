@@ -22,47 +22,49 @@ it('should have 1 Dialog', () => {
   expect(wrapper.find('Dialog').length).toBe(1);
 });
 
-it('should call onRequestClose inside cancel FlatButton onTouchTap', (done) => {
+it('should call onRequestClose inside cancel FlatButton onClick', (done) => {
   const wrapper = getActualDialog({
     onRequestClose() {
       done();
     },
   });
-  wrapper.find('Dialog').prop('actions')[2].props.onTouchTap();
+  wrapper.find('Dialog').prop('actions')[2].props.onClick();
 });
-it('should call onRequestClose inside finish FlatButton onTouchTap', (done) => {
+it('should call onRequestClose inside finish FlatButton onClick', (done) => {
   const wrapper = getActualDialog({
     onRequestClose() {
       done();
     },
   });
-  wrapper.find('Dialog').prop('actions')[0].props.onTouchTap();
+  wrapper.find('Dialog').prop('actions')[0].props.onClick();
 });
-it('should call onRequestAdd inside add FlatButton onTouchTap', (done) => {
+it('should call onRequestAdd inside add FlatButton onClick', (done) => {
   const wrapper = getActualDialog({
     onRequestAdd() {
       done();
     },
   });
-  wrapper.find('Dialog').prop('actions')[1].props.onTouchTap();
+  wrapper.find('Dialog').prop('actions')[1].props.onClick();
 });
-it('should call onRequestAdd inside finish FlatButton onTouchTap', (done) => {
+it('should call onRequestAdd inside finish FlatButton onClick', (done) => {
   const wrapper = getActualDialog({
     onRequestAdd() {
       done();
     },
   });
-  wrapper.find('Dialog').prop('actions')[0].props.onTouchTap();
+  wrapper.find('Dialog').prop('actions')[0].props.onClick();
 });
 
 it('should set FlatButton disabled based on state', () => {
   const wrapper = getActualDialog();
   wrapper.find('TextField').props().onChange({ target: { value: 'a cool idea' } });
+  wrapper.update();
   expect(wrapper.find('Dialog').prop('actions')[0].props.disabled).toBe(false);
   expect(wrapper.find('Dialog').prop('actions')[1].props.disabled).toBe(false);
 });
 it('should set TextField value based on state', () => {
   const wrapper = getActualDialog();
   wrapper.find('TextField').props().onChange({ target: { value: 'a cool idea' } });
+  wrapper.update();
   expect(wrapper.find('TextField').prop('value')).toBe('a cool idea');
 });
