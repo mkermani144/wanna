@@ -6,7 +6,7 @@ import FAB from '../FAB';
 const defaultProps = {
   calendarSystem: 'en-US',
   firstDayOfWeek: 0,
-  fabRaised: false,
+  FABRaised: false,
   window: null,
   width: 1024,
   addTask() {},

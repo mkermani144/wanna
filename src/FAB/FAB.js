@@ -14,6 +14,15 @@ import NewTaskDialog from './NewTaskDialog';
 import NewIdeaDialog from './NewIdeaDialog';
 import calculateBottom from './lib/calculateBottom';
 
+import {
+  FABRaiseWindowWidthTreshold,
+  FABBottom,
+  FABRaisedBottom,
+  FABMiniRaisedBottomClosed,
+  FABRight,
+  FABMiniRight,
+} from '../lib/constants';
+
 
 class FAB extends Component {
   constructor() {
@@ -75,17 +84,19 @@ class FAB extends Component {
     const styles = {
       plusFAB: {
         position: 'absolute',
-        right: 24,
-        bottom: this.props.FABRaised && this.props.width < 768 ? 72 : 24,
+        right: FABRight,
+        bottom: this.props.FABRaised && this.props.width < FABRaiseWindowWidthTreshold ?
+          FABRaisedBottom :
+          FABBottom,
         transform: this.state.FABOpen ? 'rotate(45deg)' : 'rotate(0)',
         zIndex: 1000,
         transition: 'all 400ms cubic-bezier(0.23, 1, 0.32, 1) 0ms',
       },
       doneFAB: {
         position: 'absolute',
-        right: 32,
-        bottom: this.props.FABRaised && this.props.width < 768 ?
-          80 :
+        right: FABMiniRight,
+        bottom: this.props.FABRaised && this.props.width < FABRaiseWindowWidthTreshold ?
+          FABMiniRaisedBottomClosed :
           calculateBottom(this.state.FABOpen, 0),
         opacity: this.state.FABOpen ? 1 : 0,
         zIndex: 999,
@@ -93,11 +104,11 @@ class FAB extends Component {
       },
       lightbulbFAB: {
         position: 'absolute',
-        right: 32,
-        opacity: this.state.FABOpen ? 1 : 0,
-        bottom: this.props.FABRaised && this.props.width < 768 ?
-          80 :
+        right: FABMiniRight,
+        bottom: this.props.FABRaised && this.props.width < FABRaiseWindowWidthTreshold ?
+          FABMiniRaisedBottomClosed :
           calculateBottom(this.state.FABOpen, 1),
+        opacity: this.state.FABOpen ? 1 : 0,
         zIndex: 999,
         transition: 'all 400ms cubic-bezier(0.23, 1, 0.32, 1) 0ms',
       },

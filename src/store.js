@@ -13,7 +13,7 @@ const initialStateFactory = () => ({
     firstDayOfWeek: 1,
   },
   appUI: {
-    fabRaised: false,
+    FABRaised: false,
     currentTab: 'tasks',
   },
 });

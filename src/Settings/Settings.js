@@ -7,6 +7,11 @@ import CalendarSystemDialog from './CalendarSystemDialog';
 import FirstDayOfWeekDialog from './FirstDayOfWeekDialog';
 import './Settings.css';
 
+import {
+  navMiniWidth,
+  navExpandedWidth,
+} from '../lib/constants';
+
 class Settings extends Component {
   constructor() {
     super();
@@ -51,10 +56,10 @@ class Settings extends Component {
     };
     const marginStyles = {
       expanded: {
-        marginLeft: 200,
+        marginLeft: navExpandedWidth,
       },
       mini: {
-        marginLeft: 56,
+        marginLeft: navMiniWidth,
       },
     };
     return (

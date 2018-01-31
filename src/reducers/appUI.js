@@ -3,12 +3,12 @@ const appPropertiesReducer = (state = {}, action) => {
     case 'RAISE_FAB':
       return {
         ...state,
-        fabRaised: true,
+        FABRaised: true,
       };
     case 'LOWER_FAB':
       return {
         ...state,
-        fabRaised: false,
+        FABRaised: false,
       };
     case 'CHANGE_TAB':
       return {
