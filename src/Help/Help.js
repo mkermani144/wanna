@@ -6,6 +6,11 @@ import Divider from 'material-ui/Divider';
 
 import './Help.css';
 
+import {
+  navMiniWidth,
+  navExpandedWidth,
+} from '../lib/constants';
+
 const versionURL = 'https://github.com/mkermani144/wanna/releases/tag/Flex-alpha';
 const repoURL = 'https://github.com/mkermani144/wanna';
 const licenseURL = 'https://github.com/mkermani144/wanna/blob/master/LICENSE.md';
@@ -14,10 +19,10 @@ const Help = ({ sidebarExpanded, openExternal }) => {
   // const { shell } = window.require('electron');
   const marginStyles = {
     expanded: {
-      marginLeft: 200,
+      marginLeft: navExpandedWidth,
     },
     mini: {
-      marginLeft: 56,
+      marginLeft: navMiniWidth,
     },
   };
   return (

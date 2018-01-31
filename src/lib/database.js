@@ -29,7 +29,7 @@ const fetchDatabaseState = () => {
       },
       appProperties: data.appProperties,
       appUI: {
-        fabRaised: false,
+        FABRaised: false,
         currentTab: 'tasks',
       },
     };

@@ -12,7 +12,7 @@ import {
 import changeTab from '../../Sidebar/actionCreators';
 
 const defaultState = {
-  fabRaised: false,
+  FABRaised: false,
   currentTab: 'tasks',
 };
 
@@ -23,26 +23,26 @@ it('should return some state if no state and action is provided', () => {
   const actual = appUIReducer(undefined, {});
   expect(actual).toEqual(expected);
 });
-it('should make fabRaised true (idea)', () => {
-  const expected = getExpectedState({ fabRaised: true });
+it('should make FABRaised true (idea)', () => {
+  const expected = getExpectedState({ FABRaised: true });
   const action = ideaRaiseFab();
   const actual = appUIReducer(defaultState, action);
   expect(actual).toEqual(expected);
 });
-it('should make fabRaised false (idea)', () => {
-  const expected = getExpectedState({ fabRaised: false });
+it('should make FABRaised false (idea)', () => {
+  const expected = getExpectedState({ FABRaised: false });
   const action = ideaLowerFab();
   const actual = appUIReducer(defaultState, action);
   expect(actual).toEqual(expected);
 });
-it('should make fabRaised true (task)', () => {
-  const expected = getExpectedState({ fabRaised: true });
+it('should make FABRaised true (task)', () => {
+  const expected = getExpectedState({ FABRaised: true });
   const action = taskRaiseFab();
   const actual = appUIReducer(defaultState, action);
   expect(actual).toEqual(expected);
 });
-it('should make fabRaised false (task)', () => {
-  const expected = getExpectedState({ fabRaised: false });
+it('should make FABRaised false (task)', () => {
+  const expected = getExpectedState({ FABRaised: false });
   const action = taskLowerFab();
   const actual = appUIReducer(defaultState, action);
   expect(actual).toEqual(expected);

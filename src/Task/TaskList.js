@@ -17,6 +17,13 @@ import cumulate from './lib/cumulate';
 import './TaskList.css';
 import './Animations.css';
 
+import {
+  navMiniWidth,
+  navExpandedWidth,
+  transitionEnterTimeout,
+  transitionLeaveTimeout,
+} from '../lib/constants';
+
 class TaskList extends Component {
   constructor() {
     super();
@@ -108,10 +115,10 @@ class TaskList extends Component {
     const classifiedTasks = classify(this.props.tasks);
     const marginStyles = {
       expanded: {
-        marginLeft: 200,
+        marginLeft: navExpandedWidth,
       },
       mini: {
-        marginLeft: 56,
+        marginLeft: navMiniWidth,
       },
     };
     const dividerStyle = {
@@ -131,8 +138,8 @@ class TaskList extends Component {
         <CSSTransitionGroup
           className="transition-container"
           transitionName="tasks-empty-state"
-          transitionEnterTimeout={170}
-          transitionLeaveTimeout={150}
+          transitionEnterTimeout={transitionEnterTimeout}
+          transitionLeaveTimeout={transitionLeaveTimeout}
         >
           {!this.props.tasks.length &&
             <div
@@ -149,8 +156,8 @@ class TaskList extends Component {
         </CSSTransitionGroup>
         <CSSTransitionGroup
           transitionName="task-header"
-          transitionEnterTimeout={170}
-          transitionLeaveTimeout={150}
+          transitionEnterTimeout={transitionEnterTimeout}
+          transitionLeaveTimeout={transitionLeaveTimeout}
         >
           {this.props.tasks.length &&
             <Subheader style={styles.overdue}>Overdue ({classifiedTasks.overdue.length})</Subheader>
@@ -158,8 +165,8 @@ class TaskList extends Component {
         </CSSTransitionGroup>
         <CSSTransitionGroup
           transitionName="task"
-          transitionEnterTimeout={170}
-          transitionLeaveTimeout={150}
+          transitionEnterTimeout={transitionEnterTimeout}
+          transitionLeaveTimeout={transitionLeaveTimeout}
         >
           {
             classifiedTasks.overdue.map((task, index) => (index > this.state.current ?
@@ -182,8 +189,8 @@ class TaskList extends Component {
         </CSSTransitionGroup>
         <CSSTransitionGroup
           transitionName="task-divider"
-          transitionEnterTimeout={170}
-          transitionLeaveTimeout={150}
+          transitionEnterTimeout={transitionEnterTimeout}
+          transitionLeaveTimeout={transitionLeaveTimeout}
         >
           {this.props.tasks.length &&
             <Divider style={dividerStyle} />
@@ -191,8 +198,8 @@ class TaskList extends Component {
         </CSSTransitionGroup>
         <CSSTransitionGroup
           transitionName="task-header"
-          transitionEnterTimeout={170}
-          transitionLeaveTimeout={150}
+          transitionEnterTimeout={transitionEnterTimeout}
+          transitionLeaveTimeout={transitionLeaveTimeout}
         >
           {this.props.tasks.length &&
             <Subheader style={styles.open}>Open ({classifiedTasks.open.length})</Subheader>
@@ -200,8 +207,8 @@ class TaskList extends Component {
         </CSSTransitionGroup>
         <CSSTransitionGroup
           transitionName="task"
-          transitionEnterTimeout={170}
-          transitionLeaveTimeout={150}
+          transitionEnterTimeout={transitionEnterTimeout}
+          transitionLeaveTimeout={transitionLeaveTimeout}
         >
           {
             classifiedTasks.open.map((task, index) =>
@@ -226,8 +233,8 @@ class TaskList extends Component {
         </CSSTransitionGroup>
         <CSSTransitionGroup
           transitionName="task-divider"
-          transitionEnterTimeout={170}
-          transitionLeaveTimeout={150}
+          transitionEnterTimeout={transitionEnterTimeout}
+          transitionLeaveTimeout={transitionLeaveTimeout}
         >
           {this.props.tasks.length &&
             <Divider style={dividerStyle} />
@@ -235,8 +242,8 @@ class TaskList extends Component {
         </CSSTransitionGroup>
         <CSSTransitionGroup
           transitionName="task-header"
-          transitionEnterTimeout={170}
-          transitionLeaveTimeout={150}
+          transitionEnterTimeout={transitionEnterTimeout}
+          transitionLeaveTimeout={transitionLeaveTimeout}
         >
           {this.props.tasks.length && this.props.showNotYetTasks &&
             <Subheader style={styles.notYet}>Not Yet ({classifiedTasks.notYet.length})</Subheader>
@@ -244,8 +251,8 @@ class TaskList extends Component {
         </CSSTransitionGroup>
         <CSSTransitionGroup
           transitionName="task"
-          transitionEnterTimeout={170}
-          transitionLeaveTimeout={150}
+          transitionEnterTimeout={transitionEnterTimeout}
+          transitionLeaveTimeout={transitionLeaveTimeout}
         >
           {this.props.showNotYetTasks &&
             classifiedTasks.notYet.map((task, index) =>
@@ -270,8 +277,8 @@ class TaskList extends Component {
         </CSSTransitionGroup>
         <CSSTransitionGroup
           transitionName="task-divider"
-          transitionEnterTimeout={170}
-          transitionLeaveTimeout={150}
+          transitionEnterTimeout={transitionEnterTimeout}
+          transitionLeaveTimeout={transitionLeaveTimeout}
         >
           {this.props.tasks.length && this.props.showNotYetTasks &&
             <Divider style={dividerStyle} />
@@ -279,8 +286,8 @@ class TaskList extends Component {
         </CSSTransitionGroup>
         <CSSTransitionGroup
           transitionName="task-header"
-          transitionEnterTimeout={170}
-          transitionLeaveTimeout={150}
+          transitionEnterTimeout={transitionEnterTimeout}
+          transitionLeaveTimeout={transitionLeaveTimeout}
         >
           {this.props.tasks.length &&
             <Subheader style={styles.done}>Done ({classifiedTasks.done.length})</Subheader>
@@ -288,8 +295,8 @@ class TaskList extends Component {
         </CSSTransitionGroup>
         <CSSTransitionGroup
           transitionName="task"
-          transitionEnterTimeout={170}
-          transitionLeaveTimeout={150}
+          transitionEnterTimeout={transitionEnterTimeout}
+          transitionLeaveTimeout={transitionLeaveTimeout}
         >
           {
             classifiedTasks.done.map((task, index) =>
@@ -312,8 +319,8 @@ class TaskList extends Component {
         </CSSTransitionGroup>
         <CSSTransitionGroup
           transitionName="task-divider"
-          transitionEnterTimeout={170}
-          transitionLeaveTimeout={150}
+          transitionEnterTimeout={transitionEnterTimeout}
+          transitionLeaveTimeout={transitionLeaveTimeout}
         >
           {this.props.tasks.length &&
             <Divider style={dividerStyle} />

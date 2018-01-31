@@ -8,7 +8,7 @@ import FAB from './FAB';
 const mapStateToProps = state => ({
   calendarSystem: state.appProperties.calendarSystem,
   firstDayOfWeek: state.appProperties.firstDayOfWeek,
-  FAbRaised: state.appUI.fabRaised,
+  FABRaised: state.appUI.FABRaised,
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators(actionCreators, dispatch);

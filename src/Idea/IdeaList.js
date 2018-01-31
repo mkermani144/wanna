@@ -10,6 +10,13 @@ import ConvertIdeaDialog from './ConvertIdeaDialog';
 import './IdeaList.css';
 import './Animations.css';
 
+import {
+  navMiniWidth,
+  navExpandedWidth,
+  transitionEnterTimeout,
+  transitionLeaveTimeout,
+} from '../lib/constants';
+
 class IdeaList extends Component {
   constructor() {
     super();
@@ -104,10 +111,10 @@ class IdeaList extends Component {
   render() {
     const marginStyles = {
       expanded: {
-        marginLeft: 200,
+        marginLeft: navExpandedWidth,
       },
       mini: {
-        marginLeft: 56,
+        marginLeft: navMiniWidth,
       },
     };
     return (
@@ -123,8 +130,8 @@ class IdeaList extends Component {
         <CSSTransitionGroup
           className="transition-container"
           transitionName="ideas-empty-state"
-          transitionEnterTimeout={170}
-          transitionLeaveTimeout={150}
+          transitionEnterTimeout={transitionEnterTimeout}
+          transitionLeaveTimeout={transitionLeaveTimeout}
         >
           {!this.props.ideas.length &&
             <div
@@ -141,8 +148,8 @@ class IdeaList extends Component {
         </CSSTransitionGroup>
         <CSSTransitionGroup
           transitionName="idea"
-          transitionEnterTimeout={170}
-          transitionLeaveTimeout={150}
+          transitionEnterTimeout={transitionEnterTimeout}
+          transitionLeaveTimeout={transitionLeaveTimeout}
         >
           {this.props.ideas.map((idea, index) => (index > this.state.current ?
             <div key={idea.id} className="Idea" /> :

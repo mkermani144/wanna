@@ -19,6 +19,11 @@ import {
 
 import './Sidebar.css';
 
+import {
+  navMiniWidth,
+  navExpandedWidth,
+} from '../lib/constants';
+
 const Sidebar = (props) => {
   const styles = {
     tasks: {
@@ -37,7 +42,7 @@ const Sidebar = (props) => {
   return (
     <Drawer
       className="Sidebar"
-      width={props.expanded === false ? 56 : 200}
+      width={props.expanded === false ? navMiniWidth : navExpandedWidth}
       zDepth={1}
       open
     >
