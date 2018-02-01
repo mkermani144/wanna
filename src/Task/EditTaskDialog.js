@@ -3,11 +3,15 @@ import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import TextField from 'material-ui/TextField';
 import { green600, grey50 } from 'material-ui/styles/colors';
+import { HotKeys } from 'react-hotkeys';
 
 class EditTaskDialog extends Component {
   constructor(props) {
     super(props);
     this.state = { task: this.props.task };
+    this.keyMap = {
+      confirmEditTask: 'enter',
+    };
   }
   handleTaskChange = (e) => {
     this.setState({
@@ -47,6 +51,11 @@ class EditTaskDialog extends Component {
         color: green600,
       },
     };
+    const handlers = {
+      confirmEditTask: () => {
+        this.state.task && this.handleRequestEdit();
+      },
+    };
     return (
       <Dialog
         className="EditTaskDialog"
@@ -59,15 +68,20 @@ class EditTaskDialog extends Component {
         <br />
         Edit your task
         <br />
-        <TextField
-          floatingLabelText="Task title"
-          fullWidth
-          underlineFocusStyle={textFieldStyles.underlineFocusStyle}
-          floatingLabelFocusStyle={textFieldStyles.floatingLabelFocusStyle}
-          defaultValue={this.props.task}
-          onChange={this.handleTaskChange}
-          autoFocus
-        />
+        <HotKeys
+          keyMap={this.keyMap}
+          handlers={handlers}
+        >
+          <TextField
+            floatingLabelText="Task title"
+            fullWidth
+            underlineFocusStyle={textFieldStyles.underlineFocusStyle}
+            floatingLabelFocusStyle={textFieldStyles.floatingLabelFocusStyle}
+            defaultValue={this.props.task}
+            onChange={this.handleTaskChange}
+            autoFocus
+          />
+        </HotKeys>
       </Dialog>
     );
   }
