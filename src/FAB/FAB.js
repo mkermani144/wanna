@@ -25,18 +25,16 @@ import {
 
 
 class FAB extends Component {
-  constructor() {
-    super();
-    this.state = {
-      taskDialogOpen: false,
-      ideaDialogOpen: false,
-      FABOpen: false,
-    };
-    this.keyMap = {
-      addNewIdea: 'ctrl+i',
-      addNewTask: 'ctrl+t',
-    };
-  }
+  state = {
+    taskDialogOpen: false,
+    ideaDialogOpen: false,
+    FABOpen: false,
+  };
+  keyMap = {
+    addNewIdea: 'ctrl+i',
+    addNewTask: 'ctrl+t',
+  };
+
   handleToggleFAB = () => {
     this.setState(prev => ({
       FABOpen: !prev.FABOpen,

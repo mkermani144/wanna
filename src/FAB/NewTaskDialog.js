@@ -19,22 +19,20 @@ import {
 import './NewTaskDialog.css';
 
 class NewTaskDialog extends Component {
-  constructor() {
-    super();
-    this.state = {
-      estimationValue: 1,
-      repetitionValue: 1,
-      task: '',
-      start: todayStart(),
-      end: null,
-      estimation: '',
-      repetition: '',
-    };
-    this.keyMap = {
-      confirmAddNewTaskAndFinish: 'shift+enter',
-      confirmAddNewTaskAndContinue: 'enter',
-    };
-  }
+  state = {
+    estimationValue: 1,
+    repetitionValue: 1,
+    task: '',
+    start: todayStart(),
+    end: null,
+    estimation: '',
+    repetition: '',
+  };
+  keyMap = {
+    confirmAddNewTaskAndFinish: 'shift+enter',
+    confirmAddNewTaskAndContinue: 'enter',
+  };
+
   buttonDisabled = () => !(
     this.state.task
     && this.state.end

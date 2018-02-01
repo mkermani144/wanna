@@ -6,13 +6,9 @@ import { green600, grey50 } from 'material-ui/styles/colors';
 import { HotKeys } from 'react-hotkeys';
 
 class EditTaskDialog extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { task: this.props.task };
-    this.keyMap = {
-      confirmEditTask: 'enter',
-    };
-  }
+  state = { task: this.props.task };
+  keyMap = { confirmEditTask: 'enter' };
+
   handleTaskChange = (e) => {
     this.setState({
       task: e.target.value,

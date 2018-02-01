@@ -8,12 +8,8 @@ import Actions from './Actions';
 import './Task.css';
 
 class Task extends PureComponent {
-  constructor() {
-    super();
-    this.state = {
-      class: '',
-    };
-  }
+  state = { class: '' };
+
   handleRequestDelete = () => {
     this.props.onRequestDelete(this.props.index);
     this.props.onRequestSnackbar('Task deleted');

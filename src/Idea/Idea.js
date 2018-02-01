@@ -4,12 +4,8 @@ import Actions from './Actions';
 import './Idea.css';
 
 class Idea extends PureComponent {
-  constructor() {
-    super();
-    this.state = {
-      class: '',
-    };
-  }
+  state = { class: '' };
+
   handleRequestDelete = () => {
     this.props.onRequestDelete && this.props.onRequestDelete(this.props.index);
     this.props.onRequestSnackbar && this.props.onRequestSnackbar('Idea deleted');

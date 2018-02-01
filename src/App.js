@@ -25,22 +25,20 @@ import './App.css';
 injectTapEventPlugin();
 
 class App extends Component {
-  constructor() {
-    super();
-    this.state = {
-      toTasks: false,
-      toIdeas: false,
-      toSettings: false,
-      toHelp: false,
-      sidebarExpanded: false,
-    };
-    this.keyMap = {
-      showTasks: 'shift+t',
-      showIdeas: 'shift+i',
-      showSettings: 'shift+s',
-      showHelp: 'shift+h',
-    };
-  }
+  state = {
+    toTasks: false,
+    toIdeas: false,
+    toSettings: false,
+    toHelp: false,
+    sidebarExpanded: false,
+  };
+  keyMap = {
+    showTasks: 'shift+t',
+    showIdeas: 'shift+i',
+    showSettings: 'shift+s',
+    showHelp: 'shift+h',
+  };
+
   handleSidebarToggle = () => {
     this.setState(prevState => ({ sidebarExpanded: !prevState.sidebarExpanded }));
   }
