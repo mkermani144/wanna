@@ -25,16 +25,14 @@ import {
 } from '../lib/constants';
 
 class TaskList extends Component {
-  constructor() {
-    super();
-    this.state = {
-      taskDialogOpen: false,
-      snackbarOpen: false,
-      snackbarMessage: '',
-      index: -1,
-      current: 5,
-    };
-  }
+  state = {
+    taskDialogOpen: false,
+    snackbarOpen: false,
+    snackbarMessage: '',
+    index: -1,
+    current: 5,
+  };
+
   componentDidMount = () => {
     this.interval = setInterval(() => this.renderMore(), 0);
   }

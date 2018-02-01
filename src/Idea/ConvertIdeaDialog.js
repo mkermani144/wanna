@@ -19,22 +19,20 @@ import {
 import './ConvertIdeaDialog.css';
 
 class ConvertIdeaDialog extends Component {
-  constructor() {
-    super();
-    this.state = {
-      estimationValue: 1,
-      repetitionValue: 1,
-      task: '',
-      start: todayStart(),
-      end: null,
-      estimation: '',
-      repetition: '',
-    };
-    this.keyMap = {
-      confirmConvertIdeaAndFinish: 'shift+enter',
-      confirmConvertIdeaAndContinue: 'enter',
-    };
-  }
+  state = {
+    estimationValue: 1,
+    repetitionValue: 1,
+    task: '',
+    start: todayStart(),
+    end: null,
+    estimation: '',
+    repetition: '',
+  };
+  keyMap = {
+    confirmConvertIdeaAndFinish: 'shift+enter',
+    confirmConvertIdeaAndContinue: 'enter',
+  };
+
   buttonDisabled = () => !(
     this.state.task
     && this.state.end

@@ -7,14 +7,12 @@ import { yellow800, grey50 } from 'material-ui/styles/colors';
 import { HotKeys } from 'react-hotkeys';
 
 class NewIdeaDialog extends Component {
-  constructor() {
-    super();
-    this.state = { idea: '' };
-    this.keyMap = {
-      confirmAddNewIdeaAndFinish: 'shift+enter',
-      confirmAddNewIdeaAndContinue: 'enter',
-    };
-  }
+  state = { idea: '' };
+  keyMap = {
+    confirmAddNewIdeaAndFinish: 'shift+enter',
+    confirmAddNewIdeaAndContinue: 'enter',
+  };
+
   handleIdeaChange = (e) => {
     this.setState({
       idea: e.target.value,

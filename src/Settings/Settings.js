@@ -13,13 +13,11 @@ import {
 } from '../lib/constants';
 
 class Settings extends Component {
-  constructor() {
-    super();
-    this.state = {
-      calendarSystemDialogOpen: false,
-      firstDayOfWeekDialogOpen: false,
-    };
-  }
+  state = {
+    calendarSystemDialogOpen: false,
+    firstDayOfWeekDialogOpen: false,
+  };
+
   handleCheckShowNotYet = (e, checked) => {
     this.props.toggleNotYet(checked);
   }

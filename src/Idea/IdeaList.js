@@ -18,24 +18,22 @@ import {
 } from '../lib/constants';
 
 class IdeaList extends Component {
-  constructor() {
-    super();
-    this.state = {
-      ideaDialogOpen: false,
-      convertDialogOpen: false,
-      snackbarOpen: false,
-      snackbarMessage: '',
-      index: -1,
-      current: 5,
-    };
-    this.interval = null;
-  }
+  state = {
+    ideaDialogOpen: false,
+    convertDialogOpen: false,
+    snackbarOpen: false,
+    snackbarMessage: '',
+    index: -1,
+    current: 5,
+  };
+
   componentDidMount = () => {
     this.interval = setInterval(() => this.renderMore(), 0);
   }
   componentWillUnmount = () => {
     clearInterval(this.interval);
   }
+  interval = null;
   handleRequestIdeaDialogClose = () => {
     this.setState({
       ideaDialogOpen: false,

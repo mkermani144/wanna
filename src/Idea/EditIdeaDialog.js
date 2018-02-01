@@ -6,13 +6,9 @@ import { yellow800, grey50 } from 'material-ui/styles/colors';
 import { HotKeys } from 'react-hotkeys';
 
 class EditIdeaDialog extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { idea: this.props.idea };
-    this.keyMap = {
-      confirmEditIdea: 'enter',
-    };
-  }
+  state = { idea: this.props.idea };
+  keyMap = { confirmEditIdea: 'enter' };
+
   handleIdeaChange = (e) => {
     this.setState({
       idea: e.target.value,
