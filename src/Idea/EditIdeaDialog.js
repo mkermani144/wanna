@@ -3,11 +3,15 @@ import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import TextField from 'material-ui/TextField';
 import { yellow800, grey50 } from 'material-ui/styles/colors';
+import { HotKeys } from 'react-hotkeys';
 
 class EditIdeaDialog extends Component {
   constructor(props) {
     super(props);
     this.state = { idea: this.props.idea };
+    this.keyMap = {
+      confirmEditIdea: 'enter',
+    };
   }
   handleIdeaChange = (e) => {
     this.setState({
@@ -47,6 +51,11 @@ class EditIdeaDialog extends Component {
         color: yellow800,
       },
     };
+    const handlers = {
+      confirmEditIdea: () => {
+        this.state.idea && this.handleRequestEdit();
+      },
+    };
     return (
       <Dialog
         className="EditIdeaDialog"
@@ -59,15 +68,20 @@ class EditIdeaDialog extends Component {
         <br />
         Edit you idea
         <br />
-        <TextField
-          floatingLabelText="Idea title"
-          fullWidth
-          underlineFocusStyle={textFieldStyles.underlineFocusStyle}
-          floatingLabelFocusStyle={textFieldStyles.floatingLabelFocusStyle}
-          defaultValue={this.props.idea}
-          onChange={this.handleIdeaChange}
-          autoFocus
-        />
+        <HotKeys
+          keyMap={this.keyMap}
+          handlers={handlers}
+        >
+          <TextField
+            floatingLabelText="Idea title"
+            fullWidth
+            underlineFocusStyle={textFieldStyles.underlineFocusStyle}
+            floatingLabelFocusStyle={textFieldStyles.floatingLabelFocusStyle}
+            defaultValue={this.props.idea}
+            onChange={this.handleIdeaChange}
+            autoFocus
+          />
+        </HotKeys>
       </Dialog>
     );
   }
