@@ -11,12 +11,12 @@ import { blue500, green800, pink300 } from 'material-ui/styles/colors';
 import { HotKeys } from 'react-hotkeys';
 
 import store from './store';
-import SidebarContainer from './Sidebar/SidebarContainer';
-import FABContainer from './FAB/FABContainer';
-import TaskListContainer from './Task/TaskListContainer';
-import IdeaListContainer from './Idea/IdeaListContainer';
-import SettingsContainer from './Settings/SettingsContainer';
-import Help from './Help/Help';
+import SidebarContainer from './Sidebar';
+import FABContainer from './FAB';
+import TaskListContainer from './Task';
+import IdeaListContainer from './Idea';
+import SettingsContainer from './Settings';
+import Help from './Help';
 
 import { update } from './lib/database';
 

@@ -1,7 +1,7 @@
 /* eslint-env mocha, jest */
 
 import getActualComponentFactory from '../../lib/testUtils';
-import Help from '../Help';
+import Help from '..';
 
 const defaultProps = {
   sidebarExpanded: true,
