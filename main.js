@@ -22,6 +22,7 @@ const createDatabase = () => {
       fullscreen: false,
       calendarSystem: 'en-US',
       firstDayOfWeek: 1,
+      startupTab: 'tasks',
     },
   });
   fs.writeFileSync('.config/db', prefill);

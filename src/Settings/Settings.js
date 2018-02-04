@@ -5,6 +5,7 @@ import Divider from 'material-ui/Divider';
 
 import CalendarSystemDialog from './CalendarSystemDialog';
 import FirstDayOfWeekDialog from './FirstDayOfWeekDialog';
+import StartupTabDialog from './StartupTabDialog';
 import './Settings.css';
 
 import {
@@ -16,6 +17,7 @@ class Settings extends Component {
   state = {
     calendarSystemDialogOpen: false,
     firstDayOfWeekDialogOpen: false,
+    startupTabDialogOpen: false,
   };
 
   handleCheckShowNotYet = (e, checked) => {
@@ -34,6 +36,11 @@ class Settings extends Component {
       firstDayOfWeekDialogOpen: true,
     });
   }
+  handleRequestStartupTabDialogOpen = () => {
+    this.setState({
+      startupTabDialogOpen: true,
+    });
+  }
   handleRequestCalendarSystemDialogClose = (calendarSystem) => {
     this.props.changeCalendarSystem(calendarSystem);
     this.setState({
@@ -44,6 +51,12 @@ class Settings extends Component {
     this.props.changeFirstDayOfWeek(+dayNumber);
     this.setState({
       firstDayOfWeekDialogOpen: false,
+    });
+  }
+  handleRequestStartupTabDialogClose = (startupTab) => {
+    this.props.changeStartupTab(startupTab);
+    this.setState({
+      startupTabDialogOpen: false,
     });
   }
   render() {
@@ -83,6 +96,12 @@ class Settings extends Component {
           />
           <Divider />
           <ListItem
+            primaryText="Startup tab"
+            secondaryText={this.props.startupTab}
+            onClick={this.handleRequestStartupTabDialogOpen}
+          />
+          <Divider />
+          <ListItem
             leftCheckbox={
               <Checkbox
                 defaultChecked={this.props.fullscreen}
@@ -115,6 +134,11 @@ class Settings extends Component {
           onRequestClose={this.handleRequestFirstDayOfWeekDialogClose}
           open={this.state.firstDayOfWeekDialogOpen}
           firstDayOfWeek={this.props.firstDayOfWeek}
+        />
+        <StartupTabDialog
+          onRequestClose={this.handleRequestStartupTabDialogClose}
+          open={this.state.startupTabDialogOpen}
+          startupTab={this.props.startupTab}
         />
       </div>
     );

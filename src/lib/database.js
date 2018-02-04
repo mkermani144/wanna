@@ -30,7 +30,7 @@ const fetchDatabaseState = () => {
       appProperties: data.appProperties,
       appUI: {
         FABRaised: false,
-        currentTab: 'tasks',
+        currentTab: data.appProperties.startupTab,
       },
     };
   }

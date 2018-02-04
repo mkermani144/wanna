@@ -11,6 +11,7 @@ const initialStateFactory = () => ({
     fullscreen: false,
     calendarSystem: 'en-US',
     firstDayOfWeek: 1,
+    startupTab: 'tasks',
   },
   appUI: {
     FABRaised: false,
