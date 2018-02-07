@@ -128,6 +128,7 @@ class NewTaskDialog extends Component {
     const dialogTitleStyle = {
       backgroundColor: green600,
       color: grey50,
+      cursor: 'default',
     };
     const textFieldStyles = {
       underlineFocusStyle: {
@@ -164,7 +165,7 @@ class NewTaskDialog extends Component {
         onRequestClose={this.props.onRequestClose}
       >
         <br />
-        What do you wanna do?
+        <p>What do you wanna do?</p>
         <br />
         <div className="textfields">
           <HotKeys

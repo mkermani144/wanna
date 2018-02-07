@@ -38,6 +38,7 @@ class EditTaskDialog extends Component {
     const dialogTitleStyle = {
       backgroundColor: green600,
       color: grey50,
+      cursor: 'default',
     };
     const textFieldStyles = {
       underlineFocusStyle: {
@@ -62,7 +63,7 @@ class EditTaskDialog extends Component {
         onRequestClose={this.props.onRequestClose}
       >
         <br />
-        Edit your task
+        <p>Edit your task</p>
         <br />
         <HotKeys
           keyMap={this.keyMap}

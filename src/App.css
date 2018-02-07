@@ -13,6 +13,10 @@
 }
 .AppBar {
   position: fixed !important;
+  cursor: default;
+}
+* {
+  user-select: none;
 }
 
 *::-webkit-scrollbar-track
