@@ -138,6 +138,7 @@ class ConvertIdeaDialog extends Component {
     const dialogTitleStyle = {
       backgroundColor: green600,
       color: grey50,
+      cursor: 'default',
     };
     const textFieldStyles = {
       underlineFocusStyle: {
@@ -174,7 +175,7 @@ class ConvertIdeaDialog extends Component {
         onRequestClose={this.props.onRequestClose}
       >
         <br />
-        Converting idea: {this.props.idea}
+        <p>Converting idea: {this.props.idea}</p>
         <br />
         <div className="textfields">
           <HotKeys

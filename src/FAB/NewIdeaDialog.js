@@ -55,6 +55,7 @@ class NewIdeaDialog extends Component {
     const dialogTitleStyle = {
       backgroundColor: yellow800,
       color: grey50,
+      cursor: 'default',
     };
     const textFieldStyles = {
       underlineFocusStyle: {
@@ -82,7 +83,7 @@ class NewIdeaDialog extends Component {
         onRequestClose={this.props.onRequestClose}
       >
         <br />
-        Do you have an idea?
+        <p>Do you have an idea?</p>
         <br />
         <HotKeys
           keyMap={this.keyMap}

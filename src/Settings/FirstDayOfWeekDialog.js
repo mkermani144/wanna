@@ -27,6 +27,7 @@ class FirstDayOfWeekDialog extends Component {
     const dialogTitleStyle = {
       backgroundColor: blue500,
       color: grey50,
+      cursor: 'default',
     };
     return (
       <Dialog
