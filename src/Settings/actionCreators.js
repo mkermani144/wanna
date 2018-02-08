@@ -14,5 +14,15 @@ const changeFirstDayOfWeek = firstDayOfWeek => ({
   type: 'CHANGE_FIRST_DAY_OF_WEEK',
   firstDayOfWeek,
 });
+const changeStartupTab = startupTab => ({
+  type: 'CHANGE_STARTUP_TAB',
+  startupTab,
+});
 
-export { toggleNotYet, toggleFullscreen, changeCalendarSystem, changeFirstDayOfWeek };
+export {
+  toggleNotYet,
+  toggleFullscreen,
+  changeCalendarSystem,
+  changeFirstDayOfWeek,
+  changeStartupTab,
+};

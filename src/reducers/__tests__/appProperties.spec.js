@@ -6,6 +6,7 @@ import {
   toggleFullscreen,
   changeCalendarSystem,
   changeFirstDayOfWeek,
+  changeStartupTab,
 } from '../../Settings/actionCreators';
 
 const defaultState = {
@@ -13,6 +14,7 @@ const defaultState = {
   fullscreen: false,
   calendarSystem: 'en-US',
   firstDayOfWeek: 1,
+  startupTab: 'tasks',
 };
 
 const getExpectedState = (props = {}) => Object.assign({}, defaultState, props);
@@ -43,6 +45,12 @@ it('should update calendarSystem of state', () => {
 it('should update firstDayOfWeek of state', () => {
   const expected = getExpectedState({ firstDayOfWeek: 6 });
   const action = changeFirstDayOfWeek(6);
+  const actual = appPropertiesReducer(defaultState, action);
+  expect(actual).toEqual(expected);
+});
+it('should update startupTab of state', () => {
+  const expected = getExpectedState({ startupTab: 'ideas' });
+  const action = changeStartupTab('ideas');
   const actual = appPropertiesReducer(defaultState, action);
   expect(actual).toEqual(expected);
 });

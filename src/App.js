@@ -122,7 +122,7 @@ class App extends Component {
                     window={window}
                     width={document.body.clientWidth}
                   />
-                  <Redirect from="/" to="/tasks" />
+                  <Redirect from="/" to={`/${this.props.currentTab}`} />
                   {this.state.toTasks &&
                     <Redirect to="/tasks" />
                   }

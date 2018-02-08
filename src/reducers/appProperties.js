@@ -20,6 +20,11 @@ const appPropertiesReducer = (state = {}, action) => {
         ...state,
         firstDayOfWeek: action.firstDayOfWeek,
       };
+    case 'CHANGE_STARTUP_TAB':
+      return {
+        ...state,
+        startupTab: action.startupTab,
+      };
     default:
       return state;
   }
