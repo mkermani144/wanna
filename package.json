@@ -1,7 +1,14 @@
 {
   "name": "wanna",
-  "version": "0.1.0",
-  "private": true,
+  "version": "1.0.0-alpha.2+flex",
+  "description": "An implementation of a 21st-century to-do list app",
+  "homepage": "https://wanna.js.org",
+  "bugs": {
+    "url": "https://github.com/mkermani144/wanna/issues"
+  },
+  "license": "MIT",
+  "author": "Mohammad Kermani",
+  "repository": "github:mkermani144/wanna",
   "main": "main.js",
   "devDependencies": {
     "enzyme": "^3.3.0",
@@ -44,7 +51,7 @@
     "test:cov": "yarn test --coverage && codecov",
     "lint": "eslint main.js src/",
     "eject": "react-scripts eject",
-    "electron": "electron . | cross-env BROWSER=none react-scripts start",
+    "electron": "cross-env NODE_ENV=development electron . | cross-env BROWSER=none react-scripts start",
     "precommit": "yarn lint && cross-env CI=true yarn test --onlyChanged",
     "start-and-e2e": "cross-env CI=true npm-run-all -r -p test:e2e start:nodeless"
   },
