@@ -1,17 +1,30 @@
 /* eslint-env browser */
 
 let fs;
+let path;
+let os;
 if (process.env.REACT_APP_E2E) {
   fs = {
     readFileSync() {},
     writeFileSync() {},
   };
+  path = { join() {} };
+  os = { homedir() {} };
 } else {
   fs = window.require('fs');
+  path = window.require('path');
+  os = window.require('os');
 }
 
+let parentPath = os.homedir();
+if (process.env.NODE_ENV === 'development') {
+  parentPath = './';
+}
+
+const dbPath = path.join(parentPath, '.wanna/db');
+
 const fetchDatabaseState = () => {
-  let data = fs.readFileSync('.config/db', 'utf-8');
+  let data = fs.readFileSync(dbPath, 'utf-8');
   if (data) {
     data = JSON.parse(data);
     return {
@@ -37,7 +50,7 @@ const fetchDatabaseState = () => {
   return null;
 };
 const update = (state) => {
-  fs.writeFileSync('.config/db', JSON.stringify({
+  fs.writeFileSync(dbPath, JSON.stringify({
     tasks: state.tasks.present,
     ideas: state.ideas.present,
     appProperties: state.appProperties,

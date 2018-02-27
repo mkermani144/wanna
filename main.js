@@ -1,11 +1,20 @@
 const fs = require('fs');
+const path = require('path');
+const os = require('os');
 const electron = require('electron');
 
 const { app } = electron;
 const { BrowserWindow } = electron;
 
+let parentPath = os.homedir();
+if (process.env.NODE_ENV === 'development') {
+  parentPath = './';
+}
+
+
+const dbPath = path.join(parentPath, '.wanna/db');
+
 const dbExists = () => {
-  const dbPath = '.config/db';
   if (fs.existsSync(dbPath)) {
     return true;
   }
@@ -13,7 +22,8 @@ const dbExists = () => {
 };
 
 const createDatabase = () => {
-  fs.mkdirSync('./.config');
+  const wannaDirectoryPath = path.join(parentPath, '.wanna');
+  fs.mkdirSync(wannaDirectoryPath);
   const prefill = JSON.stringify({
     tasks: [],
     ideas: [],
@@ -25,11 +35,11 @@ const createDatabase = () => {
       startupTab: 'tasks',
     },
   });
-  fs.writeFileSync('.config/db', prefill);
+  fs.writeFileSync(dbPath, prefill);
 };
 
 const isFullscreen = () => {
-  const data = fs.readFileSync('.config/db', 'utf-8');
+  const data = fs.readFileSync(dbPath, 'utf-8');
   return JSON.parse(data).appProperties.fullscreen;
 };
 
@@ -49,7 +59,7 @@ function createWindow() {
     minHeight: 600,
     width,
     height,
-    icon: `${__dirname}/wanna.png`,
+    icon: `${__dirname}/icon.png`,
   });
   win.loadURL('http://localhost:3000');
 }
